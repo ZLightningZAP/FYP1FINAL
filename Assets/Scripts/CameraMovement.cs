@@ -5,13 +5,13 @@ public class CameraMovement : MonoBehaviour {
 
     public Transform[] Waypoints;   //Waypoints to move towards
     public Transform[] RotationPoints;  //Angles to rotate towards
+    public float[] WaitTimes;   //Waiting Time for each way point
 
     public float MovementSpeed;    //Movement Speed of Camera
     public float RotationSpeed;     //Rotation Speed of Camera
 
-    public float WaitTime;  //Wait Time before moving
-
-    private float waitTimer;    
+    private float WaitTime; //Time to wait before moving to next waypoint
+    private float waitTimer;    //Count Timer
 
     //Position
     private Transform CurrentTransform;  //Current Position of Camera
@@ -35,6 +35,7 @@ public class CameraMovement : MonoBehaviour {
         {
             NextTransform = Waypoints[Index];
             TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
+            WaitTime = WaitTimes[Index];
         }
 
 	}
@@ -58,6 +59,7 @@ public class CameraMovement : MonoBehaviour {
                 {
                     Index++;
                     NextTransform = Waypoints[Index];
+                    WaitTime = WaitTimes[Index];
                 }
             }
         }
