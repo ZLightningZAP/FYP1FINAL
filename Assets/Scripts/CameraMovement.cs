@@ -30,8 +30,6 @@ public class CameraMovement : MonoBehaviour {
 
         Index = 0;
 
-        CurrentTransform.position = Waypoints[Index].position;
-
         //Only if there is atleast 1 waypoint
         if(Waypoints.Length > 0)
         {
@@ -45,15 +43,18 @@ public class CameraMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-        if (CurrentTransform.position != NextTransform.position)
+        if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > 0.01f)
         {
             //Go towards the next position
             CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
+            print(CurrentTransform.position);
+            print(NextTransform.position);
         }
         else
         {
             waitTimer += Time.deltaTime;
-
+            print(waitTimer);
+    
             if (waitTimer > WaitTime)
             {
                 //Only if its still within bounds of the waypoint
@@ -62,6 +63,7 @@ public class CameraMovement : MonoBehaviour {
                     Index++;
                     NextTransform = Waypoints[Index];
                     WaitTime = WaitTimes[Index-1];
+                    waitTimer = 0.0f;
                 }
             }
         }
