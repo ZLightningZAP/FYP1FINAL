@@ -5,7 +5,7 @@ public class InputHandler : MonoBehaviour
 {
 
     public GameObject BulletHole;
-    public ParticleSystem BulletSpark;
+    public ParticleSystem OnHitEffect;
 
     private float gap = 0.1f;
 
@@ -28,7 +28,7 @@ public class InputHandler : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Instantiate(BulletSpark, hit.point, transform.rotation);
+                Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));
 
                 Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));
             }
