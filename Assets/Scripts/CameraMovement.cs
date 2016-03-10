@@ -30,6 +30,8 @@ public class CameraMovement : MonoBehaviour {
 
         Index = 0;
 
+        CurrentTransform.position = Waypoints[Index].position;
+
         //Only if there is atleast 1 waypoint
         if(Waypoints.Length > 0)
         {
@@ -59,7 +61,7 @@ public class CameraMovement : MonoBehaviour {
                 {
                     Index++;
                     NextTransform = Waypoints[Index];
-                    WaitTime = WaitTimes[Index];
+                    WaitTime = WaitTimes[Index-1];
                 }
             }
         }
