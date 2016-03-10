@@ -6,7 +6,6 @@ public class InputHandler : MonoBehaviour
 
     public GameObject BulletHole;
     public ParticleSystem BulletSpark;
-    private float FireRate;
 
     private float gap = 0.1f;
 
@@ -33,6 +32,7 @@ public class InputHandler : MonoBehaviour
 
                 Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));
             }
+
         }
     }
 }
