@@ -22,6 +22,7 @@ public class CameraMovement : MonoBehaviour {
     private Vector3 TargetDirection;
 
     private int Index;   //Current Index of waypoint
+    private float distanceGap;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +30,7 @@ public class CameraMovement : MonoBehaviour {
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
 
         Index = 0;
+        distanceGap = 0.01f;
 
         //Only if there is atleast 1 waypoint
         if(Waypoints.Length > 0)
@@ -42,13 +44,11 @@ public class CameraMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
-        if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > 0.01f)
+
+        if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
         {
             //Go towards the next position
             CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
-            print(CurrentTransform.position);
-            print(NextTransform.position);
         }
         else
         {
