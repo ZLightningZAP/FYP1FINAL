@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : Character
+public class InputHandler : MonoBehaviour
 {
 
     public GameObject BulletHole;
@@ -13,19 +13,14 @@ public class Player : Character
     Camera camera;
 
     // Use this for initialization
-    protected override void Start()
+    void Start()
     {
-        // Base Start
-        base.Start();
         camera = GetComponent<Camera>();
     }
 
     // Update is called once per frame
-    protected override void Update()
+    void Update()
     {
-        // Base Update
-        base.Update();
-
         //If Left Click
         if (Input.GetMouseButtonDown(0))
         {
