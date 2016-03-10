@@ -68,10 +68,14 @@ public class CameraMovement : MonoBehaviour {
             }
         }
 
-        TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
-        Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
+        
 
-        CurrentTransform.rotation = Quaternion.LookRotation(newDirection);
+        var rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+        CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+
+        //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
+        //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
+        //CurrentTransform.rotation = Quaternion.LookRotation(newDirection);
         
 	}
 }
