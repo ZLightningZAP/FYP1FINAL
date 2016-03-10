@@ -23,18 +23,6 @@ public class CameraMovement : MonoBehaviour {
 
     private int Index;   //Current Index of waypoint
 
-    public struct Test
-    {
-        public int a;
-
-        Test(int b)
-        {
-            a = 0;
-        }
-    }
-
-    public Test[] testarray;
-
 	// Use this for initialization
 	void Start () {
 
@@ -49,9 +37,6 @@ public class CameraMovement : MonoBehaviour {
             TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
         }
 
-        testarray = new Test[4];
-        testarray.Initialize();
-        print(testarray[0].a);
 	}
 	
 	// Update is called once per frame

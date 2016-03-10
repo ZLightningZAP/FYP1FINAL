@@ -7,7 +7,7 @@ public class Waypoint : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //WaypointObject.SetActive(false);
+        WaypointObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
