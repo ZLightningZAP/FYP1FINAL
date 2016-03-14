@@ -3,36 +3,73 @@ using System.Collections;
 
 public class InputHandler : MonoBehaviour
 {
+    public GameObject BulletHole;   //Bullet Hole Graphic
+    public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
 
-    public GameObject BulletHole;
-    public ParticleSystem OnHitEffect;
+    public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
+    public float FireRate;  //Rate of Fire
+    public float bulletSpreadIncreaseRate; //Rate of increasing bullet spread
 
-    private float gap = 0.1f;
+    private float gap = 0.1f;   //Gap for instantiating effects
 
-    Camera camera;
+    private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
+    private float currentBulletSpread;  //Current Range of Bullet Spread
+    private float fireTimer = 0.0f; //Use to keep track of time before last fire
+
+    Camera camera;  //Main Camera
 
     // Use this for initialization
     void Start()
     {
         camera = GetComponent<Camera>();
+
+        currentBulletSpread = defaultBulletSpread;
     }
 
     // Update is called once per frame
     void Update()
     {
+        fireTimer += Time.deltaTime;
+
         //If Left Click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (fireTimer >= FireRate)
             {
-                Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));
-
-                Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));
+                Fire(); //Do Fire
             }
-
         }
+        else
+        {
+            //Decreasing bullet spread over time
+            currentBulletSpread -= Time.deltaTime * bulletSpreadIncreaseRate;
+            if (currentBulletSpread <= defaultBulletSpread)
+            {
+                currentBulletSpread = defaultBulletSpread;
+            }
+        }
+    }
+
+    void Fire()
+    {
+        //Creating Bullet Spread
+        Vector3 FinalPosition = Input.mousePosition;
+        FinalPosition.x += Random.Range(-currentBulletSpread, currentBulletSpread);
+        FinalPosition.y += Random.Range(-currentBulletSpread, currentBulletSpread);
+
+        //Creating Ray based on final calculated position
+        Ray ray = camera.ScreenPointToRay(FinalPosition);
+
+        RaycastHit hit;
+
+        //Checking if Ray has hit
+        if (Physics.Raycast(ray, out hit))
+        {
+            Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+            Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole 
+        }
+
+        fireTimer = 0.0f;   //Resetting the Timer
+        currentBulletSpread += Time.deltaTime * bulletSpreadIncreaseRate;  //Increasing spread of bullet
     }
 }
