@@ -53,7 +53,6 @@ public class CameraMovement : MonoBehaviour {
         else
         {
             waitTimer += Time.deltaTime;
-            print(waitTimer);
     
             if (waitTimer > WaitTime)
             {
@@ -64,6 +63,7 @@ public class CameraMovement : MonoBehaviour {
                     NextTransform = Waypoints[Index];
                     WaitTime = WaitTimes[Index-1];
                     waitTimer = 0.0f;
+                    print("Going to next point!");
                 }
             }
         }

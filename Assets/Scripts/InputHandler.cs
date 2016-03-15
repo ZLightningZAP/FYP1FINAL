@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
-    public float bulletSpreadIncreaseRate; //Rate of increasing bullet spread
+    public float SpreadIncreaseRate; //Rate of increasing bullet spread
 
     private float gap = 0.1f;   //Gap for instantiating effects
 
@@ -21,7 +21,7 @@ public class InputHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        camera = GetComponent<Camera>();
+        camera = Camera.main;
 
         currentBulletSpread = defaultBulletSpread;
     }
@@ -42,7 +42,7 @@ public class InputHandler : MonoBehaviour
         else
         {
             //Decreasing bullet spread over time
-            currentBulletSpread -= Time.deltaTime * bulletSpreadIncreaseRate;
+            currentBulletSpread -= Time.deltaTime * SpreadIncreaseRate;
             if (currentBulletSpread <= defaultBulletSpread)
             {
                 currentBulletSpread = defaultBulletSpread;
@@ -70,6 +70,6 @@ public class InputHandler : MonoBehaviour
         }
 
         fireTimer = 0.0f;   //Resetting the Timer
-        currentBulletSpread += Time.deltaTime * bulletSpreadIncreaseRate;  //Increasing spread of bullet
+        currentBulletSpread += Time.deltaTime * SpreadIncreaseRate;  //Increasing spread of bullet
     }
 }
