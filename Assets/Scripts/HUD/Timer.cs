@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    //Set the starting timer countdown to start from 10
     public float TimerCountdown = 10;
     public Text text;
 
@@ -18,7 +19,7 @@ public class Timer : MonoBehaviour
     {
         //Timer will countdown using delta time
         TimerCountdown -= Time.deltaTime;
-        //Timer text is converted to string
+        //Timer countdown is converted to string with 1 d.p
         text.text = TimerCountdown.ToString("F1");
     }
 }

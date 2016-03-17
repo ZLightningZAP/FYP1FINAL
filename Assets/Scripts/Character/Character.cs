@@ -14,9 +14,12 @@ public abstract class Character : MonoBehaviour
     public float Health { get { return health; } }
     public bool IsAlive { get { return health > 0; } }
 
+    //Fill amount for the health bar
     public float HealthFillAmount;
 
+    //Healthbar Image
     public Image healthBar;
+    //Healthbar Text
     public Text healthtext;
 
     // Use this for initialization
@@ -30,6 +33,7 @@ public abstract class Character : MonoBehaviour
     {
         //HealthBar
         HealthBarUpdate(Health);
+        health -= 0.3f;
     }
 
     //Use this to injure the character
@@ -66,16 +70,22 @@ public abstract class Character : MonoBehaviour
     public void HealthBarUpdate(float health)
     {
         //Show the amount of health in text
-        healthtext.text = health.ToString();
+        healthtext.text = health.ToString("F1");
 
         // Calculate the fill amount of the health bar
         HealthFillAmount = health / MaxHealth;
         healthBar.fillAmount = HealthFillAmount;
 
         // If the health amount drop below 30%, the color of the healthbar will change to red
-        if(healthBar.fillAmount <= 0.3)
+        if (healthBar.fillAmount <= 0.3)
         {
             healthBar.color = Color.red;
+        }
+
+        // If the health amount drop below 70%, the color of the healthbar will change to yellow
+        else if(healthBar.fillAmount <= 0.7)
+        {
+            healthBar.color = Color.yellow;
         }
     }
 }
