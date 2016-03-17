@@ -22,7 +22,7 @@ public class CameraMovement : MonoBehaviour {
     private Vector3 TargetDirection;
 
     private int Index;   //Current Index of waypoint
-    private float distanceGap;
+    private float distanceGap;  //Used to check if camera has reached target destination
 
 	// Use this for initialization
 	void Start () {
@@ -68,14 +68,11 @@ public class CameraMovement : MonoBehaviour {
             }
         }
 
-        
-
         Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
         CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
 
         //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
         //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
-        //CurrentTransform.rotation = Quaternion.LookRotation(newDirection);
-        
+        //CurrentTransform.rotation = Quaternion.LookRotation(newDirection)
 	}
 }
