@@ -8,10 +8,10 @@ public abstract class Character : MonoBehaviour
     public int MaxHealth = 100;
 
     // Health
-    public int health;
+    public float health;
 
     // Getters
-    public int Health { get { return health; } }
+    public float Health { get { return health; } }
     public bool IsAlive { get { return health > 0; } }
 
     public float HealthFillAmount;
@@ -22,7 +22,7 @@ public abstract class Character : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
-        health = 20;
+        health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -63,13 +63,13 @@ public abstract class Character : MonoBehaviour
     }
 
     //Updated the healthbar on the character
-    public void HealthBarUpdate(int health)
+    public void HealthBarUpdate(float health)
     {
         //Show the amount of health in text
         healthtext.text = health.ToString();
 
         // Calculate the fill amount of the health bar
-        HealthFillAmount = (float)health / (float)MaxHealth;
+        HealthFillAmount = health / MaxHealth;
         healthBar.fillAmount = HealthFillAmount;
 
         // If the health amount drop below 30%, the color of the healthbar will change to red
