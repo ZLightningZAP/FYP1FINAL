@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PrintObjective : MonoBehaviour
 {
-    Text text;
+    public Text text;
     private int objectivetextsize;
 
     // Use this for initialization
