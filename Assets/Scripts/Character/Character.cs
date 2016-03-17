@@ -33,11 +33,11 @@ public abstract class Character : MonoBehaviour
     {
         //HealthBar
         HealthBarUpdate(Health);
-        health -= 0.3f;
+        Injure(0.3f);
     }
 
     //Use this to injure the character
-    public void Injure(int damage)
+    public void Injure(float damage)
     {
         // Error checks
         if (damage < 0)
@@ -52,7 +52,7 @@ public abstract class Character : MonoBehaviour
     }
 
     //Use this to heal the character
-    public void Heal(int healing)
+    public void Heal(float healing)
     {
         // Error checks
         if (healing < 0)

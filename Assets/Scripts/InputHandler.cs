@@ -5,6 +5,7 @@ public class InputHandler : MonoBehaviour
 {
     public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
+    public OverHeating overheat;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -34,13 +35,16 @@ public class InputHandler : MonoBehaviour
         //If Left Click
         if (Input.GetMouseButton(0))
         {
-            if (fireTimer >= FireRate)
+            if (fireTimer >= FireRate && overheat.overHeated == false)
             {
                 Fire(); //Do Fire
             }
         }
         else
         {
+            //Decrease the heating guage every 0.5 second
+            overheat.CoolDownHeating();
+
             //Decreasing bullet spread over time
             currentBulletSpread -= Time.deltaTime * SpreadIncreaseRate;
             if (currentBulletSpread <= defaultBulletSpread)
@@ -52,6 +56,9 @@ public class InputHandler : MonoBehaviour
 
     void Fire()
     {
+        //Update the overheat bar
+        overheat.OverheatbarUpdate();
+
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
         FinalPosition.x += Random.Range(-currentBulletSpread, currentBulletSpread);
