@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 388496de453f22f41b5756489ad67e79
-timeCreated: 1458196117
+guid: 45c3705420855a243ab7cab8fa631630
+timeCreated: 1458202819
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Building_Variation2
+    4300000: Building_Roof_Variation1
   materials:
     importMaterials: 1
     materialName: 0

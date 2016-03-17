@@ -71,5 +71,9 @@ public class InputHandler : MonoBehaviour
 
         fireTimer = 0.0f;   //Resetting the Timer
         currentBulletSpread += Time.deltaTime * SpreadIncreaseRate;  //Increasing spread of bullet
+        if(currentBulletSpread > MaxBulletSpreadRange)
+        {
+            currentBulletSpread = MaxBulletSpreadRange;
+        }
     }
 }
