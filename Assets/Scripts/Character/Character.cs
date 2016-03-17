@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour
 {
@@ -13,18 +14,21 @@ public abstract class Character : MonoBehaviour
     public int Health { get { return health; } }
     public bool IsAlive { get { return health > 0; } }
 
-    public GameObject healthBar;
+    public float HealthFillAmount;
+
+    public Image healthBar;
+    public Text healthtext;
 
     // Use this for initialization
     protected virtual void Start()
     {
-        health = MaxHealth;
+        health = 20;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        //HealthBar Testing
+        //HealthBar
         HealthBarUpdate(Health);
     }
 
@@ -61,11 +65,17 @@ public abstract class Character : MonoBehaviour
     //Updated the healthbar on the character
     public void HealthBarUpdate(int health)
     {
-        float currentHP = (float)health / (float)MaxHealth;
-        currentHP = Mathf.Clamp(currentHP, 0, MaxHealth);
-        if (healthBar != null)
+        //Show the amount of health in text
+        healthtext.text = health.ToString();
+
+        // Calculate the fill amount of the health bar
+        HealthFillAmount = (float)health / (float)MaxHealth;
+        healthBar.fillAmount = HealthFillAmount;
+
+        // If the health amount drop below 30%, the color of the healthbar will change to red
+        if(healthBar.fillAmount <= 0.3)
         {
-            healthBar.transform.localScale = new Vector3(currentHP, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+            healthBar.color = Color.red;
         }
     }
 }
