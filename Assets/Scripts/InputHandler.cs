@@ -74,11 +74,12 @@ public class InputHandler : MonoBehaviour
         {
             Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole 
+            hit.transform.SendMessage("Injure", 10, SendMessageOptions.DontRequireReceiver);
         }
 
         fireTimer = 0.0f;   //Resetting the Timer
         currentBulletSpread += Time.deltaTime * SpreadIncreaseRate;  //Increasing spread of bullet
-        if(currentBulletSpread > MaxBulletSpreadRange)
+        if (currentBulletSpread > MaxBulletSpreadRange)
         {
             currentBulletSpread = MaxBulletSpreadRange;
         }
