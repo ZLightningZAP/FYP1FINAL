@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : Character
 {
+    //Healthbar Text
+    public Text healthtext;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -15,5 +19,8 @@ public class Player : Character
     {
         // Base Update
         base.Update();
+
+        //Show the amount of health in text
+        healthtext.text = health.ToString("F0");
     }
 }

@@ -18,14 +18,13 @@ public abstract class Character : MonoBehaviour
     public float HealthFillAmount;
 
     //Healthbar Image
-    public Image healthBar;
-    //Healthbar Text
-    public Text healthtext;
+    private Image healthBar;
 
     // Use this for initialization
     protected virtual void Start()
     {
         health = MaxHealth;
+        healthBar = GetComponentInChildren<Image>();
     }
 
     // Update is called once per frame
@@ -69,9 +68,6 @@ public abstract class Character : MonoBehaviour
     //Updated the healthbar on the character
     public void HealthBarUpdate(float health)
     {
-        //Show the amount of health in text
-        healthtext.text = health.ToString("F0");
-
         // Calculate the fill amount of the health bar
         HealthFillAmount = health / MaxHealth;
         healthBar.fillAmount = HealthFillAmount;
