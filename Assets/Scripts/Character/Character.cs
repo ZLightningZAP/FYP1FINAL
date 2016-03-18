@@ -33,7 +33,7 @@ public abstract class Character : MonoBehaviour
     {
         //HealthBar
         HealthBarUpdate(Health);
-        Injure(0.3f);
+        Injure(0.1f);
     }
 
     //Use this to injure the character
@@ -70,7 +70,7 @@ public abstract class Character : MonoBehaviour
     public void HealthBarUpdate(float health)
     {
         //Show the amount of health in text
-        healthtext.text = health.ToString("F1");
+        healthtext.text = health.ToString("F0");
 
         // Calculate the fill amount of the health bar
         HealthFillAmount = health / MaxHealth;
