@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
     public bool IsAlive { get { return health > 0; } }
 
     //Fill amount for the health bar
-    public float HealthFillAmount;
+    private float HealthFillAmount;
 
     //Healthbar Image
     private Image healthBar;
@@ -24,6 +24,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void Start()
     {
         health = MaxHealth;
+        //Fid the image component in its children and assign it to healthbar
         healthBar = GetComponentInChildren<Image>();
     }
 

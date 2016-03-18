@@ -15,5 +15,11 @@ public class Enemy : Character
     {
         // Base Update
         base.Update();
+
+        //If enemy has 0 health, active will be set to false
+        if(health == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
