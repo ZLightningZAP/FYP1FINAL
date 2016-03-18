@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class OverHeating : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class OverHeating : MonoBehaviour
     private float cooldowntimer;
 
     public float HeatPerShot = 0.005f;
-    public GameObject overheatBar;
+    public Image overheatBar;
     public bool overHeated { get { return overheated; } set { overheated = value; } }
 
     // Use this for initialization
@@ -39,7 +40,7 @@ public class OverHeating : MonoBehaviour
         //Update the current heating bar transform
         if(overheatBar != null)
         {
-            overheatBar.transform.localScale = new Vector3(overheatBar.transform.localScale.x, currentHeat, overheatBar.transform.localScale.z);
+            overheatBar.fillAmount = currentHeat;
         }
 
         //Check if the guage is full , you cannot fire anymore
@@ -71,7 +72,7 @@ public class OverHeating : MonoBehaviour
         //Update the current heating bar transform
         if (overheatBar != null)
         {
-            overheatBar.transform.localScale = new Vector3(overheatBar.transform.localScale.x, currentHeat, overheatBar.transform.localScale.z);
+            overheatBar.fillAmount = currentHeat;
         }
 
         //If the heating bar is less than 70%, u can continue firing
