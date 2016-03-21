@@ -17,6 +17,8 @@ public class InputHandler : MonoBehaviour
     private float currentBulletSpread;  //Current Range of Bullet Spread
     private float fireTimer = 0.0f; //Use to keep track of time before last fire
 
+    public float DamageOfBullet = 10;
+
     Camera camera;  //Main Camera
 
     // Use this for initialization
@@ -74,7 +76,7 @@ public class InputHandler : MonoBehaviour
         {
             Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole 
-            hit.transform.SendMessage("Injure", 10, SendMessageOptions.DontRequireReceiver);
+            hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
 
         fireTimer = 0.0f;   //Resetting the Timer
