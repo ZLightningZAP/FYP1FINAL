@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
     public GameObject Enemyprefab;
     public GameObject canvas;
     public List<GameObject> Spawnlist;
-    public float AmountToSpawn;
     public float Interval;
 
     //Private variable
@@ -39,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
         //Check if spawntimer is more than the interval && the spawned amount is not more than the specified amount
         if (Spawntimer >= Interval)
         {
-            for (int i = 0; i <= AmountToSpawn; i++)
+            for (int i = 0; i <= Spawnlist.Count; i++)
             {
                 //Create the enemy prefab and the current position
                 GameObject enemy = Instantiate(Enemyprefab, Spawnlist[i].transform.position, Quaternion.identity) as GameObject;
