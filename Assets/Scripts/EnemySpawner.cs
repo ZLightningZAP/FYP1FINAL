@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
     //Public variables
     public GameObject Enemyprefab;
     public GameObject canvas;
+    public List<GameObject> Spawnlist;
     public float AmountToSpawn;
     public float Interval;
 
     //Private variable
     private float Spawntimer = 0;
-    private int spawned = 0;
 
     // Use this for initialization
     void Start()
@@ -32,21 +33,23 @@ public class EnemySpawner : MonoBehaviour
 
     void Spawnenemies()
     {
-        //Debug.Log("Triggered");
-
         //Add delta time to the spawn timer
         Spawntimer += Time.deltaTime;
 
         //Check if spawntimer is more than the interval && the spawned amount is not more than the specified amount
-        if (Spawntimer >= Interval && spawned != AmountToSpawn)
+        if (Spawntimer >= Interval)
         {
-            //Create the enemy prefab and the current position
-            GameObject enemy = Instantiate(Enemyprefab, transform.position, Quaternion.identity) as GameObject;
-            //Set the parent of the gameobject to the world canvas
-            enemy.transform.SetParent(canvas.transform);
-            
+            for (int i = 0; i <= AmountToSpawn; i++)
+            {
+                //Create the enemy prefab and the current position
+                GameObject enemy = Instantiate(Enemyprefab, Spawnlist[i].transform.position, Quaternion.identity) as GameObject;
+
+                //Set the parent of the gameobject to the world canvas
+                enemy.transform.SetParent(canvas.transform);
+            }
+
+            //Reset the spawner timer and add 1 to enemy spawned on the world
             Spawntimer = 0;
-            spawned += 1;
         }
     }
 }
