@@ -28,8 +28,10 @@ public class MainMenuTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Add delta time to transition time
         transitiontime += Time.deltaTime;
 
+        //If transition time is more than the input transition timing, Change panel
         if(transitiontime >= TransitionTiming)
         {
             if(MainMenu == false)
@@ -53,6 +55,7 @@ public class MainMenuTransition : MonoBehaviour
         anim1.enabled = true;
         anim2.enabled = true;
 
+        //Play their respective animation
         anim1.Play("MainPanelSlideOut");
         anim2.Play("HighscorePanelSlideIn");
 
@@ -66,6 +69,7 @@ public class MainMenuTransition : MonoBehaviour
         anim1.enabled = true;
         anim2.enabled = true;
 
+        //Play their respective animation
         anim1.Play("MainPanelSlideIn");
         anim2.Play("HighscorePanelSlideOut");
 
