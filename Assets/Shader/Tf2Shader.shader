@@ -9,7 +9,6 @@
 		_NormalMap("Normal (Normal)", 2D) = "bump" {}
 		_SpecularTex("Specular Level (R) Gloss (G) Rim Mask (B)", 2D) = "gray" {}
 		_RampTex("Toon Ramp (RGB)", 2D) = "white" {}
-		_Shininess("Shininess", Range(0.03, 1)) = 0.078125
 		_Cutoff("Alphatest Cutoff", Range(0, 1)) = 0.5
 	}
 
@@ -33,9 +32,9 @@
 			sampler2D _SpecularTex;
 			sampler2D _NormalMap;
 			sampler2D _RampTex;
-			half _Shininess;
 
 			float4 _RimColor;
+			float4 _Color;
 			float _RimPower;
 			float _SpecPower;
 			float _BumpPower;
@@ -48,7 +47,7 @@
 				fixed3 ramp = tex2D(_RampTex, float2((NdotL * atten), (NdotL  * atten))).rgb;
 
 				float nh = max(0, dot(s.Normal, h));
-				float spec = pow(nh, s.Gloss * _SpecPower) * s.Specular;
+				float spec = pow(nh, s.Gloss * _SpecPower) * s.Specular * saturate(NdotL);
 				fixed4 c;
 				c.rgb = ((s.Albedo * ramp * _LightColor0.rgb + _LightColor0.rgb * spec) * (atten * 2));
 				c.a = s.Alpha;
@@ -58,13 +57,14 @@
 			void surf(Input IN, inout SurfaceOutput o)
 			{
 				o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb;
+				o.Albedo *= _Color.rgb;
 				o.Alpha = tex2D(_MainTex, IN.uv_MainTex).a;
 				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 				o.Normal.z = o.Normal.z / _BumpPower;
 				o.Normal = normalize(o.Normal);
 				fixed4 specGloss = tex2D(_SpecularTex, IN.uv_MainTex);
-				o.Specular = specGloss.r / _Shininess;
-				o.Gloss = specGloss.g / _Shininess;
+				o.Specular = specGloss.r;
+				o.Gloss = specGloss.g;
 				half3 rim = pow(max(0, dot(float3(0, 1, 0), WorldNormalVector(IN, o.Normal))), _RimPower) * _RimColor.rgb * _RimColor.a * specGloss.b;
 				o.Emission = rim;
 			}
