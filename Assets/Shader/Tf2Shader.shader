@@ -9,6 +9,7 @@
 		_NormalMap("Normal (Normal)", 2D) = "bump" {}
 		_SpecularTex("Specular Level (R) Gloss (G) Rim Mask (B)", 2D) = "gray" {}
 		_RampTex("Toon Ramp (RGB)", 2D) = "white" {}
+		_Shininess("Shininess", Range(0.03, 1)) = 0.078125
 		_Cutoff("Alphatest Cutoff", Range(0, 1)) = 0.5
 	}
 
@@ -32,6 +33,7 @@
 			sampler2D _SpecularTex;
 			sampler2D _NormalMap;
 			sampler2D _RampTex;
+			half _Shininess;
 
 			float4 _RimColor;
 			float _RimPower;
@@ -59,9 +61,10 @@
 				o.Alpha = tex2D(_MainTex, IN.uv_MainTex).a;
 				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 				o.Normal.z = o.Normal.z / _BumpPower;
-				float3 specGloss = tex2D(_SpecularTex, IN.uv_MainTex).rgb;
-				o.Specular = specGloss.r;
-				o.Gloss = specGloss.g;
+				o.Normal = normalize(o.Normal);
+				fixed4 specGloss = tex2D(_SpecularTex, IN.uv_MainTex);
+				o.Specular = specGloss.r / _Shininess;
+				o.Gloss = specGloss.g / _Shininess;
 				half3 rim = pow(max(0, dot(float3(0, 1, 0), WorldNormalVector(IN, o.Normal))), _RimPower) * _RimColor.rgb * _RimColor.a * specGloss.b;
 				o.Emission = rim;
 			}
