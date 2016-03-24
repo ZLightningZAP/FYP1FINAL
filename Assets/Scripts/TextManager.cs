@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,7 +11,7 @@ public class TextManager : MonoBehaviour
 
     private List<string> linesInFile = new List<string>();
     private List<string> Names = new List<string>();
-    private List<string> Score = new List<string>();
+    private List<int> Score = new List<int>();
 
     // Use this for initialization
     void Start()
@@ -36,21 +37,14 @@ public class TextManager : MonoBehaviour
 
         for (int i = 1; i < linesInFile.Count; i += 2)
         {
-            Score.Add(linesInFile[i]);
+            int result;
+            Int32.TryParse(linesInFile[i], out result);
+            Score.Add(result);
         }
-
-        //foreach (string line in Names)
-        //{
-        //    Debug.Log(line);
-        //}
-        //foreach (string line in Score)
-        //{
-        //    Debug.Log(line);
-        //}
     }
 
     //Write to the text file
-    public void Write()
+    public void Write(string name, int score)
     {
         //sw.WriteLine("HIGHSCORE FILE");
         //sw.WriteLine("--------------");
