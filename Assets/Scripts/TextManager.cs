@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class TextManager : MonoBehaviour
 {
     public TextAsset textfile;
 
-    private StreamWriter sw;
-    private string[] linesInFile;
+    private List<string> linesInFile = new List<string>();
+    private List<string> Names = new List<string>();
+    private List<string> Score = new List<string>();
 
     // Use this for initialization
     void Start()
@@ -25,10 +27,23 @@ public class TextManager : MonoBehaviour
     //Read the text file
     private void Read()
     {
-        linesInFile = textfile.text.Split(' ', '\n');
+        linesInFile = textfile.text.Split(' ', '\n').ToList();
 
-        //Debugging Line
-        //foreach (string line in linesInFile)
+        for (int i = 0; i < linesInFile.Count; i += 2)
+        {
+            Names.Add(linesInFile[i]);
+        }
+
+        for (int i = 1; i < linesInFile.Count; i += 2)
+        {
+            Score.Add(linesInFile[i]);
+        }
+
+        //foreach (string line in Names)
+        //{
+        //    Debug.Log(line);
+        //}
+        //foreach (string line in Score)
         //{
         //    Debug.Log(line);
         //}
