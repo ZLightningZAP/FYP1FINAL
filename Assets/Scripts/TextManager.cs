@@ -9,17 +9,20 @@ public class TextManager : MonoBehaviour
 {
     public TextAsset textfile;
 
+    private StreamWriter writer;
     private List<string> linesInFile = new List<string>();
     private List<string> Names = new List<string>();
     private List<int> Score = new List<int>();
+    private bool added = false;
 
-    // Use this for initialization
+    //Use this for initialization
     void Start()
     {
         Read();
+        //Write("KEITH", 90000);
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
 
@@ -44,14 +47,82 @@ public class TextManager : MonoBehaviour
     }
 
     //Write to the text file
+    //HIGHEST SCORE IS IN THE FRONT OF THE LIST
+    //LIST STARTS FROM 0
+    //NAME <= 5 CHARACTERS
     public void Write(string name, int score)
     {
-        //sw.WriteLine("HIGHSCORE FILE");
-        //sw.WriteLine("--------------");
-        //sw.WriteLine();
-        //for (int i = 1; i <= HighscoreAmount; i++)
-        //{
-        //    sw.WriteLine(i + ")");
-        //}
+        added = false;
+
+        //Check if the score is less than the last highscore on the list
+        if (score < Score[Score.Count - 1])
+        {
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < Score.Count; i++)
+            {
+                //Check if the score is equal to any of the score on the list
+                if (score == Score[i])
+                {
+                    //Add the score into the list
+                    if (added == false)
+                    {
+                        //Insert the score below the same score
+                        Score.Insert(i + 1, score);
+                        Names.Insert(i + 1, name);
+                        added = true;
+                    }
+
+                    //Check if the list size is more than 10
+                    if (Score.Count >= 11)
+                    {
+                        //Remove the 11 score from the list
+                        Score.Remove(Score[Score.Count - 1]);
+                        Names.Remove(Names[Names.Count - 1]);
+                    }
+
+                    writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    for (int o = 0; o < Score.Count; o++)
+                    {
+                        writer.WriteLine(Names[o] + " " + Score[o]);
+                    }
+                    writer.Close();
+
+                    return;
+                }
+
+                    //Check if the score is higher than any of the score on the list
+                else if (score >= Score[i])
+                {
+                    //Add the score infront of the first score
+                    if (added == false)
+                    {
+                        //Insert the score below the same score
+                        Score.Insert(i, score);
+                        Names.Insert(i, name);
+                        added = true;
+                    }
+
+                    //Check if the list size is more than 10
+                    if (Score.Count >= 11)
+                    {
+                        //Remove the 11 score from the list
+                        Score.Remove(Score[Score.Count - 1]);
+                        Names.Remove(Names[Names.Count - 1]);
+                    }
+
+                    writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    for (int o = 0; o < Score.Count; o++)
+                    {
+                        writer.WriteLine(Names[o] + " " + Score[o]);
+                    }
+                    writer.Close();
+
+                    return;
+                }
+            }
+        }
     }
 }
