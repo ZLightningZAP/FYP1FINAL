@@ -19,7 +19,7 @@ public class TextManager : MonoBehaviour
     void Start()
     {
         Read();
-        //Write("KEITH", 90000);
+        //Write("KEITH", 88888);
     }
 
     //Update is called once per frame
@@ -86,7 +86,15 @@ public class TextManager : MonoBehaviour
                     writer = new StreamWriter("Assets/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
-                        writer.WriteLine(Names[o] + " " + Score[o]);
+                        if (o < Score.Count - 1)
+                        {
+                            writer.WriteLine(Names[o] + " " + Score[o]);
+                        }
+                        else
+                        {
+                            writer.Write(Names[o] + " " + Score[o]);
+                        }
+
                     }
                     writer.Close();
 
@@ -116,7 +124,14 @@ public class TextManager : MonoBehaviour
                     writer = new StreamWriter("Assets/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
-                        writer.WriteLine(Names[o] + " " + Score[o]);
+                        if (o < Score.Count - 1)
+                        {
+                            writer.WriteLine(Names[o] + " " + Score[o]);
+                        }
+                        else
+                        {
+                            writer.Write(Names[o] + " " + Score[o]);
+                        }
                     }
                     writer.Close();
 
