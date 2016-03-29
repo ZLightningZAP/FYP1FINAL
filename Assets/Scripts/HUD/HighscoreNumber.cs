@@ -38,7 +38,7 @@ public class HighscoreNumber : MonoBehaviour
     {
         for (int i = 0; i < linesInFile; i++)
         {
-            display = display.ToString() + (i + 1) + ". " + "\n";
+            display = display.ToString() + (i + 1) + ". " + "\n" + "\n";
         }
 
         text.text = display;

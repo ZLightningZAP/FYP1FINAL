@@ -46,7 +46,7 @@ public class HighscoreScore : MonoBehaviour {
     {
         for (int i = 0; i < HS.Count; i++)
         {
-            display = display.ToString() + HS[i] + "\n";
+            display = display.ToString() + HS[i] + "\n" + "\n";
         }
 
         text.text = display;

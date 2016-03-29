@@ -45,7 +45,7 @@ public class HighscoreUsername : MonoBehaviour
     {
         for (int i = 0; i < HighscoreName.Count; i++)
         {
-            display = display.ToString() + HighscoreName[i] + "\n";
+            display = display.ToString() + HighscoreName[i] + "\n" + "\n";
         }
 
         text.text = display;

@@ -17,6 +17,7 @@ public class BlinkingText : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
+        transition = transitionTime;
     }
 
     // Update is called once per frame
