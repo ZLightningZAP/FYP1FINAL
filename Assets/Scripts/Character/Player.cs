@@ -7,11 +7,17 @@ public class Player : Character
     //Healthbar Text
     public Text healthtext;
 
+    //Getter and setter for score
+    public int score { get { return Score; } set { Score = value; } }
+
+    private int Score;
+
     // Use this for initialization
     protected override void Start()
     {
         // Base Start
         base.Start();
+        Score = 0;
     }
 
     // Update is called once per frame
