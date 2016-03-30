@@ -9,6 +9,8 @@ public abstract class Character : MonoBehaviour
 
     // Health
     public float health;
+    //Healthbar Image
+    public Image healthBar;
 
     // Getters
     public float Health { get { return health; } }
@@ -17,15 +19,10 @@ public abstract class Character : MonoBehaviour
     //Fill amount for the health bar
     private float HealthFillAmount;
 
-    //Healthbar Image
-    private Image healthBar;
-
     // Use this for initialization
     protected virtual void Start()
     {
         health = MaxHealth;
-        //Fid the image component in its children and assign it to healthbar
-        healthBar = GetComponentInChildren<Image>();
     }
 
     // Update is called once per frame
@@ -33,7 +30,7 @@ public abstract class Character : MonoBehaviour
     {
         //HealthBar
         HealthBarUpdate(Health);
-        //Injure(0.1f);
+        Injure(0.1f);
     }
 
     //Use this to injure the character
