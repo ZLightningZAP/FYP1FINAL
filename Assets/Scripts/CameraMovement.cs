@@ -28,7 +28,6 @@ public class CameraMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         NextTransform = CurrentTransform;
 
