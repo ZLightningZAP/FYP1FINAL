@@ -2,12 +2,14 @@
 using UnityEngine;
 using System.Collections;
 using WiimoteApi;
+using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
     public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
     public OverHeating overheat;
+    public Image Crosshair;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -29,6 +31,10 @@ public class InputHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+        // Hide mouse cursor
+        //Cursor.visible = false;
+
         camera = Camera.main;
 
         currentBulletSpread = defaultBulletSpread;
@@ -133,7 +139,10 @@ public class InputHandler : MonoBehaviour
             PointerPosition = Input.mousePosition;
         }
 
-        print(PointerPosition);
+        // Crosshair following mouse
+        Crosshair.transform.position = PointerPosition;
+
+        //print(PointerPosition);
     }
 
     void Fire()
