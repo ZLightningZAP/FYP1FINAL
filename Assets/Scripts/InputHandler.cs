@@ -164,7 +164,7 @@ public class InputHandler : MonoBehaviour
             FinalPosition.y = pointer[1] * Screen.height;
         }
 
-        print(FinalPosition);
+        //print(FinalPosition);
         FinalPosition.x += Random.Range(-currentBulletSpread, currentBulletSpread);
         FinalPosition.y += Random.Range(-currentBulletSpread, currentBulletSpread);
 
@@ -188,6 +188,4 @@ public class InputHandler : MonoBehaviour
             currentBulletSpread = MaxBulletSpreadRange;
         }
     }
-
-
 }
