@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour
+{
 
     public Transform[] Waypoints;   //Waypoints to move towards
     public Transform[] RotationPoints;  //Angles to rotate towards
@@ -24,8 +25,9 @@ public class CameraMovement : MonoBehaviour {
     private int Index;   //Current Index of waypoint
     private float distanceGap;  //Used to check if camera has reached target destination
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         NextTransform = CurrentTransform;
@@ -34,18 +36,18 @@ public class CameraMovement : MonoBehaviour {
         distanceGap = 0.01f;
 
         //Only if there is atleast 1 waypoint
-        if(Waypoints.Length > 0)
+        if (Waypoints.Length > 0)
         {
             NextTransform = Waypoints[Index];
             TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
             WaitTime = WaitTimes[Index];
         }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
         {
             //Go towards the next position
@@ -54,7 +56,7 @@ public class CameraMovement : MonoBehaviour {
         else
         {
             waitTimer += Time.deltaTime;
-    
+
             if (waitTimer > WaitTime)
             {
                 //Only if its still within bounds of the waypoint
@@ -62,7 +64,7 @@ public class CameraMovement : MonoBehaviour {
                 {
                     Index++;
                     NextTransform = Waypoints[Index];
-                    WaitTime = WaitTimes[Index-1];
+                    WaitTime = WaitTimes[Index - 1];
                     waitTimer = 0.0f;
                     print("Going to next point!");
                 }
@@ -78,5 +80,5 @@ public class CameraMovement : MonoBehaviour {
         //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
         //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
         //CurrentTransform.rotation = Quaternion.LookRotation(newDirection)
-	}
+    }
 }
