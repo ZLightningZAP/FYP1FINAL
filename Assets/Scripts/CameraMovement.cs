@@ -28,6 +28,7 @@ public class CameraMovement : MonoBehaviour {
 	void Start () {
 
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        NextTransform = CurrentTransform;
 
         Index = 0;
         distanceGap = 0.01f;
@@ -68,8 +69,11 @@ public class CameraMovement : MonoBehaviour {
             }
         }
 
-        Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
-        CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+        if (RotationPoints.Length > 0)
+        {
+            Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+            CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+        }
 
         //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
         //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);

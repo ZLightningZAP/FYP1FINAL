@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
+using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class InputHandler : MonoBehaviour
 
     public float DamageOfBullet = 10;
 
+    private Wiimote wiimote;    //Wii mote
+    private Vector3 PointerPosition;    //Pointing Position
+
     Camera camera;  //Main Camera
 
     // Use this for initialization
@@ -27,6 +32,27 @@ public class InputHandler : MonoBehaviour
         camera = Camera.main;
 
         currentBulletSpread = defaultBulletSpread;
+
+        WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
+
+        //Check if Manager has wii mote connected
+        if (WiimoteManager.HasWiimote())
+        {
+            print("Wiimote Found");
+
+            //Assign our variable to the first 
+            wiimote = WiimoteManager.Wiimotes[0];
+
+            if (wiimote != null)
+            {
+                print("Wiimote Assigned");
+
+                wiimote.SendPlayerLED(true, false, false, false);
+            }
+
+            //Setup IR Camera
+            wiimote.SetupIRCamera(IRDataType.BASIC);
+        }
     }
 
     // Update is called once per frame
@@ -34,26 +60,80 @@ public class InputHandler : MonoBehaviour
     {
         fireTimer += Time.deltaTime;
 
-        //If Left Click
-        if (Input.GetMouseButton(0))
+        int ret;
+
+        //If wiimote is assigned
+        if (wiimote != null)
         {
-            if (fireTimer >= FireRate && overheat.overHeated == false)
+            //Read Data
+            do
             {
-                Fire(); //Do Fire
+                ret = wiimote.ReadWiimoteData();
+            } while (ret > 0);
+
+            if (wiimote.Button.a)
+            {
+                print("A down");
+                if (fireTimer >= FireRate && overheat.overHeated == false)
+                {
+                    Fire(); //Do Fire
+                }
             }
+            else
+            {
+                //Decrease the heating guage every 0.5 second
+                overheat.CoolDownHeating();
+
+                //Decreasing bullet spread over time
+                currentBulletSpread -= Time.deltaTime * SpreadIncreaseRate;
+                if (currentBulletSpread <= defaultBulletSpread)
+                {
+                    currentBulletSpread = defaultBulletSpread;
+                }
+            }
+
+        }
+        //Fall back on Mouse Input
+        else
+        {
+            //If Left Click
+            if (Input.GetMouseButton(0))
+            {
+                if (fireTimer >= FireRate && overheat.overHeated == false)
+                {
+                    Fire(); //Do Fire
+                }
+            }
+            else
+            {
+                //Decrease the heating guage every 0.5 second
+                overheat.CoolDownHeating();
+
+                //Decreasing bullet spread over time
+                currentBulletSpread -= Time.deltaTime * SpreadIncreaseRate;
+                if (currentBulletSpread <= defaultBulletSpread)
+                {
+                    currentBulletSpread = defaultBulletSpread;
+                }
+            }
+        }
+
+        //Wiimote detected and connected
+        if (wiimote != null)
+        {
+            //Setting final position to IR's detected position
+            float[] pointer = wiimote.Ir.GetPointingPosition();
+
+            //Mapping the position to screen 
+            PointerPosition.x = pointer[0] * Screen.width;
+            PointerPosition.y = pointer[1] * Screen.height;
         }
         else
         {
-            //Decrease the heating guage every 0.5 second
-            overheat.CoolDownHeating();
-
-            //Decreasing bullet spread over time
-            currentBulletSpread -= Time.deltaTime * SpreadIncreaseRate;
-            if (currentBulletSpread <= defaultBulletSpread)
-            {
-                currentBulletSpread = defaultBulletSpread;
-            }
+            PointerPosition = Input.mousePosition;
         }
+
+        print(PointerPosition);
     }
 
     void Fire()
@@ -63,6 +143,19 @@ public class InputHandler : MonoBehaviour
 
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
+
+        //Wiimote detected and connected , Use Wiimote's IR Position Instead
+        if (wiimote != null)
+        {
+            //Setting final position to IR's detected position
+            float[] pointer = wiimote.Ir.GetPointingPosition();
+
+            //Mapping the position to screen 
+            FinalPosition.x = pointer[0] * Screen.width;
+            FinalPosition.y = pointer[1] * Screen.height;
+        }
+
+        print(FinalPosition);
         FinalPosition.x += Random.Range(-currentBulletSpread, currentBulletSpread);
         FinalPosition.y += Random.Range(-currentBulletSpread, currentBulletSpread);
 
@@ -86,4 +179,6 @@ public class InputHandler : MonoBehaviour
             currentBulletSpread = MaxBulletSpreadRange;
         }
     }
+
+
 }
