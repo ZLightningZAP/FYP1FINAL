@@ -25,6 +25,16 @@ public class CameraMovement : MonoBehaviour
     private int Index;   //Current Index of waypoint
     private float distanceGap;  //Used to check if camera has reached target destination
 
+    //Camera shake
+    private bool Shaking = false;
+    public bool goingtoshake = false;
+    private bool UpdateOriginal = false;
+    public float ShakeDuration = 0f;
+    public float ShakeAmount = 0.7f;
+    public float decreaseFactor = 1.0f;
+    Vector3 OriginalPos;
+    Vector3 OriginalRot;
+
     // Use this for initialization
     void Start()
     {
@@ -46,41 +56,74 @@ public class CameraMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
+    {  
+        if(goingtoshake == true)
         {
-            //Go towards the next position
-            CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
+            Shake();
         }
-        else
-        {
-            waitTimer += Time.deltaTime;
 
-            if (waitTimer > WaitTime)
+        if (Shaking == false)
+        {
+            if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
             {
-                //Only if its still within bounds of the waypoint
-                if (Waypoints.Length > Index + 1)
+                //Go towards the next position
+                CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
+            }
+            else
+            {
+                waitTimer += Time.deltaTime;
+
+                if (waitTimer > WaitTime)
                 {
-                    Index++;
-                    NextTransform = Waypoints[Index];
-                    WaitTime = WaitTimes[Index - 1];
-                    waitTimer = 0.0f;
-                    print("Going to next point!");
+                    //Only if its still within bounds of the waypoint
+                    if (Waypoints.Length > Index + 1)
+                    {
+                        Index++;
+                        NextTransform = Waypoints[Index];
+                        WaitTime = WaitTimes[Index - 1];
+                        waitTimer = 0.0f;
+                        print("Going to next point!");
+                    }
                 }
             }
-        }
 
-        if (RotationPoints.Length > 0)
-        {
-            if (RotationPoints[Index].position != transform.position)
+
+            if (RotationPoints.Length > 0)
             {
-                Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
-                CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+                if (RotationPoints[Index].position != transform.position)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+                    CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+                }
             }
         }
 
         //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
         //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
         //CurrentTransform.rotation = Quaternion.LookRotation(newDirection)
+    }
+
+    // Camera shake
+    void Shake()
+    {
+        if (UpdateOriginal == false)
+        {
+            OriginalPos = CurrentTransform.localPosition;
+            UpdateOriginal = true;
+        }
+
+        if (ShakeDuration > 0)
+        {
+            CurrentTransform.localPosition = OriginalPos + Random.insideUnitSphere * ShakeAmount;
+            ShakeDuration -= Time.deltaTime * decreaseFactor;
+            Shaking = true;
+        }
+        else
+        {
+            ShakeDuration = 0f;
+            Shaking = false;
+            goingtoshake = false;
+            UpdateOriginal = false;
+        }
     }
 }
