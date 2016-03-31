@@ -9,17 +9,20 @@ public class InputHandler : MonoBehaviour
     public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
     public OverHeating overheat;
+    public AmmoSystem ammosystem;
     public Image Crosshair;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
     public float SpreadIncreaseRate; //Rate of increasing bullet spread
+    public float ReloadTime;
 
     private float gap = 0.1f;   //Gap for instantiating effects
-
     private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
     private float currentBulletSpread;  //Current Range of Bullet Spread
     private float fireTimer = 0.0f; //Use to keep track of time before last fire
+
+    private float reloadtimetracker;
 
     public float DamageOfBullet = 10;
 
@@ -31,7 +34,6 @@ public class InputHandler : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         // Hide mouse cursor
         //Cursor.visible = false;
 
@@ -68,6 +70,18 @@ public class InputHandler : MonoBehaviour
 
         int ret;
 
+        if (ammosystem.bullet == 0)
+        {
+            Debug.Log("Reloading");
+            reloadtimetracker += Time.deltaTime;
+            if (reloadtimetracker >= ReloadTime)
+            {
+                Debug.Log("Reloaded");
+                ammosystem.Reload();
+                reloadtimetracker = 0;
+            }
+        }
+
         //If wiimote is assigned
         if (wiimote != null)
         {
@@ -80,9 +94,15 @@ public class InputHandler : MonoBehaviour
             if (wiimote.Button.a)
             {
                 print("A down");
-                if (fireTimer >= FireRate && overheat.overHeated == false)
+
+                if (ammosystem.bullet != 0)
                 {
-                    Fire(); //Do Fire
+                    if (fireTimer >= FireRate && overheat.overHeated == false)
+                    {
+                        Fire();
+                        //Update the Ammo Bar
+                        ammosystem.AmmoUpdateUI();
+                    }
                 }
             }
             else
@@ -105,9 +125,14 @@ public class InputHandler : MonoBehaviour
             //If Left Click
             if (Input.GetMouseButton(0))
             {
-                if (fireTimer >= FireRate && overheat.overHeated == false)
+                if (ammosystem.bullet != 0)
                 {
-                    Fire(); //Do Fire
+                    if (fireTimer >= FireRate && overheat.overHeated == false)
+                    {
+                        Fire();
+                        //Update the Ammo Bar
+                        ammosystem.AmmoUpdateUI();
+                    }
                 }
             }
             else
@@ -147,6 +172,9 @@ public class InputHandler : MonoBehaviour
 
     void Fire()
     {
+        // Minus bulet from ammosystem
+        ammosystem.AmmoFire();
+
         //Update the overheat bar
         overheat.OverheatbarUpdate();
 

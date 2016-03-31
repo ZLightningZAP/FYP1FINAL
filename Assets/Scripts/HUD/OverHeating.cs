@@ -9,6 +9,8 @@ public class OverHeating : MonoBehaviour
     private float currentHeat = 0;
     private float cooldowntimer;
 
+    public float CooldownTimerCountdown = 1.0f;
+    public float ContinueShooting = 0.75f;
     public float HeatPerShot = 0.005f;
     public Image overheatBar;
     public bool overHeated { get { return overheated; } set { overheated = value; } }
@@ -50,7 +52,7 @@ public class OverHeating : MonoBehaviour
         }
     }
 
-
+    // Update the cooldown on the overheating system
     public void CoolDownHeating()
     {
         //Debug.Log(currentHeat);
@@ -59,7 +61,7 @@ public class OverHeating : MonoBehaviour
         cooldowntimer += Time.deltaTime;
 
         //Check if the current time is more than x seconds
-        if(cooldowntimer >= 0.5)
+        if (cooldowntimer >= CooldownTimerCountdown)
         {
             currentHeat -= 0.05f;
             cooldowntimer = 0;
@@ -75,8 +77,8 @@ public class OverHeating : MonoBehaviour
             overheatBar.fillAmount = currentHeat;
         }
 
-        //If the heating bar is less than 70%, u can continue firing
-        if(overheated == true && currentHeat <= 0.7)
+        //If the heating bar is less than 75%, u can continue firing
+        if (overheated == true && currentHeat <= ContinueShooting)
         {
             overheated = false;
         }

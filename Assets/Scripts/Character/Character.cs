@@ -30,7 +30,7 @@ public abstract class Character : MonoBehaviour
     {
         //HealthBar
         HealthBarUpdate(Health);
-        Injure(0.1f);
+        //Injure(0.1f);
     }
 
     //Use this to injure the character
