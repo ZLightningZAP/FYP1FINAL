@@ -72,8 +72,11 @@ public class CameraMovement : MonoBehaviour
 
         if (RotationPoints.Length > 0)
         {
-            Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
-            CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+            if (RotationPoints[Index].position != transform.position)
+            {
+                Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+                CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+            }
         }
 
         //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
