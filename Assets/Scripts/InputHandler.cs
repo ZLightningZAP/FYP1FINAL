@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
-using WiimoteApi;
 using UnityEngine.UI;
+using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
 {
@@ -28,10 +27,10 @@ public class InputHandler : MonoBehaviour
     private Wiimote wiimote;    //Wii mote
     private Vector3 PointerPosition;    //Pointing Position
 
-    Camera camera;  //Main Camera
+    private Camera camera;  //Main Camera
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         // Hide mouse cursor
         //Cursor.visible = false;
@@ -47,7 +46,7 @@ public class InputHandler : MonoBehaviour
         {
             print("Wiimote Found");
 
-            //Assign our variable to the first 
+            //Assign our variable to the first
             wiimote = WiimoteManager.Wiimotes[0];
 
             if (wiimote != null)
@@ -63,7 +62,7 @@ public class InputHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         fireTimer += Time.deltaTime;
 
@@ -116,7 +115,6 @@ public class InputHandler : MonoBehaviour
                     currentBulletSpread = defaultBulletSpread;
                 }
             }
-
         }
         //Fall back on Mouse Input
         else
@@ -154,7 +152,7 @@ public class InputHandler : MonoBehaviour
             //Setting final position to IR's detected position
             float[] pointer = wiimote.Ir.GetPointingPosition();
 
-            //Mapping the position to screen 
+            //Mapping the position to screen
             PointerPosition.x = pointer[0] * Screen.width;
             PointerPosition.y = pointer[1] * Screen.height;
         }
@@ -174,7 +172,7 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    void Fire()
+    private void Fire()
     {
         // Minus bulet from ammosystem
         ammosystem.AmmoFire();
@@ -191,7 +189,7 @@ public class InputHandler : MonoBehaviour
             //Setting final position to IR's detected position
             float[] pointer = wiimote.Ir.GetPointingPosition();
 
-            //Mapping the position to screen 
+            //Mapping the position to screen
             FinalPosition.x = pointer[0] * Screen.width;
             FinalPosition.y = pointer[1] * Screen.height;
         }
@@ -209,7 +207,7 @@ public class InputHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
-            Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole 
+            Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
 

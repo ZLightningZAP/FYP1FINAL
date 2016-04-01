@@ -1,6 +1,5 @@
-﻿using WiimoteApi;
-
-namespace WiimoteApi.Internal {
+﻿namespace WiimoteApi.Internal
+{
     public class RegisterReadData
     {
         public RegisterReadData(int Offset, int Size, ReadResponder Responder)
@@ -16,24 +15,28 @@ namespace WiimoteApi.Internal {
         {
             get { return _ExpectedOffset; }
         }
+
         private int _ExpectedOffset;
 
         public byte[] Buffer
         {
             get { return _Buffer; }
         }
+
         private byte[] _Buffer;
 
         public int Offset
         {
             get { return _Offset; }
         }
+
         private int _Offset;
 
         public int Size
         {
             get { return _Size; }
         }
+
         private int _Size;
 
         private ReadResponder _Responder;

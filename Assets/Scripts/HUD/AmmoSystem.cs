@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class AmmoSystem : MonoBehaviour
@@ -15,16 +14,15 @@ public class AmmoSystem : MonoBehaviour
     public Image BulletUI;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         BulletPerClip = 100;
         Bullet = BulletPerClip;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     public void AmmoUpdateUI()

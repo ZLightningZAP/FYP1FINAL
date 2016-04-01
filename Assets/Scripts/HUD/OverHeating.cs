@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class OverHeating : MonoBehaviour
@@ -16,15 +15,13 @@ public class OverHeating : MonoBehaviour
     public bool overHeated { get { return overheated; } set { overheated = value; } }
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     //Update the heating bar
@@ -40,13 +37,13 @@ public class OverHeating : MonoBehaviour
 
         //Check if the current heating bar is not null
         //Update the current heating bar transform
-        if(overheatBar != null)
+        if (overheatBar != null)
         {
             overheatBar.fillAmount = currentHeat;
         }
 
         //Check if the guage is full , you cannot fire anymore
-        if(currentHeat == 1)
+        if (currentHeat == 1)
         {
             overheated = true;
         }

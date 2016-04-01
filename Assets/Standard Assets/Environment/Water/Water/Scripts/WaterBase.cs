@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Water
@@ -16,7 +15,6 @@ namespace UnityStandardAssets.Water
         public Material sharedMaterial;
         public WaterQuality waterQuality = WaterQuality.High;
         public bool edgeBlend = true;
-
 
         public void UpdateShader()
         {
@@ -57,7 +55,6 @@ namespace UnityStandardAssets.Water
             }
         }
 
-
         public void WaterTileBeingRendered(Transform tr, Camera currentCam)
         {
             if (currentCam && edgeBlend)
@@ -65,7 +62,6 @@ namespace UnityStandardAssets.Water
                 currentCam.depthTextureMode |= DepthTextureMode.Depth;
             }
         }
-
 
         public void Update()
         {

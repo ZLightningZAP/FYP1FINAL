@@ -13,7 +13,6 @@
 	}
 
 	SubShader{
-
 			Tags{ "RenderType" = "Opaque" }
 
 			CGPROGRAM
@@ -66,11 +65,10 @@
 				o.Specular = specGloss.r;
 				o.Gloss = specGloss.g;
 				half3 rim = pow(max(0, dot(float3(0, 1, 0), WorldNormalVector(IN, o.Normal))), _RimPower) * _RimColor.rgb * _RimColor.a * specGloss.b;
-				o.Emission = rim;
+					o.Emission = rim;
 			}
 
 			ENDCG
-
 		}
 		Fallback "Bumped Specular"
 }

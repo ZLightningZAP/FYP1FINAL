@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     //Public variables
     public GameObject Enemyprefab;
+
     public GameObject canvas;
     public List<GameObject> Spawnlist;
     public float Interval;
@@ -14,23 +14,21 @@ public class EnemySpawner : MonoBehaviour
     private float Spawntimer = 0;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         Spawnenemies();
     }
 
-    void Spawnenemies()
+    private void Spawnenemies()
     {
         //Add delta time to the spawn timer
         Spawntimer += Time.deltaTime;

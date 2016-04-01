@@ -1,11 +1,11 @@
 Shader "RAIN/VisualSensorLineShader"
 {
-    SubShader
-    {
+	SubShader
+	{
 		Pass
 		{
 			Color(0, 0, 0, 1)
 		}
-    }
-    FallBack "Diffuse"
+	}
+	FallBack "Diffuse"
 }

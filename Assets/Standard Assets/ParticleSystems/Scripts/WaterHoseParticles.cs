@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Effects
@@ -8,16 +7,13 @@ namespace UnityStandardAssets.Effects
         public static float lastSoundTime;
         public float force = 1;
 
-
         private ParticleCollisionEvent[] m_CollisionEvents = new ParticleCollisionEvent[16];
         private ParticleSystem m_ParticleSystem;
-
 
         private void Start()
         {
             m_ParticleSystem = GetComponent<ParticleSystem>();
         }
-
 
         private void OnParticleCollision(GameObject other)
         {
@@ -43,7 +39,7 @@ namespace UnityStandardAssets.Effects
                 if (attachedRigidbody != null)
                 {
                     Vector3 vel = m_CollisionEvents[i].velocity;
-                    attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
+                    attachedRigidbody.AddForce(vel * force, ForceMode.Impulse);
                 }
 
                 other.BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);

@@ -1,35 +1,33 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class BlinkingText : MonoBehaviour
 {
     public float transitionTime = 1;
     public float waitTime = 2;
 
-    Text text;
+    private Text text;
     private bool gone = false;
     private float transition;
     private float wait;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         text = GetComponent<Text>();
         transition = transitionTime;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         TextTransitioning();
     }
 
-    void TextTransitioning()
+    private void TextTransitioning()
     {
         transition += Time.deltaTime;
-        
+
         if (gone == false && transition >= transitionTime)
         {
             wait += Time.deltaTime;
@@ -41,7 +39,6 @@ public class BlinkingText : MonoBehaviour
                 wait = 0;
             }
         }
-
         else if (gone == true && transition >= transitionTime)
         {
             text.CrossFadeAlpha(1.0f, transitionTime, false);

@@ -14,14 +14,12 @@ namespace UnityStandardAssets.Water
             Refractive = 2,
         };
 
-
         public WaterMode waterMode = WaterMode.Refractive;
         public bool disablePixelLights = true;
         public int textureSize = 256;
         public float clipPlaneOffset = 0.07f;
         public LayerMask reflectLayers = -1;
         public LayerMask refractLayers = -1;
-
 
         private Dictionary<Camera, Camera> m_ReflectionCameras = new Dictionary<Camera, Camera>(); // Camera -> Camera table
         private Dictionary<Camera, Camera> m_RefractionCameras = new Dictionary<Camera, Camera>(); // Camera -> Camera table
@@ -31,7 +29,6 @@ namespace UnityStandardAssets.Water
         private int m_OldReflectionTextureSize;
         private int m_OldRefractionTextureSize;
         private static bool s_InsideWater;
-
 
         // This is called when it's known that the object will be rendered by some
         // camera. We render reflections / refractions and do other updates here.
@@ -102,7 +99,7 @@ namespace UnityStandardAssets.Water
                 reflectionCamera.cullingMask = ~(1 << 4) & reflectLayers.value; // never render water layer
                 reflectionCamera.targetTexture = m_ReflectionTexture;
                 bool oldCulling = GL.invertCulling;
-				GL.invertCulling = !oldCulling;
+                GL.invertCulling = !oldCulling;
                 reflectionCamera.transform.position = newpos;
                 Vector3 euler = cam.transform.eulerAngles;
                 reflectionCamera.transform.eulerAngles = new Vector3(-euler.x, euler.y, euler.z);
@@ -144,11 +141,13 @@ namespace UnityStandardAssets.Water
                     Shader.DisableKeyword("WATER_REFLECTIVE");
                     Shader.DisableKeyword("WATER_REFRACTIVE");
                     break;
+
                 case WaterMode.Reflective:
                     Shader.DisableKeyword("WATER_SIMPLE");
                     Shader.EnableKeyword("WATER_REFLECTIVE");
                     Shader.DisableKeyword("WATER_REFRACTIVE");
                     break;
+
                 case WaterMode.Refractive:
                     Shader.DisableKeyword("WATER_SIMPLE");
                     Shader.DisableKeyword("WATER_REFLECTIVE");
@@ -159,9 +158,8 @@ namespace UnityStandardAssets.Water
             s_InsideWater = false;
         }
 
-
         // Cleanup all the objects we possibly have created
-        void OnDisable()
+        private void OnDisable()
         {
             if (m_ReflectionTexture)
             {
@@ -185,10 +183,9 @@ namespace UnityStandardAssets.Water
             m_RefractionCameras.Clear();
         }
 
-
         // This just sets up some matrices in the material; for really
         // old cards to make water texture scroll.
-        void Update()
+        private void Update()
         {
             if (!GetComponent<Renderer>())
             {
@@ -217,7 +214,7 @@ namespace UnityStandardAssets.Water
             mat.SetVector("_WaveScale4", waveScale4);
         }
 
-        void UpdateCameraModes(Camera src, Camera dest)
+        private void UpdateCameraModes(Camera src, Camera dest)
         {
             if (dest == null)
             {
@@ -251,9 +248,8 @@ namespace UnityStandardAssets.Water
             dest.orthographicSize = src.orthographicSize;
         }
 
-
         // On-demand create any objects we need for water
-        void CreateWaterObjects(Camera currentCamera, out Camera reflectionCamera, out Camera refractionCamera)
+        private void CreateWaterObjects(Camera currentCamera, out Camera reflectionCamera, out Camera refractionCamera)
         {
             WaterMode mode = GetWaterMode();
 
@@ -325,7 +321,7 @@ namespace UnityStandardAssets.Water
             }
         }
 
-        WaterMode GetWaterMode()
+        private WaterMode GetWaterMode()
         {
             if (m_HardwareWaterSupport < waterMode)
             {
@@ -334,7 +330,7 @@ namespace UnityStandardAssets.Water
             return waterMode;
         }
 
-        WaterMode FindHardwareWaterSupport()
+        private WaterMode FindHardwareWaterSupport()
         {
             if (!SystemInfo.supportsRenderTextures || !GetComponent<Renderer>())
             {
@@ -361,7 +357,7 @@ namespace UnityStandardAssets.Water
         }
 
         // Given position/normal of the plane, calculates plane in camera space.
-        Vector4 CameraSpacePlane(Camera cam, Vector3 pos, Vector3 normal, float sideSign)
+        private Vector4 CameraSpacePlane(Camera cam, Vector3 pos, Vector3 normal, float sideSign)
         {
             Vector3 offsetPos = pos + normal * clipPlaneOffset;
             Matrix4x4 m = cam.worldToCameraMatrix;
@@ -371,22 +367,22 @@ namespace UnityStandardAssets.Water
         }
 
         // Calculates reflection matrix around the given plane
-        static void CalculateReflectionMatrix(ref Matrix4x4 reflectionMat, Vector4 plane)
+        private static void CalculateReflectionMatrix(ref Matrix4x4 reflectionMat, Vector4 plane)
         {
             reflectionMat.m00 = (1F - 2F * plane[0] * plane[0]);
-            reflectionMat.m01 = (- 2F * plane[0] * plane[1]);
-            reflectionMat.m02 = (- 2F * plane[0] * plane[2]);
-            reflectionMat.m03 = (- 2F * plane[3] * plane[0]);
+            reflectionMat.m01 = (-2F * plane[0] * plane[1]);
+            reflectionMat.m02 = (-2F * plane[0] * plane[2]);
+            reflectionMat.m03 = (-2F * plane[3] * plane[0]);
 
-            reflectionMat.m10 = (- 2F * plane[1] * plane[0]);
+            reflectionMat.m10 = (-2F * plane[1] * plane[0]);
             reflectionMat.m11 = (1F - 2F * plane[1] * plane[1]);
-            reflectionMat.m12 = (- 2F * plane[1] * plane[2]);
-            reflectionMat.m13 = (- 2F * plane[3] * plane[1]);
+            reflectionMat.m12 = (-2F * plane[1] * plane[2]);
+            reflectionMat.m13 = (-2F * plane[3] * plane[1]);
 
-            reflectionMat.m20 = (- 2F * plane[2] * plane[0]);
-            reflectionMat.m21 = (- 2F * plane[2] * plane[1]);
+            reflectionMat.m20 = (-2F * plane[2] * plane[0]);
+            reflectionMat.m21 = (-2F * plane[2] * plane[1]);
             reflectionMat.m22 = (1F - 2F * plane[2] * plane[2]);
-            reflectionMat.m23 = (- 2F * plane[3] * plane[2]);
+            reflectionMat.m23 = (-2F * plane[3] * plane[2]);
 
             reflectionMat.m30 = 0F;
             reflectionMat.m31 = 0F;

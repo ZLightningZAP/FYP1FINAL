@@ -14,21 +14,19 @@ public class ScoreManager : MonoBehaviour
             200,
         };
 
-
     private static int currentScore;
+
     // Getters
     public static int CurrentScore { get { return currentScore; } }
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     public static void AddCurrentScore(ScoreType score)

@@ -18,9 +18,10 @@ namespace WiimoteApi
         /// |Index: |     0      |      1     |   2    |    3    |    4    |    5    |    6    |     7     |
         ///
         /// \code int[dot index, x (0) / y (1) / size (2) / xmin (3) / ymin (4) / xmax (5) / ymax (6) / intensity (7)] \endcode
-        /// 
+        ///
         /// \sa IRDataType, Wiimote::SetupIRCamera(IRDataType)
         public ReadOnlyMatrix<int> ir { get { return _ir_readonly; } }
+
         private ReadOnlyMatrix<int> _ir_readonly;
         private int[,] _ir;
 
@@ -38,9 +39,11 @@ namespace WiimoteApi
                 case 10:
                     InterpretIRData10(data);
                     return true;
+
                 case 12:
                     InterpretIRData12(data);
                     return true;
+
                 default:
                     return false;
             }
@@ -49,7 +52,7 @@ namespace WiimoteApi
         /// \brief Interprets raw byte data reported by the Wii Remote when in interleaved data reporting mode.
         ///        The format of the actual bytes passed to this depends on the Wii Remote's current data report
         ///        mode and the type of data being passed.
-        /// 
+        ///
         /// \sa Wiimote::ReadWiimoteData()
         public bool InterpretDataInterleaved(byte[] data1, byte[] data2)
         {
@@ -59,7 +62,8 @@ namespace WiimoteApi
             byte[] subset = new byte[9];
             int[] res;
 
-            for (int x = 0; x < 4; x++) {
+            for (int x = 0; x < 4; x++)
+            {
                 int index = x * 9;
                 byte[] data = index >= 18 ? data1 : data2;
                 index %= 18;
@@ -233,13 +237,17 @@ namespace WiimoteApi
             // If necessary, change the current "sensor bar" IR indices to new ones.  This happens if one of the dots went out of focus and a new one took its place.
             // We do this because the Wii Remote reports "consistent" IR dot indices - that is, it tracks the IR dots and doesn't change their index in the IR report.
             // This way we can rule out extraneous dots that pop in and out randomly as they aren't being tracked.
-            for (int x = 0; x < 2; x++) {
-                if (SensorBarIndices[x] == -1 || _ir[SensorBarIndices[x], 0] == -1) {
+            for (int x = 0; x < 2; x++)
+            {
+                if (SensorBarIndices[x] == -1 || _ir[SensorBarIndices[x], 0] == -1)
+                {
                     SensorBarIndices[x] = -1;
-                    for (int y = 0; y < 4; y++) {
+                    for (int y = 0; y < 4; y++)
+                    {
                         if (SensorBarIndices[(x + 1) % 2] == y) continue; // If the other sensor bar index is this one, ignore it.
 
-                        if (_ir[y, 0] != -1) { // If this index is valid, use it.
+                        if (_ir[y, 0] != -1)
+                        { // If this index is valid, use it.
                             SensorBarIndices[x] = y;
                             y = 4; // end loop
                         }
@@ -276,7 +284,8 @@ namespace WiimoteApi
                 LastIRSeparation[1] = ret[1, 1] - ret[0, 1];
 
                 return ret;
-            } else if (predict && SensorBarIndices[0] != -1) // We have enought data to predict (1 dot) and predicting was requested
+            }
+            else if (predict && SensorBarIndices[0] != -1) // We have enought data to predict (1 dot) and predicting was requested
             {
                 float[,] ret = new float[2, 3];
                 ret[0, 0] = _ir[SensorBarIndices[0], 0];
@@ -288,7 +297,8 @@ namespace WiimoteApi
                 ret[1, 2] = -1;
 
                 return ret;
-            } else // We don't have enough data
+            }
+            else // We don't have enough data
             {
                 LastIRSeparation[0] = 0;
                 LastIRSeparation[1] = 0;

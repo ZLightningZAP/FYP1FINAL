@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class SliderAuto : MonoBehaviour
@@ -15,14 +14,14 @@ public class SliderAuto : MonoBehaviour
     private float secondtime;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         slider = GetComponentInChildren<Scrollbar>();
         transitiontime = mainmenu.TransitionTiming;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         time += Time.deltaTime;
 
@@ -30,29 +29,28 @@ public class SliderAuto : MonoBehaviour
         {
             Slide();
         }
-        if(time >= transitiontime * 2)
+        if (time >= transitiontime * 2)
         {
             time = 0;
         }
 
-        if(slider.value == 1)
+        if (slider.value == 1)
         {
             secondtime += Time.deltaTime;
-            if(secondtime >= 3)
+            if (secondtime >= 3)
             {
                 Reset();
                 secondtime = 0;
             }
         }
-
     }
 
-    void Slide()
+    private void Slide()
     {
         slider.value += Speed;
     }
 
-    void Reset()
+    private void Reset()
     {
         slider.value = 0;
     }

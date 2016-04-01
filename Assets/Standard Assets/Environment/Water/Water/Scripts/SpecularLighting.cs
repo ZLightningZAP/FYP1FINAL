@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Water
@@ -10,12 +9,10 @@ namespace UnityStandardAssets.Water
         public Transform specularLight;
         private WaterBase m_WaterBase;
 
-
         public void Start()
         {
             m_WaterBase = (WaterBase)gameObject.GetComponent(typeof(WaterBase));
         }
-
 
         public void Update()
         {

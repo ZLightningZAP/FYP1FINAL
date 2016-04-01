@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-
 
 namespace UnityStandardAssets.Effects
 {
@@ -10,12 +8,10 @@ namespace UnityStandardAssets.Effects
 
         private ParticleSystem[] m_Systems;
 
-
         private void Start()
         {
             m_Systems = GetComponentsInChildren<ParticleSystem>();
         }
-
 
         public void Extinguish()
         {

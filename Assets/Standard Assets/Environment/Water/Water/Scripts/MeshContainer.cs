@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Water
@@ -9,14 +8,12 @@ namespace UnityStandardAssets.Water
         public Vector3[] vertices;
         public Vector3[] normals;
 
-
         public MeshContainer(Mesh m)
         {
             mesh = m;
             vertices = m.vertices;
             normals = m.normals;
         }
-
 
         public void Update()
         {

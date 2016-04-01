@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using WiimoteApi;
 
 public class MainMenuTransition : MonoBehaviour
@@ -15,10 +14,10 @@ public class MainMenuTransition : MonoBehaviour
 
     private float transitiontime = 0;
     private Wiimote wiimote;    //Wii mote
-    int ret;
+    private int ret;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         //Get component of the animator from the gameobject
         anim1 = MainMenuPanel.GetComponent<Animator>();
@@ -36,7 +35,7 @@ public class MainMenuTransition : MonoBehaviour
         {
             print("Wiimote Found");
 
-            //Assign our variable to the first 
+            //Assign our variable to the first
             wiimote = WiimoteManager.Wiimotes[0];
 
             if (wiimote != null)
@@ -52,20 +51,20 @@ public class MainMenuTransition : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Add delta time to transition time
         transitiontime += Time.deltaTime;
 
         //If transition time is more than the input transition timing, Change panel
-        if(transitiontime >= TransitionTiming)
+        if (transitiontime >= TransitionTiming)
         {
-            if(MainMenu == false)
+            if (MainMenu == false)
             {
                 MainMenuSlideIn();
                 transitiontime = 0;
             }
-            else if(MainMenu == true)
+            else if (MainMenu == true)
             {
                 HighScoreSlideIn();
                 transitiontime = 0;
@@ -87,7 +86,7 @@ public class MainMenuTransition : MonoBehaviour
                 fade.FadeMe();
             }
         }
-            // Falling back to mouse and keyboard input
+        // Falling back to mouse and keyboard input
         else
         {
             if (Input.GetMouseButton(0))
@@ -100,11 +99,9 @@ public class MainMenuTransition : MonoBehaviour
         {
             Application.Quit();
         }
-
     }
 
-
-    void HighScoreSlideIn()
+    private void HighScoreSlideIn()
     {
         // Set their respective animation to true
         anim1.enabled = true;
@@ -117,8 +114,7 @@ public class MainMenuTransition : MonoBehaviour
         MainMenu = false;
     }
 
-
-    void MainMenuSlideIn()
+    private void MainMenuSlideIn()
     {
         // Set their respective animation to true
         anim1.enabled = true;

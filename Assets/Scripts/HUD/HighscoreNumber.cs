@@ -1,8 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class HighscoreNumber : MonoBehaviour
@@ -14,7 +11,7 @@ public class HighscoreNumber : MonoBehaviour
     private int linesInFile;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         text = GetComponentInChildren<Text>();
         Read();
@@ -22,9 +19,8 @@ public class HighscoreNumber : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     //Read the text file

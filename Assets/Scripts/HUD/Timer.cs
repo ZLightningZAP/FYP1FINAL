@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     //Set the starting timer countdown to start from 10
     public float TimerCountdown = 0;
+
     public Text text;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         //Timer will countdown using delta time
         TimerCountdown += Time.deltaTime;

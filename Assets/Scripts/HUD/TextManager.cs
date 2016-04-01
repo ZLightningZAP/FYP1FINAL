@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.IO;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
@@ -16,16 +15,15 @@ public class TextManager : MonoBehaviour
     private bool added = false;
 
     //Use this for initialization
-    void Start()
+    private void Start()
     {
         Read();
         //Write("KEITH", 88888);
     }
 
     //Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     //Read the text file
@@ -94,7 +92,6 @@ public class TextManager : MonoBehaviour
                         {
                             writer.Write(Names[o] + " " + Score[o]);
                         }
-
                     }
                     writer.Close();
 

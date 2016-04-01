@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public abstract class Character : MonoBehaviour
@@ -9,11 +8,13 @@ public abstract class Character : MonoBehaviour
 
     // Health
     public float health;
+
     //Healthbar Image
     public Image healthBar;
 
     // Getters
     public float Health { get { return health; } }
+
     public bool IsAlive { get { return health > 0; } }
 
     //Fill amount for the health bar
@@ -77,7 +78,7 @@ public abstract class Character : MonoBehaviour
         }
 
         // If the health amount drop below 70%, the color of the healthbar will change to yellow
-        else if(healthBar.fillAmount <= 0.7)
+        else if (healthBar.fillAmount <= 0.7)
         {
             healthBar.color = Color.yellow;
         }

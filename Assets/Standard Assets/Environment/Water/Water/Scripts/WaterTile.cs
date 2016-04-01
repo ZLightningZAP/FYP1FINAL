@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Water
@@ -9,14 +8,12 @@ namespace UnityStandardAssets.Water
         public PlanarReflection reflection;
         public WaterBase waterBase;
 
-
         public void Start()
         {
             AcquireComponents();
         }
 
-
-        void AcquireComponents()
+        private void AcquireComponents()
         {
             if (!reflection)
             {
@@ -43,14 +40,14 @@ namespace UnityStandardAssets.Water
             }
         }
 
-
 #if UNITY_EDITOR
+
         public void Update()
         {
             AcquireComponents();
         }
-#endif
 
+#endif
 
         public void OnWillRenderObject()
         {

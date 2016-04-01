@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using WiimoteApi.Util;
+﻿using WiimoteApi.Util;
 
 namespace WiimoteApi
 {
@@ -19,9 +18,10 @@ namespace WiimoteApi
         /// Left/Right:       +X/-X\n
         /// Forward/Backward: -Y/+Y\n
         public ReadOnlyArray<int> accel { get { return _accel_readonly; } }
+
         private ReadOnlyArray<int> _accel_readonly;
         private int[] _accel;
-        
+
         /// \brief Size: 3x3. Calibration data for the accelerometer. This is not reported
         ///        by the Wii Remote directly - it is instead collected from normal
         ///        Wii Remote accelerometer data.
@@ -31,9 +31,9 @@ namespace WiimoteApi
         /// 1. Horizontal with the A button facing up
         /// 2. IR sensor down on the table so the expansion port is facing up
         /// 3. Laying on its side, so the left side is facing up
-        /// 
+        ///
         /// By default this is set to experimental calibration data.
-        /// 
+        ///
         /// int[calibration step,calibration data] (size 3x3)
         public int[,] accel_calib = {
                                     { 479, 478, 569 },
@@ -59,14 +59,14 @@ namespace WiimoteApi
             _accel[2] = ((int)data[4] << 2) | ((data[1] >> 6) & 0x01);
 
             //for (int x = 0; x < 3; x++) _accel[x] -= 0x200; // center around zero.
-            
+
             return true;
         }
 
         /// \brief Interprets raw byte data reported by the Wii Remote when in interleaved data reporting mode.
         ///        The format of the actual bytes passed to this depends on the Wii Remote's current data report
         ///        mode and the type of data being passed.
-        /// 
+        ///
         /// \sa Wiimote::ReadWiimoteData()
         public bool InterpretDataInterleaved(byte[] data1, byte[] data2)
         {
@@ -75,9 +75,9 @@ namespace WiimoteApi
 
             _accel[0] = (int)data1[2] << 2;
             _accel[1] = (int)data2[2] << 2;
-            _accel[2] =   (int)(((data1[0] & 0x60) >> 1) | 
-                                ((data1[1] & 0x60) << 1) | 
-                                ((data2[0] & 0x60) >> 5) | 
+            _accel[2] = (int)(((data1[0] & 0x60) >> 1) |
+                                ((data1[1] & 0x60) << 1) |
+                                ((data2[0] & 0x60) >> 5) |
                                 ((data2[1] & 0x60) >> 3)) << 2;
 
             //for (int x = 0; x < 3; x++) _accel[x] -= 0x200; // center around zero.

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Fade : MonoBehaviour {
-
+public class Fade : MonoBehaviour
+{
     public float FadeSpeed = 0.1f;
 
     public void FadeMe()
@@ -11,10 +11,10 @@ public class Fade : MonoBehaviour {
         StartCoroutine(DoFade());
     }
 
-    IEnumerator DoFade()
+    private IEnumerator DoFade()
     {
         CanvasGroup canvasgroup = GetComponent<CanvasGroup>();
-        while(canvasgroup.alpha > 0)
+        while (canvasgroup.alpha > 0)
         {
             canvasgroup.alpha -= Time.deltaTime * FadeSpeed;
             yield return null;
@@ -22,7 +22,7 @@ public class Fade : MonoBehaviour {
         canvasgroup.interactable = false;
         yield return null;
 
-        if(canvasgroup.alpha <= 0)
+        if (canvasgroup.alpha <= 0)
         {
             SceneManager.LoadScene(1);
         }
@@ -34,7 +34,7 @@ public class Fade : MonoBehaviour {
         StartCoroutine(DoFadeIn());
     }
 
-    IEnumerator DoFadeIn()
+    private IEnumerator DoFadeIn()
     {
         CanvasGroup canvasgroup = GetComponent<CanvasGroup>();
         while (canvasgroup.alpha > 0)

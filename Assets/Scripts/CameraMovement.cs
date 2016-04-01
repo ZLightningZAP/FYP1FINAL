@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CameraMovement : MonoBehaviour
 {
-
     public Transform[] Waypoints;   //Waypoints to move towards
     public Transform[] RotationPoints;  //Angles to rotate towards
     public float[] WaitTimes;   //Waiting Time for each way point
@@ -16,10 +14,12 @@ public class CameraMovement : MonoBehaviour
 
     //Position
     private Transform CurrentTransform;  //Current Position of Camera
+
     private Transform NextTransform; //Next Position to move towards
 
     //Rotation
     private Transform NextRotation; //Next Rotation to rotate towards
+
     private Vector3 TargetDirection;
 
     private int Index;   //Current Index of waypoint
@@ -27,16 +27,17 @@ public class CameraMovement : MonoBehaviour
 
     //Camera shake
     private bool Shaking = false;
+
     public bool goingtoshake = false;
     private bool UpdateOriginal = false;
     public float ShakeDuration = 0f;
     public float ShakeAmount = 0.7f;
     public float decreaseFactor = 1.0f;
-    Vector3 OriginalPos;
-    Vector3 OriginalRot;
+    private Vector3 OriginalPos;
+    private Vector3 OriginalRot;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         NextTransform = CurrentTransform;
@@ -51,13 +52,12 @@ public class CameraMovement : MonoBehaviour
             TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
             WaitTime = WaitTimes[Index];
         }
-
     }
 
     // Update is called once per frame
-    void Update()
-    {  
-        if(goingtoshake == true)
+    private void Update()
+    {
+        if (goingtoshake == true)
         {
             Shake();
         }
@@ -87,7 +87,6 @@ public class CameraMovement : MonoBehaviour
                 }
             }
 
-
             if (RotationPoints.Length > 0)
             {
                 if (RotationPoints[Index].position != transform.position)
@@ -104,7 +103,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     // Camera shake
-    void Shake()
+    private void Shake()
     {
         if (UpdateOriginal == false)
         {

@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Waypoint : MonoBehaviour {
-
+public class Waypoint : MonoBehaviour
+{
     public GameObject WaypointObject;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    private void Start()
+    {
         //WaypointObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
 }

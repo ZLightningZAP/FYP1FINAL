@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public class Enemy : Character
+﻿public class Enemy : Character
 {
     // Use this for initialization
     protected override void Start()
@@ -17,7 +14,7 @@ public class Enemy : Character
         base.Update();
 
         //If enemy has 0 health, active will be set to false
-        if(health == 0)
+        if (health == 0)
         {
             gameObject.SetActive(false);
         }

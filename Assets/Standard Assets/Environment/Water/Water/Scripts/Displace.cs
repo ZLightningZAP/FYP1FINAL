@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace UnityStandardAssets.Water
@@ -19,13 +18,11 @@ namespace UnityStandardAssets.Water
             }
         }
 
-
         public void OnEnable()
         {
             Shader.EnableKeyword("WATER_VERTEX_DISPLACEMENT_ON");
             Shader.DisableKeyword("WATER_VERTEX_DISPLACEMENT_OFF");
         }
-
 
         public void OnDisable()
         {

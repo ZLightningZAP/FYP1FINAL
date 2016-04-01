@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class Player : Character
 {
     //Healthbar Text
     public Text healthtext;
+
     public RawImage BloodImage;
     public float transitionTime = 0.5f;
 
@@ -40,7 +40,7 @@ public class Player : Character
         }
     }
 
-    void BloodEffect()
+    private void BloodEffect()
     {
         transition += Time.deltaTime;
         BloodImage.enabled = true;
@@ -51,7 +51,6 @@ public class Player : Character
             gone = true;
             transition = 0;
         }
-
         else if (gone == true && transition >= transitionTime)
         {
             BloodImage.CrossFadeAlpha(1.0f, transitionTime, false);
