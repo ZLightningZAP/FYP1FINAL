@@ -96,6 +96,11 @@ public class MainMenuTransition : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
 

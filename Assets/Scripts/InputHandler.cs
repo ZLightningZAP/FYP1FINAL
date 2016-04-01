@@ -167,6 +167,11 @@ public class InputHandler : MonoBehaviour
         Crosshair.transform.position = PointerPosition;
 
         //print(PointerPosition);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     void Fire()
