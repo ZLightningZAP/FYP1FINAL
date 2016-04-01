@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using WiimoteApi;
 
 public class MainMenuTransition : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MainMenuTransition : MonoBehaviour
     private bool MainMenu = true;
 
     private float transitiontime = 0;
+    private Wiimote wiimote;    //Wii mote
+    int ret;
 
     // Use this for initialization
     void Start()
@@ -24,6 +27,28 @@ public class MainMenuTransition : MonoBehaviour
         //Set their respective animation to false
         anim1.enabled = false;
         anim2.enabled = false;
+
+        //Wii Plugins Initialize
+        WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
+
+        //Check if Manager has wii mote connected
+        if (WiimoteManager.HasWiimote())
+        {
+            print("Wiimote Found");
+
+            //Assign our variable to the first 
+            wiimote = WiimoteManager.Wiimotes[0];
+
+            if (wiimote != null)
+            {
+                print("Wiimote Assigned");
+
+                wiimote.SendPlayerLED(true, false, false, false);
+            }
+
+            //Setup IR Camera
+            wiimote.SetupIRCamera(IRDataType.BASIC);
+        }
     }
 
     // Update is called once per frame
@@ -47,9 +72,28 @@ public class MainMenuTransition : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButton(0))
+        // if wiimote is found
+        if (wiimote != null)
         {
-            fade.FadeMe();
+            //Read Data
+            do
+            {
+                ret = wiimote.ReadWiimoteData();
+            } while (ret > 0);
+
+            if (wiimote.Button.a || wiimote.Button.b)
+            {
+                print("A or B Button is pressed!");
+                fade.FadeMe();
+            }
+        }
+            // Falling back to mouse and keyboard input
+        else
+        {
+            if (Input.GetMouseButton(0))
+            {
+                fade.FadeMe();
+            }
         }
 
     }
