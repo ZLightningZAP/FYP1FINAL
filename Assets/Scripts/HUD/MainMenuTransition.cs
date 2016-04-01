@@ -5,6 +5,7 @@ public class MainMenuTransition : MonoBehaviour
 {
     public GameObject MainMenuPanel;
     public GameObject HighScorePanel;
+    public Fade fade;
     public float TransitionTiming;
 
     private Animator anim1;
@@ -44,6 +45,11 @@ public class MainMenuTransition : MonoBehaviour
                 HighScoreSlideIn();
                 transitiontime = 0;
             }
+        }
+
+        if(Input.GetMouseButton(0))
+        {
+            fade.FadeMe();
         }
 
     }
