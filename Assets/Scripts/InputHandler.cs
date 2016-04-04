@@ -271,4 +271,36 @@ public class InputHandler : MonoBehaviour
         returnPanel.SetActive(false);
         goingbacktomainmenu = false;
     }
+
+    public void ConnectWii()
+    {
+        if (wiimote != null)
+        {
+            WiimoteManager.Cleanup(wiimote);
+            wiimote = null;
+        }
+        else
+        {
+            WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
+
+            //Check if Manager has wii mote connected
+            if (WiimoteManager.HasWiimote())
+            {
+                print("Wiimote Found");
+
+                //Assign our variable to the first 
+                wiimote = WiimoteManager.Wiimotes[0];
+
+                if (wiimote != null)
+                {
+                    print("Wiimote Assigned");
+
+                    wiimote.SendPlayerLED(true, false, false, false);
+                }
+
+                //Setup IR Camera
+                wiimote.SetupIRCamera(IRDataType.BASIC);
+            }
+        }
+    }
 }
