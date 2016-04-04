@@ -116,7 +116,14 @@ public class InputHandler : MonoBehaviour
             else if (wiimote.Button.home)
             {
                 // Show the going back to main menu panel
-                ReturnPanel();
+                if (goingbacktomainmenu == true)
+                {
+                    ClickedNO();
+                }
+                else
+                {
+                    ReturnPanel();
+                }
             }
             else
             {
@@ -152,7 +159,15 @@ public class InputHandler : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
-                ReturnPanel();
+                // Show the going back to main menu panel
+                if (goingbacktomainmenu == true)
+                {
+                    ClickedNO();
+                }
+                else
+                {
+                    ReturnPanel();
+                }
             }
             else
             {

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using WiimoteApi;
 
 public class MainMenuTransition : MonoBehaviour
@@ -93,6 +92,10 @@ public class MainMenuTransition : MonoBehaviour
                 print("A or B Button is pressed!");
                 fade.FadeMe();
             }
+            if (wiimote.Button.home)
+            {
+                ExitPress();
+            }
         }
         // Falling back to mouse and keyboard input
         else
@@ -108,7 +111,14 @@ public class MainMenuTransition : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ExitPress();
+            if (goingtoexit == true)
+            {
+                NoPress();
+            }
+            else
+            {
+                ExitPress();
+            }
         }
     }
 
