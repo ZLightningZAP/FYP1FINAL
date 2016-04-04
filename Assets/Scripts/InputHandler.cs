@@ -9,6 +9,8 @@ public class InputHandler : MonoBehaviour
     public OverHeating overheat;
     public AmmoSystem ammosystem;
     public Image Crosshair;
+    public GameObject returnPanel;
+    public Fade fade;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -21,6 +23,8 @@ public class InputHandler : MonoBehaviour
     private float fireTimer = 0.0f; //Use to keep track of time before last fire
 
     private float reloadtimetracker;
+
+    private bool goingbacktomainmenu = false;
 
     public float DamageOfBullet = 10;
 
@@ -59,6 +63,9 @@ public class InputHandler : MonoBehaviour
             //Setup IR Camera
             wiimote.SetupIRCamera(IRDataType.BASIC);
         }
+
+        //Set the active of the return panel to false
+        returnPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -97,11 +104,19 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        Fire();
-                        //Update the Ammo Bar
-                        ammosystem.AmmoUpdateUI();
+                        if (goingbacktomainmenu == false)
+                        {
+                            Fire();
+                            //Update the Ammo Bar
+                            ammosystem.AmmoUpdateUI();
+                        }
                     }
                 }
+            }
+            else if (wiimote.Button.home)
+            {
+                // Show the going back to main menu panel
+                ReturnPanel();
             }
             else
             {
@@ -126,11 +141,18 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        Fire();
-                        //Update the Ammo Bar
-                        ammosystem.AmmoUpdateUI();
+                        if (goingbacktomainmenu == false)
+                        {
+                            Fire();
+                            //Update the Ammo Bar
+                            ammosystem.AmmoUpdateUI();
+                        }
                     }
                 }
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ReturnPanel();
             }
             else
             {
@@ -165,11 +187,6 @@ public class InputHandler : MonoBehaviour
         Crosshair.transform.position = PointerPosition;
 
         //print(PointerPosition);
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
     private void Fire()
@@ -217,5 +234,26 @@ public class InputHandler : MonoBehaviour
         {
             currentBulletSpread = MaxBulletSpreadRange;
         }
+    }
+
+    public void ReturnPanel()
+    {
+        Time.timeScale = 0;
+        returnPanel.SetActive(true);
+        goingbacktomainmenu = true;
+    }
+
+    public void ClickedYES()
+    {
+        Time.timeScale = 1;
+        fade.FadeMe();
+        goingbacktomainmenu = false;
+    }
+
+    public void ClickedNO()
+    {
+        Time.timeScale = 1;
+        returnPanel.SetActive(false);
+        goingbacktomainmenu = false;
     }
 }
