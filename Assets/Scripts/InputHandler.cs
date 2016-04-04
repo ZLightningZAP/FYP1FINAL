@@ -11,8 +11,6 @@ public class InputHandler : MonoBehaviour
     public Image Crosshair;
     public GameObject returnPanel;
     public Fade fade;
-    public Sprite FireFlash;    //Flash sprite when shooting
-    public Animator FireFlash;  //Animator to control
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -213,9 +211,6 @@ public class InputHandler : MonoBehaviour
 
         //Update the overheat bar
         overheat.OverheatbarUpdate();
-
-        //Muzzle Flash
-        Instantiate(FireFlash, Input.mousePosition, Quaternion.identity);
 
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
