@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using WiimoteApi;
 
 public class MainMenuTransition : MonoBehaviour
@@ -8,6 +9,9 @@ public class MainMenuTransition : MonoBehaviour
     public Fade fade;
     public float TransitionTiming;
 
+    // For the Quit options
+    public GameObject quitMenu;
+
     private Animator anim1;
     private Animator anim2;
     private bool MainMenu = true;
@@ -15,6 +19,7 @@ public class MainMenuTransition : MonoBehaviour
     private float transitiontime = 0;
     private Wiimote wiimote;    //Wii mote
     private int ret;
+    private bool goingtoexit = false;
 
     // Use this for initialization
     private void Start()
@@ -48,6 +53,9 @@ public class MainMenuTransition : MonoBehaviour
             //Setup IR Camera
             wiimote.SetupIRCamera(IRDataType.BASIC);
         }
+
+        //Disable the quit menu on start
+        quitMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -91,13 +99,16 @@ public class MainMenuTransition : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                fade.FadeMe();
+                if (goingtoexit == false)
+                {
+                    fade.FadeMe();
+                }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            ExitPress();
         }
     }
 
@@ -125,5 +136,22 @@ public class MainMenuTransition : MonoBehaviour
         anim2.Play("HighscorePanelSlideOut");
 
         MainMenu = true;
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ExitPress()
+    {
+        quitMenu.SetActive(true);
+        goingtoexit = true;
+    }
+
+    public void NoPress()
+    {
+        quitMenu.SetActive(false);
+        goingtoexit = false;
     }
 }
