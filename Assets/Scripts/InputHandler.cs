@@ -11,6 +11,10 @@ public class InputHandler : MonoBehaviour
     public Image Crosshair;
     public GameObject returnPanel;
     public Fade fade;
+    public GameObject Flashfire;
+    public GameObject canvas;
+
+    private Animator Flash;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -66,6 +70,9 @@ public class InputHandler : MonoBehaviour
 
         //Set the active of the return panel to false
         returnPanel.SetActive(false);
+
+        Flash = Flashfire.GetComponent<Animator>();
+        Flash.enabled = false;
     }
 
     // Update is called once per frame
@@ -215,6 +222,11 @@ public class InputHandler : MonoBehaviour
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
 
+        GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
+        Flash.enabled = true;
+        Flash.Play("FireFlash");
+        flashy.transform.SetParent(canvas.transform);
+
         //Wiimote detected and connected , Use Wiimote's IR Position Instead
         if (wiimote != null)
         {
@@ -288,7 +300,7 @@ public class InputHandler : MonoBehaviour
             {
                 print("Wiimote Found");
 
-                //Assign our variable to the first 
+                //Assign our variable to the first
                 wiimote = WiimoteManager.Wiimotes[0];
 
                 if (wiimote != null)
