@@ -225,6 +225,7 @@ public class InputHandler : MonoBehaviour
         GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
         Flash.enabled = true;
         Flash.Play("FireFlash");
+        flashy.SetActive(true);
         flashy.transform.SetParent(canvas.transform);
 
         //Wiimote detected and connected , Use Wiimote's IR Position Instead
