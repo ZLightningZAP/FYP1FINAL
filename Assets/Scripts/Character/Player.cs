@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class Player : Character
 {
+    //Healthbar Image
+    public Image healthBar;
+
     //Healthbar Text
     public Text healthtext;
 
@@ -15,6 +18,9 @@ public class Player : Character
     private int Score;
     private bool gone = false;
     private float transition;
+
+    //Fill amount for the health bar
+    private float HealthFillAmount;
 
     // Use this for initialization
     protected override void Start()
@@ -33,6 +39,9 @@ public class Player : Character
 
         //Show the amount of health in text
         healthtext.text = health.ToString("F0");
+
+        //HealthBar
+        HealthBarUpdate(Health);
 
         if (health <= 40)
         {
@@ -57,5 +66,12 @@ public class Player : Character
             gone = false;
             transition = 0;
         }
+    }
+
+    private void HealthBarUpdate(float health)
+    {
+        // Calculate the fill amount of the health bar
+        HealthFillAmount = (health * 0.008f) + 0.1f;
+        healthBar.fillAmount = HealthFillAmount;
     }
 }
