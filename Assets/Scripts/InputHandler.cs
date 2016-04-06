@@ -8,11 +8,12 @@ public class InputHandler : MonoBehaviour
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
     public OverHeating overheat;
     public AmmoSystem ammosystem;
-    public Image Crosshair;
     public GameObject returnPanel;
     public Fade fade;
     public GameObject Flashfire;
     public GameObject canvas;
+    public GameObject DeadPanel;
+    public Player player;
 
     private Animator Flash;
 
@@ -29,6 +30,7 @@ public class InputHandler : MonoBehaviour
     private float reloadtimetracker;
 
     private bool goingbacktomainmenu = false;
+    private bool dead = false;
 
     public float DamageOfBullet = 10;
 
@@ -70,6 +72,7 @@ public class InputHandler : MonoBehaviour
 
         //Set the active of the return panel to false
         returnPanel.SetActive(false);
+        DeadPanel.SetActive(false);
 
         Flash = Flashfire.GetComponent<Animator>();
         Flash.enabled = false;
@@ -111,7 +114,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false)
+                        if (goingbacktomainmenu == false && dead == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -155,7 +158,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false)
+                        if (goingbacktomainmenu == false && dead == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -205,10 +208,10 @@ public class InputHandler : MonoBehaviour
             PointerPosition = Input.mousePosition;
         }
 
-        // Crosshair following mouse
-        Crosshair.transform.position = PointerPosition;
-
-        //print(PointerPosition);
+        if (player.Health <= 0)
+        {
+            GOPanel();
+        }
     }
 
     private void Fire()
@@ -269,6 +272,13 @@ public class InputHandler : MonoBehaviour
         Time.timeScale = 0;
         returnPanel.SetActive(true);
         goingbacktomainmenu = true;
+    }
+
+    public void GOPanel()
+    {
+        Time.timeScale = 1;
+        DeadPanel.SetActive(true);
+        dead = true;
     }
 
     public void ClickedYES()
