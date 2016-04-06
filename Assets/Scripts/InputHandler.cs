@@ -286,6 +286,7 @@ public class InputHandler : MonoBehaviour
         Time.timeScale = 1;
         fade.FadeMe();
         goingbacktomainmenu = false;
+        dead = false;
     }
 
     public void ClickedNO()
