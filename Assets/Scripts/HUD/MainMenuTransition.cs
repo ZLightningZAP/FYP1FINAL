@@ -6,6 +6,7 @@ public class MainMenuTransition : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject HighScorePanel;
     public Fade fade;
+    public GameObject Crosshair;
     public float TransitionTiming;
 
     // For the Quit options
@@ -30,9 +31,6 @@ public class MainMenuTransition : MonoBehaviour
         //Set their respective animation to false
         anim1.enabled = false;
         anim2.enabled = false;
-
-        //Wii Plugins Initialize
-        WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
 
         //Check if Manager has wii mote connected
         if (WiimoteManager.HasWiimote())
@@ -96,6 +94,13 @@ public class MainMenuTransition : MonoBehaviour
             {
                 ExitPress();
             }
+
+            //Setting final position to IR's detected position
+            float[] pointer = wiimote.Ir.GetPointingPosition();
+
+            //Mapping the position to screen
+            Crosshair.transform.position = new Vector3(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
+
         }
         // Falling back to mouse and keyboard input
         else
@@ -107,6 +112,9 @@ public class MainMenuTransition : MonoBehaviour
                     fade.FadeMe();
                 }
             }
+
+            //Mapping crosshair to mouse position
+            Crosshair.transform.position = Input.mousePosition;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
