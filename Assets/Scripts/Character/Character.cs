@@ -23,7 +23,7 @@ public abstract class Character : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        Injure(0.5f);
+        //Injure(0.5f);
     }
 
     //Use this to injure the character

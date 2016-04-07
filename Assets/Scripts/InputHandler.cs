@@ -10,10 +10,12 @@ public class InputHandler : MonoBehaviour
     public AmmoSystem ammosystem;
     public GameObject returnPanel;
     public Fade fade;
-    public ParticleSystem MuzzleFlash;  //Muzzle Flash Effect
+    public GameObject Flashfire;  //Muzzle Flash Effect
     public GameObject canvas;
     public GameObject DeadPanel;
     public Player player;
+
+    private Animator Flash;
 
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
@@ -73,6 +75,8 @@ public class InputHandler : MonoBehaviour
         returnPanel.SetActive(false);
         DeadPanel.SetActive(false);
 
+        Flash = Flashfire.GetComponent<Animator>();
+        Flash.enabled = false;
     }
 
     // Update is called once per frame
@@ -222,9 +226,11 @@ public class InputHandler : MonoBehaviour
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
 
-        GameObject flash = Instantiate(MuzzleFlash, FinalPosition, Quaternion.identity) as GameObject;
-
-        flash.transform.SetParent(canvas.transform);
+        GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
+        Flash.enabled = true;
+        Flash.Play("FireFlash");
+        flashy.SetActive(true);
+        flashy.transform.SetParent(canvas.transform);
 
         //Wiimote detected and connected , Use Wiimote's IR Position Instead
         if (wiimote != null)
