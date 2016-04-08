@@ -55,16 +55,16 @@ public class InputHandler : MonoBehaviour
 
         currentBulletSpread = defaultBulletSpread;
 
-        //Wii Set up
-        WiiController = GameObject.Find("WiiController");
-        wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
-
         //Set the active of the return panel to false
         returnPanel.SetActive(false);
         DeadPanel.SetActive(false);
 
         Flash = Flashfire.GetComponent<Animator>();
         Flash.enabled = false;
+
+        //Wii Set up
+        WiiController = GameObject.Find("WiiController");
+        wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
     }
 
     // Update is called once per frame
