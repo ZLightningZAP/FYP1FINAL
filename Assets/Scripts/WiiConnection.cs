@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class WiiConnection : MonoBehaviour {
 
     public Wiimote wiimote;    //Wii motes
-    public Image Crosshair;    //Crosshair for IR
 
-    private Vector3 IRposition; //Wii IR position
+    public Vector3 IRposition; //Wii IR position
 
 	// Use this for initialization
 	void Start () {
@@ -40,8 +39,6 @@ public class WiiConnection : MonoBehaviour {
 
             IRposition.Set(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
             //Mapping the position to screen
-            Crosshair.transform.position = IRposition;
-            print(Crosshair.transform.position);
         }
 	}
 

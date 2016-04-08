@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using WiimoteApi;
+using UnityEngine.UI;
 
 public class MainMenuTransition : MonoBehaviour
 {
     public GameObject MainMenuPanel;
     public GameObject HighScorePanel;
     public Fade fade;
-    public GameObject Crosshair;
+    public Image Crosshair;
     public float TransitionTiming;
 
     // For the Quit options
