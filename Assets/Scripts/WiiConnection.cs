@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 using WiimoteApi;
+using UnityEngine.UI;
 
 public class WiiConnection : MonoBehaviour {
 
-    private Wiimote wiimote;    //Wii motes
-    public GameObject Crosshair;    //Crosshair for IR
+    public Wiimote wiimote;    //Wii motes
+    public Image Crosshair;    //Crosshair for IR
 
     private Vector3 IRposition; //Wii IR position
 
 	// Use this for initialization
 	void Start () {
-	
+
+        GameObject.DontDestroyOnLoad(transform.gameObject);
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,7 @@ public class WiiConnection : MonoBehaviour {
             IRposition.Set(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
             //Mapping the position to screen
             Crosshair.transform.position = IRposition;
+            print(Crosshair.transform.position);
         }
 	}
 

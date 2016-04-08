@@ -21,6 +21,8 @@ public class MainMenuTransition : MonoBehaviour
     private int ret;
     private bool goingtoexit = false;
 
+    private GameObject WiiController;
+
     // Use this for initialization
     private void Start()
     {
@@ -32,25 +34,10 @@ public class MainMenuTransition : MonoBehaviour
         anim1.enabled = false;
         anim2.enabled = false;
 
-        //Check if Manager has wii mote connected
-        if (WiimoteManager.HasWiimote())
-        {
-            print("Wiimote Found");
-
-            //Assign our variable to the first
-            wiimote = WiimoteManager.Wiimotes[0];
-
-            if (wiimote != null)
-            {
-                print("Wiimote Assigned");
-
-                wiimote.SendPlayerLED(true, false, false, false);
-            }
-
-            //Setup IR Camera
-            wiimote.SetupIRCamera(IRDataType.BASIC);
-        }
-
+        //Wii Set up
+        WiiController = GameObject.Find("WiiController");
+        wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
+        
         //Disable the quit menu on start
         quitMenu.SetActive(false);
     }
