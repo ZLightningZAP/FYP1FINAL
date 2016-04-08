@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
@@ -13,6 +15,9 @@ public class InputHandler : MonoBehaviour
     public GameObject canvas;
     public GameObject DeadPanel;
     public Player player;
+
+    public List<GameObject> firingimages = new List<GameObject>();
+    private int randomnumber;
 
     private Animator Flash;
 
@@ -225,11 +230,16 @@ public class InputHandler : MonoBehaviour
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
 
-        GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
-        Flash.enabled = true;
-        Flash.Play("FireFlash");
-        flashy.SetActive(true);
-        flashy.transform.SetParent(canvas.transform);
+        //GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
+        //Flash.enabled = true;
+        //Flash.Play("FireFlash");
+        //flashy.SetActive(true);
+        //flashy.transform.SetParent(canvas.transform);
+
+        randomnumber = Random.Range(0, firingimages.Count);
+        GameObject firing = Instantiate(firingimages[randomnumber], PointerPosition, Quaternion.identity) as GameObject;
+        firing.SetActive(true);
+        firing.transform.SetParent(canvas.transform);
 
         //Wiimote detected and connected , Use Wiimote's IR Position Instead
         if (wiimote != null)
