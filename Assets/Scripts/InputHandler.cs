@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour
     public OverHeating overheat;
     public AmmoSystem ammosystem;
     public GameObject returnPanel;
+    public Image Crosshair; //Crosshair image
     public Fade fade;
     public GameObject Flashfire;  //Muzzle Flash Effect
     public GameObject canvas;
@@ -38,6 +39,7 @@ public class InputHandler : MonoBehaviour
 
     public float DamageOfBullet = 10;
 
+    private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
     private Vector3 PointerPosition;    //Pointing Position
 
@@ -53,27 +55,9 @@ public class InputHandler : MonoBehaviour
 
         currentBulletSpread = defaultBulletSpread;
 
-        //Connection is now done in main menu first
-        //WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
-
-        //Check if Manager has wii mote connected
-        if (WiimoteManager.HasWiimote())
-        {
-            print("Wiimote Found");
-
-            //Assign our variable to the first
-            wiimote = WiimoteManager.Wiimotes[0];
-
-            if (wiimote != null)
-            {
-                print("Wiimote Assigned");
-
-                wiimote.SendPlayerLED(true, false, false, false);
-            }
-
-            //Setup IR Camera
-            wiimote.SetupIRCamera(IRDataType.BASIC);
-        }
+        //Wii Set up
+        WiiController = GameObject.Find("WiiController");
+        wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
 
         //Set the active of the return panel to false
         returnPanel.SetActive(false);
@@ -212,6 +196,8 @@ public class InputHandler : MonoBehaviour
         {
             PointerPosition = Input.mousePosition;
         }
+
+        Crosshair.transform.position = PointerPosition;
 
         if (player.Health <= 0)
         {
