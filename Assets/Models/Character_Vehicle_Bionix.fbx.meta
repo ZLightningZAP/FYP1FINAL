@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: ad33fdc5830032443b23017a1bbc892d
+timeCreated: 1460101130
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bionix_MainBody
+    100002: Bionix_Treads
+    100004: Bionix_Turret
+    100006: Bionix_Turret_Rotation
+    100008: Bionix_Wheels_1
+    100010: Bionix_Wheels_2
+    100012: Bionix_Wheels_3
+    100014: Bionix_Wheels_4
+    100016: Bionix_Wheels_5
+    100018: Bionix_Wheels_6
+    100020: Bionix_Wheels_Back
+    100022: Bionix_Wheels_Front
+    100024: //RootNode
+    100026: polySurface433
+    100028: polySurface435
+    100030: polySurface471
+    100032: polySurface477
+    100034: transform28
+    100036: transform29
+    400000: Bionix_MainBody
+    400002: Bionix_Treads
+    400004: Bionix_Turret
+    400006: Bionix_Turret_Rotation
+    400008: Bionix_Wheels_1
+    400010: Bionix_Wheels_2
+    400012: Bionix_Wheels_3
+    400014: Bionix_Wheels_4
+    400016: Bionix_Wheels_5
+    400018: Bionix_Wheels_6
+    400020: Bionix_Wheels_Back
+    400022: Bionix_Wheels_Front
+    400024: //RootNode
+    400026: polySurface433
+    400028: polySurface435
+    400030: polySurface471
+    400032: polySurface477
+    400034: transform28
+    400036: transform29
+    2300000: Bionix_MainBody
+    2300002: Bionix_Treads
+    2300004: Bionix_Turret
+    2300006: Bionix_Turret_Rotation
+    2300008: Bionix_Wheels_1
+    2300010: Bionix_Wheels_2
+    2300012: Bionix_Wheels_3
+    2300014: Bionix_Wheels_4
+    2300016: Bionix_Wheels_5
+    2300018: Bionix_Wheels_6
+    2300020: Bionix_Wheels_Back
+    2300022: Bionix_Wheels_Front
+    2300024: polySurface471
+    2300026: polySurface477
+    3300000: Bionix_MainBody
+    3300002: Bionix_Treads
+    3300004: Bionix_Turret
+    3300006: Bionix_Turret_Rotation
+    3300008: Bionix_Wheels_1
+    3300010: Bionix_Wheels_2
+    3300012: Bionix_Wheels_3
+    3300014: Bionix_Wheels_4
+    3300016: Bionix_Wheels_5
+    3300018: Bionix_Wheels_6
+    3300020: Bionix_Wheels_Back
+    3300022: Bionix_Wheels_Front
+    3300024: polySurface471
+    3300026: polySurface477
+    4300000: polySurface477
+    4300002: polySurface471
+    4300004: Bionix_Turret
+    4300006: Bionix_Turret_Rotation
+    4300008: Bionix_MainBody
+    4300010: Bionix_Treads
+    4300012: Bionix_Wheels_Front
+    4300014: Bionix_Wheels_1
+    4300016: Bionix_Wheels_2
+    4300018: Bionix_Wheels_3
+    4300020: Bionix_Wheels_4
+    4300022: Bionix_Wheels_5
+    4300024: Bionix_Wheels_6
+    4300026: Bionix_Wheels_Back
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

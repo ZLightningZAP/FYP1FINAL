@@ -23,7 +23,7 @@ public class Enemy : Character
         base.Update();
 
         //HealthBar
-        HealthBarUpdate(Health);
+        //HealthBarUpdate(Health);
 
         //If enemy has 0 health, active will be set to false
         if (health == 0)
