@@ -6,6 +6,10 @@ public class Enemy : Character
     //Healthbar Image
     public Image healthBar;
 
+    public ParticleSystem Debris;
+    public ParticleSystem Explosion;
+    public ParticleSystem ExplosionSpark;
+
     //Fill amount for the health bar
     private float HealthFillAmount;
 
@@ -28,6 +32,12 @@ public class Enemy : Character
         //If enemy has 0 health, active will be set to false
         if (health == 0)
         {
+            //Creating Explosion Effect
+            Instantiate(Debris, transform.position, Quaternion.identity);
+            Instantiate(Explosion, transform.position, Quaternion.identity);
+            Instantiate(ExplosionSpark, transform.position, Quaternion.identity);
+
+            //Deactivate object
             gameObject.SetActive(false);
         }
     }
