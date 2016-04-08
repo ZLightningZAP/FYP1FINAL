@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
@@ -313,7 +312,7 @@ public class InputHandler : MonoBehaviour
             {
                 print("Wiimote Found");
 
-                //Assign our variable to the first 
+                //Assign our variable to the first
                 wiimote = WiimoteManager.Wiimotes[0];
 
                 if (wiimote != null)

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using WiimoteApi;
 using UnityEngine.UI;
+using WiimoteApi;
 
 public class MainMenuTransition : MonoBehaviour
 {
@@ -35,12 +35,12 @@ public class MainMenuTransition : MonoBehaviour
         anim1.enabled = false;
         anim2.enabled = false;
 
+        //Disable the quit menu on start
+        quitMenu.SetActive(false);
+
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
         wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
-        
-        //Disable the quit menu on start
-        quitMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,7 +88,6 @@ public class MainMenuTransition : MonoBehaviour
 
             //Mapping the position to screen
             Crosshair.transform.position = new Vector3(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
-
         }
         // Falling back to mouse and keyboard input
         else

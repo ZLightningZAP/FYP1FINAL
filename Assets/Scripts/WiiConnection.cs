@@ -1,23 +1,21 @@
 ﻿using UnityEngine;
-using System.Collections;
 using WiimoteApi;
-using UnityEngine.UI;
 
-public class WiiConnection : MonoBehaviour {
-
+public class WiiConnection : MonoBehaviour
+{
     public Wiimote wiimote;    //Wii motes
 
     public Vector3 IRposition; //Wii IR position
 
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    private void Start()
+    {
         GameObject.DontDestroyOnLoad(transform.gameObject);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
         int ret;
 
         //If wiimote is assigned
@@ -40,7 +38,7 @@ public class WiiConnection : MonoBehaviour {
             IRposition.Set(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
             //Mapping the position to screen
         }
-	}
+    }
 
     public void ConnectWii()
     {
@@ -58,7 +56,7 @@ public class WiiConnection : MonoBehaviour {
             {
                 print("Wiimote Found");
 
-                //Assign our variable to the first 
+                //Assign our variable to the first
                 wiimote = WiimoteManager.Wiimotes[0];
 
                 if (wiimote != null)
