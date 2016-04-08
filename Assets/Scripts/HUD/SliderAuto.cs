@@ -4,10 +4,9 @@ using UnityEngine.UI;
 public class SliderAuto : MonoBehaviour
 {
     public float Speed;
-    public MainMenuTransition mainmenu;
 
     private Scrollbar slider;
-    private float transitiontime;
+    public float transitiontime;
     private float waittime;
 
     private float time;
@@ -17,7 +16,7 @@ public class SliderAuto : MonoBehaviour
     private void Start()
     {
         slider = GetComponentInChildren<Scrollbar>();
-        transitiontime = mainmenu.TransitionTiming;
+        slider.value = 0;
     }
 
     // Update is called once per frame
