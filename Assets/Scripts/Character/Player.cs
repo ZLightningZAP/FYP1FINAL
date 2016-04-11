@@ -6,8 +6,8 @@ public class Player : Character
     //Healthbar Image
     public Image healthBar;
 
-    //Healthbar Text
-    public Text healthtext;
+    ////Healthbar Text
+    //public Text healthtext;
 
     public RawImage BloodImage;
     public float transitionTime = 0.5f;
@@ -38,7 +38,7 @@ public class Player : Character
         base.Update();
 
         //Show the amount of health in text
-        healthtext.text = health.ToString("F0");
+        //healthtext.text = health.ToString("F0");
 
         //HealthBar
         HealthBarUpdate(Health);
@@ -71,7 +71,7 @@ public class Player : Character
     private void HealthBarUpdate(float health)
     {
         // Calculate the fill amount of the health bar
-        HealthFillAmount = (health * 0.008f) + 0.1f;
+        HealthFillAmount = health / MaxHealth;
         healthBar.fillAmount = HealthFillAmount;
     }
 }

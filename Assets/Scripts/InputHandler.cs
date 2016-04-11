@@ -12,7 +12,6 @@ public class InputHandler : MonoBehaviour
     public GameObject returnPanel;
     public Image Crosshair; //Crosshair image
     public Fade fade;
-    public GameObject Flashfire;  //Muzzle Flash Effect
     public GameObject canvas;
     public GameObject DeadPanel;
     public Player player;
@@ -65,9 +64,6 @@ public class InputHandler : MonoBehaviour
         returnPanel.SetActive(false);
         DeadPanel.SetActive(false);
         NewHighscorePanel.SetActive(false);
-
-        Flash = Flashfire.GetComponent<Animator>();
-        Flash.enabled = false;
 
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
@@ -213,7 +209,17 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Insert))
         {
-            highscorepanelpressed = true;
+            if (highscorepanelpressed == false)
+            {
+                highscorepanelpressed = true;
+            }
+            else if (highscorepanelpressed == true)
+            {
+                DeadPanel.SetActive(false);
+                NewHighscorePanel.SetActive(false);
+                highscorepanelpressed = false;
+                Time.timeScale = 1;
+            }
         }
 
         if (highscorepanelpressed == true)
@@ -232,12 +238,6 @@ public class InputHandler : MonoBehaviour
 
         //Creating Bullet Spread
         Vector3 FinalPosition = Input.mousePosition;
-
-        //GameObject flashy = Instantiate(Flashfire, PointerPosition, Quaternion.identity) as GameObject;
-        //Flash.enabled = true;
-        //Flash.Play("FireFlash");
-        //flashy.SetActive(true);
-        //flashy.transform.SetParent(canvas.transform);
 
         randomnumber = Random.Range(0, firingimages.Count);
         GameObject firing = Instantiate(firingimages[randomnumber], PointerPosition, Quaternion.identity) as GameObject;
@@ -287,10 +287,6 @@ public class InputHandler : MonoBehaviour
         DeadPanel.SetActive(true);
         NewHighscorePanel.SetActive(true);
 
-        if (scoreKey == null)
-        {
-            return;
-        }
         scoreKey = System.Int32.Parse(Scoreinput.text);
         nameKey = Nameinput.text;
     }
