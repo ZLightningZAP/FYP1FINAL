@@ -268,7 +268,7 @@ public class InputHandler : MonoBehaviour
         //Checking if Ray has hit
         if (Physics.Raycast(ray, out hit))
         {
-            int rand = Random.Range(1, 2);
+            int rand = Random.Range(1, 3);
             if(rand == 1)
             {
                 Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
@@ -277,6 +277,8 @@ public class InputHandler : MonoBehaviour
             {
                 Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
+
+            print(rand);
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
