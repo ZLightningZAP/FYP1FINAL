@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
 {
     public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
+    public ParticleSystem OnHitEffect2; //Different type
     public OverHeating overheat;
     public AmmoSystem ammosystem;
     public GameObject returnPanel;
@@ -267,7 +268,15 @@ public class InputHandler : MonoBehaviour
         //Checking if Ray has hit
         if (Physics.Raycast(ray, out hit))
         {
-            Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+            int rand = Random.Range(1, 2);
+            if(rand == 1)
+            {
+                Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+            }
+            else
+            {
+                Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+            }
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
