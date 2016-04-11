@@ -16,12 +16,16 @@ public class InputHandler : MonoBehaviour
     public GameObject canvas;
     public GameObject DeadPanel;
     public Player player;
-
+    public TextManager textmanager;
     public List<GameObject> firingimages = new List<GameObject>();
-    private int randomnumber;
+    public GameObject NewHighscorePanel;
+    public InputField Nameinput;
+    public InputField Scoreinput;
 
+    private string nameKey;
+    private int scoreKey;
     private Animator Flash;
-
+    private int randomnumber;
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
     public float SpreadIncreaseRate; //Rate of increasing bullet spread
@@ -36,6 +40,8 @@ public class InputHandler : MonoBehaviour
 
     private bool goingbacktomainmenu = false;
     private bool dead = false;
+    private bool highscore = false;
+    private bool highscorepanelpressed = false;
 
     public float DamageOfBullet = 10;
 
@@ -58,6 +64,7 @@ public class InputHandler : MonoBehaviour
         //Set the active of the return panel to false
         returnPanel.SetActive(false);
         DeadPanel.SetActive(false);
+        NewHighscorePanel.SetActive(false);
 
         Flash = Flashfire.GetComponent<Animator>();
         Flash.enabled = false;
@@ -103,7 +110,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && dead == false)
+                        if (goingbacktomainmenu == false && dead == false && highscore == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -147,7 +154,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && dead == false)
+                        if (goingbacktomainmenu == false && dead == false && highscore == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -202,6 +209,16 @@ public class InputHandler : MonoBehaviour
         if (player.Health <= 0)
         {
             GOPanel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Insert))
+        {
+            highscorepanelpressed = true;
+        }
+
+        if (highscorepanelpressed == true)
+        {
+            NewHighscore();
         }
     }
 
@@ -261,6 +278,28 @@ public class InputHandler : MonoBehaviour
         {
             currentBulletSpread = MaxBulletSpreadRange;
         }
+    }
+
+    public void NewHighscore()
+    {
+        highscore = true;
+        Time.timeScale = 0;
+        DeadPanel.SetActive(true);
+        NewHighscorePanel.SetActive(true);
+
+        if (scoreKey == null)
+        {
+            return;
+        }
+        scoreKey = System.Int32.Parse(Scoreinput.text);
+        nameKey = Nameinput.text;
+    }
+
+    public void HighscorePanelYES()
+    {
+        textmanager.Write(nameKey, scoreKey);
+        highscorepanelpressed = false;
+        NewHighscorePanel.SetActive(false);
     }
 
     public void ReturnPanel()

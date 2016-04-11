@@ -10,8 +10,8 @@ public class TextManager : MonoBehaviour
 
     private StreamWriter writer;
     private List<string> linesInFile = new List<string>();
-    private List<string> Names = new List<string>();
-    private List<int> Score = new List<int>();
+    public List<string> Names = new List<string>();
+    public List<int> Score = new List<int>();
     private bool added = false;
 
     //Use this for initialization
@@ -81,7 +81,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
@@ -118,7 +118,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
