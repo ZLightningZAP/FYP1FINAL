@@ -20,8 +20,6 @@ public class CameraMovement : MonoBehaviour
     //Rotation
     private Transform NextRotation; //Next Rotation to rotate towards
 
-    private Vector3 TargetDirection;
-
     private int Index;   //Current Index of waypoint
     private float distanceGap;  //Used to check if camera has reached target destination
 
@@ -49,7 +47,6 @@ public class CameraMovement : MonoBehaviour
         if (Waypoints.Length > 0)
         {
             NextTransform = Waypoints[Index];
-            TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
             WaitTime = WaitTimes[Index];
         }
     }
@@ -96,10 +93,6 @@ public class CameraMovement : MonoBehaviour
                 }
             }
         }
-
-        //TargetDirection = RotationPoints[Index].position - CurrentTransform.position;
-        //Vector3 newDirection = Vector3.RotateTowards(CurrentTransform.forward, TargetDirection, RotationSpeed * Time.deltaTime, 0.0f);
-        //CurrentTransform.rotation = Quaternion.LookRotation(newDirection)
     }
 
     // Camera shake
