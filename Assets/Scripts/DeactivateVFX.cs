@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class DeactivateVFX : MonoBehaviour {
-
+public class DeactivateVFX : MonoBehaviour
+{
     public float lifetime;  //Time allowed to be alive
 
     private float lifeTimer;    //Timer to track elapsed time

@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public class VFXController : MonoBehaviour {
-
+public class VFXController : MonoBehaviour
+{
     public static VFXController current;
 
     public int PoolSize;    //Starting pool size
@@ -14,10 +13,10 @@ public class VFXController : MonoBehaviour {
 
     public GameObject SmokeType1_Object;  //Smoke Effect that will be pooled
 
-    List<GameObject> SparkType1_Pool;   //List containing all the type 1 Spark Effects in the scene
-    List<GameObject> SparkType2_Pool;   //List containing all the type 2 Spark Effects in the scene
+    private List<GameObject> SparkType1_Pool;   //List containing all the type 1 Spark Effects in the scene
+    private List<GameObject> SparkType2_Pool;   //List containing all the type 2 Spark Effects in the scene
 
-    List<GameObject> SmokeType1_Pool;   //List containing all the type 1 Smoke Effects in the scene
+    private List<GameObject> SmokeType1_Pool;   //List containing all the type 1 Smoke Effects in the scene
 
     public enum VFX_TYPE
     {
@@ -27,25 +26,24 @@ public class VFXController : MonoBehaviour {
         MAX_TYPE,
     };
 
-    void Awake()
+    private void Awake()
     {
         current = this;
     }
 
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    private void Start()
+    {
         InitializeSpark_Type1();
 
         InitializeSpark_Type2();
 
         InitializeSmoke_Type1();
-
-	}
+    }
 
     public GameObject SpawnVFX(Vector3 position, Quaternion rotation, VFX_TYPE type)
     {
-        switch(type)
+        switch (type)
         {
             case VFX_TYPE.SPARKS_TYPE1:
                 return SpawnSpark_Type1(position, rotation);
@@ -60,16 +58,17 @@ public class VFXController : MonoBehaviour {
                 return null;
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
 
     /*************************************************
        Initialize Functions
      *************************************************/
-    void InitializeSpark_Type1()
+
+    private void InitializeSpark_Type1()
     {
         //Only if object to be pooled is assigned
         if (SparkType1_Object != null)
@@ -90,7 +89,8 @@ public class VFXController : MonoBehaviour {
             }
         }
     }
-    void InitializeSpark_Type2()
+
+    private void InitializeSpark_Type2()
     {
         //Only if object to be pooled is assigned
         if (SparkType2_Object != null)
@@ -112,7 +112,7 @@ public class VFXController : MonoBehaviour {
         }
     }
 
-    void InitializeSmoke_Type1()
+    private void InitializeSmoke_Type1()
     {
         //Only if object to be pooled is assigned
         if (SmokeType1_Object != null)
@@ -137,7 +137,8 @@ public class VFXController : MonoBehaviour {
     /*************************************************
         Spawning Functions
    *************************************************/
-    GameObject SpawnSpark_Type1(Vector3 position, Quaternion rotation)
+
+    private GameObject SpawnSpark_Type1(Vector3 position, Quaternion rotation)
     {
         //Getting the first non active game object in this pool
         for (int i = 0; i < SparkType1_Pool.Count; i++)
@@ -178,11 +179,12 @@ public class VFXController : MonoBehaviour {
             }
         }
 
-        //If it reaches here, grow rate is 0 and 
+        //If it reaches here, grow rate is 0 and
         //all elements in the list is already in use
         return null;
     }
-    GameObject SpawnSpark_Type2(Vector3 position, Quaternion rotation)
+
+    private GameObject SpawnSpark_Type2(Vector3 position, Quaternion rotation)
     {
         //Getting the first non active game object in this pool
         for (int i = 0; i < SparkType2_Pool.Count; i++)
@@ -223,12 +225,12 @@ public class VFXController : MonoBehaviour {
             }
         }
 
-        //If it reaches here, grow rate is 0 and 
+        //If it reaches here, grow rate is 0 and
         //all elements in the list is already in use
         return null;
     }
 
-    GameObject SpawnSmoke_Type1(Vector3 position, Quaternion rotation)
+    private GameObject SpawnSmoke_Type1(Vector3 position, Quaternion rotation)
     {
         //Getting the first non active game object in this pool
         for (int i = 0; i < SmokeType1_Pool.Count; i++)
@@ -269,7 +271,7 @@ public class VFXController : MonoBehaviour {
             }
         }
 
-        //If it reaches here, grow rate is 0 and 
+        //If it reaches here, grow rate is 0 and
         //all elements in the list is already in use
         return null;
     }

@@ -271,7 +271,7 @@ public class InputHandler : MonoBehaviour
         {
             int rand = Random.Range(1, 3);
 
-            if(rand == 1)
+            if (rand == 1)
             {
                 VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
                 //Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect

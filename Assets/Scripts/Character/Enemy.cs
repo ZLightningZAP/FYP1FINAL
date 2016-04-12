@@ -32,7 +32,6 @@ public class Enemy : Character
         //HealthBar
         //HealthBarUpdate(Health);
 
-
         //When Health drops below 50, start our smoke effect here
         //If Smoke effect is null, shows that this is the first time it has started
         if (health <= 50 && SmokeEffect == null)
@@ -54,10 +53,12 @@ public class Enemy : Character
             Instantiate(ExplosionSpark, transform.position, Quaternion.identity);
 
             //Stop smoke effect if it is active
-            if(SmokeEffect.activeInHierarchy)
+            if (SmokeEffect.activeInHierarchy)
             {
                 SmokeEffect.SetActive(false);
             }
+
+            ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
 
             //Deactivate object
             gameObject.SetActive(false);
