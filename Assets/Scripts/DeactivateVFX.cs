@@ -21,10 +21,11 @@ public class DeactivateVFX : MonoBehaviour {
         //Deactivate the object once its lifetime is up
         if (lifeTimer > lifetime)
         {
-            gameObject.SetActive(false);
-
             //Reset the timer
             lifeTimer = 0.0f;
+
+            //Deactivate
+            gameObject.SetActive(false);
         }
     }
 }
