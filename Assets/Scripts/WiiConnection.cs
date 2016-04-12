@@ -40,10 +40,13 @@ public class WiiConnection : MonoBehaviour
         }
     }
 
+    //Used to connect / disconnect wii
     public void ConnectWii()
     {
+        //If Wiimote is detected
         if (wiimote != null)
         {
+            //Disconnect wii
             WiimoteManager.Cleanup(wiimote);
             wiimote = null;
         }

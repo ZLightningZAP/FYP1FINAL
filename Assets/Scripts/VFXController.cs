@@ -9,11 +9,11 @@ public class VFXController : MonoBehaviour {
     public int PoolSize;    //Starting pool size
     public int GrowRate;    //Rate at which pool will grow when it is full
 
-    public GameObject pooledObject; //Object that will be pooled
+    public GameObject SparkType1_Object; //Object that will be pooled
 
     public GameObject ObjectType2;  //Another type of game object
 
-    List<GameObject> particlePool;   //List containing all the particle effects in the scene
+    List<GameObject> SparkType1_Pool;   //List containing all the particle effects in the scene
 
     public enum VFX_TYPE
     {
@@ -30,59 +30,64 @@ public class VFXController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        //If does not exist
-        if (particlePool == null)
+        //Only if object to be pooled is assigned
+        if (SparkType1_Object != null)
         {
-            //Create new pool
-            particlePool = new List<GameObject>();
-        }
+            //If does not exist
+            if (SparkType1_Pool == null)
+            {
+                //Create new pool
+                SparkType1_Pool = new List<GameObject>();
+            }
 
-        for (int i = 0; i < PoolSize; i++)
-        {
-            GameObject obj = (GameObject)Instantiate(pooledObject);
-            obj.SetActive(false);
-            particlePool.Add(obj);
+            //Creating objects in the pool based on size
+            for (int i = 0; i < PoolSize; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(SparkType1_Object);
+                obj.SetActive(false);
+                SparkType1_Pool.Add(obj);
+            }
         }
 	}
 
     public GameObject SpawnVFX(Vector3 position, Quaternion rotation, VFX_TYPE type)
     {
         //Getting the first non active game object in this pool
-        for (int i = 0; i < particlePool.Count; i++)
+        for (int i = 0; i < SparkType1_Pool.Count; i++)
         {
             //Incase this game object is null, we create one and return it
-            if (particlePool[i] == null)
+            if (SparkType1_Pool[i] == null)
             {
-                GameObject obj = (GameObject)Instantiate(pooledObject);
+                GameObject obj = (GameObject)Instantiate(SparkType1_Object);
 
                 obj.transform.position = position;
                 obj.transform.rotation = rotation;
                 obj.SetActive(true);
-                particlePool[i] = obj;
-                return particlePool[i];
+                SparkType1_Pool[i] = obj;
+                return SparkType1_Pool[i];
             }
             //Reuse when game object is not active
-            if (!particlePool[i].activeInHierarchy)
+            if (!SparkType1_Pool[i].activeInHierarchy)
             {
-                particlePool[i].transform.position = position;
-                particlePool[i].transform.rotation = rotation;
-                particlePool[i].SetActive(true);
-                return particlePool[i];
+                SparkType1_Pool[i].transform.position = position;
+                SparkType1_Pool[i].transform.rotation = rotation;
+                SparkType1_Pool[i].SetActive(true);
+                return SparkType1_Pool[i];
             }
         }
 
         //Increase the size of the list based on the grow rate
         for (int i = 0; i < GrowRate; i++)
         {
-            GameObject obj = (GameObject)Instantiate(pooledObject);
+            GameObject obj = (GameObject)Instantiate(SparkType1_Object);
             obj.SetActive(false);
-            particlePool.Add(obj);
+            SparkType1_Pool.Add(obj);
 
             //When we have finished adding the new elements
             if(i == (GrowRate - 1))
             {
-                particlePool[particlePool.Count - 1].SetActive(true);
-                return particlePool[particlePool.Count - 1];
+                SparkType1_Pool[SparkType1_Pool.Count - 1].SetActive(true);
+                return SparkType1_Pool[SparkType1_Pool.Count - 1];
             }
         }
 

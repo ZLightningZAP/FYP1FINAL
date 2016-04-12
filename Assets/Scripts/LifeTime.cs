@@ -2,9 +2,9 @@
 
 public class LifeTime : MonoBehaviour
 {
-    public float lifetime;
+    public float lifetime;  //Time Allowed to be alive
 
-    private float lifeTimer;
+    private float lifeTimer;    //Used to track elapsed Time
 
     // Use this for initialization
     private void Start()
