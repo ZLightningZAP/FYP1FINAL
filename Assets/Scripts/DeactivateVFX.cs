@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class LifeTime : MonoBehaviour
-{
+public class DeactivateVFX : MonoBehaviour {
+
     public float lifetime;
 
     private float lifeTimer;
@@ -17,10 +18,13 @@ public class LifeTime : MonoBehaviour
     {
         lifeTimer += Time.deltaTime;
 
-        //Destroy it once its lifetime is up
+        //Deactivate the object once its lifetime is up
         if (lifeTimer > lifetime)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+
+            //Reset the timer
+            lifeTimer = 0.0f;
         }
     }
 }

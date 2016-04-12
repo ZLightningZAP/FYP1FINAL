@@ -26,10 +26,11 @@ public class InputHandler : MonoBehaviour
     private int scoreKey;
     private Animator Flash;
     private int randomnumber;
+    public float ReloadTime;
+
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
     public float SpreadIncreaseRate; //Rate of increasing bullet spread
-    public float ReloadTime;
 
     private float gap = 0.1f;   //Gap for instantiating effects
     private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
@@ -269,13 +270,16 @@ public class InputHandler : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             int rand = Random.Range(1, 3);
+
             if(rand == 1)
             {
-                Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
+                //Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
             else
             {
-                Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
+                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
+                //Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
 
             print(rand);
