@@ -282,7 +282,6 @@ public class InputHandler : MonoBehaviour
                 //Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
 
-            print(rand);
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }

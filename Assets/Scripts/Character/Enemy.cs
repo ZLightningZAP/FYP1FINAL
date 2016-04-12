@@ -9,12 +9,12 @@ public class Enemy : Character
     public ParticleSystem Debris;
     public ParticleSystem Explosion;
     public ParticleSystem ExplosionSpark;
-    public ParticleSystem SmokeEffect;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
 
-    private bool SmokeEffectStart;
+    //Smoke Effect
+    private GameObject SmokeEffect;
 
     // Use this for initialization
     protected override void Start()
@@ -32,12 +32,17 @@ public class Enemy : Character
         //HealthBar
         //HealthBarUpdate(Health);
 
-        if(health <= 50 && !SmokeEffectStart)
+
+        //When Health drops below 50, start our smoke effect here
+        //If Smoke effect is null, shows that this is the first time it has started
+        if (health <= 50 && SmokeEffect == null)
         {
-            Instantiate(SmokeEffect, transform.position, Quaternion.identity);
-
-
-            SmokeEffectStart = true;
+            SmokeEffect = VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.SMOKE_TYPE1);
+        }
+        //Else check if it is still active
+        else if (health <= 50 && !SmokeEffect.activeInHierarchy)
+        {
+            SmokeEffect = VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.SMOKE_TYPE1);
         }
 
         //If enemy has 0 health, active will be set to false
@@ -47,6 +52,12 @@ public class Enemy : Character
             Instantiate(Debris, transform.position, Quaternion.identity);
             Instantiate(Explosion, transform.position, Quaternion.identity);
             Instantiate(ExplosionSpark, transform.position, Quaternion.identity);
+
+            //Stop smoke effect if it is active
+            if(SmokeEffect.activeInHierarchy)
+            {
+                SmokeEffect.SetActive(false);
+            }
 
             //Deactivate object
             gameObject.SetActive(false);
