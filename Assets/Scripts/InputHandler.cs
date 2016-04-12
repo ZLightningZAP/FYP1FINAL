@@ -328,6 +328,7 @@ public class InputHandler : MonoBehaviour
 
     public void ClickedYES()
     {
+        ScoreManager.ResetCurrentScore();
         Time.timeScale = 1;
         fade.FadeMe();
         goingbacktomainmenu = false;
