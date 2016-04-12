@@ -28,8 +28,6 @@ public class OverHeating : MonoBehaviour
     //Update the heating bar
     public void OverheatbarUpdate()
     {
-        //Debug.Log(currentHeat);
-
         //Increase the heating guage
         currentHeat += HeatPerShot;
 
@@ -55,8 +53,6 @@ public class OverHeating : MonoBehaviour
     // Update the cooldown on the overheating system
     public void CoolDownHeating()
     {
-        //Debug.Log(currentHeat);
-
         //Cooldown will only start every 0.5 seconds
         cooldowntimer += Time.deltaTime;
 
@@ -66,6 +62,8 @@ public class OverHeating : MonoBehaviour
             number -= 0.05f;
             cooldowntimer = 0;
         }
+
+        //Smoothen down cooldown
         if (number != currentHeat)
         {
             currentHeat -= 0.01f;
