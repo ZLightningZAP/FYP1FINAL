@@ -7,6 +7,7 @@ public class OverHeating : MonoBehaviour
     private bool overheated = false;
     private float currentHeat = 0;
     private float cooldowntimer;
+    private float number;
 
     public float CooldownTimerCountdown = 1.0f;
     public float ContinueShooting = 0.75f;
@@ -47,6 +48,8 @@ public class OverHeating : MonoBehaviour
         {
             overheated = true;
         }
+
+        number = currentHeat;
     }
 
     // Update the cooldown on the overheating system
@@ -60,8 +63,12 @@ public class OverHeating : MonoBehaviour
         //Check if the current time is more than x seconds
         if (cooldowntimer >= CooldownTimerCountdown)
         {
-            currentHeat -= 0.05f;
+            number -= 0.05f;
             cooldowntimer = 0;
+        }
+        if (number != currentHeat)
+        {
+            currentHeat -= 0.01f;
         }
 
         //Clamps the current heat so that it doesnt go crazy
