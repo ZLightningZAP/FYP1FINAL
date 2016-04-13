@@ -48,9 +48,9 @@ public class Enemy : Character
         if (health == 0)
         {
             //Creating Explosion Effect
-            Instantiate(Debris, transform.position, Quaternion.identity);
-            Instantiate(Explosion, transform.position, Quaternion.identity);
-            Instantiate(ExplosionSpark, transform.position, Quaternion.identity);
+            VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.DEBRIS);
+            VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.EXPLOSION_TYPE1);
+            VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.EXPLOSIONSPARK_TYPE1);
 
             //Stop smoke effect if it is active
             if (SmokeEffect.activeInHierarchy)
