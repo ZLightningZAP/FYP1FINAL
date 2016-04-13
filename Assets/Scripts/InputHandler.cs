@@ -300,8 +300,10 @@ public class InputHandler : MonoBehaviour
         DeadPanel.SetActive(true);
         NewHighscorePanel.SetActive(true);
 
-        scoreKey = System.Int32.Parse(Scoreinput.text);
         nameKey = Nameinput.text;
+        int result;
+        System.Int32.TryParse(Scoreinput.text, out result);
+        scoreKey = result;
     }
 
     public void HighscorePanelYES()
