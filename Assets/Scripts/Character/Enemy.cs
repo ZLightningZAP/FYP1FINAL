@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : Character
@@ -9,6 +10,9 @@ public class Enemy : Character
     public ParticleSystem Debris;
     public ParticleSystem Explosion;
     public ParticleSystem ExplosionSpark;
+    public GameObject Waypoint;
+
+    public float MovementSpeed = 10f;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -16,11 +20,15 @@ public class Enemy : Character
     //Smoke Effect
     private GameObject SmokeEffect;
 
+    private float Gap;
+
     // Use this for initialization
     protected override void Start()
     {
         // Base Start
         base.Start();
+        Gap = 0.01f;
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,6 +40,31 @@ public class Enemy : Character
         //HealthBar
         //HealthBarUpdate(Health);
 
+        Dead();
+        Move();
+    }
+
+    public void HealthBarUpdate(float health)
+    {
+        // Calculate the fill amount of the health bar
+        HealthFillAmount = health / MaxHealth;
+        healthBar.fillAmount = HealthFillAmount;
+
+        // If the health amount drop below 30%, the color of the healthbar will change to red
+        if (healthBar.fillAmount <= 0.3)
+        {
+            healthBar.color = Color.red;
+        }
+
+        // If the health amount drop below 70%, the color of the healthbar will change to yellow
+        else if (healthBar.fillAmount <= 0.7)
+        {
+            healthBar.color = Color.yellow;
+        }
+    }
+
+    private void Dead()
+    {
         //When Health drops below 50, start our smoke effect here
         //If Smoke effect is null, shows that this is the first time it has started
         if (health <= 50 && SmokeEffect == null)
@@ -65,22 +98,19 @@ public class Enemy : Character
         }
     }
 
-    public void HealthBarUpdate(float health)
+    private void Move()
     {
-        // Calculate the fill amount of the health bar
-        HealthFillAmount = health / MaxHealth;
-        healthBar.fillAmount = HealthFillAmount;
-
-        // If the health amount drop below 30%, the color of the healthbar will change to red
-        if (healthBar.fillAmount <= 0.3)
+        if (Waypoint != null)
         {
-            healthBar.color = Color.red;
+            if (Vector3.Distance(Waypoint.transform.position, transform.position) > Gap)
+            {
+                //Go towards the next position
+                transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
+            }
         }
-
-        // If the health amount drop below 70%, the color of the healthbar will change to yellow
-        else if (healthBar.fillAmount <= 0.7)
+        else
         {
-            healthBar.color = Color.yellow;
+            return;
         }
     }
 }
