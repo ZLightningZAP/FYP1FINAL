@@ -20,30 +20,26 @@ public class InputHandler : MonoBehaviour
     public GameObject NewHighscorePanel;
     public InputField Nameinput;
     public InputField Scoreinput;
+    public float ReloadTime;
+    public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
+    public float FireRate;  //Rate of Fire
+    public float SpreadIncreaseRate; //Rate of increasing bullet spread
+    public float DamageOfBullet = 10;
 
     private string nameKey;
     private int scoreKey;
     private Animator Flash;
     private int randomnumber;
-    public float ReloadTime;
-
-    public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
-    public float FireRate;  //Rate of Fire
-    public float SpreadIncreaseRate; //Rate of increasing bullet spread
-
     private float gap = 0.1f;   //Gap for instantiating effects
     private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
     private float currentBulletSpread;  //Current Range of Bullet Spread
     private float fireTimer = 0.0f; //Use to keep track of time before last fire
-
     private float reloadtimetracker;
-
+    private int result;
     private bool goingbacktomainmenu = false;
     private bool dead = false;
     private bool highscore = false;
     private bool highscorepanelpressed = false;
-
-    public float DamageOfBullet = 10;
 
     private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
@@ -301,7 +297,6 @@ public class InputHandler : MonoBehaviour
         NewHighscorePanel.SetActive(true);
 
         nameKey = Nameinput.text;
-        int result;
         System.Int32.TryParse(Scoreinput.text, out result);
         scoreKey = result;
     }

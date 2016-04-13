@@ -9,6 +9,7 @@ public class TextManager : MonoBehaviour
     public TextAsset textfile;
 
     private StreamWriter writer;
+    private int result;
     private static List<string> linesInFile = new List<string>();
     public static List<string> Names = new List<string>();
     public static List<int> Score = new List<int>();
@@ -44,7 +45,6 @@ public class TextManager : MonoBehaviour
 
         for (int i = 1; i < linesInFile.Count; i += 2)
         {
-            int result;
             Int32.TryParse(linesInFile[i], out result);
             Score.Add(result);
         }
