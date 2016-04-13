@@ -70,7 +70,9 @@ public class WiiConnection : MonoBehaviour
                 }
 
                 //Setup IR Camera
-                wiimote.SetupIRCamera(IRDataType.BASIC);
+                bool IRSetUp = wiimote.SetupIRCamera(IRDataType.BASIC);
+
+                print(IRSetUp);
             }
         }
     }
