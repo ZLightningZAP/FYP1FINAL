@@ -9,10 +9,10 @@ public class TextManager : MonoBehaviour
     public TextAsset textfile;
 
     private StreamWriter writer;
-    private List<string> linesInFile = new List<string>();
-    public List<string> Names = new List<string>();
-    public List<int> Score = new List<int>();
-    private bool added = false;
+    private static List<string> linesInFile = new List<string>();
+    public static List<string> Names = new List<string>();
+    public static List<int> Score = new List<int>();
+    private static bool added = false;
 
     //Use this for initialization
     private void Start()
@@ -29,6 +29,12 @@ public class TextManager : MonoBehaviour
     //Read the text file
     private void Read()
     {
+        StreamReader reader = new StreamReader(File.OpenRead("Assets/Textures/Text File/Highscore.txt"));
+        while (!reader.EndOfStream)
+        {
+            linesInFile.Add(reader.ReadLine());
+        }
+
         linesInFile = textfile.text.Split(' ', '\n').ToList();
 
         for (int i = 0; i < linesInFile.Count; i += 2)
@@ -48,7 +54,7 @@ public class TextManager : MonoBehaviour
     //HIGHEST SCORE IS IN THE FRONT OF THE LIST
     //LIST STARTS FROM 0
     //NAME <= 5 CHARACTERS
-    public void Write(string name, int score)
+    public static void Write(string name, int score)
     {
         added = false;
 
@@ -81,7 +87,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
@@ -118,7 +124,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)

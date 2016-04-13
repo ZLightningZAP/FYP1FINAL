@@ -16,7 +16,6 @@ public class InputHandler : MonoBehaviour
     public GameObject canvas;
     public GameObject DeadPanel;
     public Player player;
-    public TextManager textmanager;
     public List<GameObject> firingimages = new List<GameObject>();
     public GameObject NewHighscorePanel;
     public InputField Nameinput;
@@ -307,7 +306,7 @@ public class InputHandler : MonoBehaviour
 
     public void HighscorePanelYES()
     {
-        textmanager.Write(nameKey, scoreKey);
+        TextManager.Write(nameKey, scoreKey);
         highscorepanelpressed = false;
         NewHighscorePanel.SetActive(false);
     }
