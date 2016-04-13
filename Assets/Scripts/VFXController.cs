@@ -115,6 +115,7 @@ public class VFXController : MonoBehaviour
             }
         }
     }
+
     private void InitializeSpark_Type2()
     {
         //Only if object to be pooled is assigned
@@ -180,6 +181,7 @@ public class VFXController : MonoBehaviour
             }
         }
     }
+
     private void InitializeExplosion_Type1()
     {
         //Only if object to be pooled is assigned
@@ -201,6 +203,7 @@ public class VFXController : MonoBehaviour
             }
         }
     }
+
     private void InitializeExplosionSpark_Type1()
     {
         //Only if object to be pooled is assigned
