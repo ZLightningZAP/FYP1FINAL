@@ -8,27 +8,49 @@ public class OverHeating : MonoBehaviour
     private float currentHeat = 0;
     private float cooldowntimer;
     private float number;
+
+    //Variables to control blinking of the bar
     private float transition;
+
     private bool gone = false;
+    private bool blinking = false;
+
+    //variables to control glowing of the bar
+    private float transitionGlow;
+
+    private bool goneGlow = false;
+    private bool glowing = false;
 
     public float CooldownTimerCountdown = 1.0f;
     public float ContinueShooting = 0.75f;
     public float StartToBlink = 0.6f;
     public float HeatPerShot = 0.005f;
-    public float BlinkingSpeed = 0.5f;
+    public float BlinkingSpeed = 0.25f;
     public Image overheatBar;
     public RawImage overheatBlinkingBar;
+    public RawImage overheatGlow;
+
+    //public RawImage overheatGlow;
     public bool overHeated { get { return overheated; } set { overheated = value; } }
 
     // Use this for initialization
     private void Start()
     {
         overheatBlinkingBar.enabled = false;
+        overheatGlow.enabled = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (blinking == true)
+        {
+            Blinking();
+        }
+        if (glowing == true)
+        {
+            Glowing();
+        }
     }
 
     //Update the heating bar
@@ -49,7 +71,8 @@ public class OverHeating : MonoBehaviour
 
         if (currentHeat >= StartToBlink)
         {
-            Blinking();
+            blinking = true;
+            glowing = true;
         }
 
         //Check if the guage is full , you cannot fire anymore
@@ -90,6 +113,14 @@ public class OverHeating : MonoBehaviour
             overheatBar.fillAmount = currentHeat;
         }
 
+        if (currentHeat <= StartToBlink)
+        {
+            blinking = false;
+            glowing = false;
+            overheatBlinkingBar.enabled = false;
+            overheatGlow.enabled = false;
+        }
+
         //If the heating bar is less than 75%, u can continue firing
         if (overheated == true && currentHeat <= ContinueShooting)
         {
@@ -110,9 +141,28 @@ public class OverHeating : MonoBehaviour
         }
         else if (gone == true && transition >= BlinkingSpeed)
         {
-            overheatBlinkingBar.CrossFadeAlpha(1.0f, BlinkingSpeed, false);
+            overheatBlinkingBar.CrossFadeAlpha(0.5f, BlinkingSpeed, false);
             gone = false;
             transition = 0;
+        }
+    }
+
+    private void Glowing()
+    {
+        //Add up the time for the overheat blinking effect
+        transitionGlow += Time.deltaTime;
+        overheatGlow.enabled = true;
+        if (goneGlow == false && transitionGlow >= BlinkingSpeed)
+        {
+            overheatGlow.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
+            goneGlow = true;
+            transitionGlow = 0;
+        }
+        else if (goneGlow == true && transitionGlow >= BlinkingSpeed)
+        {
+            overheatGlow.CrossFadeAlpha(1f, BlinkingSpeed, false);
+            goneGlow = false;
+            transitionGlow = 0;
         }
     }
 }

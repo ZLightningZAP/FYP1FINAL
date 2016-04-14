@@ -287,7 +287,7 @@ public class InputHandler : MonoBehaviour
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
 
             //If it has a rigidbody
-            if(hit.rigidbody != null)
+            if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(((hit.point + hit.normal) - camera.transform.position).normalized * BulletForce);
             }

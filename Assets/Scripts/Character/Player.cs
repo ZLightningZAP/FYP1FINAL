@@ -6,10 +6,8 @@ public class Player : Character
     //Healthbar Image
     public Image healthBar;
 
-    ////Healthbar Text
-    //public Text healthtext;
-
     public RawImage BloodImage;
+    public RawImage healthGlow;
     public float transitionTime = 0.5f;
 
     //Getter and setter for score
@@ -18,6 +16,10 @@ public class Player : Character
     private int Score;
     private bool gone = false;
     private float transition;
+
+    public float BlinkingSpeed = 0.2f;
+    private bool Blink = false;
+    private float blinktransition;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -29,6 +31,7 @@ public class Player : Character
         base.Start();
         Score = 0;
         BloodImage.enabled = false;
+        healthGlow.enabled = false;
     }
 
     // Update is called once per frame
@@ -37,15 +40,13 @@ public class Player : Character
         // Base Update
         base.Update();
 
-        //Show the amount of health in text
-        //healthtext.text = health.ToString("F0");
-
         //HealthBar
         HealthBarUpdate(Health);
 
         if (health <= 40)
         {
             BloodEffect();
+            Blinking();
         }
     }
 
@@ -65,6 +66,25 @@ public class Player : Character
             BloodImage.CrossFadeAlpha(1.0f, transitionTime, false);
             gone = false;
             transition = 0;
+        }
+    }
+
+    private void Blinking()
+    {
+        blinktransition += Time.deltaTime;
+        healthGlow.enabled = true;
+
+        if (Blink == false && blinktransition >= BlinkingSpeed)
+        {
+            healthGlow.CrossFadeAlpha(0.0f, transitionTime, false);
+            Blink = true;
+            blinktransition = 0;
+        }
+        else if (Blink == true && blinktransition >= BlinkingSpeed)
+        {
+            healthGlow.CrossFadeAlpha(1.0f, transitionTime, false);
+            Blink = false;
+            blinktransition = 0;
         }
     }
 
