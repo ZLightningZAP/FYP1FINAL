@@ -6,9 +6,6 @@ public class Enemy : Character
     //Healthbar Image
     public Image healthBar;
 
-    public ParticleSystem Debris;
-    public ParticleSystem Explosion;
-    public ParticleSystem ExplosionSpark;
     public GameObject Waypoint;
 
     public float MovementSpeed = 10f;

@@ -15,7 +15,6 @@ public class AmmoSystem : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        BulletPerClip = 100;
         Bullet = BulletPerClip;
     }
 
