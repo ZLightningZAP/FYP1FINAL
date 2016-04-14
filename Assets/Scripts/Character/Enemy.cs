@@ -24,7 +24,7 @@ public class Enemy : Character
         // Base Start
         base.Start();
         Gap = 0.01f;
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
