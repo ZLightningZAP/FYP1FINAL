@@ -289,7 +289,7 @@ public class InputHandler : MonoBehaviour
             //If it has a rigidbody
             if(hit.rigidbody != null)
             {
-                hit.rigidbody.AddForce((hit.point - camera.transform.position) * BulletForce);
+                hit.rigidbody.AddForce(((hit.point + hit.normal) - camera.transform.position).normalized * BulletForce);
             }
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
