@@ -69,7 +69,10 @@ public class InputHandler : MonoBehaviour
 
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
-        wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
+        if (WiiController != null)
+        {
+            wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
+        }
     }
 
     // Update is called once per frame
@@ -279,7 +282,6 @@ public class InputHandler : MonoBehaviour
             else
             {
                 VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
-                //Instantiate(OnHitEffect2, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
 
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
