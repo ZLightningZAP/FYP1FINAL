@@ -8,16 +8,22 @@ public class OverHeating : MonoBehaviour
     private float currentHeat = 0;
     private float cooldowntimer;
     private float number;
+    private float transition;
+    private bool gone = false;
 
     public float CooldownTimerCountdown = 1.0f;
     public float ContinueShooting = 0.75f;
+    public float StartToBlink = 0.6f;
     public float HeatPerShot = 0.005f;
+    public float BlinkingSpeed = 0.5f;
     public Image overheatBar;
+    public RawImage overheatBlinkingBar;
     public bool overHeated { get { return overheated; } set { overheated = value; } }
 
     // Use this for initialization
     private void Start()
     {
+        overheatBlinkingBar.enabled = false;
     }
 
     // Update is called once per frame
@@ -39,6 +45,11 @@ public class OverHeating : MonoBehaviour
         if (overheatBar != null)
         {
             overheatBar.fillAmount = currentHeat;
+        }
+
+        if (currentHeat >= StartToBlink)
+        {
+            Blinking();
         }
 
         //Check if the guage is full , you cannot fire anymore
@@ -83,6 +94,25 @@ public class OverHeating : MonoBehaviour
         if (overheated == true && currentHeat <= ContinueShooting)
         {
             overheated = false;
+        }
+    }
+
+    private void Blinking()
+    {
+        //Add up the time for the overheat blinking effect
+        transition += Time.deltaTime;
+        overheatBlinkingBar.enabled = true;
+        if (gone == false && transition >= BlinkingSpeed)
+        {
+            overheatBlinkingBar.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
+            gone = true;
+            transition = 0;
+        }
+        else if (gone == true && transition >= BlinkingSpeed)
+        {
+            overheatBlinkingBar.CrossFadeAlpha(1.0f, BlinkingSpeed, false);
+            gone = false;
+            transition = 0;
         }
     }
 }

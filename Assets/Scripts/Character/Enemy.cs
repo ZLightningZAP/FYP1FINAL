@@ -7,7 +7,6 @@ public class Enemy : Character
     public Image healthBar;
 
     public GameObject Waypoint;
-
     public float MovementSpeed = 10f;
 
     //Fill amount for the health bar
@@ -17,6 +16,8 @@ public class Enemy : Character
     private GameObject SmokeEffect;
 
     private float Gap;
+    private ShootingBarrel shootingBarrel;
+    private Camera camera;
 
     // Use this for initialization
     protected override void Start()
@@ -24,6 +25,8 @@ public class Enemy : Character
         // Base Start
         base.Start();
         Gap = 0.01f;
+        shootingBarrel = GetComponentInChildren<ShootingBarrel>();
+        camera = Camera.main;
         //gameObject.SetActive(false);
     }
 
@@ -38,6 +41,7 @@ public class Enemy : Character
 
         Dead();
         Move();
+        Shooting();
     }
 
     public void HealthBarUpdate(float health)
@@ -108,5 +112,11 @@ public class Enemy : Character
         {
             return;
         }
+    }
+
+    private void Shooting()
+    {
+        // The shooting barrel will always rotate to look at the camera
+        shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
     }
 }
