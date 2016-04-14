@@ -22,4 +22,9 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("IronFist");
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }
