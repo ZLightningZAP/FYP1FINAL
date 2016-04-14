@@ -8,10 +8,12 @@ public class InputHandler : MonoBehaviour
     public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
     public ParticleSystem OnHitEffect2; //Different type
+    public Image Crosshair; //Crosshair image
+
     public OverHeating overheat;
     public AmmoSystem ammosystem;
     public GameObject returnPanel;
-    public Image Crosshair; //Crosshair image
+
     public Fade fade;
     public GameObject canvas;
     public GameObject DeadPanel;
@@ -21,19 +23,22 @@ public class InputHandler : MonoBehaviour
     public InputField Nameinput;
     public InputField Scoreinput;
     public float ReloadTime;
+    public float DamageOfBullet = 10;
+
     public float MaxBulletSpreadRange; //Maximum Range of Bullet Spread
     public float FireRate;  //Rate of Fire
     public float SpreadIncreaseRate; //Rate of increasing bullet spread
-    public float DamageOfBullet = 10;
+    public float BulletForce;   //Force to be applied when bullet hits something
+
+    private float gap = 0.1f;   //Gap for instantiating effects
+    private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
+    private float currentBulletSpread;  //Current Range of Bullet Spread
+    private float fireTimer = 0.0f; //Use to keep track of time before last fire
 
     private string nameKey;
     private int scoreKey;
     private Animator Flash;
     private int randomnumber;
-    private float gap = 0.1f;   //Gap for instantiating effects
-    private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
-    private float currentBulletSpread;  //Current Range of Bullet Spread
-    private float fireTimer = 0.0f; //Use to keep track of time before last fire
     private float reloadtimetracker;
     private int result;
     private bool goingbacktomainmenu = false;
@@ -278,6 +283,12 @@ public class InputHandler : MonoBehaviour
             }
 
             Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
+
+            //If it has a rigidbody
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce((hit.point - camera.transform.position) * BulletForce);
+            }
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
 
