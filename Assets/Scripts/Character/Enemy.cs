@@ -11,6 +11,8 @@ public class Enemy : Character
     public float MovementSpeed = 10f;
     public GameObject Cube1;
     public GameObject Cube2;
+    public float Timetoshoot = 1f;
+    public float Damage = 10;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -20,11 +22,12 @@ public class Enemy : Character
 
     private float Gap;
     private ShootingBarrel shootingBarrel;
-    private Camera camera;
     private int randomInt;
     private bool assigned = false;
     private bool visible;
-    private bool trulyVisible = false;
+    public bool trulyVisible;
+    private float timer;
+    private bool shootyet = false;
 
     // Use this for initialization
     protected override void Start()
@@ -33,7 +36,7 @@ public class Enemy : Character
         base.Start();
         Gap = 0.01f;
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
-        camera = Camera.main;
+        trulyVisible = false;
         //gameObject.SetActive(false);
     }
 
@@ -48,6 +51,7 @@ public class Enemy : Character
 
         Dead();
         Move();
+        Looking();
         Shooting();
     }
 
@@ -121,7 +125,7 @@ public class Enemy : Character
         }
     }
 
-    private void Shooting()
+    private void Looking()
     {
         //Assign a random number
         if (assigned == false)
@@ -164,11 +168,33 @@ public class Enemy : Character
                 //If the ray hit and object name is the same
                 if (hit.collider.gameObject.name == gameObject.name)
                 {
-                    Debug.Log(gameObject.name + " CAN BE SEEN!");
+                    //Debug.Log(gameObject.name + " CAN BE SEEN!");
                     //It is not blocked by any object and can be seen
                     trulyVisible = true;
                 }
             }
+            else
+            {
+                trulyVisible = false;
+            }
+        }
+        else
+        {
+            trulyVisible = false;
+        }
+    }
+
+    public void Shooting()
+    {
+        shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+
+        timer += Time.deltaTime;
+
+        if (timer >= Timetoshoot)
+        {
+            FindObjectOfType<Player>().Injure(Damage);
+            print("Damaged by " + gameObject.name);
+            timer = 0;
         }
     }
 }

@@ -33,6 +33,7 @@ public class CameraMovement : MonoBehaviour
     public float decreaseFactor = 1.0f;
     private Vector3 OriginalPos;
     private Vector3 OriginalRot;
+    private bool Checked = false;
 
     // Use this for initialization
     private void Start()
@@ -65,6 +66,8 @@ public class CameraMovement : MonoBehaviour
             {
                 //Go towards the next position
                 CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
+                Checked = false;
+                EnemyManager.CameraMoved();
             }
             else
             {
@@ -81,6 +84,13 @@ public class CameraMovement : MonoBehaviour
                         waitTimer = 0.0f;
                         print("Going to next point!");
                     }
+                }
+
+                if (Checked == false)
+                {
+                    //Check how many enemy on the screen when the camera stops moving
+                    EnemyManager.NumberOnScreen();
+                    Checked = true;
                 }
             }
 
