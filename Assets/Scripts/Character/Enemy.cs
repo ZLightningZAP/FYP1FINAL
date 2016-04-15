@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : Character
@@ -8,6 +9,8 @@ public class Enemy : Character
 
     public GameObject Waypoint;
     public float MovementSpeed = 10f;
+    public GameObject Cube1;
+    public GameObject Cube2;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -18,6 +21,8 @@ public class Enemy : Character
     private float Gap;
     private ShootingBarrel shootingBarrel;
     private Camera camera;
+    private int randomInt;
+    private bool assigned = false;
 
     // Use this for initialization
     protected override void Start()
@@ -116,7 +121,53 @@ public class Enemy : Character
 
     private void Shooting()
     {
-        // The shooting barrel will always rotate to look at the camera
-        shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+        //Assign a random number
+        if (assigned == false)
+        {
+            randomInt = Random.Range(0, 3);
+            assigned = true;
+        }
+
+        //Assign the random number for the enemy to look at the object
+        if (randomInt == 0 && assigned == true)
+        {
+            // The shooting barrel will always rotate to look at the camera
+            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+            //print("Looking at camera!");
+        }
+        else if (randomInt == 1 && assigned == true)
+        {
+            // The shooting barrel will always rotate to look at Looking Point 1
+            shootingBarrel.gameObject.transform.LookAt(Cube1.transform.position);
+            //print("Looking at Looking Point 1!");
+        }
+        else if (randomInt == 2 && assigned == true)
+        {
+            // The shooting barrel will always rotate to look at Looking Point 2
+            shootingBarrel.gameObject.transform.LookAt(Cube1.transform.position);
+            //print("Looking at Looking Point 2!");
+        }
+
+        //Check if the object can be seen by the camera
+        bool visible = GetComponentInChildren<Renderer>().isVisible;
+
+        //Debug if the object can be seen
+        if (visible == true)
+        {
+            //It can be seen by the camera
+            print(gameObject.transform.name + " Can be seen");
+
+            Ray ray = Camera.main.ViewportPointToRay(Camera.main.WorldToViewportPoint(gameObject.transform.position));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+            }
+        }
+        else
+        {
+            //Dont check anything
+            print(gameObject.transform.name + " Cannot be seen");
+        }
     }
 }
