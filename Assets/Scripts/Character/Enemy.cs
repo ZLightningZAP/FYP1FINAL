@@ -23,6 +23,8 @@ public class Enemy : Character
     private Camera camera;
     private int randomInt;
     private bool assigned = false;
+    private bool visible;
+    private bool trulyVisible = false;
 
     // Use this for initialization
     protected override void Start()
@@ -149,25 +151,24 @@ public class Enemy : Character
         }
 
         //Check if the object can be seen by the camera
-        bool visible = GetComponentInChildren<Renderer>().isVisible;
+        visible = GetComponentInChildren<Renderer>().isVisible;
 
         //Debug if the object can be seen
         if (visible == true)
         {
-            //It can be seen by the camera
-            print(gameObject.transform.name + " Can be seen");
-
+            //Send a ray from the camera to the object
             Ray ray = Camera.main.ViewportPointToRay(Camera.main.WorldToViewportPoint(gameObject.transform.position));
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.collider.gameObject.name);
+                //If the ray hit and object name is the same
+                if (hit.collider.gameObject.name == gameObject.name)
+                {
+                    Debug.Log(gameObject.name + " CAN BE SEEN!");
+                    //It is not blocked by any object and can be seen
+                    trulyVisible = true;
+                }
             }
-        }
-        else
-        {
-            //Dont check anything
-            print(gameObject.transform.name + " Cannot be seen");
         }
     }
 }
