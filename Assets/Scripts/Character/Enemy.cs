@@ -14,6 +14,10 @@ public class Enemy : Character
     public float Timetoshoot = 1f;
     public float Damage = 10;
 
+    public GameObject aiming;
+    private Animator anim;
+    public GameObject aimingHand;
+
     //Fill amount for the health bar
     private float HealthFillAmount;
 
@@ -36,6 +40,11 @@ public class Enemy : Character
         Gap = 0.01f;
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
         trulyVisible = false;
+
+        anim = aiming.GetComponent<Animator>();
+        anim.enabled = false;
+        aiming.SetActive(false);
+        aimingHand.SetActive(false);
         //gameObject.SetActive(false);
     }
 
@@ -107,6 +116,10 @@ public class Enemy : Character
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
 
             EnemyManager.updatedCount -= 1;
+
+            anim.enabled = false;
+            aiming.SetActive(false);
+            aimingHand.SetActive(false);
 
             //Deactivate object
             gameObject.SetActive(false);
@@ -190,6 +203,9 @@ public class Enemy : Character
 
     public void Shooting()
     {
+        anim.enabled = true;
+        aiming.SetActive(true);
+        aimingHand.SetActive(true);
         shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
         FindObjectOfType<Player>().Injure(Damage);
         print("Damaged by " + gameObject.name);
