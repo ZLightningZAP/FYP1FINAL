@@ -30,7 +30,8 @@ public class Enemy : Character
     private bool assigned = false;
     private bool visible;
     public bool trulyVisible;
-    private bool shootyet = false;
+    private bool shootingyet = false;
+    private float timer;
 
     // Use this for initialization
     protected override void Start()
@@ -60,7 +61,7 @@ public class Enemy : Character
         Dead();
         Move();
         Looking();
-        if (EnemyManager.shoot == true)
+        if (shootingyet == true)
         {
             Shooting();
         }
@@ -203,12 +204,20 @@ public class Enemy : Character
 
     public void Shooting()
     {
+        shootingyet = true;
         anim.enabled = true;
         aiming.SetActive(true);
         aimingHand.SetActive(true);
-        shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
-        FindObjectOfType<Player>().Injure(Damage);
-        print("Damaged by " + gameObject.name);
-        EnemyManager.shoot = false;
+
+        timer += Time.deltaTime;
+        if (timer >= Timetoshoot)
+        {
+            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+            FindObjectOfType<Player>().Injure(Damage);
+            print("Damaged by " + gameObject.name);
+            EnemyManager.shoot = false;
+            shootingyet = false;
+            timer = 0;
+        }
     }
 }
