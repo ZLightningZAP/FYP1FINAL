@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
         {
             if (shoot == false)
             {
-                CameraMovement.Goingtoshoot = false;
+                return;
             }
             else if (CameraMovement.Goingtoshoot == true)
             {

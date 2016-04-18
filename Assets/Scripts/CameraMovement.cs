@@ -13,7 +13,6 @@ public class CameraMovement : MonoBehaviour
 
     private float WaitTime; //Time to wait before moving to next waypoint
     private float waitTimer;    //Count Timer
-    private float anotherTimer;
 
     //Position
     private Transform CurrentTransform;  //Current Position of Camera
@@ -78,13 +77,11 @@ public class CameraMovement : MonoBehaviour
                 if (Goingtoshoot == true)
                 {
                     Goingtoshoot = false;
-                    anotherTimer = 0;
                 }
             }
             else
             {
                 waitTimer += Time.deltaTime;
-                anotherTimer += Time.deltaTime;
 
                 if (waitTimer > WaitTime)
                 {
@@ -110,11 +107,10 @@ public class CameraMovement : MonoBehaviour
                     Checked = true;
                 }
 
-                if (Goingtoshoot == false && anotherTimer >= WaitBeforeShooting)
+                if (Goingtoshoot == false)
                 {
                     EnemyManager.Shooting();
                     Goingtoshoot = true;
-                    anotherTimer = 0;
                 }
             }
 
