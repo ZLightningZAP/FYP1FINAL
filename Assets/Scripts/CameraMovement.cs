@@ -9,8 +9,11 @@ public class CameraMovement : MonoBehaviour
     public float MovementSpeed;    //Movement Speed of Camera
     public float RotationSpeed;     //Rotation Speed of Camera
 
+    public float WaitBeforeShooting; //Waiting time before the enemy shoots the player
+
     private float WaitTime; //Time to wait before moving to next waypoint
     private float waitTimer;    //Count Timer
+    private float anotherTimer;
 
     //Position
     private Transform CurrentTransform;  //Current Position of Camera
@@ -34,6 +37,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 OriginalPos;
     private Vector3 OriginalRot;
     private bool Checked = false;
+    public static bool Goingtoshoot = false;
 
     // Use this for initialization
     private void Start()
@@ -66,12 +70,21 @@ public class CameraMovement : MonoBehaviour
             {
                 //Go towards the next position
                 CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
-                Checked = false;
-                EnemyManager.CameraMoved();
+                if (Checked == true)
+                {
+                    Checked = false;
+                    EnemyManager.CameraMoved();
+                }
+                if (Goingtoshoot == true)
+                {
+                    Goingtoshoot = false;
+                    anotherTimer = 0;
+                }
             }
             else
             {
                 waitTimer += Time.deltaTime;
+                anotherTimer += Time.deltaTime;
 
                 if (waitTimer > WaitTime)
                 {
@@ -90,7 +103,18 @@ public class CameraMovement : MonoBehaviour
                 {
                     //Check how many enemy on the screen when the camera stops moving
                     EnemyManager.NumberOnScreen();
+                    if (EnemyManager.CanBeSeen.Count == 0)
+                    {
+                        return;
+                    }
                     Checked = true;
+                }
+
+                if (Goingtoshoot == false && anotherTimer >= WaitBeforeShooting)
+                {
+                    EnemyManager.Shooting();
+                    Goingtoshoot = true;
+                    anotherTimer = 0;
                 }
             }
 

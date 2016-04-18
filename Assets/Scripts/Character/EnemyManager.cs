@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static List<Enemy> Enemy = new List<Enemy>();
-    private static List<GameObject> CanBeSeen = new List<GameObject>();
+    public static List<GameObject> CanBeSeen = new List<GameObject>();
     public static int trulyVisibleEnemy;
 
     private static int randomint;
     private static GameObject enemi;
+    public static bool shoot = false;
 
     // Use this for initialization
     private void Start()
@@ -26,7 +27,15 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Shooting();
+        if (shoot == false)
+        {
+            CameraMovement.Goingtoshoot = false;
+        }
+        else if (CameraMovement.Goingtoshoot == true)
+        {
+            Shooting();
+            shoot = true;
+        }
     }
 
     public static void NumberOnScreen()

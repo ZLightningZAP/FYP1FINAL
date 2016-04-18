@@ -26,7 +26,6 @@ public class Enemy : Character
     private bool assigned = false;
     private bool visible;
     public bool trulyVisible;
-    private float timer;
     private bool shootyet = false;
 
     // Use this for initialization
@@ -52,7 +51,10 @@ public class Enemy : Character
         Dead();
         Move();
         Looking();
-        Shooting();
+        if (EnemyManager.shoot == true)
+        {
+            Shooting();
+        }
     }
 
     public void HealthBarUpdate(float health)
@@ -187,14 +189,8 @@ public class Enemy : Character
     public void Shooting()
     {
         shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
-
-        timer += Time.deltaTime;
-
-        if (timer >= Timetoshoot)
-        {
-            FindObjectOfType<Player>().Injure(Damage);
-            print("Damaged by " + gameObject.name);
-            timer = 0;
-        }
+        FindObjectOfType<Player>().Injure(Damage);
+        print("Damaged by " + gameObject.name);
+        EnemyManager.shoot = false;
     }
 }
