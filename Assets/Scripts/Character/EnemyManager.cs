@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     private static int randomint;
     private static GameObject enemi;
     public static bool shoot = false;
+    private static int randomagain = -1;
+    public static int updatedCount;
 
     // Use this for initialization
     private void Start()
@@ -22,19 +24,28 @@ public class EnemyManager : MonoBehaviour
         }
 
         trulyVisibleEnemy = 0;
+        updatedCount = 0;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (shoot == false)
+        if (updatedCount != trulyVisibleEnemy)
         {
-            CameraMovement.Goingtoshoot = false;
+            CameraMoved();
+            NumberOnScreen();
         }
-        else if (CameraMovement.Goingtoshoot == true)
+        else
         {
-            Shooting();
-            shoot = true;
+            if (shoot == false)
+            {
+                CameraMovement.Goingtoshoot = false;
+            }
+            else if (CameraMovement.Goingtoshoot == true)
+            {
+                Shooting();
+                shoot = true;
+            }
         }
     }
 
@@ -44,6 +55,7 @@ public class EnemyManager : MonoBehaviour
         {
             if (e.GetComponent<Enemy>().trulyVisible == true)
             {
+                updatedCount += 1;
                 trulyVisibleEnemy += 1;
                 CanBeSeen.Add(e.gameObject);
             }
@@ -52,6 +64,7 @@ public class EnemyManager : MonoBehaviour
 
     public static void CameraMoved()
     {
+        updatedCount = 0;
         trulyVisibleEnemy = 0;
         CanBeSeen.Clear();
     }
@@ -59,7 +72,12 @@ public class EnemyManager : MonoBehaviour
     public static void Shooting()
     {
         randomint = Random.Range(0, trulyVisibleEnemy);
-        enemi = CanBeSeen[randomint];
-        enemi.GetComponent<Enemy>().Shooting();
+
+        if (randomagain != randomint)
+        {
+            enemi = CanBeSeen[randomint];
+            enemi.GetComponent<Enemy>().Shooting();
+            randomagain = randomint;
+        }
     }
 }

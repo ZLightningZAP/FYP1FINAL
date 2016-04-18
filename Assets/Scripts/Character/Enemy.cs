@@ -106,6 +106,8 @@ public class Enemy : Character
 
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
 
+            EnemyManager.updatedCount -= 1;
+
             //Deactivate object
             gameObject.SetActive(false);
         }
