@@ -63,6 +63,10 @@ public class EnemyMissile : Character
         VFXController.current.SpawnVFX(pos, rot, VFXController.VFX_TYPE.EXPLOSION_TYPE1);
         VFXController.current.SpawnVFX(pos, rot, VFXController.VFX_TYPE.EXPLOSIONSPARK_TYPE1);
 
+        FindObjectOfType<Player>().Injure(Damage);
+
+        print("Damaged by " + gameObject.name);
+
         //Deactivate game object
         gameObject.SetActive(false);
     }
