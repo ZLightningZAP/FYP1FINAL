@@ -15,6 +15,7 @@ public class EnemyMissile : Character
         // Base Start
         base.Start();
 
+        gameObject.SetActive(false);
         //Set Missile's rotation at the start
         transform.rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
     }
