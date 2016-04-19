@@ -5,7 +5,6 @@ using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
 {
-    public GameObject BulletHole;   //Bullet Hole Graphic
     public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
     public ParticleSystem OnHitEffect2; //Different type
     public Image Crosshair; //Crosshair image
@@ -279,8 +278,6 @@ public class InputHandler : MonoBehaviour
             {
                 VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
             }
-
-            Instantiate(BulletHole, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));   //Creating Bullet Hole
 
             //If it has a rigidbody
             if (hit.rigidbody != null)
