@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DroneSpawner : MonoBehaviour
 {
-    public List<Enemy> dronelist = new List<Enemy>();
+    public List<EnemyDrone> dronelist = new List<EnemyDrone>();
 
     public GameObject canvas;
 
