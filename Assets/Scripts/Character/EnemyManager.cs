@@ -66,6 +66,7 @@ public class EnemyManager : MonoBehaviour
     {
         updatedCount = 0;
         trulyVisibleEnemy = 0;
+        randomagain = -1;
         CanBeSeen.Clear();
     }
 
