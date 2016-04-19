@@ -9,6 +9,8 @@ public class CameraMovement : MonoBehaviour
     public float MovementSpeed;    //Movement Speed of Camera
     public float RotationSpeed;     //Rotation Speed of Camera
 
+    public EnemyManager enemiManager;
+
     public float WaitBeforeShooting; //Waiting time before the enemy shoots the player
 
     private float WaitTime; //Time to wait before moving to next waypoint
@@ -72,7 +74,7 @@ public class CameraMovement : MonoBehaviour
                 if (Checked == true)
                 {
                     Checked = false;
-                    EnemyManager.CameraMoved();
+                    enemiManager.CameraMoved();
                 }
                 if (Goingtoshoot == true)
                 {
@@ -99,8 +101,8 @@ public class CameraMovement : MonoBehaviour
                 if (Checked == false)
                 {
                     //Check how many enemy on the screen when the camera stops moving
-                    EnemyManager.NumberOnScreen();
-                    if (EnemyManager.CanBeSeen.Count == 0)
+                    enemiManager.NumberOnScreen();
+                    if (enemiManager.CanBeSeen.Count == 0)
                     {
                         return;
                     }
@@ -109,7 +111,7 @@ public class CameraMovement : MonoBehaviour
 
                 if (Goingtoshoot == false)
                 {
-                    EnemyManager.Shooting();
+                    enemiManager.Shooting();
                     Goingtoshoot = true;
                 }
             }

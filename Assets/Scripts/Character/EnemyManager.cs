@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static List<Enemy> Enemy = new List<Enemy>();
-    public static List<GameObject> CanBeSeen = new List<GameObject>();
+    public List<Enemy> enemies = new List<Enemy>();
+    public List<GameObject> CanBeSeen = new List<GameObject>();
     public static int trulyVisibleEnemy;
 
     private static int randomint;
@@ -20,7 +20,7 @@ public class EnemyManager : MonoBehaviour
         //Add any gameobject that has the enemy script into the list
         foreach (var enemy in FindObjectsOfType(typeof(Enemy)) as Enemy[])
         {
-            Enemy.Add(enemy);
+            enemies.Add(enemy);
         }
 
         trulyVisibleEnemy = 0;
@@ -49,9 +49,9 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public static void NumberOnScreen()
+    public void NumberOnScreen()
     {
-        foreach (Enemy e in Enemy)
+        foreach (Enemy e in enemies)
         {
             if (e.GetComponent<Enemy>().trulyVisible == true)
             {
@@ -62,14 +62,14 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public static void CameraMoved()
+    public void CameraMoved()
     {
         updatedCount = 0;
         trulyVisibleEnemy = 0;
         CanBeSeen.Clear();
     }
 
-    public static void Shooting()
+    public void Shooting()
     {
         randomint = Random.Range(0, trulyVisibleEnemy);
 
