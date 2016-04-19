@@ -54,7 +54,7 @@ public class EnemyMissile : Character
     private void Move()
     {
         //Move towards target position
-        transform.position = Vector3.MoveTowards(transform.position, transform.forward, MovementSpeed * Time.deltaTime);
+        GetComponent<Rigidbody>().velocity = (transform.rotation * Vector3.forward) * MovementSpeed;
 
         transform.Rotate(0, 0, RotationSpeed * Time.deltaTime);
     }
