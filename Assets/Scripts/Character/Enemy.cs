@@ -32,6 +32,7 @@ public class Enemy : Character
     public bool trulyVisible;
     private bool shootingyet = false;
     private float timer;
+    private float angle;
 
     // Use this for initialization
     protected override void Start()
@@ -209,6 +210,9 @@ public class Enemy : Character
         aiming.SetActive(true);
         aimingHand.SetActive(true);
 
+        angle = Mathf.Lerp(0, 360, Time.deltaTime / Timetoshoot);
+        aimingHand.transform.Rotate(new Vector3(0, 0, angle));
+
         timer += Time.deltaTime;
         if (timer >= Timetoshoot)
         {
@@ -218,6 +222,10 @@ public class Enemy : Character
             EnemyManager.shoot = false;
             shootingyet = false;
             timer = 0;
+            angle = 0;
+            anim.enabled = false;
+            aiming.SetActive(false);
+            aimingHand.SetActive(false);
         }
     }
 }
