@@ -7,12 +7,17 @@ public class EnemyMissile : Character
     public float RotationSpeed = 10.0f;   //Rotation Speed of missile while travelling
 
     public float Damage = 10;   //Damage that missile is able to inflict
+    private Animator anim;
 
     // Use this for initialization
     protected override void Start()
     {
         // Base Start
         base.Start();
+
+        //Get the animator component
+        anim = GetComponentInChildren<Animator>();
+        anim.enabled = true;
     }
 
     // Update is called once per frame
@@ -39,12 +44,14 @@ public class EnemyMissile : Character
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.MissileDestroyed);
 
             //Deactivate object
+            anim.enabled = false;
             gameObject.SetActive(false);
         }
     }
 
     private void Move()
     {
+        anim.enabled = true;
         //Move towards target position
         GetComponent<Rigidbody>().velocity = (transform.rotation * Vector3.forward) * MovementSpeed;
 
@@ -68,6 +75,7 @@ public class EnemyMissile : Character
         print("Damaged by " + gameObject.name);
 
         //Deactivate game object
+        anim.enabled = false;
         gameObject.SetActive(false);
     }
 }
