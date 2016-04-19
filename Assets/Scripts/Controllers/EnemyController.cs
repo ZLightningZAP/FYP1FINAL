@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour {
     public int PoolSize;    //Starting pool size
     public int GrowRate;    //Rate at which pool will grow when it is full
 
+    public GameObject Canvas;   //World Canvas
+
     public GameObject EnemyMissile_Object; //Missile Object that will be pooled
 
     private List<GameObject> EnemyMissile_Pool; //List containing all enemy missiles in the scene
@@ -67,6 +69,7 @@ public class EnemyController : MonoBehaviour {
             for (int i = 0; i < PoolSize; i++)
             {
                 GameObject obj = (GameObject)Instantiate(EnemyMissile_Object);
+                obj.transform.SetParent(Canvas.transform);
                 obj.SetActive(false);
                 EnemyMissile_Pool.Add(obj);
             }
