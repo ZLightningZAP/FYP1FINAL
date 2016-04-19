@@ -50,15 +50,11 @@ public class InputHandler : MonoBehaviour
     private Wiimote wiimote;    //Wii mote
     private Vector3 PointerPosition;    //Pointing Position
 
-    private Camera camera;  //Main Camera
-
     // Use this for initialization
     private void Start()
     {
         // Hide mouse cursor
         //Cursor.visible = false;
-
-        camera = Camera.main;
 
         currentBulletSpread = defaultBulletSpread;
 
@@ -265,7 +261,7 @@ public class InputHandler : MonoBehaviour
         FinalPosition.y += Random.Range(-currentBulletSpread, currentBulletSpread);
 
         //Creating Ray based on final calculated position
-        Ray ray = camera.ScreenPointToRay(FinalPosition);
+        Ray ray = Camera.main.ScreenPointToRay(FinalPosition);
 
         RaycastHit hit;
 
@@ -289,7 +285,7 @@ public class InputHandler : MonoBehaviour
             //If it has a rigidbody
             if (hit.rigidbody != null)
             {
-                hit.rigidbody.AddForce(((hit.point + hit.normal) - camera.transform.position).normalized * BulletForce);
+                hit.rigidbody.AddForce(((hit.point + hit.normal) - Camera.main.transform.position).normalized * BulletForce);
             }
             hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
         }
@@ -349,37 +345,5 @@ public class InputHandler : MonoBehaviour
         Time.timeScale = 1;
         returnPanel.SetActive(false);
         goingbacktomainmenu = false;
-    }
-
-    public void ConnectWii()
-    {
-        if (wiimote != null)
-        {
-            WiimoteManager.Cleanup(wiimote);
-            wiimote = null;
-        }
-        else
-        {
-            WiimoteManager.FindWiimotes();  //Find for connected Wii Mote
-
-            //Check if Manager has wii mote connected
-            if (WiimoteManager.HasWiimote())
-            {
-                print("Wiimote Found");
-
-                //Assign our variable to the first
-                wiimote = WiimoteManager.Wiimotes[0];
-
-                if (wiimote != null)
-                {
-                    print("Wiimote Assigned");
-
-                    wiimote.SendPlayerLED(true, false, false, false);
-                }
-
-                //Setup IR Camera
-                wiimote.SetupIRCamera(IRDataType.BASIC);
-            }
-        }
     }
 }
