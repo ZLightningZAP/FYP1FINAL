@@ -16,7 +16,6 @@ public class Enemy : Character
 
     public GameObject aiming;
     private Animator anim;
-    public GameObject aimingHand;
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -46,7 +45,6 @@ public class Enemy : Character
         anim = aiming.GetComponent<Animator>();
         anim.enabled = false;
         aiming.SetActive(false);
-        aimingHand.SetActive(false);
         //gameObject.SetActive(false);
     }
 
@@ -121,7 +119,6 @@ public class Enemy : Character
 
             anim.enabled = false;
             aiming.SetActive(false);
-            aimingHand.SetActive(false);
 
             //Deactivate object
             gameObject.SetActive(false);
@@ -208,10 +205,6 @@ public class Enemy : Character
         shootingyet = true;
         anim.enabled = true;
         aiming.SetActive(true);
-        aimingHand.SetActive(true);
-
-        angle = Mathf.Lerp(0, 360, Time.deltaTime / Timetoshoot);
-        aimingHand.transform.Rotate(new Vector3(0, 0, angle));
 
         timer += Time.deltaTime;
         if (timer >= Timetoshoot)
@@ -223,9 +216,7 @@ public class Enemy : Character
             shootingyet = false;
             timer = 0;
             angle = 0;
-            anim.enabled = false;
             aiming.SetActive(false);
-            aimingHand.SetActive(false);
         }
     }
 }

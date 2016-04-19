@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class EnemyMissile : Character
 {
@@ -17,7 +17,6 @@ public class EnemyMissile : Character
 
         //Set Missile's rotation at the start
         transform.rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
-
     }
 
     // Update is called once per frame
@@ -28,7 +27,6 @@ public class EnemyMissile : Character
 
         //Dead();
         Move();
-
     }
 
     private void Dead()
@@ -42,9 +40,7 @@ public class EnemyMissile : Character
             VFXController.current.SpawnVFX(transform.position, Quaternion.identity, VFXController.VFX_TYPE.EXPLOSIONSPARK_TYPE1);
 
             //Increasing score as destroyed by player
-            ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
-
-            //EnemyManager.updatedCount -= 1;
+            ScoreManager.AddCurrentScore(ScoreManager.ScoreType.MissileDestroyed);
 
             //Deactivate object
             gameObject.SetActive(false);
@@ -59,7 +55,7 @@ public class EnemyMissile : Character
         transform.Rotate(0, 0, RotationSpeed * Time.deltaTime);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         //Getting point of contact (position & rotation based on contactpoint normal)
         ContactPoint contact = collision.contacts[0];
@@ -73,6 +69,5 @@ public class EnemyMissile : Character
 
         //Deactivate game object
         gameObject.SetActive(false);
-
     }
 }
