@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemyDrone : MonoBehaviour
 {
@@ -38,6 +37,6 @@ public class EnemyDrone : MonoBehaviour
         if (timekeeper >= dieTimer)
         {
             gameObject.SetActive(false);
-        } 
+        }
     }
 }

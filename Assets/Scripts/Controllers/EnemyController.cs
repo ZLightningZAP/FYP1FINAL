@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
-public class EnemyController : MonoBehaviour {
-
+public class EnemyController : MonoBehaviour
+{
     public static EnemyController current;
 
     public int PoolSize;    //Starting pool size
@@ -22,20 +21,21 @@ public class EnemyController : MonoBehaviour {
         MAX_ENEMY,
     };
 
-	// Use this for initialization
-	void Start () {
-
+    // Use this for initialization
+    private void Start()
+    {
         InitializeMissilePool();
-	}
+    }
 
     private void Awake()
     {
         current = this;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	}
+
+    // Update is called once per frame
+    private void Update()
+    {
+    }
 
     // Main function that will be called by other scripts to create VFX effects
     public GameObject SpawnEnemy(Vector3 position, Quaternion rotation, ENEMY_TYPE type)
@@ -53,6 +53,7 @@ public class EnemyController : MonoBehaviour {
     /*************************************************
        Initialize Functions
      *************************************************/
+
     private void InitializeMissilePool()
     {
         //Only if object to be pooled is assigned
@@ -79,6 +80,7 @@ public class EnemyController : MonoBehaviour {
     /*************************************************
     Spawning Functions
     *************************************************/
+
     private GameObject SpawnMissile(Vector3 position, Quaternion rotation)
     {
         //Check if pool exists

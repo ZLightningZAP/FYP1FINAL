@@ -339,7 +339,7 @@ public class VFXController : MonoBehaviour
 
     private GameObject SpawnSmoke_Type1(Vector3 position, Quaternion rotation)
     {
-         //Check if pool exists
+        //Check if pool exists
         if (SmokeType1_Pool != null)
         {
             //Getting the first non active game object in this pool
@@ -391,7 +391,7 @@ public class VFXController : MonoBehaviour
 
     private GameObject SpawnDebris(Vector3 position, Quaternion rotation)
     {
-         //Check if pool exists
+        //Check if pool exists
         if (Debris_Pool != null)
         {
             //Getting the first non active game object in this pool
@@ -442,7 +442,7 @@ public class VFXController : MonoBehaviour
 
     private GameObject SpawnExplosion_Type1(Vector3 position, Quaternion rotation)
     {
-         //Check if pool exists
+        //Check if pool exists
         if (ExplosionType1_Pool != null)
         {
             //Getting the first non active game object in this pool
