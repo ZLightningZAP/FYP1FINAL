@@ -3,13 +3,11 @@ using System.Collections;
 
 public class EnemyMissile : Character
 {
-    public float MovementSpeed = 10f;   //Speed at which the missile travels
-
+    public float MovementSpeed = 10.0f;   //Speed at which the missile travels
+    public float RotationSpeed = 10.0f;   //Rotation Speed of missile while travelling
     public GameObject Target;   //Target that missile will travel towards when its active
 
     public float Damage = 10;   //Damage that missile is able to inflict
-
-    private Vector3 TargetPosition; //Missile's target position to hit
 
     // Use this for initialization
     protected override void Start()
@@ -20,7 +18,6 @@ public class EnemyMissile : Character
         //Set Missile's rotation at the start
         transform.rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
 
-        TargetPosition = Target.transform.position;
     }
 
     // Update is called once per frame
@@ -57,7 +54,9 @@ public class EnemyMissile : Character
     private void Move()
     {
         //Move towards target position
-        transform.position = Vector3.MoveTowards(transform.position, TargetPosition, MovementSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, transform.forward, MovementSpeed * Time.deltaTime);
+
+        transform.Rotate(0, 0, RotationSpeed * Time.deltaTime);
     }
 
     void OnCollisionEnter(Collision collision)
