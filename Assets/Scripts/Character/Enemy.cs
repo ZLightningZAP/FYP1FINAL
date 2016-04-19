@@ -22,7 +22,7 @@ public class Enemy : Character
     private float HealthFillAmount;
 
     //Smoke Effect
-    private GameObject SmokeEffect;
+    private GameObject SmokeEffect; //Used to keep track
 
     private float Gap;
     private ShootingBarrel shootingBarrel;
