@@ -5,7 +5,6 @@ public class EnemyMissile : Character
 {
     public float MovementSpeed = 10.0f;   //Speed at which the missile travels
     public float RotationSpeed = 10.0f;   //Rotation Speed of missile while travelling
-    public GameObject Target;   //Target that missile will travel towards when its active
 
     public float Damage = 10;   //Damage that missile is able to inflict
 
@@ -14,10 +13,6 @@ public class EnemyMissile : Character
     {
         // Base Start
         base.Start();
-
-        gameObject.SetActive(false);
-        //Set Missile's rotation at the start
-        transform.rotation = Quaternion.LookRotation(Target.transform.position - transform.position);
     }
 
     // Update is called once per frame
@@ -26,7 +21,7 @@ public class EnemyMissile : Character
         // Base Update
         base.Update();
 
-        //Dead();
+        Dead();
         Move();
     }
 

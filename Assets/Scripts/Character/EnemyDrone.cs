@@ -8,10 +8,11 @@ public class EnemyDrone : MonoBehaviour
 
     public float MissileDelay;
     public float dieTimer;
-    public GameObject Missile;
 
+    public GameObject TargetToHit;
+
+    private GameObject Missile;
     private bool spawned = false;
-
     private float timekeeper;
 
     // Use this for initialization
@@ -24,20 +25,19 @@ public class EnemyDrone : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (gameObject.activeSelf == true)
-        {
-            gameObject.transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
-            timekeeper += Time.deltaTime;
+        gameObject.transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+        timekeeper += Time.deltaTime;
 
-            if (timekeeper >= MissileDelay && spawned == false)
-            {
-                Missile.SetActive(true);
-                spawned = true;
-            }
-            if (timekeeper >= dieTimer)
-            {
-                gameObject.SetActive(false);
-            }
+        if (timekeeper >= MissileDelay && spawned == false)
+        {
+            Missile = EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.ENEMY_MISSILE);
+            Missile.transform.rotation = Quaternion.LookRotation(TargetToHit.transform.position - transform.position);
+
+            spawned = true;
         }
+        if (timekeeper >= dieTimer)
+        {
+            gameObject.SetActive(false);
+        } 
     }
 }

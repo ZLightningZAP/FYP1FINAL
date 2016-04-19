@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour {
     private List<GameObject> EnemyMissile_Pool; //List containing all enemy missiles in the scene
 
     //Every type of enemy available in game
-    enum ENEMY_TYPE
+    public enum ENEMY_TYPE
     {
         ENEMY_MISSILE,
         MAX_ENEMY,
@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour {
         switch (type)
         {
             case ENEMY_TYPE.ENEMY_MISSILE:
-                return SpawnExplosionSpark_Type1(position, rotation);
+                return SpawnMissile(position, rotation);
 
             default:
                 return null;
@@ -76,10 +76,10 @@ public class EnemyController : MonoBehaviour {
     /*************************************************
     Spawning Functions
     *************************************************/
-    private GameObject SpawnExplosionSpark_Type1(Vector3 position, Quaternion rotation)
+    private GameObject SpawnMissile(Vector3 position, Quaternion rotation)
     {
         //Check if pool exists
-        if (EnemyMissile_Pool == null)
+        if (EnemyMissile_Pool != null)
         {
             //Getting the first non active game object in this pool
             for (int i = 0; i < EnemyMissile_Pool.Count; i++)
@@ -125,6 +125,7 @@ public class EnemyController : MonoBehaviour {
         //all elements in the list is already in use
         // OR
         //No game object is assigned thus pool is not created
+
         return null;
     }
 }
