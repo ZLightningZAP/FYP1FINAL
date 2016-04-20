@@ -1,0 +1,173 @@
+fileFormatVersion: 2
+guid: c780ebec9c5c92940a903779beda3f9e
+timeCreated: 1461139414
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: AMX10_Wheel_Left_1
+    100002: AMX10_Wheel_Left_2
+    100004: AMX10_Wheel_Left_3
+    100006: AMX10_Wheel_Left_4
+    100008: AMX10_Wheel_Left_5
+    100010: AMX10_Wheel_Left_Back
+    100012: AMX10_Wheel_Left_Front
+    100014: AMX10_Wheel_Right_12
+    100016: AMX10_Wheel_Right_2
+    100018: AMX10_Wheel_Right_3
+    100020: AMX10_Wheel_Right_4
+    100022: AMX10_Wheel_Right_5
+    100024: AMX10_Wheel_Right_Back
+    100026: AMX10_Wheel_Right_Front
+    100028: AMX_10RC_MainBody
+    100030: AMX_10RC_TankTreadsLeft
+    100032: AMX_10RC_TankTreadsRight
+    100034: AMX_10RC_Turret1
+    100036: AMX_10RC_Turret_Rotation
+    100038: //RootNode
+    100040: AMX_10RC_Turret
+    400000: AMX10_Wheel_Left_1
+    400002: AMX10_Wheel_Left_2
+    400004: AMX10_Wheel_Left_3
+    400006: AMX10_Wheel_Left_4
+    400008: AMX10_Wheel_Left_5
+    400010: AMX10_Wheel_Left_Back
+    400012: AMX10_Wheel_Left_Front
+    400014: AMX10_Wheel_Right_12
+    400016: AMX10_Wheel_Right_2
+    400018: AMX10_Wheel_Right_3
+    400020: AMX10_Wheel_Right_4
+    400022: AMX10_Wheel_Right_5
+    400024: AMX10_Wheel_Right_Back
+    400026: AMX10_Wheel_Right_Front
+    400028: AMX_10RC_MainBody
+    400030: AMX_10RC_TankTreadsLeft
+    400032: AMX_10RC_TankTreadsRight
+    400034: AMX_10RC_Turret1
+    400036: AMX_10RC_Turret_Rotation
+    400038: //RootNode
+    400040: AMX_10RC_Turret
+    2300000: AMX10_Wheel_Left_1
+    2300002: AMX10_Wheel_Left_2
+    2300004: AMX10_Wheel_Left_3
+    2300006: AMX10_Wheel_Left_4
+    2300008: AMX10_Wheel_Left_5
+    2300010: AMX10_Wheel_Left_Back
+    2300012: AMX10_Wheel_Left_Front
+    2300014: AMX10_Wheel_Right_12
+    2300016: AMX10_Wheel_Right_2
+    2300018: AMX10_Wheel_Right_3
+    2300020: AMX10_Wheel_Right_4
+    2300022: AMX10_Wheel_Right_5
+    2300024: AMX10_Wheel_Right_Back
+    2300026: AMX10_Wheel_Right_Front
+    2300028: AMX_10RC_MainBody
+    2300030: AMX_10RC_TankTreadsLeft
+    2300032: AMX_10RC_TankTreadsRight
+    2300034: AMX_10RC_Turret1
+    2300036: AMX_10RC_Turret_Rotation
+    2300038: AMX_10RC_Turret
+    3300000: AMX10_Wheel_Left_1
+    3300002: AMX10_Wheel_Left_2
+    3300004: AMX10_Wheel_Left_3
+    3300006: AMX10_Wheel_Left_4
+    3300008: AMX10_Wheel_Left_5
+    3300010: AMX10_Wheel_Left_Back
+    3300012: AMX10_Wheel_Left_Front
+    3300014: AMX10_Wheel_Right_12
+    3300016: AMX10_Wheel_Right_2
+    3300018: AMX10_Wheel_Right_3
+    3300020: AMX10_Wheel_Right_4
+    3300022: AMX10_Wheel_Right_5
+    3300024: AMX10_Wheel_Right_Back
+    3300026: AMX10_Wheel_Right_Front
+    3300028: AMX_10RC_MainBody
+    3300030: AMX_10RC_TankTreadsLeft
+    3300032: AMX_10RC_TankTreadsRight
+    3300034: AMX_10RC_Turret1
+    3300036: AMX_10RC_Turret_Rotation
+    3300038: AMX_10RC_Turret
+    4300000: AMX10_Wheel_Right_2
+    4300002: AMX10_Wheel_Left_2
+    4300004: AMX10_Wheel_Right_3
+    4300006: AMX10_Wheel_Left_3
+    4300008: AMX10_Wheel_Right_4
+    4300010: AMX10_Wheel_Left_4
+    4300012: AMX10_Wheel_Right_5
+    4300014: AMX10_Wheel_Left_5
+    4300016: AMX_10RC_TankTreadsRight
+    4300018: AMX10_Wheel_Right_Front
+    4300020: AMX10_Wheel_Left_Front
+    4300022: AMX10_Wheel_Left_Back
+    4300024: AMX10_Wheel_Right_Back
+    4300026: AMX10_Wheel_Left_1
+    4300028: AMX_10RC_TankTreadsLeft
+    4300030: AMX_10RC_Turret1
+    4300032: AMX10_Wheel_Right_12
+    4300034: AMX_10RC_Turret_Rotation
+    4300036: AMX_10RC_MainBody
+    4300038: AMX_10RC_Turret
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

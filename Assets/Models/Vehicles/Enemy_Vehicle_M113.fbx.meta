@@ -26,6 +26,7 @@ ModelImporter:
     100036: M113_R_Wheel_Back
     100038: M113_R_Wheel_Front
     100040: M113_Turret_Rotation
+    100042: M113_MainBody
     400000: //RootNode
     400002: M113_MainBody 1
     400004: M113_L_Bushmaster242
@@ -47,6 +48,7 @@ ModelImporter:
     400036: M113_R_Wheel_Back
     400038: M113_R_Wheel_Front
     400040: M113_Turret_Rotation
+    400042: M113_MainBody
     2300000: M113_MainBody 1
     2300002: M113_L_Bushmaster242
     2300004: M113_L_Tank_Treads
@@ -67,6 +69,7 @@ ModelImporter:
     2300034: M113_R_Wheel_Back
     2300036: M113_R_Wheel_Front
     2300038: M113_Turret_Rotation
+    2300040: M113_MainBody
     3300000: M113_MainBody 1
     3300002: M113_L_Bushmaster242
     3300004: M113_L_Tank_Treads
@@ -87,6 +90,7 @@ ModelImporter:
     3300034: M113_R_Wheel_Back
     3300036: M113_R_Wheel_Front
     3300038: M113_Turret_Rotation
+    3300040: M113_MainBody
     4300000: M113_MainBody
     4300002: M113_Turret_Rotation
     4300004: M113_R_RafaelOWS
