@@ -1,0 +1,984 @@
+fileFormatVersion: 2
+guid: 2e2e25728be426e4eb0096ab2975c26e
+timeCreated: 1461205221
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Object_ Missile_SpriteSheet_0
+    21300002: Object_ Missile_SpriteSheet_1
+    21300004: Object_ Missile_SpriteSheet_2
+    21300006: Object_ Missile_SpriteSheet_3
+    21300008: Object_ Missile_SpriteSheet_4
+    21300010: Object_ Missile_SpriteSheet_5
+    21300012: Object_ Missile_SpriteSheet_6
+    21300014: Object_ Missile_SpriteSheet_7
+    21300016: Object_ Missile_SpriteSheet_8
+    21300018: Object_ Missile_SpriteSheet_9
+    21300020: Object_ Missile_SpriteSheet_10
+    21300022: Object_ Missile_SpriteSheet_11
+    21300024: Object_ Missile_SpriteSheet_12
+    21300026: Object_ Missile_SpriteSheet_13
+    21300028: Object_ Missile_SpriteSheet_14
+    21300030: Object_ Missile_SpriteSheet_15
+    21300032: Object_ Missile_SpriteSheet_16
+    21300034: Object_ Missile_SpriteSheet_17
+    21300036: Object_ Missile_SpriteSheet_18
+    21300038: Object_ Missile_SpriteSheet_19
+    21300040: Object_ Missile_SpriteSheet_20
+    21300042: Object_ Missile_SpriteSheet_21
+    21300044: Object_ Missile_SpriteSheet_22
+    21300046: Object_ Missile_SpriteSheet_23
+    21300048: Object_ Missile_SpriteSheet_24
+    21300050: Object_ Missile_SpriteSheet_25
+    21300052: Object_ Missile_SpriteSheet_26
+    21300054: Object_ Missile_SpriteSheet_27
+    21300056: Object_ Missile_SpriteSheet_28
+    21300058: Object_ Missile_SpriteSheet_29
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Object_ Missile_SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 17}
+        - {x: 116, y: 45}
+        - {x: 99, y: 85}
+        - {x: 40, y: 121}
+        - {x: -19, y: 121}
+        - {x: -42, y: 118}
+        - {x: -69, y: 106}
+        - {x: -109, y: 64}
+        - {x: -121, y: 34}
+        - {x: -122, y: 26}
+        - {x: -122, y: -31}
+        - {x: -104, y: -73}
+        - {x: -83, y: -93}
+        - {x: -48, y: -116}
+        - {x: -31, y: -123}
+        - {x: 40, y: -123}
+        - {x: 53, y: -122}
+        - {x: 109, y: -70}
+        - {x: 121, y: -33}
+        - {x: 122, y: -19}
+    - name: Object_ Missile_SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 16}
+        - {x: 118, y: 39}
+        - {x: 98, y: 77}
+        - {x: 66, y: 106}
+        - {x: 28, y: 121}
+        - {x: -48, y: 121}
+        - {x: -99, y: 79}
+        - {x: -117, y: 44}
+        - {x: -122, y: 32}
+        - {x: -122, y: -26}
+        - {x: -120, y: -49}
+        - {x: -103, y: -75}
+        - {x: -56, y: -116}
+        - {x: -25, y: -123}
+        - {x: 33, y: -123}
+        - {x: 81, y: -98}
+        - {x: 107, y: -67}
+        - {x: 122, y: -24}
+    - name: Object_ Missile_SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -29}
+        - {x: 121, y: 32}
+        - {x: 104, y: 70}
+        - {x: 79, y: 103}
+        - {x: 33, y: 121}
+        - {x: -47, y: 121}
+        - {x: -102, y: 79}
+        - {x: -120, y: 43}
+        - {x: -122, y: 22}
+        - {x: -122, y: -48}
+        - {x: -76, y: -107}
+        - {x: -47, y: -115}
+        - {x: -29, y: -122}
+        - {x: 32, y: -122}
+        - {x: 77, y: -102}
+        - {x: 95, y: -82}
+        - {x: 118, y: -42}
+    - name: Object_ Missile_SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 1250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -35}
+        - {x: 121, y: 37}
+        - {x: 95, y: 82}
+        - {x: 74, y: 105}
+        - {x: 37, y: 122}
+        - {x: -25, y: 122}
+        - {x: -64, y: 113}
+        - {x: -101, y: 77}
+        - {x: -120, y: 39}
+        - {x: -122, y: 19}
+        - {x: -122, y: -28}
+        - {x: -121, y: -31}
+        - {x: -102, y: -74}
+        - {x: -76, y: -99}
+        - {x: -49, y: -119}
+        - {x: -24, y: -122}
+        - {x: 26, y: -122}
+        - {x: 35, y: -119}
+        - {x: 69, y: -104}
+        - {x: 98, y: -78}
+    - name: Object_ Missile_SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 117, y: -51}
+        - {x: 121, y: -26}
+        - {x: 121, y: 36}
+        - {x: 98, y: 84}
+        - {x: 67, y: 108}
+        - {x: 25, y: 122}
+        - {x: -24, y: 122}
+        - {x: -67, y: 108}
+        - {x: -98, y: 81}
+        - {x: -121, y: 36}
+        - {x: -123, y: 19}
+        - {x: -123, y: -9}
+        - {x: -119, y: -40}
+        - {x: -108, y: -65}
+        - {x: -80, y: -103}
+        - {x: -32, y: -122}
+        - {x: 30, y: -122}
+        - {x: 61, y: -108}
+        - {x: 72, y: -100}
+        - {x: 96, y: -78}
+    - name: Object_ Missile_SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1000
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: 26}
+        - {x: 120, y: 39}
+        - {x: 98, y: 82}
+        - {x: 46, y: 119}
+        - {x: 23, y: 122}
+        - {x: -22, y: 122}
+        - {x: -38, y: 118}
+        - {x: -66, y: 107}
+        - {x: -101, y: 75}
+        - {x: -119, y: 43}
+        - {x: -122, y: 16}
+        - {x: -122, y: -30}
+        - {x: -114, y: -58}
+        - {x: -80, y: -101}
+        - {x: -38, y: -122}
+        - {x: 25, y: -122}
+        - {x: 37, y: -121}
+        - {x: 74, y: -100}
+        - {x: 97, y: -81}
+        - {x: 121, y: -36}
+    - name: Object_ Missile_SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1000
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: 21}
+        - {x: 114, y: 55}
+        - {x: 76, y: 102}
+        - {x: 42, y: 120}
+        - {x: 25, y: 122}
+        - {x: -31, y: 122}
+        - {x: -63, y: 109}
+        - {x: -92, y: 86}
+        - {x: -116, y: 50}
+        - {x: -123, y: 25}
+        - {x: -123, y: -23}
+        - {x: -118, y: -49}
+        - {x: -106, y: -68}
+        - {x: -86, y: -94}
+        - {x: -44, y: -118}
+        - {x: -29, y: -122}
+        - {x: 36, y: -122}
+        - {x: 82, y: -98}
+        - {x: 116, y: -50}
+        - {x: 121, y: -21}
+    - name: Object_ Missile_SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 1000
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: 36}
+        - {x: 98, y: 81}
+        - {x: 68, y: 105}
+        - {x: 30, y: 122}
+        - {x: -31, y: 122}
+        - {x: -75, y: 103}
+        - {x: -100, y: 79}
+        - {x: -123, y: 28}
+        - {x: -123, y: -28}
+        - {x: -105, y: -72}
+        - {x: -74, y: -100}
+        - {x: -56, y: -113}
+        - {x: -23, y: -122}
+        - {x: 25, y: -122}
+        - {x: 63, y: -108}
+        - {x: 83, y: -97}
+        - {x: 121, y: -44}
+    - name: Object_ Missile_SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 1000
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -22}
+        - {x: 121, y: 31}
+        - {x: 117, y: 46}
+        - {x: 88, y: 95}
+        - {x: 45, y: 119}
+        - {x: 26, y: 122}
+        - {x: -29, y: 122}
+        - {x: -68, y: 109}
+        - {x: -95, y: 81}
+        - {x: -113, y: 55}
+        - {x: -122, y: 23}
+        - {x: -123, y: 20}
+        - {x: -123, y: -23}
+        - {x: -113, y: -60}
+        - {x: -99, y: -82}
+        - {x: -47, y: -119}
+        - {x: -32, y: -122}
+        - {x: 19, y: -122}
+        - {x: 39, y: -118}
+        - {x: 66, y: -106}
+        - {x: 98, y: -77}
+        - {x: 120, y: -35}
+    - name: Object_ Missile_SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1000
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -21}
+        - {x: 121, y: 28}
+        - {x: 108, y: 63}
+        - {x: 86, y: 95}
+        - {x: 35, y: 122}
+        - {x: -20, y: 122}
+        - {x: -50, y: 120}
+        - {x: -97, y: 83}
+        - {x: -106, y: 64}
+        - {x: -118, y: 40}
+        - {x: -122, y: 21}
+        - {x: -122, y: -27}
+        - {x: -116, y: -56}
+        - {x: -71, y: -108}
+        - {x: -40, y: -119}
+        - {x: -18, y: -121}
+        - {x: 42, y: -121}
+        - {x: 98, y: -86}
+        - {x: 118, y: -42}
+    - name: Object_ Missile_SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 750
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -20}
+        - {x: 121, y: 31}
+        - {x: 119, y: 44}
+        - {x: 95, y: 82}
+        - {x: 66, y: 107}
+        - {x: 28, y: 122}
+        - {x: -31, y: 122}
+        - {x: -79, y: 103}
+        - {x: -96, y: 82}
+        - {x: -122, y: 40}
+        - {x: -122, y: -41}
+        - {x: -95, y: -82}
+        - {x: -69, y: -109}
+        - {x: -28, y: -121}
+        - {x: 36, y: -121}
+        - {x: 83, y: -95}
+        - {x: 97, y: -76}
+        - {x: 120, y: -39}
+    - name: Object_ Missile_SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 750
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 39}
+        - {x: 121, y: 48}
+        - {x: 77, y: 104}
+        - {x: 45, y: 116}
+        - {x: 23, y: 122}
+        - {x: -26, y: 122}
+        - {x: -67, y: 108}
+        - {x: -85, y: 97}
+        - {x: -120, y: 46}
+        - {x: -122, y: 35}
+        - {x: -122, y: -19}
+        - {x: -119, y: -45}
+        - {x: -113, y: -69}
+        - {x: -53, y: -120}
+        - {x: -46, y: -121}
+        - {x: 50, y: -121}
+        - {x: 108, y: -72}
+        - {x: 120, y: -39}
+        - {x: 122, y: -16}
+    - name: Object_ Missile_SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 750
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: -24}
+        - {x: 122, y: 33}
+        - {x: 107, y: 68}
+        - {x: 64, y: 111}
+        - {x: 33, y: 122}
+        - {x: -27, y: 122}
+        - {x: -55, y: 113}
+        - {x: -85, y: 94}
+        - {x: -112, y: 64}
+        - {x: -122, y: 26}
+        - {x: -122, y: -26}
+        - {x: -117, y: -44}
+        - {x: -100, y: -74}
+        - {x: -69, y: -107}
+        - {x: -31, y: -121}
+        - {x: 28, y: -121}
+        - {x: 35, y: -120}
+        - {x: 66, y: -106}
+        - {x: 99, y: -76}
+        - {x: 116, y: -43}
+    - name: Object_ Missile_SpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 750
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 22}
+        - {x: 118, y: 48}
+        - {x: 98, y: 79}
+        - {x: 66, y: 110}
+        - {x: 24, y: 123}
+        - {x: -33, y: 123}
+        - {x: -79, y: 101}
+        - {x: -100, y: 79}
+        - {x: -122, y: 33}
+        - {x: -122, y: -17}
+        - {x: -118, y: -37}
+        - {x: -108, y: -63}
+        - {x: -80, y: -96}
+        - {x: -47, y: -115}
+        - {x: -22, y: -121}
+        - {x: 21, y: -121}
+        - {x: 35, y: -120}
+        - {x: 76, y: -101}
+        - {x: 110, y: -61}
+        - {x: 122, y: -26}
+    - name: Object_ Missile_SpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 750
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 42}
+        - {x: 121, y: 47}
+        - {x: 80, y: 101}
+        - {x: 36, y: 121}
+        - {x: 11, y: 123}
+        - {x: -14, y: 123}
+        - {x: -40, y: 119}
+        - {x: -65, y: 107}
+        - {x: -97, y: 80}
+        - {x: -119, y: 45}
+        - {x: -122, y: 20}
+        - {x: -122, y: -26}
+        - {x: -117, y: -43}
+        - {x: -96, y: -80}
+        - {x: -71, y: -101}
+        - {x: -44, y: -115}
+        - {x: -28, y: -121}
+        - {x: 40, y: -121}
+        - {x: 81, y: -97}
+        - {x: 109, y: -64}
+        - {x: 122, y: -29}
+    - name: Object_ Missile_SpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: -26}
+        - {x: 122, y: 43}
+        - {x: 85, y: 96}
+        - {x: 48, y: 115}
+        - {x: 28, y: 122}
+        - {x: 19, y: 123}
+        - {x: -23, y: 123}
+        - {x: -66, y: 109}
+        - {x: -108, y: 71}
+        - {x: -122, y: 22}
+        - {x: -122, y: -25}
+        - {x: -121, y: -47}
+        - {x: -80, y: -100}
+        - {x: -45, y: -119}
+        - {x: -28, y: -121}
+        - {x: 30, y: -121}
+        - {x: 42, y: -118}
+        - {x: 79, y: -97}
+        - {x: 109, y: -63}
+    - name: Object_ Missile_SpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 500
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 36}
+        - {x: 102, y: 74}
+        - {x: 72, y: 102}
+        - {x: 38, y: 122}
+        - {x: 26, y: 123}
+        - {x: -33, y: 123}
+        - {x: -68, y: 107}
+        - {x: -96, y: 81}
+        - {x: -122, y: 33}
+        - {x: -122, y: -15}
+        - {x: -117, y: -45}
+        - {x: -98, y: -77}
+        - {x: -67, y: -108}
+        - {x: -25, y: -121}
+        - {x: 27, y: -121}
+        - {x: 65, y: -107}
+        - {x: 104, y: -76}
+        - {x: 122, y: -31}
+    - name: Object_ Missile_SpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 38}
+        - {x: 115, y: 59}
+        - {x: 74, y: 104}
+        - {x: 48, y: 116}
+        - {x: 23, y: 122}
+        - {x: -27, y: 122}
+        - {x: -61, y: 114}
+        - {x: -110, y: 66}
+        - {x: -121, y: 33}
+        - {x: -121, y: -23}
+        - {x: -119, y: -39}
+        - {x: -111, y: -58}
+        - {x: -77, y: -100}
+        - {x: -49, y: -119}
+        - {x: -31, y: -121}
+        - {x: 35, y: -121}
+        - {x: 61, y: -109}
+        - {x: 86, y: -95}
+        - {x: 122, y: -47}
+    - name: Object_ Missile_SpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 500
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 110, y: 66}
+        - {x: 68, y: 110}
+        - {x: 35, y: 118}
+        - {x: 24, y: 122}
+        - {x: -35, y: 122}
+        - {x: -78, y: 100}
+        - {x: -108, y: 67}
+        - {x: -121, y: 28}
+        - {x: -121, y: -35}
+        - {x: -96, y: -82}
+        - {x: -62, y: -110}
+        - {x: -27, y: -121}
+        - {x: -21, y: -122}
+        - {x: 24, y: -122}
+        - {x: 55, y: -117}
+        - {x: 101, y: -77}
+        - {x: 122, y: -40}
+        - {x: 122, y: 36}
+    - name: Object_ Missile_SpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 500
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 123, y: -18}
+        - {x: 123, y: 16}
+        - {x: 119, y: 40}
+        - {x: 102, y: 74}
+        - {x: 78, y: 100}
+        - {x: 35, y: 121}
+        - {x: 26, y: 122}
+        - {x: -31, y: 122}
+        - {x: -73, y: 102}
+        - {x: -96, y: 78}
+        - {x: -118, y: 46}
+        - {x: -121, y: 22}
+        - {x: -121, y: -34}
+        - {x: -105, y: -76}
+        - {x: -46, y: -119}
+        - {x: -25, y: -122}
+        - {x: 13, y: -122}
+        - {x: 37, y: -118}
+        - {x: 67, y: -109}
+        - {x: 110, y: -67}
+        - {x: 119, y: -36}
+    - name: Object_ Missile_SpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 25}
+        - {x: 112, y: 57}
+        - {x: 93, y: 82}
+        - {x: 78, y: 99}
+        - {x: 41, y: 122}
+        - {x: -36, y: 122}
+        - {x: -75, y: 102}
+        - {x: -108, y: 67}
+        - {x: -121, y: 27}
+        - {x: -121, y: -26}
+        - {x: -109, y: -65}
+        - {x: -85, y: -99}
+        - {x: -36, y: -122}
+        - {x: 25, y: -122}
+        - {x: 68, y: -110}
+        - {x: 100, y: -80}
+        - {x: 122, y: -36}
+    - name: Object_ Missile_SpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 123, y: -25}
+        - {x: 123, y: 21}
+        - {x: 111, y: 67}
+        - {x: 70, y: 110}
+        - {x: 34, y: 122}
+        - {x: -44, y: 122}
+        - {x: -99, y: 82}
+        - {x: -113, y: 49}
+        - {x: -121, y: 21}
+        - {x: -121, y: -13}
+        - {x: -120, y: -20}
+        - {x: -118, y: -42}
+        - {x: -96, y: -81}
+        - {x: -65, y: -108}
+        - {x: -23, y: -122}
+        - {x: 16, y: -122}
+        - {x: 47, y: -116}
+        - {x: 79, y: -98}
+        - {x: 107, y: -69}
+    - name: Object_ Missile_SpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 123, y: 28}
+        - {x: 108, y: 74}
+        - {x: 51, y: 120}
+        - {x: 32, y: 122}
+        - {x: -28, y: 122}
+        - {x: -63, y: 109}
+        - {x: -94, y: 80}
+        - {x: -117, y: 62}
+        - {x: -121, y: 36}
+        - {x: -121, y: -31}
+        - {x: -111, y: -53}
+        - {x: -97, y: -79}
+        - {x: -58, y: -114}
+        - {x: -24, y: -122}
+        - {x: 23, y: -122}
+        - {x: 64, y: -111}
+        - {x: 101, y: -80}
+        - {x: 123, y: -29}
+    - name: Object_ Missile_SpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 123, y: 34}
+        - {x: 100, y: 82}
+        - {x: 47, y: 118}
+        - {x: 32, y: 122}
+        - {x: -28, y: 122}
+        - {x: -47, y: 120}
+        - {x: -75, y: 105}
+        - {x: -121, y: 56}
+        - {x: -121, y: -51}
+        - {x: -99, y: -74}
+        - {x: -83, y: -90}
+        - {x: -72, y: -99}
+        - {x: -66, y: -104}
+        - {x: -38, y: -120}
+        - {x: -26, y: -122}
+        - {x: 31, y: -122}
+        - {x: 80, y: -101}
+        - {x: 108, y: -65}
+        - {x: 123, y: -27}
+    - name: Object_ Missile_SpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 250
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 27}
+        - {x: 120, y: 46}
+        - {x: 97, y: 85}
+        - {x: 44, y: 121}
+        - {x: -28, y: 121}
+        - {x: -42, y: 118}
+        - {x: -82, y: 94}
+        - {x: -100, y: 72}
+        - {x: -118, y: 42}
+        - {x: -121, y: 19}
+        - {x: -121, y: -29}
+        - {x: -110, y: -64}
+        - {x: -84, y: -93}
+        - {x: -47, y: -116}
+        - {x: -29, y: -122}
+        - {x: 39, y: -122}
+        - {x: 50, y: -121}
+        - {x: 101, y: -78}
+        - {x: 118, y: -40}
+        - {x: 122, y: -29}
+    - name: Object_ Missile_SpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 24}
+        - {x: 111, y: 70}
+        - {x: 68, y: 109}
+        - {x: 26, y: 121}
+        - {x: -33, y: 121}
+        - {x: -84, y: 96}
+        - {x: -101, y: 73}
+        - {x: -121, y: 40}
+        - {x: -121, y: -29}
+        - {x: -116, y: -43}
+        - {x: -100, y: -73}
+        - {x: -76, y: -100}
+        - {x: -44, y: -117}
+        - {x: 42, y: -117}
+        - {x: 69, y: -104}
+        - {x: 98, y: -84}
+        - {x: 122, y: -36}
+    - name: Object_ Missile_SpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: 44}
+        - {x: 108, y: 65}
+        - {x: 74, y: 102}
+        - {x: 45, y: 115}
+        - {x: 29, y: 121}
+        - {x: -23, y: 121}
+        - {x: -39, y: 120}
+        - {x: -72, y: 102}
+        - {x: -99, y: 76}
+        - {x: -118, y: 39}
+        - {x: -122, y: 10}
+        - {x: -122, y: -44}
+        - {x: -79, y: -106}
+        - {x: -48, y: -117}
+        - {x: 48, y: -117}
+        - {x: 87, y: -99}
+        - {x: 122, y: -38}
+        - {x: 122, y: 21}
+    - name: Object_ Missile_SpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 116, y: 44}
+        - {x: 102, y: 75}
+        - {x: 61, y: 109}
+        - {x: 39, y: 119}
+        - {x: 14, y: 121}
+        - {x: -39, y: 121}
+        - {x: -82, y: 96}
+        - {x: -98, y: 75}
+        - {x: -116, y: 43}
+        - {x: -122, y: 29}
+        - {x: -122, y: -34}
+        - {x: -121, y: -46}
+        - {x: -80, y: -99}
+        - {x: -47, y: -117}
+        - {x: 48, y: -117}
+        - {x: 88, y: -98}
+        - {x: 122, y: -40}
+        - {x: 122, y: 22}
+    - name: Object_ Missile_SpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 122, y: 23}
+        - {x: 110, y: 64}
+        - {x: 76, y: 101}
+        - {x: 54, y: 111}
+        - {x: 44, y: 115}
+        - {x: 17, y: 121}
+        - {x: -21, y: 121}
+        - {x: -59, y: 112}
+        - {x: -99, y: 83}
+        - {x: -122, y: 28}
+        - {x: -122, y: -50}
+        - {x: -75, y: -104}
+        - {x: -42, y: -117}
+        - {x: 46, y: -117}
+        - {x: 80, y: -101}
+        - {x: 110, y: -68}
+        - {x: 122, y: -24}
+    - name: Object_ Missile_SpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 250
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 121, y: -18}
+        - {x: 122, y: -11}
+        - {x: 122, y: 34}
+        - {x: 98, y: 82}
+        - {x: 65, y: 109}
+        - {x: 30, y: 121}
+        - {x: -22, y: 121}
+        - {x: -48, y: 117}
+        - {x: -75, y: 100}
+        - {x: -109, y: 63}
+        - {x: -122, y: 34}
+        - {x: -122, y: -40}
+        - {x: -90, y: -95}
+        - {x: -47, y: -117}
+        - {x: 43, y: -117}
+        - {x: 79, y: -108}
+        - {x: 121, y: -45}
+        - {x: 118, y: -34}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
