@@ -85,6 +85,16 @@ public class CameraMovement : MonoBehaviour
 
         if (Shaking == false)
         {
+            if (RotationPoints.Length > 0)
+            {
+                if (RotationPoints[Index].position != transform.position)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+                    CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+                    //print("rotating");
+                }
+            }
+
             if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
             {
                 //Go towards the next position
@@ -110,7 +120,7 @@ public class CameraMovement : MonoBehaviour
                     {
                         Index++;
                         NextTransform = Waypoints[Index];
-                        WaitTime = WaitTimes[Index - 1];
+                        WaitTime = WaitTimes[Index];
                         waitTimer = 0.0f;
                         print("Going to next point!");
                     }
@@ -143,15 +153,6 @@ public class CameraMovement : MonoBehaviour
                 {
                     enemiManager.Shooting();
                     Goingtoshoot = true;
-                }
-            }
-
-            if (RotationPoints.Length > 0)
-            {
-                if (RotationPoints[Index].position != transform.position)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
-                    CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
                 }
             }
         }
