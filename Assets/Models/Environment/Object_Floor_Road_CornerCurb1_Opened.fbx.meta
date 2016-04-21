@@ -1,22 +1,17 @@
 fileFormatVersion: 2
-guid: 05e691370b6de9e4b991c501183a90ab
-timeCreated: 1461220891
+guid: ca0f85ebd205c564f837df8f7e2b6c63
+timeCreated: 1461220892
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Human_Reference
-    100002: //RootNode
-    100004: Object_Traffic_Light_Small
-    400000: Human_Reference
-    400002: //RootNode
-    400004: Object_Traffic_Light_Small
-    2300000: Human_Reference
-    2300002: Object_Traffic_Light_Small
-    3300000: Human_Reference
-    3300002: Object_Traffic_Light_Small
-    4300000: Human_Reference
-    4300002: Object_Traffic_Light_Small
+    100000: //RootNode
+    100002: Object_Road_Corner_Curb1_Opened
+    400000: //RootNode
+    400002: Object_Road_Corner_Curb1_Opened
+    2300000: Object_Road_Corner_Curb1_Opened
+    3300000: Object_Road_Corner_Curb1_Opened
+    4300000: Object_Road_Corner_Curb1_Opened
   materials:
     importMaterials: 1
     materialName: 0
