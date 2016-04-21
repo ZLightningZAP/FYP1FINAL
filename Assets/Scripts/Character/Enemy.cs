@@ -25,6 +25,8 @@ public class Enemy : Character
     private bool shootingyet = false;
     private float timer;
 
+    private bool moving;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -37,6 +39,7 @@ public class Enemy : Character
         anim = aiming.GetComponent<Animator>();
         anim.enabled = false;
         aiming.SetActive(false);
+        moving = false;
         //gameObject.SetActive(false);
     }
 
@@ -47,7 +50,10 @@ public class Enemy : Character
         base.Update();
 
         Dead();
-        Move();
+        if (Waypoint != null)
+        {
+            Move();
+        }
         Looking();
         if (shootingyet == true)
         {
@@ -97,16 +103,21 @@ public class Enemy : Character
 
     private void Move()
     {
-        if (Waypoint != null)
+        if (Vector3.Distance(Waypoint.transform.position, transform.position) > Gap)
         {
-            if (Vector3.Distance(Waypoint.transform.position, transform.position) > Gap)
+            //Go towards the next position
+            transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
+            if (!moving)
             {
-                //Go towards the next position
-                transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
+                moving = true;
             }
         }
         else
         {
+            if (moving)
+            {
+                moving = false;
+            }
             return;
         }
     }
@@ -187,5 +198,10 @@ public class Enemy : Character
             timer = 0;
             aiming.SetActive(false);
         }
+    }
+
+    public bool GetMovingState()
+    {
+        return moving;
     }
 }
