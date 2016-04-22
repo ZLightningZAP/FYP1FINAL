@@ -5,6 +5,7 @@ public class ScoreManager : MonoBehaviour
     public enum ScoreType
     {
         EnemyKill,
+        BossKill,
         MissileDestroyed,
         ExitBonus,
     }
@@ -12,6 +13,7 @@ public class ScoreManager : MonoBehaviour
     private static int[] scores =
         {
             100,
+            300,
             50,
             200,
         };

@@ -22,6 +22,7 @@ public class EnemyBoss : Character
         // Update the healthbar
         HealthBarUpdate(Health);
         Move();
+        Dead();
     }
 
     public void HealthBarUpdate(float health)
@@ -33,5 +34,14 @@ public class EnemyBoss : Character
 
     private void Move()
     {
+    }
+
+    private void Dead()
+    {
+        if (Health <= 0)
+        {
+            ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BossKill);
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -93,10 +93,12 @@ public class Enemy : Character
                 SmokeEffect.SetActive(false);
             }
 
+            //Add score to the manager
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
 
             EnemyManager.updatedCount -= 1;
 
+            //Disable the animations
             anim.enabled = false;
             aiming.SetActive(false);
 
