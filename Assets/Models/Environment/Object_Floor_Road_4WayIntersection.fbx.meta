@@ -13,7 +13,7 @@ ModelImporter:
     3300000: Object_Road_4WayIntersection
     4300000: Object_Road_4WayIntersection
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

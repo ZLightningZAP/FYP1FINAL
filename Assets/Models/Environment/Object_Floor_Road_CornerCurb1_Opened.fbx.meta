@@ -13,7 +13,7 @@ ModelImporter:
     3300000: Object_Road_Corner_Curb1_Opened
     4300000: Object_Road_Corner_Curb1_Opened
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

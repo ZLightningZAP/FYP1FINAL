@@ -5,8 +5,6 @@ public class Enemy : Character
 {
     public GameObject Waypoint;
     public float MovementSpeed = 10f;
-    public GameObject Cube1;
-    public GameObject Cube2;
     public float Timetoshoot = 1f;
     public float Damage = 10;
 
@@ -26,6 +24,8 @@ public class Enemy : Character
     private float timer;
 
     private bool moving;
+    private LookingPoint lk1;
+    private LookingPoint2 lk2;
 
     // Use this for initialization
     protected override void Start()
@@ -40,6 +40,11 @@ public class Enemy : Character
         anim.enabled = false;
         aiming.SetActive(false);
         moving = false;
+
+        //Get the looking point from the camera
+        lk1 = FindObjectOfType<LookingPoint>();
+        lk2 = FindObjectOfType<LookingPoint2>();
+
         //gameObject.SetActive(false);
     }
 
@@ -141,13 +146,13 @@ public class Enemy : Character
         else if (randomInt == 1 && assigned == true)
         {
             // The shooting barrel will always rotate to look at Looking Point 1
-            shootingBarrel.gameObject.transform.LookAt(Cube1.transform.position);
+            shootingBarrel.gameObject.transform.LookAt(lk1.transform.position);
             //print("Looking at Looking Point 1!");
         }
         else if (randomInt == 2 && assigned == true)
         {
             // The shooting barrel will always rotate to look at Looking Point 2
-            shootingBarrel.gameObject.transform.LookAt(Cube1.transform.position);
+            shootingBarrel.gameObject.transform.LookAt(lk2.transform.position);
             //print("Looking at Looking Point 2!");
         }
 
@@ -191,7 +196,7 @@ public class Enemy : Character
         if (timer >= Timetoshoot)
         {
             shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
-            FindObjectOfType<Player>().Injure(Damage);
+            //FindObjectOfType<Player>().Injure(Damage);
             print("Damaged by " + gameObject.name);
             EnemyManager.shoot = false;
             shootingyet = false;

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4ba770918d729924f9be563feed21e4f
-timeCreated: 1461220891
+guid: c559dd468c904194489d87fa7c641238
+timeCreated: 1461289072
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,9 +9,9 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object_Sign_Stand
+    4300000: Object_UniqueBuilding_FountainOfWealth
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
