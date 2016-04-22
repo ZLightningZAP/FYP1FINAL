@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 public class EnemyBoss : Character
 {
@@ -23,6 +21,7 @@ public class EnemyBoss : Character
 
         // Update the healthbar
         HealthBarUpdate(Health);
+        Move();
     }
 
     public void HealthBarUpdate(float health)
@@ -30,17 +29,9 @@ public class EnemyBoss : Character
         // Calculate the fill amount of the health bar
         HealthFillAmount = health / MaxHealth;
         healthBar.fillAmount = HealthFillAmount;
+    }
 
-        //// If the health amount drop below 30%, the color of the healthbar will change to red
-        //if (healthBar.fillAmount <= 0.3)
-        //{
-        //    healthBar.color = Color.red;
-        //}
-
-        //// If the health amount drop below 70%, the color of the healthbar will change to yellow
-        //else if (healthBar.fillAmount <= 0.7)
-        //{
-        //    healthBar.color = Color.yellow;
-        //}
+    private void Move()
+    {
     }
 }

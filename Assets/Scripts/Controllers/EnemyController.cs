@@ -136,6 +136,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
     /*************************************************
     Spawning Functions
     *************************************************/
