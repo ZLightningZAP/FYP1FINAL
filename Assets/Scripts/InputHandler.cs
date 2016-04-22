@@ -284,7 +284,16 @@ public class InputHandler : MonoBehaviour
             {
                 hit.rigidbody.AddForce(((hit.point + hit.normal) - Camera.main.transform.position).normalized * BulletForce);
             }
-            hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+
+            if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
+            {
+                print("Hit Weak Point!");
+                hit.transform.SendMessage("Injure", DamageOfBullet * 2, SendMessageOptions.DontRequireReceiver);
+            }
+            else
+            {
+                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+            }
         }
 
         fireTimer = 0.0f;   //Resetting the Timer
