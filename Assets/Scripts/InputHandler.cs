@@ -5,13 +5,12 @@ using WiimoteApi;
 
 public class InputHandler : MonoBehaviour
 {
-    public ParticleSystem OnHitEffect;  //Particle Effect On Bullet Hit
-    public ParticleSystem OnHitEffect2; //Different type
     public Image Crosshair; //Crosshair image
 
     public OverHeating overheat;
     public AmmoSystem ammosystem;
     public GameObject returnPanel;
+    public BulletEffectHandler EffectsHandler;  //Particle Effect Handler
 
     public Fade fade;
     public GameObject canvas;
@@ -29,7 +28,6 @@ public class InputHandler : MonoBehaviour
     public float SpreadIncreaseRate; //Rate of increasing bullet spread
     public float BulletForce;   //Force to be applied when bullet hits something
 
-    private float gap = 0.1f;   //Gap for instantiating effects
     private float defaultBulletSpread = 0.1f;   //Default Range of Bullet Spread
     private float currentBulletSpread;  //Current Range of Bullet Spread
     private float fireTimer = 0.0f; //Use to keep track of time before last fire
@@ -267,22 +265,13 @@ public class InputHandler : MonoBehaviour
         //Checking if Ray has hit
         if (Physics.Raycast(ray, out hit))
         {
-            int rand = Random.Range(1, 3);
-
-            if (rand == 1)
-            {
-                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
-                //Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
-            }
-            else
-            {
-                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
-            }
+            EffectsHandler.EffectResponse(hit);
 
             //If it has a rigidbody
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(((hit.point + hit.normal) - Camera.main.transform.position).normalized * BulletForce);
+
             }
 
             if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
