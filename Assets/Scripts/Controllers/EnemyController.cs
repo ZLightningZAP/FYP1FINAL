@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
     private List<GameObject> EnemyMissile_Pool; //List containing all enemy missiles in the scene
     private List<GameObject> EnemyRumble_Pool;    //List containing all enemy rumble in the scene
 
-
     //Every type of enemy available in game
     public enum ENEMY_TYPE
     {
@@ -30,7 +29,6 @@ public class EnemyController : MonoBehaviour
     {
         InitializeMissilePool();
         InitializeRumblePool();
-
     }
 
     private void Awake()
@@ -52,7 +50,7 @@ public class EnemyController : MonoBehaviour
                 return SpawnMissile(position, rotation);
 
             case ENEMY_TYPE.ENEMY_RUMBLE:
-                return SpawnRumble(position,rotation);
+                return SpawnRumble(position, rotation);
 
             default:
                 return null;

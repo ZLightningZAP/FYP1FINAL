@@ -93,7 +93,7 @@ public class Enemy : Character
                 SmokeEffect.SetActive(false);
             }
 
-            //Display rumble 
+            //Display rumble
             EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.ENEMY_RUMBLE);
 
             //Add score to the manager
