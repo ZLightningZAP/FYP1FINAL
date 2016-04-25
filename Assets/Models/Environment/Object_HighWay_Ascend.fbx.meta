@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c559dd468c904194489d87fa7c641238
-timeCreated: 1461289072
+guid: f33b71b4c38eb6e49a6effda1ce07ba3
+timeCreated: 1461575120
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object_UniqueBuilding_FountainOfWealth
+    4300000: Object_HighWay_Ascend
   materials:
     importMaterials: 0
     materialName: 0

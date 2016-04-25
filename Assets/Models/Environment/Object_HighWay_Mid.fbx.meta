@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: c559dd468c904194489d87fa7c641238
-timeCreated: 1461289072
+guid: 6ef94bbec48f9044dbd460b00ce33846
+timeCreated: 1461575120
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Object_HighWay_Mid
+    100004: Object_Highway_Mid
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Object_UniqueBuilding_FountainOfWealth
+    400002: Object_HighWay_Mid
+    400004: Object_Highway_Mid
+    2300000: Object_HighWay_Mid
+    2300002: Object_Highway_Mid
+    3300000: Object_HighWay_Mid
+    3300002: Object_Highway_Mid
+    4300000: Object_Highway_Mid
+    4300002: Object_HighWay_Mid
   materials:
     importMaterials: 0
     materialName: 0
