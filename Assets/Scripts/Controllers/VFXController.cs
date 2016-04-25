@@ -17,6 +17,8 @@ public class VFXController : MonoBehaviour
     public GameObject ExplosionType1_Object;  //Explosion Effect that will be pooled
     public GameObject ExplosionSparkType1_Object;  //Explosion Spark Effect that will be pooled
 
+    public GameObject DustCloud_Object; //Dust Cloud Effect that will be pooled
+
     private List<GameObject> SparkType1_Pool;   //List containing all the type 1 Spark Effects in the scene
     private List<GameObject> SparkType2_Pool;   //List containing all the type 2 Spark Effects in the scene
 
@@ -25,6 +27,8 @@ public class VFXController : MonoBehaviour
     private List<GameObject> Debris_Pool;   //List containing all the Debris Particle Effects in the scene
     private List<GameObject> ExplosionType1_Pool;   //List containing all the type 1 Explosion Effects in the scene
     private List<GameObject> ExplosionSparkType1_Pool;   //List containing all the type 1 Explosion Sparks Effects in the scene
+
+    private List<GameObject> DustCloud_Pool;   //List containing all the Dust Cloud Effects in the scene
 
     //Types of VFX available in the scene
     public enum VFX_TYPE
@@ -35,6 +39,7 @@ public class VFXController : MonoBehaviour
         DEBRIS,
         EXPLOSION_TYPE1,
         EXPLOSIONSPARK_TYPE1,
+        DUSTCLOUD,
         MAX_TYPE,
     };
 
@@ -57,6 +62,8 @@ public class VFXController : MonoBehaviour
         InitializeDebris();
         InitializeExplosion_Type1();
         InitializeExplosionSpark_Type1();
+
+        InitializeDustCloud();
     }
 
     // Main function that will be called by other scripts to create VFX effects
@@ -81,6 +88,9 @@ public class VFXController : MonoBehaviour
 
             case VFX_TYPE.EXPLOSIONSPARK_TYPE1:
                 return SpawnExplosionSpark_Type1(position, rotation);
+
+            case VFX_TYPE.DUSTCLOUD:
+                return SpawnDustCloud(position, rotation);
 
             default:
                 return null;
@@ -224,6 +234,28 @@ public class VFXController : MonoBehaviour
                 GameObject obj = (GameObject)Instantiate(ExplosionSparkType1_Object);
                 obj.SetActive(false);
                 ExplosionSparkType1_Pool.Add(obj);
+            }
+        }
+    }
+
+    private void InitializeDustCloud()
+    {
+        //Only if object to be pooled is assigned
+        if (DustCloud_Object != null)
+        {
+            //If does not exist
+            if (DustCloud_Pool == null)
+            {
+                //Create new pool
+                DustCloud_Pool = new List<GameObject>();
+            }
+
+            //Creating objects in the pool based on size
+            for (int i = 0; i < PoolSize; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(DustCloud_Object);
+                obj.SetActive(false);
+                DustCloud_Pool.Add(obj);
             }
         }
     }
@@ -532,6 +564,59 @@ public class VFXController : MonoBehaviour
                 {
                     ExplosionSparkType1_Pool[ExplosionSparkType1_Pool.Count - 1].SetActive(true);
                     return ExplosionSparkType1_Pool[ExplosionSparkType1_Pool.Count - 1];
+                }
+            }
+        }
+
+        //If it reaches here, grow rate is 0 and
+        //all elements in the list is already in use
+        // OR
+        //No game object is assigned thus pool is not created
+        return null;
+    }
+
+    private GameObject SpawnDustCloud(Vector3 position, Quaternion rotation)
+    {
+        //Check if pool exists
+        if (DustCloud_Pool != null)
+        {
+            //Getting the first non active game object in this pool
+            for (int i = 0; i < DustCloud_Pool.Count; i++)
+            {
+                //Incase this game object is null, we create one and return it
+                if (DustCloud_Pool[i] == null)
+                {
+                    GameObject obj = (GameObject)Instantiate(DustCloud_Object);
+
+                    obj.transform.position = position;
+                    obj.transform.rotation = rotation;
+                    obj.SetActive(true);
+                    DustCloud_Pool[i] = obj;
+                    return DustCloud_Pool[i];
+                }
+                //Reuse when game object is not active
+                if (!DustCloud_Pool[i].activeInHierarchy)
+                {
+                    DustCloud_Pool[i].transform.position = position;
+                    DustCloud_Pool[i].transform.rotation = rotation;
+                    DustCloud_Pool[i].SetActive(true);
+                    return DustCloud_Pool[i];
+                }
+            }
+
+            //Increase the size of the list based on the grow rate
+            for (int i = 0; i < GrowRate; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(DustCloud_Object);
+                obj.SetActive(false);
+                DustCloud_Pool.Add(obj);
+
+                //When we have finished adding the new elements
+                if (i == (GrowRate - 1))
+                {
+                    //Use the last object in the pool
+                    DustCloud_Pool[DustCloud_Pool.Count - 1].SetActive(true);
+                    return DustCloud_Pool[DustCloud_Pool.Count - 1];
                 }
             }
         }

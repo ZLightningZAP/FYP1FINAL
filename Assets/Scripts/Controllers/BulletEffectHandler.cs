@@ -25,6 +25,10 @@ public class BulletEffectHandler : MonoBehaviour {
         {
 
         }
+        else if(type == "Road")
+        {
+            VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.DUSTCLOUD);
+        }
         else
         {
             int rand = Random.Range(1, 3);
@@ -32,7 +36,6 @@ public class BulletEffectHandler : MonoBehaviour {
             if (rand == 1)
             {
                 VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
-                //Instantiate(OnHitEffect, hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal));  //Creating On Hit Effect
             }
             else
             {
