@@ -42,6 +42,7 @@ public class InputHandler : MonoBehaviour
     private bool dead = false;
     private bool highscore = false;
     private bool highscorepanelpressed = false;
+    private int shoottwice = 1;
 
     private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
@@ -78,6 +79,7 @@ public class InputHandler : MonoBehaviour
         if (ammosystem.bullet == 0)
         {
             Debug.Log("Reloading");
+            SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Reload);
             reloadtimetracker += Time.deltaTime;
             if (reloadtimetracker >= ReloadTime)
             {
@@ -271,7 +273,6 @@ public class InputHandler : MonoBehaviour
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(((hit.point + hit.normal) - Camera.main.transform.position).normalized * BulletForce);
-
             }
 
             if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
@@ -284,6 +285,8 @@ public class InputHandler : MonoBehaviour
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
         }
+
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Fire);
 
         fireTimer = 0.0f;   //Resetting the Timer
         currentBulletSpread += Time.deltaTime * SpreadIncreaseRate;  //Increasing spread of bullet
