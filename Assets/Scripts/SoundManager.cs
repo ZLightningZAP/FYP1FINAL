@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
     public enum BackgroundMusic
     {
         Menu_Screen_Music,
+        Ambient,
         Stage_Clear,
         Stage_Fail,
     }

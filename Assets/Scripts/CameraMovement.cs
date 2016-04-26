@@ -73,6 +73,9 @@ public class CameraMovement : MonoBehaviour
         //Disable the player script so they wont take damage
         player = GetComponentInChildren<Player>();
         player.enabled = false;
+
+        //Play the ambient music
+        SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
     }
 
     // Update is called once per frame

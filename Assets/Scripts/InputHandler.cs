@@ -42,7 +42,6 @@ public class InputHandler : MonoBehaviour
     private bool dead = false;
     private bool highscore = false;
     private bool highscorepanelpressed = false;
-    private int shoottwice = 1;
 
     private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
