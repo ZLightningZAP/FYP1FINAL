@@ -202,6 +202,8 @@ public class Enemy : Character
             shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
             //FindObjectOfType<Player>().Injure(Damage);
             print("Damaged by " + gameObject.name);
+            //Play the sound effect for the enemy shooting at the player
+            SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
             EnemyManager.shoot = false;
             shootingyet = false;
             timer = 0;
