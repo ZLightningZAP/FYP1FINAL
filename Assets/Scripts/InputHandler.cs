@@ -78,7 +78,12 @@ public class InputHandler : MonoBehaviour
         if (ammosystem.bullet == 0)
         {
             Debug.Log("Reloading");
-            SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Reload);
+
+            if(reloadtimetracker == 0)
+            { 
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Reload);
+            }
+
             reloadtimetracker += Time.deltaTime;
             if (reloadtimetracker >= ReloadTime)
             {
