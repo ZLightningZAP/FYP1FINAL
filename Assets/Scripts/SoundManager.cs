@@ -104,7 +104,14 @@ public class SoundManager : MonoBehaviour
 
     static public void PlaySoundEffect(SoundEffect sfx)
     {
-        sfxList[(int)sfx].Play();
+        if (sfx == SoundEffect.Fire)
+        {
+            sfxList[(int)sfx].PlayOneShot(sfxList[(int)sfx].clip);
+        }
+        else
+        {
+            sfxList[(int)sfx].Play();
+        }
     }
 
     static public void PlayBackgroundMusic(BackgroundMusic bgm)
