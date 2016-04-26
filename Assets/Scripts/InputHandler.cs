@@ -79,8 +79,8 @@ public class InputHandler : MonoBehaviour
         {
             Debug.Log("Reloading");
 
-            if(reloadtimetracker == 0)
-            { 
+            if (reloadtimetracker == 0)
+            {
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Reload);
             }
 
