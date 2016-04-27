@@ -94,7 +94,7 @@ public class Enemy : Character
             }
 
             //Display rumble
-            EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.ENEMY_RUMBLE);
+            EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE1);
 
             //Add score to the manager
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.EnemyKill);
