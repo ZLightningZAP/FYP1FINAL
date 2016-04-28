@@ -1,15 +1,24 @@
 fileFormatVersion: 2
-guid: b886f2bb5e9ed5e43a5ea545d566e86d
-timeCreated: 1461825147
+guid: e43f04983d95a01428d26eac9a463a82
+timeCreated: 1461827682
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Object_LampPost_Sign
+    100004: Object_Sign_Street
+    100006: Object_Sign_Street 1
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Object_Traffic_Light_Small
+    400002: Object_LampPost_Sign
+    400004: Object_Sign_Street
+    400006: Object_Sign_Street 1
+    2300000: Object_LampPost_Sign
+    2300002: Object_Sign_Street 1
+    3300000: Object_LampPost_Sign
+    3300002: Object_Sign_Street 1
+    4300000: Object_Sign_Street
+    4300002: Object_LampPost_Sign
   materials:
     importMaterials: 1
     materialName: 0
