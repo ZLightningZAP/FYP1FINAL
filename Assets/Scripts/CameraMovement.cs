@@ -38,14 +38,7 @@ public class CameraMovement : MonoBehaviour
     private bool Checked = false;
     public static bool Goingtoshoot = false;
 
-    //Cutscene
-
     public EnemyManager enemiManager;
-    public GameObject UIPanel;
-    public InputHandler inputhandler;
-    private Player player;
-    private bool runningcutscene = false;
-    public int CutsceneEnd;
 
     // Use this for initialization
     private void Start()
@@ -62,17 +55,6 @@ public class CameraMovement : MonoBehaviour
             NextTransform = Waypoints[Index];
             WaitTime = WaitTimes[Index];
         }
-
-        // CUTSCENE
-        //Disable the UI Panel on start
-        UIPanel.SetActive(false);
-        //Disable the input handler on start
-        inputhandler.enabled = false;
-        //Boolean to handle the running of the cutscene
-        runningcutscene = true;
-        //Disable the player script so they wont take damage
-        player = GetComponentInChildren<Player>();
-        player.enabled = false;
 
         //Play the ambient music
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
@@ -103,12 +85,12 @@ public class CameraMovement : MonoBehaviour
             {
                 //Go towards the next position
                 CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
-                if (Checked == true && runningcutscene == false)
+                if (Checked == true)
                 {
                     Checked = false;
                     enemiManager.CameraMoved();
                 }
-                if (Goingtoshoot == true && runningcutscene == false)
+                if (Goingtoshoot == true)
                 {
                     Goingtoshoot = false;
                 }
@@ -130,19 +112,7 @@ public class CameraMovement : MonoBehaviour
                     }
                 }
 
-                if (CurrentTransform.position == Waypoints[CutsceneEnd].position)
-                {
-                    //Enable the player script
-                    player.enabled = true;
-                    //No more running of cut scene
-                    runningcutscene = false;
-                    //Enable the UI Panel
-                    UIPanel.SetActive(true);
-                    //Enable the input handler
-                    inputhandler.enabled = true;
-                }
-
-                if (Checked == false && runningcutscene == false)
+                if (Checked == false)
                 {
                     //Check how many enemy on the screen when the camera stops moving
                     enemiManager.NumberOnScreen();
@@ -153,7 +123,7 @@ public class CameraMovement : MonoBehaviour
                     Checked = true;
                 }
 
-                if (Goingtoshoot == false && runningcutscene == false)
+                if (Goingtoshoot == false)
                 {
                     enemiManager.Shooting();
                     Goingtoshoot = true;
