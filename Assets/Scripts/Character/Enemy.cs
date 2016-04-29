@@ -6,8 +6,13 @@ public class Enemy : Character
     public float MovementSpeed = 10f;
     public float Timetoshoot = 1f;
     public float Damage = 10;
+    public float RecoilTime = 0.1f;
+    public float RecoilAngle = 50;
+    public float RecoilValue = 5;
+    public float Thrust = 100f;
 
     public GameObject aiming;
+
     private Animator anim;
 
     //Smoke Effect
@@ -21,10 +26,13 @@ public class Enemy : Character
     public bool trulyVisible;
     private bool shootingyet = false;
     private float timer;
+    private bool recoil = false;
+    private float timer2;
 
     private bool moving;
     private LookingPoint lk1;
     private LookingPoint2 lk2;
+    private Rigidbody rb;
 
     // Use this for initialization
     protected override void Start()
@@ -44,6 +52,8 @@ public class Enemy : Character
         lk1 = FindObjectOfType<LookingPoint>();
         lk2 = FindObjectOfType<LookingPoint2>();
 
+        rb = GetComponent<Rigidbody>();
+
         //gameObject.SetActive(false);
     }
 
@@ -58,10 +68,20 @@ public class Enemy : Character
         {
             Move();
         }
-        Looking();
+
+        if (recoil == false)
+        {
+            Looking();
+        }
+
         if (shootingyet == true)
         {
             Shooting();
+        }
+
+        if (recoil == true)
+        {
+            Recoil();
         }
     }
 
@@ -210,6 +230,34 @@ public class Enemy : Character
             shootingyet = false;
             timer = 0;
             aiming.SetActive(false);
+            //Set the recoil to true to run the recoil function
+            recoil = true;
+        }
+    }
+
+    public void Recoil()
+    {
+        timer2 += Time.deltaTime;
+        if (timer2 <= RecoilTime * 0.5)
+        {
+            shootingBarrel.gameObject.transform.Rotate(Vector3.left, RecoilAngle * Time.deltaTime);
+            rb.AddForce(-transform.forward * Thrust);
+
+            //Vector3 Direction = (shootingBarrel.gameObject.transform.position - Camera.main.transform.position).normalized;
+            //gameObject.transform.Translate(-Direction * (Time.deltaTime * RecoilValue));
+        }
+        if (timer2 >= RecoilTime * 0.5 && timer2 <= RecoilTime)
+        {
+            shootingBarrel.gameObject.transform.Rotate(Vector3.right, -RecoilAngle * Time.deltaTime);
+            rb.AddForce(transform.forward * Thrust);
+
+            //Vector3 Direction = (shootingBarrel.gameObject.transform.position - Camera.main.transform.position).normalized;
+            //gameObject.transform.Translate(Direction * (Time.deltaTime * RecoilValue));
+        }
+        else
+        {
+            recoil = false;
+            timer2 = 0;
         }
     }
 
