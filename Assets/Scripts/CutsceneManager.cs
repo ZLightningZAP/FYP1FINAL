@@ -1,29 +1,22 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
-    //Cutscene
-
+    public List<GameObject> CutsceneWaypoint = new List<GameObject>();
     public GameObject UIPanel;
     public InputHandler inputhandler;
-    public int CutsceneEnd;
-
-    private Player player;
-    private bool runningcutscene = false;
+    public Player player;
 
     // Use this for initialization
     private void Start()
     {
-        // CUTSCENE
         //Disable the UI Panel on start
         UIPanel.SetActive(false);
         //Disable the input handler on start
         inputhandler.enabled = false;
-        //Boolean to handle the running of the cutscene
-        runningcutscene = true;
         //Disable the player script so they wont take damage
-        player = GetComponentInChildren<Player>();
         player.enabled = false;
     }
 
