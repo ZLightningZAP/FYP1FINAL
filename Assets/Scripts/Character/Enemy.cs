@@ -196,10 +196,12 @@ public class Enemy : Character
         anim.enabled = true;
         aiming.SetActive(true);
 
+        //Shootingbarrel will look at the camera
+        shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+
         timer += Time.deltaTime;
         if (timer >= Timetoshoot)
         {
-            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
             //FindObjectOfType<Player>().Injure(Damage);
             print("Damaged by " + gameObject.name);
             //Play the sound effect for the enemy shooting at the player
