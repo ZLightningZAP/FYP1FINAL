@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f33b71b4c38eb6e49a6effda1ce07ba3
-timeCreated: 1461575120
+guid: dacaaf127e6d58f4f9f1f11fd1c28b7e
+timeCreated: 1461898084
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -11,7 +11,7 @@ ModelImporter:
     3300000: //RootNode
     4300000: Object_HighWay_Ascend
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
