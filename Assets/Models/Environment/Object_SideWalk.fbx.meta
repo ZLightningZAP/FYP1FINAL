@@ -1,31 +1,17 @@
 fileFormatVersion: 2
-guid: 318918a3dba03954aa15d51a2a3e2404
-timeCreated: 1461220891
+guid: 871937996dce00540a59918ca8634a86
+timeCreated: 1461899798
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Object_Road_4WayIntersection
-    100004: Object_Road_4WayIntersection3
-    100006: Object_Road_4WayIntersection4
-    100008: Object_Road_4WayIntersection_Road
     400000: //RootNode
-    400002: Object_Road_4WayIntersection
-    400004: Object_Road_4WayIntersection3
-    400006: Object_Road_4WayIntersection4
-    400008: Object_Road_4WayIntersection_Road
-    2300000: Object_Road_4WayIntersection
-    2300002: Object_Road_4WayIntersection4
-    2300004: Object_Road_4WayIntersection_Road
-    3300000: Object_Road_4WayIntersection
-    3300002: Object_Road_4WayIntersection4
-    3300004: Object_Road_4WayIntersection_Road
-    4300000: Object_Road_4WayIntersection
-    4300002: Object_Road_4WayIntersection_Road
-    4300004: Object_Road_4WayIntersection4
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Object_SideWalk
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
