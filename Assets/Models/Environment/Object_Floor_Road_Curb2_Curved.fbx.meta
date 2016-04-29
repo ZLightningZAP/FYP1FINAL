@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4dea705622f54464da85dd130bed1bd3
-timeCreated: 1461898083
+guid: e4b08f869299b8f40a46069e4f2e073e
+timeCreated: 1461917582
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object_Highway_Railings_End
+    4300000: Object_Road_Curb2_Curved
   materials:
     importMaterials: 1
     materialName: 0

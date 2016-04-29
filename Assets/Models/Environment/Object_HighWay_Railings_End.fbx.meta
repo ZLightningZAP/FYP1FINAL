@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e4329c9eba6f05a4a95156dc7e9273c3
-timeCreated: 1461898173
+guid: 71fa49094a680e34dbd5d7d456c79b04
+timeCreated: 1461913996
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Object_Sign_Square
+    4300000: Object_Highway_Railings_End
   materials:
     importMaterials: 1
     materialName: 0
