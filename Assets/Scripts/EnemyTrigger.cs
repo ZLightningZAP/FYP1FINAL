@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemyTrigger : MonoBehaviour
 {
     public List<Enemy> enemylist = new List<Enemy>();
-
-    public GameObject canvas;
 
     // Use this for initialization
     private void Start()
@@ -19,17 +18,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Spawnenemies();
-    }
-
-    private void Spawnenemies()
-    {
+        print("Triggered");
         for (int i = 0; i < enemylist.Count; i++)
         {
-            enemylist[i].gameObject.SetActive(true);
+            enemylist[i].Triggeredmove = true;
         }
-
-        //Set the parent of the gameobject to the world canvas
-        //enemy.transform.SetParent(canvas.transform);
     }
 }

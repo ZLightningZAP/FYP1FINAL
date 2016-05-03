@@ -34,6 +34,9 @@ public class Enemy : Character
     private LookingPoint2 lk2;
     private Rigidbody rb;
 
+    private bool triggeredmove = false;
+    public bool Triggeredmove { get { return triggeredmove; } set { triggeredmove = value; } }
+
     // Use this for initialization
     protected override void Start()
     {
@@ -53,8 +56,6 @@ public class Enemy : Character
         lk2 = FindObjectOfType<LookingPoint2>();
 
         rb = GetComponent<Rigidbody>();
-
-        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,7 +65,8 @@ public class Enemy : Character
         base.Update();
 
         Dead();
-        if (Waypoint != null)
+
+        if (triggeredmove == true)
         {
             Move();
         }
