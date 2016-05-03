@@ -1,12 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
-    public List<GameObject> CutsceneWaypoint = new List<GameObject>();
-    public List<GameObject> CutsceneLookpoint = new List<GameObject>();
-    public float[] WaitTimes;
+    public GameObject CutsceneWaypointCanvas;
+    private List<CutsceneWaypoint> Waypoint = new List<CutsceneWaypoint>();
+    public List<CutsceneWaypoint> SortedWaypoint = new List<CutsceneWaypoint>();
+
     public float MovementSpeed;
     public float RotationSpeed;
     public GameObject UIPanel;
@@ -44,16 +45,51 @@ public class CutsceneManager : MonoBehaviour
         Index = 0;
         distanceGap = 0.01f;
 
-        //Check if there is at least 1 waypoint inside the list
-        if (CutsceneWaypoint.Count > 0)
+        foreach (var waypoint in FindObjectsOfType(typeof(CutsceneWaypoint)) as CutsceneWaypoint[])
         {
-            NextTransform = CutsceneWaypoint[Index].transform;
-            WaitTime = WaitTimes[Index];
+            Waypoint.Add(waypoint);
         }
+
+        SortedWaypoint = CutsceneWaypointCanvas.GetComponentsInChildren<CutsceneWaypoint>().ToList();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (SortedWaypoint[Index].gameObject.transform.position != transform.position)
+        {
+            if (SortedWaypoint[Index].Lookpoint != null)
+            {
+                Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
+                CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+                //print("rotating");
+            }
+            else
+            {
+                Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].gameObject.transform.position - transform.position);
+                CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+            }
+        }
+
+        if (Vector3.Distance(SortedWaypoint[Index].gameObject.transform.position, CurrentTransform.position) > distanceGap)
+        {
+            //Go towards the next position
+            CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedWaypoint[Index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
+        }
+        else
+        {
+            WaitTime += Time.deltaTime;
+
+            if (WaitTime > SortedWaypoint[Index].WaitTime)
+            {
+                //Only if its still within bounds of the waypoint
+                if (SortedWaypoint.Count > Index + 1)
+                {
+                    Index++;
+                    WaitTime = 0.0f;
+                    print("Going to next point!");
+                }
+            }
+        }
     }
 }
