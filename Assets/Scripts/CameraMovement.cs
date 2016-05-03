@@ -1,25 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Transform[] Waypoints;   //Waypoints to move towards
-    public Transform[] RotationPoints;  //Angles to rotate towards
-    public float[] WaitTimes;   //Waiting Time for each way point
+    private List<Waypoint> Waypoint = new List<Waypoint>();
+    public List<Waypoint> SortedWaypoint = new List<Waypoint>();
 
     public float MovementSpeed;    //Movement Speed of Camera
     public float RotationSpeed;     //Rotation Speed of Camera
-
-    public float WaitBeforeShooting; //Waiting time before the enemy shoots the player
-
-    private float WaitTime; //Time to wait before moving to next waypoint
     private float waitTimer;    //Count Timer
 
-    //Position
     private Transform CurrentTransform;  //Current Position of Camera
-
     private Transform NextTransform; //Next Position to move towards
-
-    //Rotation
     private Transform NextRotation; //Next Rotation to rotate towards
 
     private int Index;   //Current Index of waypoint
@@ -49,12 +42,11 @@ public class CameraMovement : MonoBehaviour
         Index = 0;
         distanceGap = 0.01f;
 
-        //Only if there is atleast 1 waypoint
-        if (Waypoints.Length > 0)
+        foreach (var waypoint in FindObjectsOfType(typeof(Waypoint)) as Waypoint[])
         {
-            NextTransform = Waypoints[Index];
-            WaitTime = WaitTimes[Index];
+            Waypoint.Add(waypoint);
         }
+        SortedWaypoint = Waypoint.OrderBy(go => go.name).ToList();
 
         //Play the ambient music
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
@@ -71,20 +63,25 @@ public class CameraMovement : MonoBehaviour
 
         if (Shaking == false)
         {
-            if (RotationPoints.Length > 0)
+            if (SortedWaypoint[Index].gameObject.transform.position != transform.position)
             {
-                if (RotationPoints[Index].position != transform.position)
+                if (SortedWaypoint[Index].Lookpoint != null)
                 {
-                    Quaternion rotation = Quaternion.LookRotation(RotationPoints[Index].position - transform.position);
+                    Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
                     CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
                     //print("rotating");
                 }
+                else
+                {
+                    Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].gameObject.transform.position - transform.position);
+                    CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
+                }
             }
 
-            if (Vector3.Distance(NextTransform.position, CurrentTransform.position) > distanceGap)
+            if (Vector3.Distance(SortedWaypoint[Index].gameObject.transform.position, CurrentTransform.position) > distanceGap)
             {
                 //Go towards the next position
-                CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, NextTransform.position, MovementSpeed * Time.deltaTime);
+                CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedWaypoint[Index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
                 if (Checked == true)
                 {
                     Checked = false;
@@ -99,14 +96,12 @@ public class CameraMovement : MonoBehaviour
             {
                 waitTimer += Time.deltaTime;
 
-                if (waitTimer > WaitTime)
+                if (waitTimer > SortedWaypoint[Index].WaitTime)
                 {
                     //Only if its still within bounds of the waypoint
-                    if (Waypoints.Length > Index + 1)
+                    if (SortedWaypoint.Count > Index + 1)
                     {
                         Index++;
-                        NextTransform = Waypoints[Index];
-                        WaitTime = WaitTimes[Index];
                         waitTimer = 0.0f;
                         print("Going to next point!");
                     }

@@ -2,12 +2,12 @@
 
 public class Waypoint : MonoBehaviour
 {
-    public GameObject WaypointObject;
+    public GameObject Lookpoint;
+    public float WaitTime;
 
     // Use this for initialization
     private void Start()
     {
-        //WaypointObject.SetActive(false);
     }
 
     // Update is called once per frame
