@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public GameObject WaypointCanvas;
     private List<Waypoint> Waypoint = new List<Waypoint>();
     public List<Waypoint> SortedWaypoint = new List<Waypoint>();
 
@@ -46,7 +47,8 @@ public class CameraMovement : MonoBehaviour
         {
             Waypoint.Add(waypoint);
         }
-        SortedWaypoint = Waypoint.OrderBy(go => go.name).ToList();
+
+        SortedWaypoint = WaypointCanvas.GetComponentsInChildren<Waypoint>().ToList();
 
         //Play the ambient music
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
