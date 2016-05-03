@@ -22,6 +22,7 @@ public class EnemyTrigger : MonoBehaviour
         for (int i = 0; i < enemylist.Count; i++)
         {
             enemylist[i].Triggeredmove = true;
+            enemylist[i].gameObject.SetActive(true);
         }
     }
 }

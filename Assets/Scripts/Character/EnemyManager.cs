@@ -21,6 +21,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemies.Add(enemy);
         }
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].gameObject.SetActive(false);
+        }
 
         trulyVisibleEnemy = 0;
         updatedCount = 0;
