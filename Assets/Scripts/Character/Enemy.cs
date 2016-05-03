@@ -10,6 +10,7 @@ public class Enemy : Character
     public float RecoilAngle = 50;
     public float RecoilValue = 5;
     public float Thrust = 100f;
+    public bool Obsolete = false;
 
     public GameObject aiming;
 
@@ -64,26 +65,29 @@ public class Enemy : Character
         // Base Update
         base.Update();
 
-        Dead();
-
-        if (triggeredmove == true)
+        if (triggeredmove == true && Waypoint != null)
         {
             Move();
         }
 
-        if (recoil == false)
+        if (Obsolete == false)
         {
-            Looking();
-        }
+            Dead();
 
-        if (shootingyet == true)
-        {
-            Shooting();
-        }
+            if (recoil == false)
+            {
+                Looking();
+            }
 
-        if (recoil == true)
-        {
-            Recoil();
+            if (shootingyet == true)
+            {
+                Shooting();
+            }
+
+            if (recoil == true)
+            {
+                Recoil();
+            }
         }
     }
 

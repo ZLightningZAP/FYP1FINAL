@@ -18,7 +18,7 @@ public class EnemyTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Triggered");
+        print(gameObject.transform.name);
         for (int i = 0; i < enemylist.Count; i++)
         {
             enemylist[i].Triggeredmove = true;
