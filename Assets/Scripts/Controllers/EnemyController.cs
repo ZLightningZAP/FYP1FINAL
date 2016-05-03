@@ -78,10 +78,10 @@ public class EnemyController : MonoBehaviour
                 return SpawnV200RumbleType2(position, rotation);
 
             case ENEMY_TYPE.V200_RUMBLE_TYPE3:
-                return SpawnV200RumbleType1(position, rotation);
+                return SpawnV200RumbleType3(position, rotation);
 
             case ENEMY_TYPE.V200_RUMBLE_TYPE4:
-                return SpawnV200RumbleType2(position, rotation);
+                return SpawnV200RumbleType4(position, rotation);
 
             case ENEMY_TYPE.M113_RUMBLE_TYPE1:
                 return SpawnM113RumbleType1(position, rotation);
@@ -90,10 +90,10 @@ public class EnemyController : MonoBehaviour
                 return SpawnM113RumbleType2(position, rotation);
 
             case ENEMY_TYPE.M113_RUMBLE_TYPE3:
-                return SpawnM113RumbleType1(position, rotation);
+                return SpawnM113RumbleType3(position, rotation);
 
             case ENEMY_TYPE.M113_RUMBLE_TYPE4:
-                return SpawnM113RumbleType2(position, rotation);
+                return SpawnM113RumbleType4(position, rotation);
 
             default:
                 return null;
