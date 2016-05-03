@@ -1,46 +1,15 @@
 fileFormatVersion: 2
-guid: dc7b81be2be6fc041a880043a4d11bb1
-timeCreated: 1461723923
+guid: f2c1d582bc075e248880e430655f9f19
+timeCreated: 1462267566
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Enemy_V200_Damaged_Var2
-    100002: polySurface198
-    100004: polySurface204
-    100006: //RootNode
-    100008: V200_L_FrontWheel2
-    100010: V200_MainBody3
-    100012: V200_R_BackWheel2
-    100014: V200_Turret3
-    100016: V200_Turret_Rotation3
-    400000: Enemy_V200_Damaged_Var2
-    400002: polySurface198
-    400004: polySurface204
-    400006: //RootNode
-    400008: V200_L_FrontWheel2
-    400010: V200_MainBody3
-    400012: V200_R_BackWheel2
-    400014: V200_Turret3
-    400016: V200_Turret_Rotation3
-    2300000: Enemy_V200_Damaged_Var2
-    2300002: V200_L_FrontWheel2
-    2300004: V200_MainBody3
-    2300006: V200_R_BackWheel2
-    2300008: V200_Turret3
-    2300010: V200_Turret_Rotation3
-    3300000: Enemy_V200_Damaged_Var2
-    3300002: V200_L_FrontWheel2
-    3300004: V200_MainBody3
-    3300006: V200_R_BackWheel2
-    3300008: V200_Turret3
-    3300010: V200_Turret_Rotation3
-    4300000: V200_Turret_Rotation3
-    4300002: V200_MainBody3
-    4300004: V200_Turret3
-    4300006: V200_R_BackWheel2
-    4300008: V200_L_FrontWheel2
-    4300010: Enemy_V200_Damaged_Var2
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: V200_Damaged_Var_2
   materials:
     importMaterials: 1
     materialName: 0

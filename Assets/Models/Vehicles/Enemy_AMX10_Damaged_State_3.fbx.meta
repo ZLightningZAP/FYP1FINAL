@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ce80480e42797304989ebd4897cc007d
-timeCreated: 1462266931
+guid: 8da1756840f8d8b4ab035d8a8ddc0c39
+timeCreated: 1462262868
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: M113_Damaged_Var_2
+    4300000: Enemy_AMX10_Damaged_State_3
   materials:
     importMaterials: 1
     materialName: 0

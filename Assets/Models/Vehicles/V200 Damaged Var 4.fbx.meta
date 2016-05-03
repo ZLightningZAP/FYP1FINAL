@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ce80480e42797304989ebd4897cc007d
-timeCreated: 1462266931
+guid: c5a833942f7165a4c929013d6313d8f5
+timeCreated: 1462267566
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: M113_Damaged_Var_2
+    4300000: V200_Damaged_Var_4
   materials:
     importMaterials: 1
     materialName: 0

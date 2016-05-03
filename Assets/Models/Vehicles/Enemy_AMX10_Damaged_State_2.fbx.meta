@@ -1,15 +1,44 @@
 fileFormatVersion: 2
-guid: ce80480e42797304989ebd4897cc007d
-timeCreated: 1462266931
+guid: 22d27e5eca22fd64da182feb47d1d8bb
+timeCreated: 1462262867
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Enemy_AMX10_Damaged_State_2
+    100004: polySurface2127
+    100006: polySurface2133
+    100008: polySurface2134
+    100010: polySurface2355
+    100012: polySurface2475
+    100014: polySurface2477
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: M113_Damaged_Var_2
+    400002: Enemy_AMX10_Damaged_State_2
+    400004: polySurface2127
+    400006: polySurface2133
+    400008: polySurface2134
+    400010: polySurface2355
+    400012: polySurface2475
+    400014: polySurface2477
+    2300000: polySurface2127
+    2300002: polySurface2133
+    2300004: polySurface2134
+    2300006: polySurface2355
+    2300008: polySurface2475
+    2300010: polySurface2477
+    3300000: polySurface2127
+    3300002: polySurface2133
+    3300004: polySurface2134
+    3300006: polySurface2355
+    3300008: polySurface2475
+    3300010: polySurface2477
+    4300000: polySurface2355
+    4300002: polySurface2475
+    4300004: polySurface2477
+    4300006: polySurface2134
+    4300008: polySurface2133
+    4300010: polySurface2127
   materials:
     importMaterials: 1
     materialName: 0

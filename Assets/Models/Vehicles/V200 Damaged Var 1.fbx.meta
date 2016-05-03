@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cee5f74dd0eeadf4794147cff91840d2
-timeCreated: 1461724411
+guid: 432bc9e5cda383846bb389f9a9e66f22
+timeCreated: 1462267565
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Enemy_V200_Damaged_Var1
+    4300000: V200_Damaged_Var_1
   materials:
     importMaterials: 1
     materialName: 0
