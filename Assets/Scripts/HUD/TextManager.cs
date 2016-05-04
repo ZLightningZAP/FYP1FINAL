@@ -30,7 +30,7 @@ public class TextManager : MonoBehaviour
     //Read the text file
     private void Read()
     {
-        StreamReader reader = new StreamReader(File.OpenRead("Assets/Textures/Text File/Highscore.txt"));
+        StreamReader reader = new StreamReader(File.OpenRead("Assets/Text File/Highscore.txt"));
         while (!reader.EndOfStream)
         {
             linesInFile.Add(reader.ReadLine());
@@ -87,7 +87,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    StreamWriter writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter("Assets/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
@@ -124,7 +124,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    StreamWriter writer = new StreamWriter("Assets/Textures/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter("Assets/Text File/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
