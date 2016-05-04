@@ -5,8 +5,8 @@ using UnityEngine;
 public class CutsceneManager : MonoBehaviour
 {
     public GameObject CutsceneWaypointCanvas;
-    private List<CutsceneWaypoint> Waypoint = new List<CutsceneWaypoint>();
-    public List<CutsceneWaypoint> SortedWaypoint = new List<CutsceneWaypoint>();
+    private List<CutsceneWaypoint> CutWaypoint = new List<CutsceneWaypoint>();
+    public List<CutsceneWaypoint> SortedCutWaypoint = new List<CutsceneWaypoint>();
 
     public float MovementSpeed;
     public float RotationSpeed;
@@ -18,7 +18,6 @@ public class CutsceneManager : MonoBehaviour
 
     private float WaitTime;
     private Transform CurrentTransform;
-    private Transform NextTransform;
     private Transform NextRotation;
     private int Index;
     private float distanceGap;
@@ -41,49 +40,53 @@ public class CutsceneManager : MonoBehaviour
 
         //Set the current transform as the main camera transform
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        NextTransform = CurrentTransform;
         Index = 0;
         distanceGap = 0.01f;
 
         foreach (var waypoint in FindObjectsOfType(typeof(CutsceneWaypoint)) as CutsceneWaypoint[])
         {
-            Waypoint.Add(waypoint);
+            CutWaypoint.Add(waypoint);
         }
 
-        SortedWaypoint = CutsceneWaypointCanvas.GetComponentsInChildren<CutsceneWaypoint>().ToList();
+        for (int i = 0; i < CutWaypoint.Count; i++)
+        {
+            CutWaypoint[i].GetComponentInChildren<Waypoint>().enabled = false;
+        }
+
+        SortedCutWaypoint = CutsceneWaypointCanvas.GetComponentsInChildren<CutsceneWaypoint>().ToList();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (SortedWaypoint[Index].gameObject.transform.position != transform.position)
+        if (SortedCutWaypoint[Index].gameObject.transform.position != transform.position)
         {
-            if (SortedWaypoint[Index].Lookpoint != null)
+            if (SortedCutWaypoint[Index].Lookpoint != null)
             {
-                Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
+                Quaternion rotation = Quaternion.LookRotation(SortedCutWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
                 CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
                 //print("rotating");
             }
             else
             {
-                Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].gameObject.transform.position - transform.position);
+                Quaternion rotation = Quaternion.LookRotation(SortedCutWaypoint[Index].gameObject.transform.position - transform.position);
                 CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
             }
         }
 
-        if (Vector3.Distance(SortedWaypoint[Index].gameObject.transform.position, CurrentTransform.position) > distanceGap)
+        if (Vector3.Distance(SortedCutWaypoint[Index].gameObject.transform.position, CurrentTransform.position) > distanceGap)
         {
             //Go towards the next position
-            CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedWaypoint[Index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
+            CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedCutWaypoint[Index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
         }
         else
         {
             WaitTime += Time.deltaTime;
 
-            if (WaitTime > SortedWaypoint[Index].WaitTime)
+            if (WaitTime > SortedCutWaypoint[Index].WaitTime)
             {
                 //Only if its still within bounds of the waypoint
-                if (SortedWaypoint.Count > Index + 1)
+                if (SortedCutWaypoint.Count > Index + 1)
                 {
                     Index++;
                     WaitTime = 0.0f;

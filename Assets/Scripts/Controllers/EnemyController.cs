@@ -30,7 +30,6 @@ public class EnemyController : MonoBehaviour
     private List<GameObject> M113RumbleType3_Pool;    //List containing all M113 rumble type 3 in the scene
     private List<GameObject> M113RumbleType4_Pool;    //List containing all M113 rumble type 4 in the scene
 
-
     //Every type of enemy available in game
     public enum ENEMY_TYPE
     {
@@ -130,7 +129,7 @@ public class EnemyController : MonoBehaviour
     private void InitializeRumblePool()
     {
         /****************
-         * V200 Rumbles 
+         * V200 Rumbles
          ****************/
         //Only if object to be pooled is assigned
         if (V200RumbleType1_Object != null)
@@ -213,7 +212,7 @@ public class EnemyController : MonoBehaviour
         }
 
         /****************
-         * M113 Rumbles 
+         * M113 Rumbles
          ****************/
         //Only if object to be pooled is assigned
         if (M113RumbleType1_Object != null)

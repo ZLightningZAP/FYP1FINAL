@@ -228,7 +228,7 @@ public class Enemy : Character
         timer += Time.deltaTime;
         if (timer >= Timetoshoot)
         {
-            //FindObjectOfType<Player>().Injure(Damage);
+            FindObjectOfType<Player>().Injure(Damage);
             print("Damaged by " + gameObject.name);
             //Play the sound effect for the enemy shooting at the player
             SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
@@ -280,24 +280,27 @@ public class Enemy : Character
 
         if (gameObject.tag == "M113")
         {
-            switch(rand)
+            switch (rand)
             {
                 case 1:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.M113_RUMBLE_TYPE1);
                     break;
+
                 case 2:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.M113_RUMBLE_TYPE2);
                     break;
+
                 case 3:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.M113_RUMBLE_TYPE3);
                     break;
+
                 case 4:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.M113_RUMBLE_TYPE4);
                     break;
+
                 default:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.M113_RUMBLE_TYPE1);
                     break;
-
             }
         }
         else if (gameObject.tag == "V200")
@@ -307,19 +310,22 @@ public class Enemy : Character
                 case 1:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE1);
                     break;
+
                 case 2:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE2);
                     break;
+
                 case 3:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE3);
                     break;
+
                 case 4:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE4);
                     break;
+
                 default:
                     EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.V200_RUMBLE_TYPE1);
                     break;
-
             }
         }
     }

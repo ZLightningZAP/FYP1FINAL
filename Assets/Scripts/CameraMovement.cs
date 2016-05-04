@@ -13,7 +13,6 @@ public class CameraMovement : MonoBehaviour
     private float waitTimer;    //Count Timer
 
     private Transform CurrentTransform;  //Current Position of Camera
-    private Transform NextTransform; //Next Position to move towards
     private Transform NextRotation; //Next Rotation to rotate towards
 
     private int Index;   //Current Index of waypoint
@@ -34,11 +33,12 @@ public class CameraMovement : MonoBehaviour
 
     public EnemyManager enemiManager;
 
+    public GameObject Deadpanel;
+
     // Use this for initialization
     private void Start()
     {
         CurrentTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
-        NextTransform = CurrentTransform;
 
         Index = 0;
         distanceGap = 0.01f;
@@ -65,6 +65,13 @@ public class CameraMovement : MonoBehaviour
 
         if (Shaking == false)
         {
+            //If the camera has reached the final waypoint
+            if (Camera.main.transform.position == SortedWaypoint[SortedWaypoint.Count - 1].gameObject.transform.position)
+            {
+                Deadpanel.SetActive(true);
+                return;
+            }
+
             if (SortedWaypoint[Index].gameObject.transform.position != transform.position)
             {
                 if (SortedWaypoint[Index].Lookpoint != null)

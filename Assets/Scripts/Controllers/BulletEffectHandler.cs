@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class BulletEffectHandler : MonoBehaviour {
-
+public class BulletEffectHandler : MonoBehaviour
+{
     private float gap = 0.1f;   //Gap for instantiating effects
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
     }
 
     public void EffectResponse(RaycastHit hit)
@@ -23,9 +20,8 @@ public class BulletEffectHandler : MonoBehaviour {
 
         if (type == "SpeedTree")
         {
-
         }
-        else if(type == "Road")
+        else if (type == "Road")
         {
             VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.DUSTCLOUD);
         }
@@ -41,8 +37,6 @@ public class BulletEffectHandler : MonoBehaviour {
             {
                 VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
             }
-
-
         }
     }
 }
