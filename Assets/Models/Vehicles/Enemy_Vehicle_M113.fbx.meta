@@ -112,7 +112,7 @@ ModelImporter:
     4300036: M113_R_Wheel_5
     4300038: M113_R_Wheel_Back
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

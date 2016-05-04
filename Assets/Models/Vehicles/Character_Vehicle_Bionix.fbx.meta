@@ -71,7 +71,7 @@ ModelImporter:
     4300022: Bionix_Treads
     4300024: Bionix_Treads2
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

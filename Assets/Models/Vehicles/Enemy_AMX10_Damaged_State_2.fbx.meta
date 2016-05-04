@@ -40,7 +40,7 @@ ModelImporter:
     4300008: polySurface2133
     4300010: polySurface2127
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:

@@ -41,7 +41,7 @@ ModelImporter:
     4300010: V200_R_FrontWheel
     4300012: V200_R_BackWheel
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
