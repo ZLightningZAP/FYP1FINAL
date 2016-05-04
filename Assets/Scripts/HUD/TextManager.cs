@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
-    public TextAsset textfile;
-
-    private StreamWriter writer;
-    private int result;
-    private static List<string> linesInFile = new List<string>();
+    private static StreamWriter writer;
+    private static int result;
+    public static List<string> Tempdata = new List<string>();
+    public static List<string> linesInFile = new List<string>();
     public static List<string> Names = new List<string>();
     public static List<int> Score = new List<int>();
     private static bool added = false;
+    public static bool read = false;
 
     //Use this for initialization
     private void Start()
@@ -28,26 +28,35 @@ public class TextManager : MonoBehaviour
     }
 
     //Read the text file
-    private void Read()
+    public void Read()
     {
-        StreamReader reader = new StreamReader(File.OpenRead("Assets/Text File/Highscore.txt"));
+        StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/Highscore.txt");
         while (!reader.EndOfStream)
         {
             linesInFile.Add(reader.ReadLine());
         }
 
-        linesInFile = textfile.text.Split(' ', '\n').ToList();
-
-        for (int i = 0; i < linesInFile.Count; i += 2)
+        for (int i = 0; i < linesInFile.Count; i++)
         {
-            Names.Add(linesInFile[i]);
+            var temptempdata = (linesInFile[i].Split(' '));
+            foreach (var data in temptempdata)
+            {
+                Tempdata.Add(data);
+            }
         }
 
-        for (int i = 1; i < linesInFile.Count; i += 2)
+        for (int i = 0; i < Tempdata.Count; i += 2)
         {
-            Int32.TryParse(linesInFile[i], out result);
+            Names.Add(Tempdata[i]);
+        }
+
+        for (int i = 1; i < Tempdata.Count; i += 2)
+        {
+            Int32.TryParse(Tempdata[i], out result);
             Score.Add(result);
         }
+        read = true;
+        reader.Close();
     }
 
     //Write to the text file
@@ -87,7 +96,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    StreamWriter writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter(Application.streamingAssetsPath + "/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)
@@ -124,7 +133,7 @@ public class TextManager : MonoBehaviour
                         Names.Remove(Names[Names.Count - 1]);
                     }
 
-                    StreamWriter writer = new StreamWriter("Assets/Text File/Highscore.txt");
+                    StreamWriter writer = new StreamWriter(Application.streamingAssetsPath + "/Highscore.txt");
                     for (int o = 0; o < Score.Count; o++)
                     {
                         if (o < Score.Count - 1)

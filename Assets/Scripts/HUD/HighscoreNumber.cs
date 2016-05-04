@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class HighscoreNumber : MonoBehaviour
 {
-    public TextAsset HighscoreFile;
-
     private Text text;
     private string display = "";
     private int linesInFile;
@@ -14,19 +12,23 @@ public class HighscoreNumber : MonoBehaviour
     private void Start()
     {
         text = GetComponentInChildren<Text>();
-        Read();
-        Display();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if (TextManager.read == true)
+        {
+            Read();
+            Display();
+            TextManager.read = false;
+        }
     }
 
     //Read the text file
     private void Read()
     {
-        linesInFile = HighscoreFile.text.Split('\n').Count();
+        linesInFile = TextManager.Tempdata.Count;
     }
 
     //Display something on the GUI canvas
