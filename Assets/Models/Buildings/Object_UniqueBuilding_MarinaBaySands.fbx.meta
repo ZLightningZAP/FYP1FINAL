@@ -6,11 +6,55 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Object_UniqueBuilding_MarinaBaySands_Bottom
+    100004: Object_UniqueBuilding_MarinaBaySands_Bridge
+    100006: Object_UniqueBuilding_MarinaBaySands_Bridge1
+    100008: Object_UniqueBuilding_MarinaBaySands_Bridge2
+    100010: Object_UniqueBuilding_MarinaBaySands_Bridge3
+    100012: Object_UniqueBuilding_MarinaBaySands_Bridge4
+    100014: Object_UniqueBuilding_MarinaBaySands_Bridge5
+    100016: Object_UniqueBuilding_MarinaBaySands_MainBuilding
+    100018: Object_UniqueBuilding_MarinaBaySands_SkyPark
     400000: //RootNode
+    400002: Object_UniqueBuilding_MarinaBaySands_Bottom
+    400004: Object_UniqueBuilding_MarinaBaySands_Bridge
+    400006: Object_UniqueBuilding_MarinaBaySands_Bridge1
+    400008: Object_UniqueBuilding_MarinaBaySands_Bridge2
+    400010: Object_UniqueBuilding_MarinaBaySands_Bridge3
+    400012: Object_UniqueBuilding_MarinaBaySands_Bridge4
+    400014: Object_UniqueBuilding_MarinaBaySands_Bridge5
+    400016: Object_UniqueBuilding_MarinaBaySands_MainBuilding
+    400018: Object_UniqueBuilding_MarinaBaySands_SkyPark
     2300000: //RootNode
+    2300002: Object_UniqueBuilding_MarinaBaySands_Bottom
+    2300004: Object_UniqueBuilding_MarinaBaySands_Bridge
+    2300006: Object_UniqueBuilding_MarinaBaySands_Bridge1
+    2300008: Object_UniqueBuilding_MarinaBaySands_Bridge2
+    2300010: Object_UniqueBuilding_MarinaBaySands_Bridge3
+    2300012: Object_UniqueBuilding_MarinaBaySands_Bridge4
+    2300014: Object_UniqueBuilding_MarinaBaySands_Bridge5
+    2300016: Object_UniqueBuilding_MarinaBaySands_MainBuilding
+    2300018: Object_UniqueBuilding_MarinaBaySands_SkyPark
     3300000: //RootNode
+    3300002: Object_UniqueBuilding_MarinaBaySands_Bottom
+    3300004: Object_UniqueBuilding_MarinaBaySands_Bridge
+    3300006: Object_UniqueBuilding_MarinaBaySands_Bridge1
+    3300008: Object_UniqueBuilding_MarinaBaySands_Bridge2
+    3300010: Object_UniqueBuilding_MarinaBaySands_Bridge3
+    3300012: Object_UniqueBuilding_MarinaBaySands_Bridge4
+    3300014: Object_UniqueBuilding_MarinaBaySands_Bridge5
+    3300016: Object_UniqueBuilding_MarinaBaySands_MainBuilding
+    3300018: Object_UniqueBuilding_MarinaBaySands_SkyPark
     4300000: Object_UniqueBuilding_MarinaBaySands
     4300002: Object_UniqueBuilding_MarinaBaySands_SkyPark
+    4300004: Object_UniqueBuilding_MarinaBaySands_Bridge
+    4300006: Object_UniqueBuilding_MarinaBaySands_Bridge5
+    4300008: Object_UniqueBuilding_MarinaBaySands_Bridge1
+    4300010: Object_UniqueBuilding_MarinaBaySands_Bridge2
+    4300012: Object_UniqueBuilding_MarinaBaySands_Bridge3
+    4300014: Object_UniqueBuilding_MarinaBaySands_Bridge4
+    4300016: Object_UniqueBuilding_MarinaBaySands_MainBuilding
+    4300018: Object_UniqueBuilding_MarinaBaySands_Bottom
   materials:
     importMaterials: 0
     materialName: 0

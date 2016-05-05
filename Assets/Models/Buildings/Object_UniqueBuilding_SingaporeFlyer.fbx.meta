@@ -8,18 +8,158 @@ ModelImporter:
     100000: //RootNode
     100002: Object_UniqueBuilding_SingaporeFlyer_MainBody
     100004: Object_UniqueBuilding_Wheel
+    100006: Object_UniqueBuilding_Capsule_1
+    100008: Object_UniqueBuilding_Capsule_10
+    100010: Object_UniqueBuilding_Capsule_11
+    100012: Object_UniqueBuilding_Capsule_12
+    100014: Object_UniqueBuilding_Capsule_13
+    100016: Object_UniqueBuilding_Capsule_14
+    100018: Object_UniqueBuilding_Capsule_15
+    100020: Object_UniqueBuilding_Capsule_16
+    100022: Object_UniqueBuilding_Capsule_17
+    100024: Object_UniqueBuilding_Capsule_18
+    100026: Object_UniqueBuilding_Capsule_19
+    100028: Object_UniqueBuilding_Capsule_2
+    100030: Object_UniqueBuilding_Capsule_20
+    100032: Object_UniqueBuilding_Capsule_21
+    100034: Object_UniqueBuilding_Capsule_22
+    100036: Object_UniqueBuilding_Capsule_23
+    100038: Object_UniqueBuilding_Capsule_24
+    100040: Object_UniqueBuilding_Capsule_25
+    100042: Object_UniqueBuilding_Capsule_26
+    100044: Object_UniqueBuilding_Capsule_27
+    100046: Object_UniqueBuilding_Capsule_28
+    100048: Object_UniqueBuilding_Capsule_3
+    100050: Object_UniqueBuilding_Capsule_4
+    100052: Object_UniqueBuilding_Capsule_5
+    100054: Object_UniqueBuilding_Capsule_6
+    100056: Object_UniqueBuilding_Capsule_7
+    100058: Object_UniqueBuilding_Capsule_8
+    100060: Object_UniqueBuilding_Capsule_9
     400000: //RootNode
     400002: Object_UniqueBuilding_SingaporeFlyer_MainBody
     400004: Object_UniqueBuilding_Wheel
+    400006: Object_UniqueBuilding_Capsule_1
+    400008: Object_UniqueBuilding_Capsule_10
+    400010: Object_UniqueBuilding_Capsule_11
+    400012: Object_UniqueBuilding_Capsule_12
+    400014: Object_UniqueBuilding_Capsule_13
+    400016: Object_UniqueBuilding_Capsule_14
+    400018: Object_UniqueBuilding_Capsule_15
+    400020: Object_UniqueBuilding_Capsule_16
+    400022: Object_UniqueBuilding_Capsule_17
+    400024: Object_UniqueBuilding_Capsule_18
+    400026: Object_UniqueBuilding_Capsule_19
+    400028: Object_UniqueBuilding_Capsule_2
+    400030: Object_UniqueBuilding_Capsule_20
+    400032: Object_UniqueBuilding_Capsule_21
+    400034: Object_UniqueBuilding_Capsule_22
+    400036: Object_UniqueBuilding_Capsule_23
+    400038: Object_UniqueBuilding_Capsule_24
+    400040: Object_UniqueBuilding_Capsule_25
+    400042: Object_UniqueBuilding_Capsule_26
+    400044: Object_UniqueBuilding_Capsule_27
+    400046: Object_UniqueBuilding_Capsule_28
+    400048: Object_UniqueBuilding_Capsule_3
+    400050: Object_UniqueBuilding_Capsule_4
+    400052: Object_UniqueBuilding_Capsule_5
+    400054: Object_UniqueBuilding_Capsule_6
+    400056: Object_UniqueBuilding_Capsule_7
+    400058: Object_UniqueBuilding_Capsule_8
+    400060: Object_UniqueBuilding_Capsule_9
     2300000: //RootNode
     2300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
     2300004: Object_UniqueBuilding_Wheel
+    2300006: Object_UniqueBuilding_Capsule_1
+    2300008: Object_UniqueBuilding_Capsule_10
+    2300010: Object_UniqueBuilding_Capsule_11
+    2300012: Object_UniqueBuilding_Capsule_12
+    2300014: Object_UniqueBuilding_Capsule_13
+    2300016: Object_UniqueBuilding_Capsule_14
+    2300018: Object_UniqueBuilding_Capsule_15
+    2300020: Object_UniqueBuilding_Capsule_16
+    2300022: Object_UniqueBuilding_Capsule_17
+    2300024: Object_UniqueBuilding_Capsule_18
+    2300026: Object_UniqueBuilding_Capsule_19
+    2300028: Object_UniqueBuilding_Capsule_2
+    2300030: Object_UniqueBuilding_Capsule_20
+    2300032: Object_UniqueBuilding_Capsule_21
+    2300034: Object_UniqueBuilding_Capsule_22
+    2300036: Object_UniqueBuilding_Capsule_23
+    2300038: Object_UniqueBuilding_Capsule_24
+    2300040: Object_UniqueBuilding_Capsule_25
+    2300042: Object_UniqueBuilding_Capsule_26
+    2300044: Object_UniqueBuilding_Capsule_27
+    2300046: Object_UniqueBuilding_Capsule_28
+    2300048: Object_UniqueBuilding_Capsule_3
+    2300050: Object_UniqueBuilding_Capsule_4
+    2300052: Object_UniqueBuilding_Capsule_5
+    2300054: Object_UniqueBuilding_Capsule_6
+    2300056: Object_UniqueBuilding_Capsule_7
+    2300058: Object_UniqueBuilding_Capsule_8
+    2300060: Object_UniqueBuilding_Capsule_9
     3300000: //RootNode
     3300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
     3300004: Object_UniqueBuilding_Wheel
+    3300006: Object_UniqueBuilding_Capsule_1
+    3300008: Object_UniqueBuilding_Capsule_10
+    3300010: Object_UniqueBuilding_Capsule_11
+    3300012: Object_UniqueBuilding_Capsule_12
+    3300014: Object_UniqueBuilding_Capsule_13
+    3300016: Object_UniqueBuilding_Capsule_14
+    3300018: Object_UniqueBuilding_Capsule_15
+    3300020: Object_UniqueBuilding_Capsule_16
+    3300022: Object_UniqueBuilding_Capsule_17
+    3300024: Object_UniqueBuilding_Capsule_18
+    3300026: Object_UniqueBuilding_Capsule_19
+    3300028: Object_UniqueBuilding_Capsule_2
+    3300030: Object_UniqueBuilding_Capsule_20
+    3300032: Object_UniqueBuilding_Capsule_21
+    3300034: Object_UniqueBuilding_Capsule_22
+    3300036: Object_UniqueBuilding_Capsule_23
+    3300038: Object_UniqueBuilding_Capsule_24
+    3300040: Object_UniqueBuilding_Capsule_25
+    3300042: Object_UniqueBuilding_Capsule_26
+    3300044: Object_UniqueBuilding_Capsule_27
+    3300046: Object_UniqueBuilding_Capsule_28
+    3300048: Object_UniqueBuilding_Capsule_3
+    3300050: Object_UniqueBuilding_Capsule_4
+    3300052: Object_UniqueBuilding_Capsule_5
+    3300054: Object_UniqueBuilding_Capsule_6
+    3300056: Object_UniqueBuilding_Capsule_7
+    3300058: Object_UniqueBuilding_Capsule_8
+    3300060: Object_UniqueBuilding_Capsule_9
     4300000: Object_UniqueBuilding_SingaporeFlyer
     4300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
     4300004: Object_UniqueBuilding_Wheel
+    4300006: Object_UniqueBuilding_Capsule_27
+    4300008: Object_UniqueBuilding_Capsule_26
+    4300010: Object_UniqueBuilding_Capsule_25
+    4300012: Object_UniqueBuilding_Capsule_24
+    4300014: Object_UniqueBuilding_Capsule_23
+    4300016: Object_UniqueBuilding_Capsule_22
+    4300018: Object_UniqueBuilding_Capsule_21
+    4300020: Object_UniqueBuilding_Capsule_20
+    4300022: Object_UniqueBuilding_Capsule_19
+    4300024: Object_UniqueBuilding_Capsule_18
+    4300026: Object_UniqueBuilding_Capsule_17
+    4300028: Object_UniqueBuilding_Capsule_16
+    4300030: Object_UniqueBuilding_Capsule_15
+    4300032: Object_UniqueBuilding_Capsule_14
+    4300034: Object_UniqueBuilding_Capsule_13
+    4300036: Object_UniqueBuilding_Capsule_12
+    4300038: Object_UniqueBuilding_Capsule_11
+    4300040: Object_UniqueBuilding_Capsule_10
+    4300042: Object_UniqueBuilding_Capsule_9
+    4300044: Object_UniqueBuilding_Capsule_8
+    4300046: Object_UniqueBuilding_Capsule_7
+    4300048: Object_UniqueBuilding_Capsule_6
+    4300050: Object_UniqueBuilding_Capsule_5
+    4300052: Object_UniqueBuilding_Capsule_4
+    4300054: Object_UniqueBuilding_Capsule_3
+    4300056: Object_UniqueBuilding_Capsule_2
+    4300058: Object_UniqueBuilding_Capsule_1
+    4300060: Object_UniqueBuilding_Capsule_28
   materials:
     importMaterials: 0
     materialName: 0
