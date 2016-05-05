@@ -1,37 +1,26 @@
 fileFormatVersion: 2
-guid: dae8083e152fd6c4ba66b82a1e3f8456
-timeCreated: 1461220918
+guid: 9bf8424b30348d94eb5dec43abea9023
+timeCreated: 1462433377
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    100004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    100006: Object_UniqueBuilding_FountainOfWealth_Props
-    100008: Object_UniqueBuilding_FountainOfWealth_Road
-    400000: //RootNode
-    400002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    400004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    400006: Object_UniqueBuilding_FountainOfWealth_Props
-    400008: Object_UniqueBuilding_FountainOfWealth_Road
-    2300000: //RootNode
-    2300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    2300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    2300006: Object_UniqueBuilding_FountainOfWealth_Props
-    2300008: Object_UniqueBuilding_FountainOfWealth_Road
-    3300000: //RootNode
-    3300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    3300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    3300006: Object_UniqueBuilding_FountainOfWealth_Props
-    3300008: Object_UniqueBuilding_FountainOfWealth_Road
-    4300000: Object_UniqueBuilding_FountainOfWealth
-    4300002: Object_UniqueBuilding_FountainOfWealth_Fountain
-    4300004: Object_UniqueBuilding_FountainOfWealth_Road
-    4300006: Object_UniqueBuilding_FountainOfWealth_Curbs
-    4300008: Object_UniqueBuilding_FountainOfWealth_Props
+    100000: Object_Sign_Pole
+    100002: Object_Sign_Street 1
+    100004: //RootNode
+    100006: transform1
+    400000: Object_Sign_Pole
+    400002: Object_Sign_Street 1
+    400004: //RootNode
+    400006: transform1
+    2300000: Object_Sign_Pole
+    2300002: Object_Sign_Street 1
+    3300000: Object_Sign_Pole
+    3300002: Object_Sign_Street 1
+    4300000: Object_Sign_Street
+    4300002: Object_Sign_Pole
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

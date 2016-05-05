@@ -1,37 +1,24 @@
 fileFormatVersion: 2
-guid: dae8083e152fd6c4ba66b82a1e3f8456
-timeCreated: 1461220918
+guid: 3493e63bfd843a540aee4f89192ca5e3
+timeCreated: 1462433376
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    100004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    100006: Object_UniqueBuilding_FountainOfWealth_Props
-    100008: Object_UniqueBuilding_FountainOfWealth_Road
+    100002: Object_HighWayBottom
+    100004: Object_HighWaySupport
     400000: //RootNode
-    400002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    400004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    400006: Object_UniqueBuilding_FountainOfWealth_Props
-    400008: Object_UniqueBuilding_FountainOfWealth_Road
-    2300000: //RootNode
-    2300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    2300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    2300006: Object_UniqueBuilding_FountainOfWealth_Props
-    2300008: Object_UniqueBuilding_FountainOfWealth_Road
-    3300000: //RootNode
-    3300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    3300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    3300006: Object_UniqueBuilding_FountainOfWealth_Props
-    3300008: Object_UniqueBuilding_FountainOfWealth_Road
-    4300000: Object_UniqueBuilding_FountainOfWealth
-    4300002: Object_UniqueBuilding_FountainOfWealth_Fountain
-    4300004: Object_UniqueBuilding_FountainOfWealth_Road
-    4300006: Object_UniqueBuilding_FountainOfWealth_Curbs
-    4300008: Object_UniqueBuilding_FountainOfWealth_Props
+    400002: Object_HighWayBottom
+    400004: Object_HighWaySupport
+    2300000: Object_HighWayBottom
+    2300002: Object_HighWaySupport
+    3300000: Object_HighWayBottom
+    3300002: Object_HighWaySupport
+    4300000: Object_HighWayBottom
+    4300002: Object_HighWaySupport
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

@@ -1,37 +1,17 @@
 fileFormatVersion: 2
-guid: dae8083e152fd6c4ba66b82a1e3f8456
-timeCreated: 1461220918
+guid: 19c5f1187a2cedb4cad3a2d89e34aa0b
+timeCreated: 1462433376
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    100004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    100006: Object_UniqueBuilding_FountainOfWealth_Props
-    100008: Object_UniqueBuilding_FountainOfWealth_Road
     400000: //RootNode
-    400002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    400004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    400006: Object_UniqueBuilding_FountainOfWealth_Props
-    400008: Object_UniqueBuilding_FountainOfWealth_Road
     2300000: //RootNode
-    2300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    2300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    2300006: Object_UniqueBuilding_FountainOfWealth_Props
-    2300008: Object_UniqueBuilding_FountainOfWealth_Road
     3300000: //RootNode
-    3300002: Object_UniqueBuilding_FountainOfWealth_Curbs
-    3300004: Object_UniqueBuilding_FountainOfWealth_Fountain
-    3300006: Object_UniqueBuilding_FountainOfWealth_Props
-    3300008: Object_UniqueBuilding_FountainOfWealth_Road
-    4300000: Object_UniqueBuilding_FountainOfWealth
-    4300002: Object_UniqueBuilding_FountainOfWealth_Fountain
-    4300004: Object_UniqueBuilding_FountainOfWealth_Road
-    4300006: Object_UniqueBuilding_FountainOfWealth_Curbs
-    4300008: Object_UniqueBuilding_FountainOfWealth_Props
+    4300000: Collider_HighWay_Straight
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
