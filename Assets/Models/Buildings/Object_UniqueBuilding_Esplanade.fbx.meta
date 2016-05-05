@@ -6,10 +6,55 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Object_UniqueBuilding_Esplanade_2
+    100004: Object_UniqueBuilding_Esplanade_Floor1
+    100006: Object_UniqueBuilding_Esplanade_Left
+    100008: Object_UniqueBuilding_Esplanade_Middle
+    100010: Object_UniqueBuilding_Esplanade_Misc
+    100012: Object_UniqueBuilding_Esplanade_Pond
+    100014: Object_UniqueBuilding_Esplanade_Right
+    100016: Object_UniqueBuilding_Esplanade_Round
+    100018: Object_UniqueBuilding_Esplanade_Small
     400000: //RootNode
+    400002: Object_UniqueBuilding_Esplanade_2
+    400004: Object_UniqueBuilding_Esplanade_Floor1
+    400006: Object_UniqueBuilding_Esplanade_Left
+    400008: Object_UniqueBuilding_Esplanade_Middle
+    400010: Object_UniqueBuilding_Esplanade_Misc
+    400012: Object_UniqueBuilding_Esplanade_Pond
+    400014: Object_UniqueBuilding_Esplanade_Right
+    400016: Object_UniqueBuilding_Esplanade_Round
+    400018: Object_UniqueBuilding_Esplanade_Small
     2300000: //RootNode
+    2300002: Object_UniqueBuilding_Esplanade_2
+    2300004: Object_UniqueBuilding_Esplanade_Floor1
+    2300006: Object_UniqueBuilding_Esplanade_Left
+    2300008: Object_UniqueBuilding_Esplanade_Middle
+    2300010: Object_UniqueBuilding_Esplanade_Misc
+    2300012: Object_UniqueBuilding_Esplanade_Pond
+    2300014: Object_UniqueBuilding_Esplanade_Right
+    2300016: Object_UniqueBuilding_Esplanade_Round
+    2300018: Object_UniqueBuilding_Esplanade_Small
     3300000: //RootNode
+    3300002: Object_UniqueBuilding_Esplanade_2
+    3300004: Object_UniqueBuilding_Esplanade_Floor1
+    3300006: Object_UniqueBuilding_Esplanade_Left
+    3300008: Object_UniqueBuilding_Esplanade_Middle
+    3300010: Object_UniqueBuilding_Esplanade_Misc
+    3300012: Object_UniqueBuilding_Esplanade_Pond
+    3300014: Object_UniqueBuilding_Esplanade_Right
+    3300016: Object_UniqueBuilding_Esplanade_Round
+    3300018: Object_UniqueBuilding_Esplanade_Small
     4300000: Object_UniqueBuilding_Esplanade
+    4300002: Object_UniqueBuilding_Esplanade_Small
+    4300004: Object_UniqueBuilding_Esplanade_Left
+    4300006: Object_UniqueBuilding_Esplanade_Right
+    4300008: Object_UniqueBuilding_Esplanade_Misc
+    4300010: Object_UniqueBuilding_Esplanade_Pond
+    4300012: Object_UniqueBuilding_Esplanade_2
+    4300014: Object_UniqueBuilding_Esplanade_Round
+    4300016: Object_UniqueBuilding_Esplanade_Floor1
+    4300018: Object_UniqueBuilding_Esplanade_Middle
   materials:
     importMaterials: 0
     materialName: 0

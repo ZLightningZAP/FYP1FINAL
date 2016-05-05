@@ -1,27 +1,24 @@
 fileFormatVersion: 2
-guid: 660ad2b7f23b7cf4582aa7d30f98b5e3
-timeCreated: 1461665812
+guid: 851a050ddc955084093141c7bd217cfa
+timeCreated: 1462422952
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    100004: Object_UniqueBuilding_Wheel
+    100002: Object_Road_3WayIntersection
+    100004: Object_Road_3WayIntersection_Road
     400000: //RootNode
-    400002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    400004: Object_UniqueBuilding_Wheel
-    2300000: //RootNode
-    2300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    2300004: Object_UniqueBuilding_Wheel
-    3300000: //RootNode
-    3300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    3300004: Object_UniqueBuilding_Wheel
-    4300000: Object_UniqueBuilding_SingaporeFlyer
-    4300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    4300004: Object_UniqueBuilding_Wheel
+    400002: Object_Road_3WayIntersection
+    400004: Object_Road_3WayIntersection_Road
+    2300000: Object_Road_3WayIntersection
+    2300002: Object_Road_3WayIntersection_Road
+    3300000: Object_Road_3WayIntersection
+    3300002: Object_Road_3WayIntersection_Road
+    4300000: Object_Road_3WayIntersection_Road
+    4300002: Object_Road_3WayIntersection
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:

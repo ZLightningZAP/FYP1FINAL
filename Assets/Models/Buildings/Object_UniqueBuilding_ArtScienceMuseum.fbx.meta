@@ -1,27 +1,17 @@
 fileFormatVersion: 2
-guid: 660ad2b7f23b7cf4582aa7d30f98b5e3
-timeCreated: 1461665812
+guid: f05b9c3599bb5e449b89431f6b517293
+timeCreated: 1462428433
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    100004: Object_UniqueBuilding_Wheel
     400000: //RootNode
-    400002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    400004: Object_UniqueBuilding_Wheel
     2300000: //RootNode
-    2300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    2300004: Object_UniqueBuilding_Wheel
     3300000: //RootNode
-    3300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    3300004: Object_UniqueBuilding_Wheel
-    4300000: Object_UniqueBuilding_SingaporeFlyer
-    4300002: Object_UniqueBuilding_SingaporeFlyer_MainBody
-    4300004: Object_UniqueBuilding_Wheel
+    4300000: polySurface7898
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
