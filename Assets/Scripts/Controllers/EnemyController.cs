@@ -90,7 +90,13 @@ public class EnemyController : MonoBehaviour
                 return SpawnMissile(position, rotation);
 
             case ENEMY_TYPE.ENEMY_V200:
+                return SpawnV200(position, rotation);
 
+            case ENEMY_TYPE.ENEMY_M113:
+                return SpawnM113(position, rotation);
+
+            case ENEMY_TYPE.ENEMY_AMX10:
+                return SpawnAMX10(position, rotation);
 
             case ENEMY_TYPE.V200_RUMBLE_TYPE1:
                 return SpawnV200RumbleType1(position, rotation);

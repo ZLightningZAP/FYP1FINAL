@@ -30,7 +30,12 @@ public class EnemyRandomSpawn : MonoBehaviour
         for (int i = 0; i < Spawners.Count; ++i)
         {
             randomnumber = Random.Range(0, Spawners.Count);
-            if (Spawners[randomnumber].GetEnemi().activeInHierarchy == false)
+            if (Spawners[randomnumber].GetEnemi() == null)
+            {
+                Spawners[randomnumber].Spawn();
+                break;
+            }
+            else if (Spawners[randomnumber].GetEnemi().activeInHierarchy == false)
             {
                 Spawners[randomnumber].Spawn();
                 break;
