@@ -8,7 +8,8 @@ public class Player : Character
 
     public RawImage BloodImage;
     public RawImage healthGlow;
-    public float transitionTime = 0.5f;
+    public RawImage TakingDmg;
+    public float HealthGlowTransitionTime = 0.5f;
 
     //Getter and setter for score
     public int score { get { return Score; } set { Score = value; } }
@@ -21,8 +22,15 @@ public class Player : Character
     private bool Blink = false;
     private float blinktransition;
 
+    public float DamageSpeed = 0.2f;
+    private bool Damage = false;
+    private float DamageTransition;
+
     //Fill amount for the health bar
     private float HealthFillAmount;
+
+    private float lasthealth;
+    private bool finished = false;
 
     // Use this for initialization
     protected override void Start()
@@ -32,6 +40,7 @@ public class Player : Character
         Score = 0;
         BloodImage.enabled = false;
         healthGlow.enabled = false;
+        lasthealth = health;
     }
 
     // Update is called once per frame
@@ -43,10 +52,22 @@ public class Player : Character
         //HealthBar
         HealthBarUpdate(Health);
 
+        //If the player healthbar drop below 40
         if (health <= 40)
         {
             BloodEffect();
             Blinking();
+        }
+
+        //If the player receive damage
+        if (lasthealth != health)
+        {
+            TakingDamage();
+            if (finished == true)
+            {
+                lasthealth = health;
+                finished = false;
+            }
         }
     }
 
@@ -55,15 +76,15 @@ public class Player : Character
         transition += Time.deltaTime;
         BloodImage.enabled = true;
 
-        if (gone == false && transition >= transitionTime)
+        if (gone == false && transition >= HealthGlowTransitionTime)
         {
-            BloodImage.CrossFadeAlpha(0.0f, transitionTime, false);
+            BloodImage.CrossFadeAlpha(0.0f, HealthGlowTransitionTime, false);
             gone = true;
             transition = 0;
         }
-        else if (gone == true && transition >= transitionTime)
+        else if (gone == true && transition >= HealthGlowTransitionTime)
         {
-            BloodImage.CrossFadeAlpha(1.0f, transitionTime, false);
+            BloodImage.CrossFadeAlpha(1.0f, HealthGlowTransitionTime, false);
             gone = false;
             transition = 0;
         }
@@ -76,15 +97,35 @@ public class Player : Character
 
         if (Blink == false && blinktransition >= BlinkingSpeed)
         {
-            healthGlow.CrossFadeAlpha(0.0f, transitionTime, false);
+            healthGlow.CrossFadeAlpha(0.0f, HealthGlowTransitionTime, false);
             Blink = true;
             blinktransition = 0;
         }
         else if (Blink == true && blinktransition >= BlinkingSpeed)
         {
-            healthGlow.CrossFadeAlpha(1.0f, transitionTime, false);
+            healthGlow.CrossFadeAlpha(1.0f, HealthGlowTransitionTime, false);
             Blink = false;
             blinktransition = 0;
+        }
+    }
+
+    private void TakingDamage()
+    {
+        DamageTransition += Time.deltaTime;
+        TakingDmg.enabled = true;
+
+        if (Damage == false && DamageTransition >= DamageSpeed)
+        {
+            TakingDmg.CrossFadeAlpha(1.0f, DamageSpeed, false);
+            Damage = true;
+            DamageTransition = 0;
+        }
+        else if (Damage == true && DamageTransition >= DamageSpeed)
+        {
+            TakingDmg.CrossFadeAlpha(0.0f, DamageSpeed, false);
+            Damage = false;
+            DamageTransition = 0;
+            finished = true;
         }
     }
 
