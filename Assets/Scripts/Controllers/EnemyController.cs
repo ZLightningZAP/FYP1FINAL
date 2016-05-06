@@ -10,30 +10,48 @@ public class EnemyController : MonoBehaviour
 
     public GameObject Canvas;   //World Canvas
 
+    //Objects
     public GameObject EnemyMissile_Object; //Missile Object that will be pooled
+    public GameObject EnemyV200_Object; //Enemy Object that will be pooled
+    public GameObject EnemyM113_Object; //Enemy Object that will be pooled
+    public GameObject EnemyAMX10_Object; //Enemy Object that will be pooled
+
     public GameObject V200RumbleType1_Object; //V200 Rumble Type 1 Object that will be pooled
     public GameObject V200RumbleType2_Object; //V200 Rumble Type 2 Object that will be pooled
     public GameObject V200RumbleType3_Object; //V200 Rumble Type 3 Object that will be pooled
     public GameObject V200RumbleType4_Object; //V200 Rumble Type 4 Object that will be pooled
+
     public GameObject M113RumbleType1_Object; //M113 Rumble Type 1 Object that will be pooled
     public GameObject M113RumbleType2_Object; //M113 Rumble Type 2 Object that will be pooled
     public GameObject M113RumbleType3_Object; //M113 Rumble Type 3 Object that will be pooled
     public GameObject M113RumbleType4_Object; //M113 Rumble Type 4 Object that will be pooled
 
+    //Pools
     private List<GameObject> EnemyMissile_Pool;       //List containing all enemy missiles in the scene
+    private List<GameObject> EnemyV200_Pool; //List containing all enemies of this type in the scene
+    private List<GameObject> EnemyM113_Pool; //List containing all enemies of this type in the scene
+    private List<GameObject> EnemyAMX10_Pool; //List containing all enemies of this type in the scene
+
     private List<GameObject> V200RumbleType1_Pool;    //List containing all V200 rumble type 1 in the scene
     private List<GameObject> V200RumbleType2_Pool;    //List containing all V200 rumble type 2 in the scene
     private List<GameObject> V200RumbleType3_Pool;    //List containing all V200 rumble type 3 in the scene
     private List<GameObject> V200RumbleType4_Pool;    //List containing all V200 rumble type 4 in the scene
+
     private List<GameObject> M113RumbleType1_Pool;    //List containing all M113 rumble type 1 in the scene
     private List<GameObject> M113RumbleType2_Pool;    //List containing all M113 rumble type 2 in the scene
     private List<GameObject> M113RumbleType3_Pool;    //List containing all M113 rumble type 3 in the scene
     private List<GameObject> M113RumbleType4_Pool;    //List containing all M113 rumble type 4 in the scene
 
+
+
+
     //Every type of enemy available in game
     public enum ENEMY_TYPE
     {
         ENEMY_MISSILE,
+        ENEMY_V200,
+        ENEMY_M113,
+        ENEMY_AMX10,
         V200_RUMBLE_TYPE1,
         V200_RUMBLE_TYPE2,
         V200_RUMBLE_TYPE3,
@@ -49,6 +67,7 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         InitializeMissilePool();
+        InitializeEnemyPool();
         InitializeRumblePool();
     }
 
@@ -69,6 +88,9 @@ public class EnemyController : MonoBehaviour
         {
             case ENEMY_TYPE.ENEMY_MISSILE:
                 return SpawnMissile(position, rotation);
+
+            case ENEMY_TYPE.ENEMY_V200:
+
 
             case ENEMY_TYPE.V200_RUMBLE_TYPE1:
                 return SpawnV200RumbleType1(position, rotation);
@@ -122,6 +144,69 @@ public class EnemyController : MonoBehaviour
                 obj.transform.SetParent(Canvas.transform);
                 obj.SetActive(false);
                 EnemyMissile_Pool.Add(obj);
+            }
+        }
+    }
+
+    private void InitializeEnemyPool()
+    {
+        //Only if object to be pooled is assigned
+        if (EnemyV200_Object != null)
+        {
+            //If pool does not exist
+            if (EnemyV200_Pool == null)
+            {
+                //Create new pool
+                EnemyV200_Pool = new List<GameObject>();
+            }
+
+            //Creating objects in the pool based on size
+            for (int i = 0; i < PoolSize; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyV200_Object);
+                obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
+                EnemyV200_Pool.Add(obj);
+            }
+        }
+
+        //Only if object to be pooled is assigned
+        if (EnemyM113_Object != null)
+        {
+            //If pool does not exist
+            if (EnemyM113_Pool == null)
+            {
+                //Create new pool
+                EnemyM113_Pool = new List<GameObject>();
+            }
+
+            //Creating objects in the pool based on size
+            for (int i = 0; i < PoolSize; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyM113_Object);
+                obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
+                EnemyM113_Pool.Add(obj);
+            }
+        }
+
+        //Only if object to be pooled is assigned
+        if (EnemyAMX10_Object != null)
+        {
+            //If pool does not exist
+            if (EnemyAMX10_Pool == null)
+            {
+                //Create new pool
+                EnemyAMX10_Pool = new List<GameObject>();
+            }
+
+            //Creating objects in the pool based on size
+            for (int i = 0; i < PoolSize; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyAMX10_Object);
+                obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
+                EnemyAMX10_Pool.Add(obj);
             }
         }
     }
@@ -340,6 +425,165 @@ public class EnemyController : MonoBehaviour
                 {
                     EnemyMissile_Pool[EnemyMissile_Pool.Count - 1].SetActive(true);
                     return EnemyMissile_Pool[EnemyMissile_Pool.Count - 1];
+                }
+            }
+        }
+
+        //If it reaches here, grow rate is 0 and
+        //all elements in the list is already in use
+        // OR
+        //No game object is assigned thus pool is not created
+
+        return null;
+    }
+
+    private GameObject SpawnV200(Vector3 position, Quaternion rotation)
+    {
+        //Check if pool exists
+        if (EnemyV200_Pool != null)
+        {
+            //Getting the first non active game object in this pool
+            for (int i = 0; i < EnemyV200_Pool.Count; i++)
+            {
+                //Incase this game object is null, we create one and return it
+                if (EnemyV200_Pool[i] == null)
+                {
+                    GameObject obj = (GameObject)Instantiate(EnemyV200_Object);
+
+                    obj.transform.position = position;
+                    obj.transform.rotation = rotation;
+                    obj.SetActive(true);
+                    EnemyV200_Pool[i] = obj;
+                    return EnemyV200_Pool[i];
+                }
+                //Reuse when game object is not active
+                if (!EnemyV200_Pool[i].activeInHierarchy)
+                {
+                    EnemyV200_Pool[i].transform.position = position;
+                    EnemyV200_Pool[i].transform.rotation = rotation;
+                    EnemyV200_Pool[i].SetActive(true);
+                    return EnemyV200_Pool[i];
+                }
+            }
+
+            //Increase the size of the list based on the grow rate
+            for (int i = 0; i < GrowRate; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyV200_Object);
+                obj.SetActive(false);
+                EnemyV200_Pool.Add(obj);
+
+                //When we have finished adding the new elements
+                if (i == (GrowRate - 1))
+                {
+                    EnemyV200_Pool[EnemyV200_Pool.Count - 1].SetActive(true);
+                    return EnemyV200_Pool[EnemyV200_Pool.Count - 1];
+                }
+            }
+        }
+
+        //If it reaches here, grow rate is 0 and
+        //all elements in the list is already in use
+        // OR
+        //No game object is assigned thus pool is not created
+
+        return null;
+    }
+
+    private GameObject SpawnM113(Vector3 position, Quaternion rotation)
+    {
+        //Check if pool exists
+        if (EnemyM113_Pool != null)
+        {
+            //Getting the first non active game object in this pool
+            for (int i = 0; i < EnemyM113_Pool.Count; i++)
+            {
+                //Incase this game object is null, we create one and return it
+                if (EnemyM113_Pool[i] == null)
+                {
+                    GameObject obj = (GameObject)Instantiate(EnemyM113_Object);
+
+                    obj.transform.position = position;
+                    obj.transform.rotation = rotation;
+                    obj.SetActive(true);
+                    EnemyM113_Pool[i] = obj;
+                    return EnemyM113_Pool[i];
+                }
+                //Reuse when game object is not active
+                if (!EnemyM113_Pool[i].activeInHierarchy)
+                {
+                    EnemyM113_Pool[i].transform.position = position;
+                    EnemyM113_Pool[i].transform.rotation = rotation;
+                    EnemyM113_Pool[i].SetActive(true);
+                    return EnemyM113_Pool[i];
+                }
+            }
+
+            //Increase the size of the list based on the grow rate
+            for (int i = 0; i < GrowRate; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyM113_Object);
+                obj.SetActive(false);
+                EnemyM113_Pool.Add(obj);
+
+                //When we have finished adding the new elements
+                if (i == (GrowRate - 1))
+                {
+                    EnemyM113_Pool[EnemyM113_Pool.Count - 1].SetActive(true);
+                    return EnemyM113_Pool[EnemyM113_Pool.Count - 1];
+                }
+            }
+        }
+
+        //If it reaches here, grow rate is 0 and
+        //all elements in the list is already in use
+        // OR
+        //No game object is assigned thus pool is not created
+
+        return null;
+    }
+
+    private GameObject SpawnAMX10(Vector3 position, Quaternion rotation)
+    {
+        //Check if pool exists
+        if (EnemyAMX10_Pool != null)
+        {
+            //Getting the first non active game object in this pool
+            for (int i = 0; i < EnemyAMX10_Pool.Count; i++)
+            {
+                //Incase this game object is null, we create one and return it
+                if (EnemyAMX10_Pool[i] == null)
+                {
+                    GameObject obj = (GameObject)Instantiate(EnemyAMX10_Object);
+
+                    obj.transform.position = position;
+                    obj.transform.rotation = rotation;
+                    obj.SetActive(true);
+                    EnemyAMX10_Pool[i] = obj;
+                    return EnemyAMX10_Pool[i];
+                }
+                //Reuse when game object is not active
+                if (!EnemyAMX10_Pool[i].activeInHierarchy)
+                {
+                    EnemyAMX10_Pool[i].transform.position = position;
+                    EnemyAMX10_Pool[i].transform.rotation = rotation;
+                    EnemyAMX10_Pool[i].SetActive(true);
+                    return EnemyAMX10_Pool[i];
+                }
+            }
+
+            //Increase the size of the list based on the grow rate
+            for (int i = 0; i < GrowRate; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(EnemyAMX10_Object);
+                obj.SetActive(false);
+                EnemyAMX10_Pool.Add(obj);
+
+                //When we have finished adding the new elements
+                if (i == (GrowRate - 1))
+                {
+                    EnemyAMX10_Pool[EnemyAMX10_Pool.Count - 1].SetActive(true);
+                    return EnemyAMX10_Pool[EnemyAMX10_Pool.Count - 1];
                 }
             }
         }
