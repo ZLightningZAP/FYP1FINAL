@@ -38,6 +38,11 @@ public class Enemy : Character
     private bool triggeredmove = false;
     public bool Triggeredmove { get { return triggeredmove; } set { triggeredmove = value; } }
 
+    public bool Wave = false;
+    private float randomnumber;
+    private bool chosen = false;
+    private bool shootyet = false;
+
     // Use this for initialization
     protected override void Start()
     {
@@ -74,12 +79,12 @@ public class Enemy : Character
         {
             Dead();
 
-            if (recoil == false)
+            if (recoil == false && Wave == false)
             {
                 Looking();
             }
 
-            if (shootingyet == true)
+            if (shootingyet == true && Wave == false)
             {
                 Shooting();
             }
@@ -87,6 +92,11 @@ public class Enemy : Character
             if (recoil == true)
             {
                 Recoil();
+            }
+
+            if (Wave == true && shootyet == false)
+            {
+                WaveShooting();
             }
         }
     }
@@ -241,6 +251,39 @@ public class Enemy : Character
         }
     }
 
+    public void WaveShooting()
+    {
+        if (chosen == false)
+        {
+            randomnumber = Random.Range(2, 5);
+            chosen = true;
+        }
+        randomnumber -= Time.deltaTime;
+        if (randomnumber <= 1.2 && chosen == true)
+        {
+            anim.enabled = true;
+            aiming.SetActive(true);
+
+            //Shootingbarrel will look at the camera
+            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+
+            timer += Time.deltaTime;
+            if (timer >= Timetoshoot)
+            {
+                FindObjectOfType<Player>().Injure(Damage);
+                print("Damaged by " + gameObject.name);
+                //Play the sound effect for the enemy shooting at the player
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
+                shootingyet = false;
+                timer = 0;
+                aiming.SetActive(false);
+                //Set the recoil to true to run the recoil function
+                recoil = true;
+                shootyet = true;
+            }
+        }
+    }
+
     public void Recoil()
     {
         timer2 += Time.deltaTime;
@@ -274,7 +317,7 @@ public class Enemy : Character
 
     public void DisplayRumble()
     {
-        int rand = Random.Range(1, 4);
+        int rand = Random.Range(1, 5);
 
         print(rand);
 
