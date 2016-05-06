@@ -372,4 +372,12 @@ public class Enemy : Character
             }
         }
     }
+
+    public void Rotate()
+    {
+        Vector3 targetDir = Waypoint.transform.position - transform.position;
+        float step = 9999f;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+        transform.rotation = Quaternion.LookRotation(newDir);
+    }
 }

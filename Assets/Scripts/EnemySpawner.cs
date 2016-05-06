@@ -30,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= ChanceUpdateTime)
+        if (timer >= ChanceUpdateTime)
         {
             UpdateSpawnChances();
             timer = 0.0f;
@@ -39,8 +39,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        int rand = Random.Range(1,101);
-        if(rand <= V200SpawnChance)
+        int rand = Random.Range(1, 101);
+        if (rand <= V200SpawnChance)
         {
             enemi = EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.ENEMY_V200);
         }
@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
         }
         enemi.GetComponent<Enemy>().Heal(100);
         enemi.GetComponent<Enemy>().Waypoint = waypoint;
+        enemi.GetComponent<Enemy>().Rotate();
         enemi.GetComponent<Enemy>().Triggeredmove = true;
     }
 
