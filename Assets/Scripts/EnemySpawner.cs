@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public List<GameObject> Waypoint = new List<GameObject>();
+    public GameObject waypoint;
     public List<Enemy> Enemylist = new List<Enemy>();
 
     private int randomwaypoint;
+    private GameObject enemi;
     private int randomenemi;
 
     // Use this for initialization
@@ -21,11 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        randomwaypoint = Random.Range(0, Waypoint.Count);
         randomenemi = Random.Range(0, Enemylist.Count);
+        enemi = Instantiate(Enemylist[randomenemi].gameObject, gameObject.transform.position, Quaternion.identity) as GameObject;
+        enemi.GetComponent<Enemy>().Waypoint = waypoint;
+        enemi.GetComponent<Enemy>().Triggeredmove = true;
+    }
 
-        Instantiate(Enemylist[randomenemi].gameObject, gameObject.transform.position, Quaternion.identity);
-        Enemylist[randomenemi].Waypoint = Waypoint[randomwaypoint];
-        Enemylist[randomenemi].Triggeredmove = true;
+    public GameObject GetEnemi()
+    {
+        return enemi;
     }
 }

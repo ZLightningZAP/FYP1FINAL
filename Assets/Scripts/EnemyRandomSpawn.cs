@@ -27,7 +27,14 @@ public class EnemyRandomSpawn : MonoBehaviour
 
     private void ChooseSpawn()
     {
-        randomnumber = Random.Range(0, Spawners.Count);
-        Spawners[randomnumber].Spawn();
+        for (int i = 0; i < Spawners.Count; ++i)
+        {
+            randomnumber = Random.Range(0, Spawners.Count);
+            if (Spawners[randomnumber].GetEnemi().activeInHierarchy == false)
+            {
+                Spawners[randomnumber].Spawn();
+                break;
+            }
+        }
     }
 }
