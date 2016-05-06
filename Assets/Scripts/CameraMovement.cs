@@ -33,8 +33,6 @@ public class CameraMovement : MonoBehaviour
 
     public EnemyManager enemiManager;
 
-    public GameObject Deadpanel;
-
     // Use this for initialization
     private void Start()
     {
@@ -65,13 +63,6 @@ public class CameraMovement : MonoBehaviour
 
         if (Shaking == false)
         {
-            //If the camera has reached the final waypoint
-            if (Camera.main.transform.position == SortedWaypoint[SortedWaypoint.Count - 1].gameObject.transform.position)
-            {
-                Deadpanel.SetActive(true);
-                return;
-            }
-
             if (SortedWaypoint[Index].gameObject.transform.position != transform.position)
             {
                 if (SortedWaypoint[Index].Lookpoint != null)
