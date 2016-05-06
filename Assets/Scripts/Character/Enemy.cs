@@ -150,8 +150,6 @@ public class Enemy : Character
     {
         if (Vector3.Distance(Waypoint.transform.position, transform.position) > Gap)
         {
-            //Vector3 targetDir = Waypoint.transform.position - transform.position;
-            //Vector3 Direction = Vector3.RotateTowards(transform.forward, targetDir, 100f, 0.0f);
             //Go towards the next position
             transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
             if (!moving)
