@@ -149,7 +149,7 @@ public class Enemy : Character
     {
         Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3 targetPos = new Vector3(Waypoint.transform.position.x, 0, Waypoint.transform.position.z);
-        if (Vector3.Distance(targetPos, currentPos) > Gap && moving)
+        if (Vector3.Distance(targetPos, currentPos) > Gap)
         {
             Rotate();
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * MovementSpeed);
