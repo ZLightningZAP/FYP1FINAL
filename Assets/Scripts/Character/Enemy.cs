@@ -48,7 +48,7 @@ public class Enemy : Character
     {
         // Base Start
         base.Start();
-        Gap = 0.01f;
+        Gap = 1.0f;
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
         trulyVisible = false;
 
@@ -148,10 +148,14 @@ public class Enemy : Character
 
     private void Move()
     {
-        if (Vector3.Distance(Waypoint.transform.position, transform.position) > Gap)
+        Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 targetPos = new Vector3(Waypoint.transform.position.x, 0, Waypoint.transform.position.z);
+        if (Vector3.Distance(targetPos, currentPos) > Gap)
         {
+            gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * MovementSpeed);
             //Go towards the next position
-            transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
+            print("Moving");
             if (!moving)
             {
                 moving = true;
