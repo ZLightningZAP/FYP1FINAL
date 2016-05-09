@@ -423,8 +423,8 @@ public class EnemyController : MonoBehaviour
             for (int i = 0; i < GrowRate; i++)
             {
                 GameObject obj = (GameObject)Instantiate(EnemyMissile_Object);
-                obj.SetActive(false);
                 obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
                 EnemyMissile_Pool.Add(obj);
 
                 //When we have finished adding the new elements
@@ -477,8 +477,8 @@ public class EnemyController : MonoBehaviour
             for (int i = 0; i < GrowRate; i++)
             {
                 GameObject obj = (GameObject)Instantiate(EnemyV200_Object);
-                obj.SetActive(false);
                 obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
                 EnemyV200_Pool.Add(obj);
 
                 //When we have finished adding the new elements
@@ -531,8 +531,8 @@ public class EnemyController : MonoBehaviour
             for (int i = 0; i < GrowRate; i++)
             {
                 GameObject obj = (GameObject)Instantiate(EnemyM113_Object);
-                obj.SetActive(false);
                 obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
                 EnemyM113_Pool.Add(obj);
 
                 //When we have finished adding the new elements
@@ -585,8 +585,8 @@ public class EnemyController : MonoBehaviour
             for (int i = 0; i < GrowRate; i++)
             {
                 GameObject obj = (GameObject)Instantiate(EnemyAMX10_Object);
-                obj.SetActive(false);
                 obj.transform.SetParent(Canvas.transform);
+                obj.SetActive(false);
                 EnemyAMX10_Pool.Add(obj);
 
                 //When we have finished adding the new elements
