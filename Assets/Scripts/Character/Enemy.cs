@@ -11,6 +11,7 @@ public class Enemy : Character
     public float RecoilValue = 5;
     public float Thrust = 100f;
     public bool Obsolete = false;
+    public GameObject shootingBarrel;
 
     public GameObject aiming;
 
@@ -20,7 +21,6 @@ public class Enemy : Character
     private GameObject SmokeEffect; //Used to keep track
 
     private float Gap;
-    private ShootingBarrel shootingBarrel;
     private int randomInt;
     private bool assigned = false;
     private bool visible;
@@ -49,13 +49,12 @@ public class Enemy : Character
         // Base Start
         base.Start();
         Gap = 1.0f;
-        shootingBarrel = GetComponentInChildren<ShootingBarrel>();
         trulyVisible = false;
 
         anim = aiming.GetComponent<Animator>();
         anim.enabled = false;
         aiming.SetActive(false);
-        moving = false;
+        moving = true;
 
         //Get the looking point from the camera
         lk1 = FindObjectOfType<LookingPoint>();
@@ -150,16 +149,12 @@ public class Enemy : Character
     {
         Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3 targetPos = new Vector3(Waypoint.transform.position.x, 0, Waypoint.transform.position.z);
-        if (Vector3.Distance(targetPos, currentPos) > Gap)
+        if (Vector3.Distance(targetPos, currentPos) > Gap && moving)
         {
+            Rotate();
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * MovementSpeed);
             //Go towards the next position
             //transform.position = Vector3.MoveTowards(transform.position, Waypoint.transform.position, MovementSpeed * Time.deltaTime);
-            print("Moving");
-            if (!moving)
-            {
-                moving = true;
-            }
         }
         else
         {
@@ -167,7 +162,6 @@ public class Enemy : Character
             {
                 moving = false;
             }
-            return;
         }
     }
 
