@@ -27,16 +27,18 @@ public class BulletEffectHandler : MonoBehaviour
         }
         else
         {
-            int rand = Random.Range(1, 3);
+            //int rand = Random.Range(1, 3);
 
-            if (rand == 1)
-            {
-                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
-            }
-            else
-            {
-                VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
-            }
+            //if (rand == 1)
+            //{
+            //    VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE1);
+            //}
+            //else
+            //{
+            //    VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
+            //}
+
+            VFXController.current.SpawnVFX(hit.point + (hit.normal * gap), Quaternion.LookRotation(hit.normal), VFXController.VFX_TYPE.SPARKS_TYPE2);
         }
     }
 }
