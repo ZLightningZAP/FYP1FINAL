@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour
         {
             enemi = EnemyController.current.SpawnEnemy(transform.position, Quaternion.identity, EnemyController.ENEMY_TYPE.ENEMY_AMX10);
         }
-        enemi.GetComponent<Enemy>().Heal(100);
+        enemi.GetComponent<Enemy>().health = 100;
         enemi.GetComponent<Enemy>().Waypoint = waypoint;
         enemi.GetComponent<Enemy>().Rotate();
         enemi.GetComponent<Enemy>().Triggeredmove = true;

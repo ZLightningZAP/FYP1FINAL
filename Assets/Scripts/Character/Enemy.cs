@@ -160,6 +160,7 @@ public class Enemy : Character
         {
             if (moving)
             {
+                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 moving = false;
             }
         }
@@ -177,20 +178,20 @@ public class Enemy : Character
         //Assign the random number for the enemy to look at the object
         if (randomInt == 0 && assigned == true)
         {
-            // The shooting barrel will always rotate to look at the camera
-            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
+            //The shooting barrel will always rotate to look at the camera
+            shootingBarrel.transform.LookAt(Camera.main.transform);
             //print("Looking at camera!");
         }
-        else if (randomInt == 1 && assigned == true)
+        if (randomInt == 1 && assigned == true)
         {
             // The shooting barrel will always rotate to look at Looking Point 1
-            shootingBarrel.gameObject.transform.LookAt(lk1.transform.position);
+            shootingBarrel.transform.LookAt(lk1.transform);
             //print("Looking at Looking Point 1!");
         }
-        else if (randomInt == 2 && assigned == true)
+        if (randomInt == 2 && assigned == true)
         {
             // The shooting barrel will always rotate to look at Looking Point 2
-            shootingBarrel.gameObject.transform.LookAt(lk2.transform.position);
+            shootingBarrel.transform.LookAt(lk2.transform);
             //print("Looking at Looking Point 2!");
         }
 
