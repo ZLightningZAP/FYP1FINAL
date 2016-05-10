@@ -33,7 +33,7 @@ public class HighscoreNumber : MonoBehaviour
     //Display something on the GUI canvas
     private void Display()
     {
-        for (int i = 0; i < linesInFile; i++)
+        for (int i = 0; i < linesInFile * 0.5; i++)
         {
             display = display.ToString() + (i + 1) + ". " + "\n" + "\n";
         }
