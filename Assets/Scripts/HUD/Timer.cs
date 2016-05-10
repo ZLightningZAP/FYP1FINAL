@@ -33,6 +33,11 @@ public class Timer : MonoBehaviour
             CountingDownFrom -= Time.deltaTime;
             //Timer countdown is converted to string with 1 d.p
             text.text = CountingDownFrom.ToString("F1");
+
+            if (CountingDownFrom <= 0)
+            {
+                UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+            }
         }
     }
 }

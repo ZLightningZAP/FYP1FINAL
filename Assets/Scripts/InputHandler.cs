@@ -6,20 +6,13 @@ using WiimoteApi;
 public class InputHandler : MonoBehaviour
 {
     public Image Crosshair; //Crosshair image
-
     public OverHeating overheat;
     public AmmoSystem ammosystem;
-    public GameObject returnPanel;
     public BulletEffectHandler EffectsHandler;  //Particle Effect Handler
 
-    public Fade fade;
     public GameObject canvas;
-    public GameObject DeadPanel;
     public Player player;
     public List<GameObject> firingimages = new List<GameObject>();
-    public GameObject NewHighscorePanel;
-    public InputField Nameinput;
-    public InputField Scoreinput;
     public float ReloadTime;
     public float DamageOfBullet = 10;
 
@@ -54,11 +47,6 @@ public class InputHandler : MonoBehaviour
         //Cursor.visible = false;
 
         currentBulletSpread = defaultBulletSpread;
-
-        //Set the active of the return panel to false
-        returnPanel.SetActive(false);
-        DeadPanel.SetActive(false);
-        NewHighscorePanel.SetActive(false);
 
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
@@ -124,11 +112,13 @@ public class InputHandler : MonoBehaviour
                 // Show the going back to main menu panel
                 if (goingbacktomainmenu == true)
                 {
-                    ClickedNO();
+                    //ClickedNO();
+                    UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
                 }
                 else
                 {
-                    ReturnPanel();
+                    //ReturnPanel();
+                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
                 }
             }
             else
@@ -168,11 +158,15 @@ public class InputHandler : MonoBehaviour
                 // Show the going back to main menu panel
                 if (goingbacktomainmenu == true)
                 {
-                    ClickedNO();
+                    //ClickedNO();
+                    UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
+                    goingbacktomainmenu = false;
                 }
                 else
                 {
-                    ReturnPanel();
+                    //ReturnPanel();
+                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
+                    goingbacktomainmenu = true;
                 }
             }
             else
@@ -208,28 +202,30 @@ public class InputHandler : MonoBehaviour
 
         if (player.Health <= 0)
         {
-            GOPanel();
+            //GOPanel();
+            UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+            dead = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Insert))
-        {
-            if (highscorepanelpressed == false)
-            {
-                highscorepanelpressed = true;
-            }
-            else if (highscorepanelpressed == true)
-            {
-                DeadPanel.SetActive(false);
-                NewHighscorePanel.SetActive(false);
-                highscorepanelpressed = false;
-                Time.timeScale = 1;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Insert))
+        //{
+        //    if (highscorepanelpressed == false)
+        //    {
+        //        highscorepanelpressed = true;
+        //    }
+        //    else if (highscorepanelpressed == true)
+        //    {
+        //        DeadPanel.SetActive(false);
+        //        NewHighscorePanel.SetActive(false);
+        //        highscorepanelpressed = false;
+        //        Time.timeScale = 1;
+        //    }
+        //}
 
-        if (highscorepanelpressed == true)
-        {
-            NewHighscore();
-        }
+        //if (highscorepanelpressed == true)
+        //{
+        //    NewHighscore();
+        //}
     }
 
     private void Fire()
@@ -298,54 +294,5 @@ public class InputHandler : MonoBehaviour
         {
             currentBulletSpread = MaxBulletSpreadRange;
         }
-    }
-
-    public void NewHighscore()
-    {
-        highscore = true;
-        Time.timeScale = 0;
-        DeadPanel.SetActive(true);
-        NewHighscorePanel.SetActive(true);
-
-        nameKey = Nameinput.text;
-        System.Int32.TryParse(Scoreinput.text, out result);
-        scoreKey = result;
-    }
-
-    public void HighscorePanelYES()
-    {
-        TextManager.Write(nameKey, scoreKey);
-        highscorepanelpressed = false;
-        NewHighscorePanel.SetActive(false);
-    }
-
-    public void ReturnPanel()
-    {
-        Time.timeScale = 0;
-        returnPanel.SetActive(true);
-        goingbacktomainmenu = true;
-    }
-
-    public void GOPanel()
-    {
-        Time.timeScale = 1;
-        DeadPanel.SetActive(true);
-        dead = true;
-    }
-
-    public void ClickedYES()
-    {
-        ScoreManager.ResetCurrentScore();
-        Time.timeScale = 1;
-        fade.FadeMe();
-        goingbacktomainmenu = false;
-        dead = false;
-    }
-
-    public void ClickedNO()
-    {
-        Time.timeScale = 1;
-        returnPanel.SetActive(false);
-        goingbacktomainmenu = false;
     }
 }
