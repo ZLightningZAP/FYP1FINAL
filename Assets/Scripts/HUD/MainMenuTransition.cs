@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WiimoteApi;
 
@@ -6,7 +7,6 @@ public class MainMenuTransition : MonoBehaviour
 {
     public GameObject MainMenuPanel;
     public GameObject HighScorePanel;
-    public Fade fade;
     public Image Crosshair;
     public float TransitionTiming;
 
@@ -76,7 +76,7 @@ public class MainMenuTransition : MonoBehaviour
             if (wiimote.Button.a || wiimote.Button.b)
             {
                 print("A or B Button is pressed!");
-                fade.FadeMe();
+                SceneManager.LoadScene(2);
             }
             if (wiimote.Button.home)
             {
@@ -96,7 +96,7 @@ public class MainMenuTransition : MonoBehaviour
             {
                 if (goingtoexit == false)
                 {
-                    fade.FadeMe();
+                    SceneManager.LoadScene(2);
                 }
             }
 

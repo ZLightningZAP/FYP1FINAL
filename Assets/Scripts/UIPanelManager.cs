@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIPanelManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class UIPanelManager : MonoBehaviour
 
     public GameObject[] UILIST = new GameObject[Enum.GetNames(typeof(UIPanel)).Length];
 
-    private Fade fade;
     private static GameObject[] uilist = new GameObject[Enum.GetNames(typeof(UIPanel)).Length];
 
     // Use this for initialization
@@ -23,8 +23,6 @@ public class UIPanelManager : MonoBehaviour
             UILIST[i].SetActive(false);
             uilist[i] = UILIST[i];
         }
-
-        fade = FindObjectOfType<Fade>();
     }
 
     // Update is called once per frame
@@ -52,7 +50,7 @@ public class UIPanelManager : MonoBehaviour
         {
             UILIST[i].SetActive(false);
         }
-        fade.FadeMe();
+        SceneManager.LoadScene(1);
     }
 
     public void ClickedNo()
