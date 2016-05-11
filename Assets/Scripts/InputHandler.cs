@@ -32,7 +32,6 @@ public class InputHandler : MonoBehaviour
     private float reloadtimetracker;
     private int result;
     private bool goingbacktomainmenu = false;
-    private bool dead = false;
     private bool highscore = false;
     private bool highscorepanelpressed = false;
 
@@ -98,7 +97,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && dead == false && highscore == false)
+                        if (goingbacktomainmenu == false && player.IsAlive && highscore == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -144,7 +143,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && dead == false && highscore == false)
+                        if (goingbacktomainmenu == false && player.IsAlive && highscore == false)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -204,7 +203,6 @@ public class InputHandler : MonoBehaviour
         {
             //GOPanel();
             UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
-            dead = true;
         }
 
         //if (Input.GetKeyDown(KeyCode.Insert))
