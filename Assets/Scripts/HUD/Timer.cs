@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     private Text text;
 
     public bool Countdown = false;
+    private bool shown = false;
 
     // Use this for initialization
     private void Start()
@@ -37,7 +38,17 @@ public class Timer : MonoBehaviour
 
             if (CountingDownFrom <= 0)
             {
-                UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+                CountingDownFrom = 0;
+                if (shown == false)
+                {
+                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+                    if (ScoreManager.CurrentScore >= TextManager.Score[TextManager.Score.Count - 1])
+                    {
+                        UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
+                        shown = true;
+                    }
+                }
+                text.text = CountingDownFrom.ToString("F1");
             }
         }
     }
