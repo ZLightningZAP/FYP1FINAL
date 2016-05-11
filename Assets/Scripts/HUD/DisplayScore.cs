@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class DisplayScore : MonoBehaviour
 {
-    public Text text;
+    private Text text;
     private int oldscore;
     private int newscore;
 
     // Use this for initialization
     private void Start()
     {
+        text = GetComponent<Text>();
         oldscore = 0;
         newscore = 0;
     }

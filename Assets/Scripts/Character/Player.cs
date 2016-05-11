@@ -7,7 +7,6 @@ public class Player : Character
     public Image healthBar;
 
     public RawImage BloodImage;
-    public RawImage healthGlow;
     public RawImage TakingDmg;
     public float HealthGlowTransitionTime = 0.5f;
 
@@ -19,7 +18,6 @@ public class Player : Character
     private float transition;
 
     public float BlinkingSpeed = 0.2f;
-    private bool Blink = false;
     private float blinktransition;
 
     public float DamageSpeed = 0.2f;
@@ -39,7 +37,6 @@ public class Player : Character
         base.Start();
         Score = 0;
         BloodImage.enabled = false;
-        healthGlow.enabled = false;
         lasthealth = health;
     }
 
@@ -56,7 +53,6 @@ public class Player : Character
         if (health <= 40)
         {
             BloodEffect();
-            Blinking();
         }
 
         //If the player receive damage
@@ -87,25 +83,6 @@ public class Player : Character
             BloodImage.CrossFadeAlpha(1.0f, HealthGlowTransitionTime, false);
             gone = false;
             transition = 0;
-        }
-    }
-
-    private void Blinking()
-    {
-        blinktransition += Time.deltaTime;
-        healthGlow.enabled = true;
-
-        if (Blink == false && blinktransition >= BlinkingSpeed)
-        {
-            healthGlow.CrossFadeAlpha(0.0f, HealthGlowTransitionTime, false);
-            Blink = true;
-            blinktransition = 0;
-        }
-        else if (Blink == true && blinktransition >= BlinkingSpeed)
-        {
-            healthGlow.CrossFadeAlpha(1.0f, HealthGlowTransitionTime, false);
-            Blink = false;
-            blinktransition = 0;
         }
     }
 
