@@ -37,6 +37,7 @@ public class Player : Character
         base.Start();
         Score = 0;
         BloodImage.enabled = false;
+        TakingDmg.enabled = false;
         lasthealth = health;
     }
 
