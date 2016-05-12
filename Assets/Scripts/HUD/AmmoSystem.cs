@@ -17,12 +17,10 @@ public class AmmoSystem : MonoBehaviour
     public GameObject BulletPlacementbox;
 
     private float x;
-    private float y;
     private float sizeX;
     private float sizeY;
     private float Xup;
     private float Yup;
-    private Vector2 coordinate;
 
     private Color originalColor;
 
@@ -40,12 +38,7 @@ public class AmmoSystem : MonoBehaviour
             bulletshell[i].GetComponent<RectTransform>().SetParent(canvas.transform, false);
         }
 
-        //Getting the bottom left coordinate of the box
-        Vector2 temppos = BulletPlacementbox.GetComponent<RectTransform>().position;
-        coordinate = temppos - (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta * 0.5f);
-
         x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
-        y = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
         sizeX = BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x;
         sizeY = BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.y;
         Xup = sizeX / 67;
