@@ -14,8 +14,15 @@ public class AmmoSystem : MonoBehaviour
 
     public GameObject bulletshells;
     public GameObject canvas;
+    public GameObject BulletPlacementbox;
+
     private float x;
     private float y;
+    private float sizeX;
+    private float sizeY;
+    private float Xup;
+    private float Yup;
+    private Vector2 coordinate;
 
     private Color originalColor;
 
@@ -30,31 +37,39 @@ public class AmmoSystem : MonoBehaviour
         {
             GameObject go = Instantiate(bulletshells) as GameObject;
             bulletshell.Add(go);
-            bulletshell[i].transform.SetParent(canvas.transform, false);
+            bulletshell[i].GetComponent<RectTransform>().SetParent(canvas.transform, false);
         }
 
-        x = (float)(Screen.width * 0.8);
+        //Getting the bottom left coordinate of the box
+        Vector2 temppos = BulletPlacementbox.GetComponent<RectTransform>().position;
+        coordinate = temppos - (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta * 0.5f);
+
+        x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
+        y = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.y * 0.5f);
+        sizeX = BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x;
+        sizeY = BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.y;
+        Xup = sizeX / 67;
+        Yup = sizeY / 3;
+
+        x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
         for (int i = 0; i < 67; ++i)
         {
-            y = (float)(Screen.height * 0.08);
-            bulletshell[i].transform.position = new Vector3(x, y, 0);
-            x += 4;
+            bulletshell[i].GetComponent<RectTransform>().localPosition = new Vector2(0 - x, 0 + Yup);
+            x -= Xup;
         }
 
-        x = (float)(Screen.width * 0.8);
+        x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
         for (int i = 67; i < 134; ++i)
         {
-            y = (float)(Screen.height * 0.055);
-            bulletshell[i].transform.position = new Vector3(x, y, 0);
-            x += 4;
+            bulletshell[i].GetComponent<RectTransform>().localPosition = new Vector2(0 - x, 0);
+            x -= Xup;
         }
 
-        x = (float)(Screen.width * 0.8);
+        x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
         for (int i = 134; i < 200; ++i)
         {
-            y = (float)(Screen.height * 0.03);
-            bulletshell[i].transform.position = new Vector3(x, y, 0);
-            x += 4;
+            bulletshell[i].GetComponent<RectTransform>().localPosition = new Vector2(0 - x, 0 - Yup);
+            x -= Xup;
         }
     }
 
