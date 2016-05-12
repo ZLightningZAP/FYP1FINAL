@@ -26,6 +26,10 @@ ModelImporter:
     100036: AMX_10RC_Turret_Rotation
     100038: //RootNode
     100040: AMX_10RC_Turret
+    100042: AMX_10RC_TankTreadsRight1
+    100044: AMX_10RC_Turret_Rotation1
+    100046: polySurface239
+    100048: AMX10_Wheel_Right_1
     400000: AMX10_Wheel_Left_1
     400002: AMX10_Wheel_Left_2
     400004: AMX10_Wheel_Left_3
@@ -47,6 +51,10 @@ ModelImporter:
     400036: AMX_10RC_Turret_Rotation
     400038: //RootNode
     400040: AMX_10RC_Turret
+    400042: AMX_10RC_TankTreadsRight1
+    400044: AMX_10RC_Turret_Rotation1
+    400046: polySurface239
+    400048: AMX10_Wheel_Right_1
     2300000: AMX10_Wheel_Left_1
     2300002: AMX10_Wheel_Left_2
     2300004: AMX10_Wheel_Left_3
@@ -67,6 +75,11 @@ ModelImporter:
     2300034: AMX_10RC_Turret1
     2300036: AMX_10RC_Turret_Rotation
     2300038: AMX_10RC_Turret
+    2300040: AMX_10RC_TankTreadsRight1
+    2300042: AMX_10RC_Turret_Rotation1
+    2300044: //RootNode
+    2300046: polySurface239
+    2300048: AMX10_Wheel_Right_1
     3300000: AMX10_Wheel_Left_1
     3300002: AMX10_Wheel_Left_2
     3300004: AMX10_Wheel_Left_3
@@ -87,6 +100,11 @@ ModelImporter:
     3300034: AMX_10RC_Turret1
     3300036: AMX_10RC_Turret_Rotation
     3300038: AMX_10RC_Turret
+    3300040: AMX_10RC_TankTreadsRight1
+    3300042: AMX_10RC_Turret_Rotation1
+    3300044: //RootNode
+    3300046: polySurface239
+    3300048: AMX10_Wheel_Right_1
     4300000: AMX10_Wheel_Right_2
     4300002: AMX10_Wheel_Left_2
     4300004: AMX10_Wheel_Right_3
@@ -107,6 +125,10 @@ ModelImporter:
     4300034: AMX_10RC_Turret_Rotation
     4300036: AMX_10RC_MainBody
     4300038: AMX_10RC_Turret
+    4300040: AMX_10RC_Turret_Rotation1
+    4300042: polySurface239
+    4300044: AMX_10RC_TankTreadsRight1
+    4300046: AMX10_Wheel_Right_1
   materials:
     importMaterials: 0
     materialName: 0
