@@ -99,6 +99,10 @@ public class UIPanelManager : MonoBehaviour
     public void HighscorePanelYES()
     {
         nameKey = Nameinput.text;
+        if (Nameinput.text == "")
+        {
+            nameKey = "Test";
+        }
         updating = false;
         Time.timeScale = 1;
         scoreKey = ScoreManager.CurrentScore;
