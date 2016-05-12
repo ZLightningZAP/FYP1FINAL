@@ -33,25 +33,28 @@ public class AmmoSystem : MonoBehaviour
             bulletshell[i].transform.SetParent(canvas.transform, false);
         }
 
-        x = 850;
+        x = (float)(Screen.width * 0.8);
         for (int i = 0; i < 67; ++i)
         {
-            bulletshell[i].transform.position = new Vector3(x, 50, 0);
-            x += 3;
+            y = (float)(Screen.height * 0.08);
+            bulletshell[i].transform.position = new Vector3(x, y, 0);
+            x += 4;
         }
 
-        x = 850;
+        x = (float)(Screen.width * 0.8);
         for (int i = 67; i < 134; ++i)
         {
-            bulletshell[i].transform.position = new Vector3(x, 37, 0);
-            x += 3;
+            y = (float)(Screen.height * 0.055);
+            bulletshell[i].transform.position = new Vector3(x, y, 0);
+            x += 4;
         }
 
-        x = 850;
+        x = (float)(Screen.width * 0.8);
         for (int i = 134; i < 200; ++i)
         {
-            bulletshell[i].transform.position = new Vector3(x, 24, 0);
-            x += 3;
+            y = (float)(Screen.height * 0.03);
+            bulletshell[i].transform.position = new Vector3(x, y, 0);
+            x += 4;
         }
     }
 

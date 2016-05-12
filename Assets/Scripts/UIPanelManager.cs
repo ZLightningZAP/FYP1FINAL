@@ -60,7 +60,10 @@ public class UIPanelManager : MonoBehaviour
 
     static public void DisableUIPanel(UIPanel panel)
     {
-        EnableScripts();
+        if (panel != UIPanelManager.UIPanel.NewHighscore)
+        {
+            EnableScripts();
+        }
         uilist[(int)panel].SetActive(false);
         Time.timeScale = 1;
     }

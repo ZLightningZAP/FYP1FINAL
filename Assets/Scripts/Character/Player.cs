@@ -29,6 +29,7 @@ public class Player : Character
 
     private float lasthealth;
     private bool finished = false;
+    private float smoothen;
 
     // Use this for initialization
     protected override void Start()
@@ -39,6 +40,7 @@ public class Player : Character
         BloodImage.enabled = false;
         TakingDmg.enabled = false;
         lasthealth = health;
+        smoothen = health;
     }
 
     // Update is called once per frame
@@ -109,8 +111,15 @@ public class Player : Character
 
     private void HealthBarUpdate(float health)
     {
-        // Calculate the fill amount of the health bar
-        HealthFillAmount = health / MaxHealth;
-        healthBar.fillAmount = HealthFillAmount;
+        if (smoothen != health)
+        {
+            smoothen -= 1f;
+            HealthFillAmount = smoothen / MaxHealth;
+            healthBar.fillAmount = HealthFillAmount;
+        }
+        else
+        {
+            smoothen = health;
+        }
     }
 }
