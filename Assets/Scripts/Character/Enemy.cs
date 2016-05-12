@@ -78,7 +78,7 @@ public class Enemy : Character
         {
             Dead();
 
-            if (recoil == false && Wave == false)
+            if (recoil == false)
             {
                 Looking();
             }
@@ -149,7 +149,7 @@ public class Enemy : Character
     {
         Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
         Vector3 targetPos = new Vector3(Waypoint.transform.position.x, 0, Waypoint.transform.position.z);
-        if (Vector3.Distance(targetPos, currentPos) > Gap)
+        if (Vector3.Distance(targetPos, currentPos) > Gap && moving)
         {
             Rotate();
             gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * MovementSpeed);
@@ -263,9 +263,6 @@ public class Enemy : Character
             anim.enabled = true;
             aiming.SetActive(true);
 
-            //Shootingbarrel will look at the camera
-            shootingBarrel.gameObject.transform.LookAt(Camera.main.transform.position);
-
             timer += Time.deltaTime;
             if (timer >= Timetoshoot)
             {
@@ -312,6 +309,11 @@ public class Enemy : Character
     public bool GetMovingState()
     {
         return moving;
+    }
+
+    public void SetMovingState(bool input)
+    {
+        moving = input;
     }
 
     public void DisplayRumble()

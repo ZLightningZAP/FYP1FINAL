@@ -56,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
         enemi.GetComponent<Enemy>().Waypoint = waypoint;
         enemi.GetComponent<Enemy>().Rotate();
         enemi.GetComponent<Enemy>().Triggeredmove = true;
+        enemi.GetComponent<Enemy>().SetMovingState(true);
     }
 
     private void UpdateSpawnChances()
