@@ -32,8 +32,6 @@ public class InputHandler : MonoBehaviour
     private float reloadtimetracker;
     private int result;
     private bool goingbacktomainmenu = false;
-    private bool highscore = false;
-    private bool highscorepanelpressed = false;
 
     private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
@@ -97,7 +95,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && player.IsAlive && highscore == false)
+                        if (goingbacktomainmenu == false && player.IsAlive)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -143,7 +141,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && player.IsAlive && highscore == false)
+                        if (goingbacktomainmenu == false && player.IsAlive)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -204,26 +202,6 @@ public class InputHandler : MonoBehaviour
             //GOPanel();
             UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
         }
-
-        //if (Input.GetKeyDown(KeyCode.Insert))
-        //{
-        //    if (highscorepanelpressed == false)
-        //    {
-        //        highscorepanelpressed = true;
-        //    }
-        //    else if (highscorepanelpressed == true)
-        //    {
-        //        DeadPanel.SetActive(false);
-        //        NewHighscorePanel.SetActive(false);
-        //        highscorepanelpressed = false;
-        //        Time.timeScale = 1;
-        //    }
-        //}
-
-        //if (highscorepanelpressed == true)
-        //{
-        //    NewHighscore();
-        //}
     }
 
     private void Fire()
