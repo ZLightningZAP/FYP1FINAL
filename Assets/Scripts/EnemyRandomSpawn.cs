@@ -4,10 +4,13 @@ using UnityEngine;
 public class EnemyRandomSpawn : MonoBehaviour
 {
     public List<EnemySpawner> Spawners = new List<EnemySpawner>();
-    public float SpawnXSecond = 2f;
+    public float StartingSpawnRate = 2f;
+    public float TimeBeforeIncreaseRate = 10.0f;
 
     private float timer;
     private int randomnumber;
+
+    private float spawnRateTimer;
 
     // Use this for initialization
     private void Start()
@@ -18,10 +21,18 @@ public class EnemyRandomSpawn : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= SpawnXSecond)
+        spawnRateTimer += Time.deltaTime;
+
+        if (timer >= StartingSpawnRate)
         {
             ChooseSpawn();
             timer = 0;
+        }
+
+        if (spawnRateTimer >= TimeBeforeIncreaseRate)
+        {
+            StartingSpawnRate *= 0.5f;
+            spawnRateTimer = 0.0f;
         }
     }
 

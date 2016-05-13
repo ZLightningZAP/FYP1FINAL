@@ -279,16 +279,16 @@ public class Enemy : Character
                     Vector3 n = Camera.main.transform.position - gameObject.transform.position;
                     muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
                     bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
-                    muzzle.transform.SetParent(gameObject.transform);
-                    bullet.transform.SetParent(gameObject.transform);
+                    //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
+                    //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
                 }
                 else if (gameObject.tag == "V200")
                 {
                     Vector3 n = Camera.main.transform.position - gameObject.transform.position;
                     muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
                     bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
-                    muzzle.transform.SetParent(gameObject.transform);
-                    bullet.transform.SetParent(gameObject.transform);
+                    //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
+                    //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
                 }
                 //Play the sound effect for the enemy shooting at the player
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
@@ -398,7 +398,9 @@ public class Enemy : Character
 
     public void Rotate()
     {
-        Vector3 targetDir = Waypoint.transform.position - transform.position;
+        Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 targetPos = new Vector3(Waypoint.transform.position.x, 0, Waypoint.transform.position.z);
+        Vector3 targetDir = targetPos - currentPos;
         float step = 9999f;
         Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
         transform.rotation = Quaternion.LookRotation(newDir);

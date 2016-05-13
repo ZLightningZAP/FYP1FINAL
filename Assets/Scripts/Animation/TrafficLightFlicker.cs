@@ -27,13 +27,11 @@ public class TrafficLightFlicker : MonoBehaviour {
             {
                 meshrenderer.material = SecondMaterial;
                 prevMaterial = SecondMaterial;
-                print("change");
             }
             else
             {
                 meshrenderer.material = OriginalMaterial;
                 prevMaterial = OriginalMaterial;
-                print("change 2");
             }
             timer = 0;
         }
