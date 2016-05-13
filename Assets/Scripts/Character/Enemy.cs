@@ -11,11 +11,14 @@ public class Enemy : Character
     public float RecoilValue = 5;
     public float Thrust = 100f;
     public bool Obsolete = false;
-    public GameObject shootingBarrel;
+    private ShootingBarrel shootingBarrel;
 
     public GameObject aiming;
+    public GameObject firing;
 
     private Animator anim;
+    private GameObject muzzle;
+    private GameObject bullet;
 
     //Smoke Effect
     private GameObject SmokeEffect; //Used to keep track
@@ -61,6 +64,8 @@ public class Enemy : Character
         lk2 = FindObjectOfType<LookingPoint2>();
 
         rb = GetComponent<Rigidbody>();
+
+        shootingBarrel = GetComponentInChildren<ShootingBarrel>();
     }
 
     // Update is called once per frame
@@ -268,6 +273,23 @@ public class Enemy : Character
             {
                 FindObjectOfType<Player>().Injure(Damage);
                 print("Damaged by " + gameObject.name);
+
+                if (gameObject.tag == "M113")
+                {
+                    Vector3 n = Camera.main.transform.position - gameObject.transform.position;
+                    muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
+                    bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
+                    muzzle.transform.SetParent(gameObject.transform);
+                    bullet.transform.SetParent(gameObject.transform);
+                }
+                else if (gameObject.tag == "V200")
+                {
+                    Vector3 n = Camera.main.transform.position - gameObject.transform.position;
+                    muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
+                    bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
+                    muzzle.transform.SetParent(gameObject.transform);
+                    bullet.transform.SetParent(gameObject.transform);
+                }
                 //Play the sound effect for the enemy shooting at the player
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
                 shootingyet = false;
