@@ -259,7 +259,7 @@ public class Enemy : Character
     {
         if (chosen == false)
         {
-            randomnumber = Random.Range(5, 10);
+            randomnumber = Random.Range(8, 10);
             chosen = true;
         }
         randomnumber -= Time.deltaTime;
