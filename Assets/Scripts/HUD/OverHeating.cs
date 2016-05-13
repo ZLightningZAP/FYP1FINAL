@@ -27,17 +27,17 @@ public class OverHeating : MonoBehaviour
     public float HeatPerShot = 0.005f;
     public float BlinkingSpeed = 0.25f;
     public Image overheatBar;
-    //public RawImage overheatBlinkingBar;
-    //public RawImage overheatGlow;
 
-    //public RawImage overheatGlow;
+    //public RawImage overheatBlinkingBar;
+    public RawImage overheatGlow;
+
     public bool overHeated { get { return overheated; } set { overheated = value; } }
 
     // Use this for initialization
     private void Start()
     {
         //overheatBlinkingBar.enabled = false;
-        //overheatGlow.enabled = false;
+        overheatGlow.enabled = false;
     }
 
     // Update is called once per frame
@@ -118,7 +118,7 @@ public class OverHeating : MonoBehaviour
             blinking = false;
             glowing = false;
             //overheatBlinkingBar.enabled = false;
-            //overheatGlow.enabled = false;
+            overheatGlow.enabled = false;
         }
 
         //If the heating bar is less than 75%, u can continue firing
@@ -151,16 +151,16 @@ public class OverHeating : MonoBehaviour
     {
         //Add up the time for the overheat blinking effect
         transitionGlow += Time.deltaTime;
-        //overheatGlow.enabled = true;
+        overheatGlow.enabled = true;
         if (goneGlow == false && transitionGlow >= BlinkingSpeed)
         {
-            //overheatGlow.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
+            overheatGlow.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
             goneGlow = true;
             transitionGlow = 0;
         }
         else if (goneGlow == true && transitionGlow >= BlinkingSpeed)
         {
-            //overheatGlow.CrossFadeAlpha(1f, BlinkingSpeed, false);
+            overheatGlow.CrossFadeAlpha(1f, BlinkingSpeed, false);
             goneGlow = false;
             transitionGlow = 0;
         }

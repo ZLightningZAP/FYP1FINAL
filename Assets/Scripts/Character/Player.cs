@@ -31,6 +31,8 @@ public class Player : Character
     private bool finished = false;
     private float smoothen;
 
+    private Color color = new Color();
+
     // Use this for initialization
     protected override void Start()
     {
@@ -121,5 +123,11 @@ public class Player : Character
         {
             smoothen = health;
         }
+
+        color.r = (-healthBar.fillAmount) + 1.0f;
+        color.g = (healthBar.fillAmount);
+        color.b = 0f;
+        color.a = 1f;
+        healthBar.color = color;
     }
 }
