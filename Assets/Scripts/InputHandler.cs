@@ -148,6 +148,7 @@ public class InputHandler : MonoBehaviour
                             ammosystem.AmmoUpdateUI();
                         }
                     }
+                    
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
@@ -168,6 +169,7 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
+
                 //Decrease the heating guage every 0.5 second
                 overheat.CoolDownHeating();
 
@@ -179,6 +181,8 @@ public class InputHandler : MonoBehaviour
                 }
             }
         }
+
+        overheat.CoolDownWhileShooting();
 
         //Wiimote detected and connected
         if (wiimote != null)

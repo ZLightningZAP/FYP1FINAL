@@ -276,7 +276,7 @@ public class Enemy : Character
 
                 if (gameObject.tag == "M113")
                 {
-                    Vector3 n = Camera.main.transform.position - gameObject.transform.position;
+                    Vector3 n = Camera.main.transform.position - firing.transform.position;
                     muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
                     bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
                     //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
@@ -284,7 +284,7 @@ public class Enemy : Character
                 }
                 else if (gameObject.tag == "V200")
                 {
-                    Vector3 n = Camera.main.transform.position - gameObject.transform.position;
+                    Vector3 n = Camera.main.transform.position - firing.transform.position;
                     muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
                     bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
                     //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);

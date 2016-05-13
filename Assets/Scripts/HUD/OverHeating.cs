@@ -128,6 +128,50 @@ public class OverHeating : MonoBehaviour
         }
     }
 
+    // Update the cooldown on the overheating system
+    public void CoolDownWhileShooting()
+    {
+        //Cooldown will only start every 0.5 seconds
+        cooldowntimer += Time.deltaTime;
+
+        //Check if the current time is more than x seconds
+        if (cooldowntimer >= CooldownTimerCountdown)
+        {
+            number -= 0.05f;
+            cooldowntimer = 0;
+        }
+
+        //Smoothen down cooldown
+        if (number != currentHeat)
+        {
+            currentHeat -= 0.001f;
+        }
+
+        //Clamps the current heat so that it doesnt go crazy
+        currentHeat = Mathf.Clamp(currentHeat, 0, MaxHeat);
+
+        //Check if the current heating bar is not null
+        //Update the current heating bar transform
+        if (overheatBar != null)
+        {
+            overheatBar.fillAmount = currentHeat;
+        }
+
+        if (currentHeat <= StartToBlink)
+        {
+            blinking = false;
+            glowing = false;
+            //overheatBlinkingBar.enabled = false;
+            overheatGlow.enabled = false;
+        }
+
+        //If the heating bar is less than 75%, u can continue firing
+        if (overheated == true && currentHeat <= ContinueShooting)
+        {
+            overheated = false;
+        }
+    }
+
     private void Blinking()
     {
         //Add up the time for the overheat blinking effect
