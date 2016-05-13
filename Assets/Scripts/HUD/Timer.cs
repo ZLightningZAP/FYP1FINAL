@@ -50,7 +50,6 @@ public class Timer : MonoBehaviour
                 }
                 text.text = CountingDownFrom.ToString("F1");
             }
-
         }
     }
 }
