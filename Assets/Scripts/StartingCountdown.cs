@@ -32,6 +32,7 @@ public class StartingCountdown : MonoBehaviour
         player = FindObjectOfType<Player>();
         spawn = FindObjectOfType<EnemyRandomSpawn>();
         sound = FindObjectOfType<SoundManager>();
+        RenderSettings.skybox.SetFloat("_Rotation", 0);
     }
 
     // Update is called once per frame

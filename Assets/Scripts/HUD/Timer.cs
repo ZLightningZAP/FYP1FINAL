@@ -22,7 +22,6 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * -0.5f);
         if (Countdown == false)
         {
             //Timer will countdown using delta time
@@ -51,6 +50,7 @@ public class Timer : MonoBehaviour
                 }
                 text.text = CountingDownFrom.ToString("F1");
             }
+
         }
     }
 }
