@@ -8,6 +8,8 @@ public class ScoreManager : MonoBehaviour
         BossKill,
         MissileDestroyed,
         ExitBonus,
+        BodyShot,
+        TopShot,
     }
 
     private static int[] scores =
@@ -16,6 +18,8 @@ public class ScoreManager : MonoBehaviour
             300,
             50,
             200,
+            10,
+            30,
         };
 
     private static int currentScore;

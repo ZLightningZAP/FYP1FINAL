@@ -148,7 +148,6 @@ public class InputHandler : MonoBehaviour
                             ammosystem.AmmoUpdateUI();
                         }
                     }
-                    
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
@@ -169,7 +168,6 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
-
                 //Decrease the heating guage every 0.5 second
                 overheat.CoolDownHeating();
 
@@ -260,8 +258,15 @@ public class InputHandler : MonoBehaviour
                 print("Hit Weak Point!");
                 hit.transform.SendMessage("Injure", DamageOfBullet * 2, SendMessageOptions.DontRequireReceiver);
             }
+            else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
+            {
+                print("Hit Top!");
+                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
+                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+            }
             else
             {
+                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
         }
