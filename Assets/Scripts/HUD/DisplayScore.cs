@@ -22,7 +22,7 @@ public class DisplayScore : MonoBehaviour
 
         if (newscore > oldscore)
         {
-            oldscore += 5;
+            oldscore += 50;
             text.text = oldscore.ToString();
         }
         else

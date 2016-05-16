@@ -14,12 +14,12 @@ public class ScoreManager : MonoBehaviour
 
     private static int[] scores =
         {
+            1000,
+            3000,
+            500,
+            2000,
             100,
             300,
-            50,
-            200,
-            10,
-            30,
         };
 
     private static int currentScore;
