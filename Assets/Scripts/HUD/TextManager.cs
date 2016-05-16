@@ -30,6 +30,7 @@ public class TextManager : MonoBehaviour
     //Read the text file
     public void Read()
     {
+        Clear();
         StreamReader reader = new StreamReader(Application.streamingAssetsPath + "/Highscore.txt");
         while (!reader.EndOfStream)
         {
@@ -151,5 +152,13 @@ public class TextManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private static void Clear()
+    {
+        Tempdata.Clear();
+        linesInFile.Clear();
+        Names.Clear();
+        Score.Clear();
     }
 }

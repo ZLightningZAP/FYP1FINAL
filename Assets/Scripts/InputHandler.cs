@@ -260,13 +260,16 @@ public class InputHandler : MonoBehaviour
             }
             else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
             {
-                print("Hit Top!");
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
+                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+            }
+            else if (hit.collider.gameObject.GetComponent<Enemy>() != null)
+            {
+                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else
             {
-                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
         }
