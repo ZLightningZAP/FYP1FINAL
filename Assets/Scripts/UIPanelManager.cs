@@ -65,14 +65,13 @@ public class UIPanelManager : MonoBehaviour
             EnableScripts();
         }
         uilist[(int)panel].SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 0;
     }
 
     public void ClickedYes()
     {
         DisableScripts();
         ScoreManager.ResetCurrentScore();
-        Time.timeScale = 1;
         for (int i = 0; i < Enum.GetNames(typeof(UIPanel)).Length; ++i)
         {
             UILIST[i].SetActive(false);
@@ -104,7 +103,6 @@ public class UIPanelManager : MonoBehaviour
             nameKey = "Test";
         }
         updating = false;
-        Time.timeScale = 1;
         scoreKey = ScoreManager.CurrentScore;
         TextManager.Write(nameKey, scoreKey);
         UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.NewHighscore);
