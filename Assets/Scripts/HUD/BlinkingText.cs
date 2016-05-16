@@ -6,7 +6,7 @@ public class BlinkingText : MonoBehaviour
     public float transitionTime = 1;
     public float waitTime = 2;
 
-    private RawImage text;
+    private Text text;
     private bool gone = false;
     private float transition;
     private float wait;
@@ -14,7 +14,7 @@ public class BlinkingText : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        text = GetComponent<RawImage>();
+        text = GetComponent<Text>();
         transition = transitionTime;
     }
 

@@ -6,47 +6,78 @@ public class SliderAuto : MonoBehaviour
     public float Speed;
 
     private Scrollbar slider;
-    public float transitiontime;
-    private float waittime;
 
-    private float time;
-    private float secondtime;
+    public float waittime;
+    private float timer;
+    private bool goingup;
 
     // Use this for initialization
     private void Start()
     {
         slider = GetComponentInChildren<Scrollbar>();
         slider.value = 0;
+        goingup = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        time += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if (time >= transitiontime + 1)
+        if (goingup)
         {
-            Slide();
+            SlideUp();
         }
-        if (time >= transitiontime * 2)
+        else
         {
-            time = 0;
+            SlideDown();
         }
+    }
 
-        if (slider.value == 1)
+    private void SlideUp()
+    {
+        slider.value += Speed * Time.deltaTime;
+        if (slider.value >= 1)
         {
-            secondtime += Time.deltaTime;
-            if (secondtime >= 3)
+            slider.value = 1;
+
+            if (timer >= waittime)
             {
-                Reset();
-                secondtime = 0;
+                if (goingup)
+                {
+                    goingup = false;
+                }
+                else
+                {
+                    goingup = true;
+                }
+
+                timer = 0;
             }
         }
     }
 
-    private void Slide()
+    private void SlideDown()
     {
-        slider.value += Speed;
+        slider.value -= Speed * Time.deltaTime;
+        if (slider.value <= 0)
+        {
+            slider.value = 0;
+
+            if (timer >= waittime)
+            {
+                if (goingup)
+                {
+                    goingup = false;
+                }
+                else
+                {
+                    goingup = true;
+                }
+
+                timer = 0;
+            }
+        }
     }
 
     private void Reset()
