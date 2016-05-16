@@ -5,11 +5,13 @@ public class SoundManager : MonoBehaviour
 {
     public enum BackgroundMusic
     {
+        MainMenu,
         Ambient,
     }
 
     public enum SoundEffect
     {
+        ClickToStart,
         Reload,
         Fire,
         Enemy_Fire,

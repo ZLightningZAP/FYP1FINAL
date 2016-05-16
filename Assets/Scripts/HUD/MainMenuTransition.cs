@@ -41,6 +41,8 @@ public class MainMenuTransition : MonoBehaviour
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
         wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
+
+        SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.MainMenu);
     }
 
     // Update is called once per frame
@@ -96,6 +98,7 @@ public class MainMenuTransition : MonoBehaviour
             {
                 if (goingtoexit == false)
                 {
+                    SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ClickToStart);
                     SceneManager.LoadScene(2);
                 }
             }
