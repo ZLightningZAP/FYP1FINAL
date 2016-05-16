@@ -72,6 +72,7 @@ public class UIPanelManager : MonoBehaviour
     {
         DisableScripts();
         ScoreManager.ResetCurrentScore();
+        Time.timeScale = 1;
         for (int i = 0; i < Enum.GetNames(typeof(UIPanel)).Length; ++i)
         {
             UILIST[i].SetActive(false);
