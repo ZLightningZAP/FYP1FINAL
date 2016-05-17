@@ -65,7 +65,6 @@ public class UIPanelManager : MonoBehaviour
             EnableScripts();
         }
         uilist[(int)panel].SetActive(false);
-        Time.timeScale = 0;
     }
 
     public void ClickedYes()
@@ -92,7 +91,6 @@ public class UIPanelManager : MonoBehaviour
         updating = true;
         DisableScripts();
         Time.timeScale = 0;
-        UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
         UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
     }
 
@@ -107,6 +105,7 @@ public class UIPanelManager : MonoBehaviour
         scoreKey = ScoreManager.CurrentScore;
         TextManager.Write(nameKey, scoreKey);
         UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.NewHighscore);
+        UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
     }
 
     static private void DisableScripts()

@@ -41,11 +41,14 @@ public class Timer : MonoBehaviour
                 CountingDownFrom = 0;
                 if (shown == false)
                 {
-                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
                     if (ScoreManager.CurrentScore >= TextManager.Score[TextManager.Score.Count - 1])
                     {
                         UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
                         shown = true;
+                    }
+                    else
+                    {
+                        UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
                     }
                 }
                 text.text = CountingDownFrom.ToString("F1");
