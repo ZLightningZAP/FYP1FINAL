@@ -17,6 +17,9 @@ public class SliderAuto : MonoBehaviour
         slider = GetComponentInChildren<Scrollbar>();
         slider.value = 0;
         goingup = true;
+
+        SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.MainMenu);
+        SoundManager.SetBGMVolume(0.3f);
     }
 
     // Update is called once per frame

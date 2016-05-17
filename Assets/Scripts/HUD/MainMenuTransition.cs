@@ -36,8 +36,6 @@ public class MainMenuTransition : MonoBehaviour
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
         wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
-
-        SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.MainMenu);
     }
 
     // Update is called once per frame
