@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using WiimoteApi;
@@ -75,7 +76,7 @@ public class MainMenuTransition : MonoBehaviour
                 if (goingtoexit == false)
                 {
                     SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ClickToStart);
-                    SceneManager.LoadScene(2);
+                    StartCoroutine(ChangeLevel());
                 }
             }
 
@@ -111,5 +112,12 @@ public class MainMenuTransition : MonoBehaviour
     {
         quitMenu.SetActive(false);
         goingtoexit = false;
+    }
+
+    private IEnumerator ChangeLevel()
+    {
+        float fadeTime = GetComponent<FadeInOut>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene(2);
     }
 }
