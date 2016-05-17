@@ -263,11 +263,13 @@ public class InputHandler : MonoBehaviour
             else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
             {
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<Enemy>() != null)
             {
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.tag == "TrafficLight")
