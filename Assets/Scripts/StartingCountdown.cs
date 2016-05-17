@@ -14,11 +14,7 @@ public class StartingCountdown : MonoBehaviour
     private AmmoSystem ammosystem;
     private EnemyManager manager;
     private Timer timer;
-
-    //private CameraMovement movement;
     private Player player;
-
-    private EnemyRandomSpawn spawn;
     private SoundManager sound;
 
     // Use this for initialization
@@ -30,9 +26,7 @@ public class StartingCountdown : MonoBehaviour
         ammosystem = FindObjectOfType<AmmoSystem>();
         manager = FindObjectOfType<EnemyManager>();
         timer = FindObjectOfType<Timer>();
-        //movement = FindObjectOfType<CameraMovement>();
         player = FindObjectOfType<Player>();
-        spawn = FindObjectOfType<EnemyRandomSpawn>();
         sound = FindObjectOfType<SoundManager>();
         RenderSettings.skybox.SetFloat("_Rotation", 0);
     }
@@ -66,9 +60,7 @@ public class StartingCountdown : MonoBehaviour
         ammosystem.enabled = false;
         manager.enabled = false;
         timer.enabled = false;
-        //movement.enabled = false;
         player.enabled = false;
-        spawn.enabled = false;
         sound.enabled = false;
     }
 
@@ -79,9 +71,7 @@ public class StartingCountdown : MonoBehaviour
         ammosystem.enabled = true;
         manager.enabled = true;
         timer.enabled = true;
-        //movement.enabled = true;
         player.enabled = true;
-        spawn.enabled = true;
         sound.enabled = true;
     }
 }
