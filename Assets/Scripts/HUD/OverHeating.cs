@@ -28,7 +28,8 @@ public class OverHeating : MonoBehaviour
     public float BlinkingSpeed = 0.25f;
     public Image overheatBar;
 
-    //public RawImage overheatBlinkingBar;
+    public Text overheatBlinking;
+    public Text ReleaseTrigger;
     public RawImage overheatGlow;
 
     public bool overHeated { get { return overheated; } set { overheated = value; } }
@@ -36,7 +37,7 @@ public class OverHeating : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        //overheatBlinkingBar.enabled = false;
+        overheatBlinking.enabled = false;
         overheatGlow.enabled = false;
     }
 
@@ -79,6 +80,9 @@ public class OverHeating : MonoBehaviour
         if (currentHeat == 1)
         {
             overheated = true;
+            blinking = false;
+            overheatBlinking.enabled = false;
+            ReleaseTrigger.enabled = true;
         }
 
         number = currentHeat;
@@ -117,8 +121,9 @@ public class OverHeating : MonoBehaviour
         {
             blinking = false;
             glowing = false;
-            //overheatBlinkingBar.enabled = false;
+            overheatBlinking.enabled = false;
             overheatGlow.enabled = false;
+            ReleaseTrigger.enabled = false;
         }
 
         //If the heating bar is less than 75%, u can continue firing
@@ -161,7 +166,7 @@ public class OverHeating : MonoBehaviour
         {
             blinking = false;
             glowing = false;
-            //overheatBlinkingBar.enabled = false;
+            overheatBlinking.enabled = false;
             overheatGlow.enabled = false;
         }
 
@@ -176,16 +181,16 @@ public class OverHeating : MonoBehaviour
     {
         //Add up the time for the overheat blinking effect
         transition += Time.deltaTime;
-        //overheatBlinkingBar.enabled = true;
+        overheatBlinking.enabled = true;
         if (gone == false && transition >= BlinkingSpeed)
         {
-            //overheatBlinkingBar.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
+            overheatBlinking.CrossFadeAlpha(0.0f, BlinkingSpeed, false);
             gone = true;
             transition = 0;
         }
         else if (gone == true && transition >= BlinkingSpeed)
         {
-            //overheatBlinkingBar.CrossFadeAlpha(0.5f, BlinkingSpeed, false);
+            overheatBlinking.CrossFadeAlpha(1f, BlinkingSpeed, false);
             gone = false;
             transition = 0;
         }
