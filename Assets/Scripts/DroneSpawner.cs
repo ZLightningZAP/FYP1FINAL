@@ -7,6 +7,10 @@ public class DroneSpawner : MonoBehaviour
 
     public GameObject canvas;
 
+    public int chance;
+    private int random;
+    private bool spawned = false;
+
     // Use this for initialization
     private void Start()
     {
@@ -20,7 +24,12 @@ public class DroneSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SpawnDrones();
+        random = Random.Range(0, 101);
+        if (random <= chance && spawned == false)
+        {
+            SpawnDrones();
+            spawned = true;
+        }
     }
 
     private void SpawnDrones()
@@ -28,9 +37,7 @@ public class DroneSpawner : MonoBehaviour
         for (int i = 0; i < dronelist.Count; i++)
         {
             dronelist[i].gameObject.SetActive(true);
+            dronelist[i].gameObject.transform.SetParent(canvas.transform);
         }
-
-        //Set the parent of the gameobject to the world canvas
-        //enemy.transform.SetParent(canvas.transform);
     }
 }

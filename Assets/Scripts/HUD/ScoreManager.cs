@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
         {
             1000,
             3000,
-            500,
+            2000,
             2000,
             100,
             300,
