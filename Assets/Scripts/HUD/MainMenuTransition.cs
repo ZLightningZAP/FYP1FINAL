@@ -53,7 +53,7 @@ public class MainMenuTransition : MonoBehaviour
             if (wiimote.Button.a || wiimote.Button.b)
             {
                 print("A or B Button is pressed!");
-                SceneManager.LoadScene(2);
+                StartCoroutine(ChangeLevel());
             }
             if (wiimote.Button.home)
             {

@@ -34,6 +34,7 @@ public class StartingCountdown : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        ChangeLevel();
         if (countdown == true)
         {
             crosshair.SetActive(false);
@@ -73,5 +74,11 @@ public class StartingCountdown : MonoBehaviour
         timer.enabled = true;
         player.enabled = true;
         sound.enabled = true;
+    }
+
+    private IEnumerator ChangeLevel()
+    {
+        float fadeTime = GetComponent<FadeInOut>().BeginFade(-1);
+        yield return new WaitForSeconds(fadeTime);
     }
 }
