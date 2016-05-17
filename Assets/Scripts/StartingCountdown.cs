@@ -14,8 +14,10 @@ public class StartingCountdown : MonoBehaviour
     private AmmoSystem ammosystem;
     private EnemyManager manager;
     private Timer timer;
+
     //private CameraMovement movement;
     private Player player;
+
     private EnemyRandomSpawn spawn;
     private SoundManager sound;
 
@@ -42,6 +44,9 @@ public class StartingCountdown : MonoBehaviour
         {
             crosshair.SetActive(false);
             DisableScripts();
+            //Disable the text on the overheat to not cover the countdown
+            overheating.overheatBlinking.enabled = false;
+            overheating.ReleaseTrigger.enabled = false;
             CountDownStart -= Time.deltaTime;
             text.text = CountDownStart.ToString("F0");
             if (CountDownStart <= 0)
