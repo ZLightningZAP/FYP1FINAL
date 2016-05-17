@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
         Reload,
         Fire,
         Enemy_Fire,
+        TrafficLight,
     }
 
     // For initializing sounds

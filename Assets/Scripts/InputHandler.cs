@@ -37,6 +37,8 @@ public class InputHandler : MonoBehaviour
     private Wiimote wiimote;    //Wii mote
     private Vector3 PointerPosition;    //Pointing Position
 
+    private int random;
+
     // Use this for initialization
     private void Start()
     {
@@ -267,6 +269,14 @@ public class InputHandler : MonoBehaviour
             {
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+            }
+            else if (hit.collider.gameObject.tag == "TrafficLight")
+            {
+                random = Random.Range(0, 11);
+                if (random == 0)
+                {
+                    SoundManager.PlaySoundEffect(SoundManager.SoundEffect.TrafficLight);
+                }
             }
             else
             {
