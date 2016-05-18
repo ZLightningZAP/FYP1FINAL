@@ -69,6 +69,7 @@ public class UIPanelManager : MonoBehaviour
 
     public void ClickedYes()
     {
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ButtonClick);
         DisableScripts();
         ScoreManager.ResetCurrentScore();
         Time.timeScale = 1;
@@ -81,6 +82,7 @@ public class UIPanelManager : MonoBehaviour
 
     public void ClickedNo()
     {
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ButtonClick);
         EnableScripts();
         Time.timeScale = 1;
         DisableUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
@@ -96,6 +98,7 @@ public class UIPanelManager : MonoBehaviour
 
     public void HighscorePanelYES()
     {
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ButtonClick);
         nameKey = Nameinput.text;
         if (Nameinput.text == "")
         {

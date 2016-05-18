@@ -97,6 +97,7 @@ public class MainMenuTransition : MonoBehaviour
 
     public void ExitGame()
     {
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ButtonClick);
         Application.Quit();
     }
 
@@ -108,6 +109,7 @@ public class MainMenuTransition : MonoBehaviour
 
     public void NoPress()
     {
+        SoundManager.PlaySoundEffect(SoundManager.SoundEffect.ButtonClick);
         quitMenu.SetActive(false);
         goingtoexit = false;
     }

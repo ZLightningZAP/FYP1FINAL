@@ -42,6 +42,7 @@ public class EnemyMissile : Character
             //Increasing score as destroyed by player
             ScoreManager.AddCurrentScore(ScoreManager.ScoreType.MissileDestroyed);
 
+            SoundManager.PlaySoundEffect(SoundManager.SoundEffect.DroneImpact);
             //Deactivate object
             anim.enabled = false;
             gameObject.SetActive(false);
@@ -72,6 +73,7 @@ public class EnemyMissile : Character
         if (collision.gameObject.name == "Main Camera")
         {
             FindObjectOfType<Player>().Injure(Damage);
+            SoundManager.PlaySoundEffect(SoundManager.SoundEffect.DroneImpact);
             print("Damaged by " + gameObject.name);
         }
 

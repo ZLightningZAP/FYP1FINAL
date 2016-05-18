@@ -279,6 +279,7 @@ public class Enemy : Character
                     Vector3 n = Camera.main.transform.position - firing.transform.position;
                     muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
                     bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
+                    SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_FireM113);
                     //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
                     //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
                 }

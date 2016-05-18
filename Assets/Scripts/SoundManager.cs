@@ -17,6 +17,10 @@ public class SoundManager : MonoBehaviour
         Enemy_Fire,
         TrafficLight,
         HitEnemy,
+        Enemy_FireM113,
+        DroneImpact,
+        DroneMoving,
+        ButtonClick,
     }
 
     // For initializing sounds
