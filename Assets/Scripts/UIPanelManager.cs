@@ -26,6 +26,8 @@ public class UIPanelManager : MonoBehaviour
     private int scoreKey;
     private static GameObject[] uilist = new GameObject[Enum.GetNames(typeof(UIPanel)).Length];
 
+    private static UnityStandardAssets.ImageEffects.BlurOptimized BlurEffect;
+
     // Use this for initialization
     private void Start()
     {
@@ -40,6 +42,9 @@ public class UIPanelManager : MonoBehaviour
         ammosystem = FindObjectOfType<AmmoSystem>();
         manager = FindObjectOfType<EnemyManager>();
         timer = FindObjectOfType<Timer>();
+
+        BlurEffect = Camera.main.gameObject.GetComponent<UnityStandardAssets.ImageEffects.BlurOptimized>();
+        BlurEffect.enabled = false;
     }
 
     // Update is called once per frame
@@ -56,6 +61,7 @@ public class UIPanelManager : MonoBehaviour
         DisableScripts();
         uilist[(int)panel].SetActive(true);
         Time.timeScale = 0;
+        BlurEffect.enabled = true;
     }
 
     static public void DisableUIPanel(UIPanel panel)
@@ -65,6 +71,7 @@ public class UIPanelManager : MonoBehaviour
             EnableScripts();
         }
         uilist[(int)panel].SetActive(false);
+        BlurEffect.enabled = false;
     }
 
     public void ClickedYes()

@@ -31,7 +31,6 @@ public class InputHandler : MonoBehaviour
     private int randomnumber;
     private float reloadtimetracker;
     private int result;
-    private bool goingbacktomainmenu = false;
 
     private GameObject WiiController;   //Wii controller
     private Wiimote wiimote;    //Wii mote
@@ -97,7 +96,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && player.IsAlive)
+                        if (player.IsAlive)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -108,17 +107,7 @@ public class InputHandler : MonoBehaviour
             }
             else if (wiimote.Button.home)
             {
-                // Show the going back to main menu panel
-                if (goingbacktomainmenu == true)
-                {
-                    //ClickedNO();
-                    UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
-                }
-                else
-                {
-                    //ReturnPanel();
-                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
-                }
+                UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
             }
             else
             {
@@ -143,7 +132,7 @@ public class InputHandler : MonoBehaviour
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
                     {
-                        if (goingbacktomainmenu == false && player.IsAlive)
+                        if (player.IsAlive)
                         {
                             Fire();
                             //Update the Ammo Bar
@@ -155,18 +144,7 @@ public class InputHandler : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
                 // Show the going back to main menu panel
-                if (goingbacktomainmenu == true)
-                {
-                    //ClickedNO();
-                    UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
-                    goingbacktomainmenu = false;
-                }
-                else
-                {
-                    //ReturnPanel();
-                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
-                    goingbacktomainmenu = true;
-                }
+                UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.ReturnToMainMenu);
             }
             else
             {
