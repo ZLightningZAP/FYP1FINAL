@@ -62,7 +62,10 @@ public class StartingCountdown : MonoBehaviour
         manager.enabled = false;
         timer.enabled = false;
         player.enabled = false;
-        sound.enabled = false;
+        if (sound != null)
+        {
+            sound.enabled = false;
+        }
     }
 
     private void EnableScripts()
@@ -73,7 +76,10 @@ public class StartingCountdown : MonoBehaviour
         manager.enabled = true;
         timer.enabled = true;
         player.enabled = true;
-        sound.enabled = true;
+        if (sound != null)
+        {
+            sound.enabled = true;
+        }
     }
 
     private IEnumerator ChangeLevel()

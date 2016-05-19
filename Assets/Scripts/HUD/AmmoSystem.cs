@@ -44,7 +44,6 @@ public class AmmoSystem : MonoBehaviour
         Xup = sizeX / 67;
         Yup = sizeY / 3;
 
-        x = (BulletPlacementbox.GetComponent<RectTransform>().sizeDelta.x * 0.5f);
         for (int i = 0; i < 67; ++i)
         {
             bulletshell[i].GetComponent<RectTransform>().localPosition = new Vector2(0 - x, 0 + Yup);
