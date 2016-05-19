@@ -50,7 +50,7 @@ public class CameraMovement : MonoBehaviour
 
         //Play the ambient music
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
-        SoundManager.SetBGMVolume(0.3f);
+        //SoundManager.SetBGMVolume(0.3f);
     }
 
     // Update is called once per frame
