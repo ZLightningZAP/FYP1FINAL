@@ -38,6 +38,7 @@ public class InputHandler : MonoBehaviour
 
     private int random;
 
+
     // Use this for initialization
     private void Start()
     {
@@ -90,7 +91,6 @@ public class InputHandler : MonoBehaviour
 
             if (wiimote.Button.a)
             {
-                print("A down");
 
                 if (ammosystem.bullet != 0)
                 {
@@ -104,6 +104,7 @@ public class InputHandler : MonoBehaviour
                         }
                     }
                 }
+
             }
             else if (wiimote.Button.home)
             {
@@ -181,7 +182,6 @@ public class InputHandler : MonoBehaviour
 
         if (player.Health <= 0)
         {
-            //GOPanel();
             UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
         }
     }

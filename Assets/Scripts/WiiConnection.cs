@@ -1,11 +1,23 @@
 ﻿using UnityEngine;
 using WiimoteApi;
+using System.Runtime.InteropServices;
+
 
 public class WiiConnection : MonoBehaviour
 {
     public Wiimote wiimote;    //Wii motes
 
     public Vector3 IRposition; //Wii IR position
+
+    //Mouse Events
+    private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+    private const int MOUSEEVENTF_LEFTUP = 0x04;
+
+    [DllImport("user32.dll")]
+    public static extern bool SetCursorPos(int X, int Y);
+
+    [DllImport("user32.dll")]
+    private static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
 
     // Use this for initialization
     private void Start()
@@ -29,7 +41,7 @@ public class WiiConnection : MonoBehaviour
 
             if (wiimote.Button.a)
             {
-                print("A down");
+                DoMouseClick();
             }
 
             //Setting final position to IR's detected position
@@ -37,6 +49,8 @@ public class WiiConnection : MonoBehaviour
 
             IRposition.Set(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
             //Mapping the position to screen
+
+            SetCursorPos((int)IRposition.x, -(int)IRposition.y);
         }
     }
 
@@ -75,5 +89,14 @@ public class WiiConnection : MonoBehaviour
                 print(IRSetUp);
             }
         }
+    }
+
+
+    private void DoMouseClick()
+    {
+        //Call the imported function with the cursor's current position
+        int X = (int)IRposition.x;
+        int Y = (int)IRposition.y;
+        mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, X, Y, 0, 0);
     }
 }
