@@ -70,7 +70,7 @@ public class OverHeating : MonoBehaviour
             overheatBar.fillAmount = currentHeat;
         }
 
-        if (currentHeat >= StartToBlink)
+        if (currentHeat > StartToBlink)
         {
             blinking = true;
             glowing = true;
@@ -117,7 +117,7 @@ public class OverHeating : MonoBehaviour
             overheatBar.fillAmount = currentHeat;
         }
 
-        if (currentHeat <= StartToBlink)
+        if (currentHeat < StartToBlink)
         {
             blinking = false;
             glowing = false;
@@ -127,8 +127,9 @@ public class OverHeating : MonoBehaviour
         }
 
         //If the heating bar is less than 75%, u can continue firing
-        if (overheated == true && currentHeat <= ContinueShooting)
+        if (overheated == true && currentHeat < ContinueShooting)
         {
+            ReleaseTrigger.enabled = false;
             overheated = false;
         }
     }
@@ -162,7 +163,7 @@ public class OverHeating : MonoBehaviour
             overheatBar.fillAmount = currentHeat;
         }
 
-        if (currentHeat <= StartToBlink)
+        if (currentHeat < StartToBlink)
         {
             blinking = false;
             glowing = false;
@@ -171,8 +172,9 @@ public class OverHeating : MonoBehaviour
         }
 
         //If the heating bar is less than 75%, u can continue firing
-        if (overheated == true && currentHeat <= ContinueShooting)
+        if (overheated == true && currentHeat < ContinueShooting)
         {
+            ReleaseTrigger.enabled = false;
             overheated = false;
         }
     }

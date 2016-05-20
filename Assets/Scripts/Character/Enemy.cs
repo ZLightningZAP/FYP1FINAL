@@ -98,7 +98,7 @@ public class Enemy : Character
                 Recoil();
             }
 
-            if (Wave == true && shootyet == false)
+            if (Wave == true)
             {
                 WaveShooting();
             }
@@ -144,6 +144,8 @@ public class Enemy : Character
             //Disable the animations
             anim.enabled = false;
             aiming.SetActive(false);
+
+            randomnumber = Random.Range(8, 11);
 
             //Deactivate object
             gameObject.SetActive(false);
@@ -259,7 +261,7 @@ public class Enemy : Character
     {
         if (chosen == false)
         {
-            randomnumber = Random.Range(8, 13);
+            randomnumber = Random.Range(8, 11);
             chosen = true;
         }
         randomnumber -= Time.deltaTime;
@@ -293,9 +295,9 @@ public class Enemy : Character
                 }
                 //Play the sound effect for the enemy shooting at the player
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
-                shootingyet = false;
                 timer = 0;
                 aiming.SetActive(false);
+                randomnumber = Random.Range(8, 11);
                 //Set the recoil to true to run the recoil function
                 recoil = true;
                 shootyet = true;
