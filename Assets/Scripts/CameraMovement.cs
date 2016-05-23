@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public GameObject WaypointCanvas;
     private List<Waypoint> Waypoint = new List<Waypoint>();
-    public List<Waypoint> SortedWaypoint = new List<Waypoint>();
+    private List<Waypoint> SortedWaypoint = new List<Waypoint>();
 
     public float MovementSpeed;    //Movement Speed of Camera
     public float RotationSpeed;     //Rotation Speed of Camera

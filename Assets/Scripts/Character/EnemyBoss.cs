@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,9 @@ public class EnemyBoss : Character
     public float Damage = 50;
     public float RechargeTime = 5f;
 
-    public List<Waypoint> waypoints = new List<Waypoint>();
+    public GameObject WaypointCanvas;
+    private List<Waypoint> waypoints = new List<Waypoint>();
+    private List<Waypoint> SortedWaypoint = new List<Waypoint>();
 
     //Fill amount for the health bar
     private float HealthFillAmount;
@@ -29,6 +32,9 @@ public class EnemyBoss : Character
 
     private ShootingBarrel shootingBarrel;
     private bool Shootbeforechargetime = false;
+    private float waitTimer;
+
+    private Transform CurrentTransform;
 
     // Use this for initialization
     protected override void Start()
@@ -42,8 +48,17 @@ public class EnemyBoss : Character
         aiming.SetActive(false);
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
         rb = GetComponent<Rigidbody>();
+
+        foreach (var waypoint in FindObjectsOfType(typeof(Waypoint)) as Waypoint[])
+        {
+            waypoints.Add(waypoint);
+        }
+
+        SortedWaypoint = WaypointCanvas.GetComponentsInChildren<Waypoint>().ToList();
+
+        CurrentTransform = gameObject.transform;
         //Set the gameobject to active on start
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -73,16 +88,36 @@ public class EnemyBoss : Character
 
     private void Move()
     {
-        if (Vector3.Distance(waypoints[index].transform.position, transform.position) > Gap)
+        //if (Vector3.Distance(waypoints[index].transform.position, transform.position) > Gap)
+        //{
+        //    //Go towards the next position
+        //    transform.position = Vector3.MoveTowards(transform.position, waypoints[index].transform.position, MovementSpeed * Time.deltaTime);
+        //}
+        //else if (transform.position == waypoints[index].transform.position)
+        //{
+        //    if (index < waypoints.Count)
+        //    {
+        //        index += 1;
+        //    }
+        //}
+        if (Vector3.Distance(SortedWaypoint[index].gameObject.transform.position, CurrentTransform.position) > Gap)
         {
             //Go towards the next position
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[index].transform.position, MovementSpeed * Time.deltaTime);
+            CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedWaypoint[index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
         }
-        else if (transform.position == waypoints[index].transform.position)
+        else
         {
-            if (index < waypoints.Count)
+            waitTimer += Time.deltaTime;
+
+            if (waitTimer > SortedWaypoint[index].WaitTime)
             {
-                index += 1;
+                //Only if its still within bounds of the waypoint
+                if (SortedWaypoint.Count > index + 1)
+                {
+                    index++;
+                    waitTimer = 0.0f;
+                    print("Going to next point!");
+                }
             }
         }
     }

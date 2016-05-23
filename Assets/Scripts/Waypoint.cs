@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        gameObject.GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
