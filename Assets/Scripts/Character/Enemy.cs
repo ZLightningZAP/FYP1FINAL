@@ -38,7 +38,6 @@ public class Enemy : Character
     public bool Wave = false;
     private float randomnumber;
     private bool chosen = false;
-    private bool shootyet = false;
 
     // Use this for initialization
     protected override void Start()
@@ -246,16 +245,12 @@ public class Enemy : Character
                 VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
                 VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_FireM113);
-                //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
-                //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
             }
             else if (gameObject.tag == "V200")
             {
                 Vector3 n = Camera.main.transform.position - firing.transform.position;
                 VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
                 VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
-                //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
-                //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
             }
             //Play the sound effect for the enemy shooting at the player
             SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
@@ -311,7 +306,6 @@ public class Enemy : Character
                 randomnumber = Random.Range(8, 11);
                 //Set the recoil to true to run the recoil function
                 recoil = true;
-                shootyet = true;
             }
         }
     }
