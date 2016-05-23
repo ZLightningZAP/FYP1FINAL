@@ -1,7 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using WiimoteApi;
-using System.Runtime.InteropServices;
-
 
 public class WiiConnection : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class WiiConnection : MonoBehaviour
 
     //Mouse Events
     private const int MOUSEEVENTF_LEFTDOWN = 0x02;
+
     private const int MOUSEEVENTF_LEFTUP = 0x04;
 
     [DllImport("user32.dll")]
@@ -50,7 +50,17 @@ public class WiiConnection : MonoBehaviour
             IRposition.Set(pointer[0] * Screen.width, pointer[1] * Screen.height, 0);
             //Mapping the position to screen
 
-            SetCursorPos((int)IRposition.x, -(int)IRposition.y);
+            SetCursorPos((int)IRposition.x + 300, (Screen.height - (int)IRposition.y) + 100);
+
+            print("Mouse");
+            print(Input.mousePosition);
+
+            print("Wii");
+            print(IRposition);
+            if (Input.GetMouseButtonDown(1))
+            {
+                ConnectWii();
+            }
         }
     }
 
@@ -90,7 +100,6 @@ public class WiiConnection : MonoBehaviour
             }
         }
     }
-
 
     private void DoMouseClick()
     {

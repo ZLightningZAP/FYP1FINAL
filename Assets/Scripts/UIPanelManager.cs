@@ -58,6 +58,7 @@ public class UIPanelManager : MonoBehaviour
 
     static public void ShowUIPanel(UIPanel panel)
     {
+        Cursor.visible = true;
         DisableScripts();
         uilist[(int)panel].SetActive(true);
         Time.timeScale = 0;
@@ -66,6 +67,7 @@ public class UIPanelManager : MonoBehaviour
 
     static public void DisableUIPanel(UIPanel panel)
     {
+        Cursor.visible = false;
         if (panel != UIPanelManager.UIPanel.NewHighscore)
         {
             EnableScripts();

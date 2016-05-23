@@ -35,6 +35,7 @@ public class EnemyBoss : Character
     private float waitTimer;
 
     private Transform CurrentTransform;
+    private bool shown = false;
 
     // Use this for initialization
     protected override void Start()
@@ -59,6 +60,8 @@ public class EnemyBoss : Character
         CurrentTransform = gameObject.transform;
         //Set the gameobject to active on start
         gameObject.SetActive(false);
+
+        shown = false;
     }
 
     // Update is called once per frame
@@ -156,6 +159,19 @@ public class EnemyBoss : Character
 
             //Deactivate object
             gameObject.SetActive(false);
+
+            if (shown == false)
+            {
+                if (ScoreManager.CurrentScore >= TextManager.Score[TextManager.Score.Count - 1])
+                {
+                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
+                    shown = true;
+                }
+                else
+                {
+                    UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+                }
+            }
         }
     }
 

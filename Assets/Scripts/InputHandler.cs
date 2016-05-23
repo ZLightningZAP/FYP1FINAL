@@ -38,12 +38,11 @@ public class InputHandler : MonoBehaviour
 
     private int random;
 
-
     // Use this for initialization
     private void Start()
     {
         // Hide mouse cursor
-        //Cursor.visible = false;
+        Cursor.visible = false;
 
         currentBulletSpread = defaultBulletSpread;
 
@@ -91,7 +90,6 @@ public class InputHandler : MonoBehaviour
 
             if (wiimote.Button.a)
             {
-
                 if (ammosystem.bullet != 0)
                 {
                     if (fireTimer >= FireRate && overheat.overHeated == false)
@@ -104,7 +102,6 @@ public class InputHandler : MonoBehaviour
                         }
                     }
                 }
-
             }
             else if (wiimote.Button.home)
             {
