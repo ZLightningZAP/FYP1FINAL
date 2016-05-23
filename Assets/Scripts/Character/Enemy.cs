@@ -12,22 +12,16 @@ public class Enemy : Character
     public float Thrust = 100f;
     public bool Obsolete = false;
     private ShootingBarrel shootingBarrel;
-
     public GameObject aiming;
     public GameObject firing;
+    public bool trulyVisible;
 
+    private GameObject SmokeEffect;
     private Animator anim;
-    private GameObject muzzle;
-    private GameObject bullet;
-
-    //Smoke Effect
-    private GameObject SmokeEffect; //Used to keep track
-
     private float Gap;
     private int randomInt;
     private bool assigned = false;
     private bool visible;
-    public bool trulyVisible;
     private bool shootingyet = false;
     private float timer;
     private bool recoil = false;
@@ -246,6 +240,23 @@ public class Enemy : Character
         {
             FindObjectOfType<Player>().Injure(Damage);
             print("Damaged by " + gameObject.name);
+            if (gameObject.tag == "M113")
+            {
+                Vector3 n = Camera.main.transform.position - firing.transform.position;
+                VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
+                VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_FireM113);
+                //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
+                //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
+            }
+            else if (gameObject.tag == "V200")
+            {
+                Vector3 n = Camera.main.transform.position - firing.transform.position;
+                VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
+                VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
+                //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
+                //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
+            }
             //Play the sound effect for the enemy shooting at the player
             SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_Fire);
             EnemyManager.shoot = false;
@@ -279,8 +290,8 @@ public class Enemy : Character
                 if (gameObject.tag == "M113")
                 {
                     Vector3 n = Camera.main.transform.position - firing.transform.position;
-                    muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
-                    bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
+                    VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS);
+                    VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH_RAPID);
                     SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Enemy_FireM113);
                     //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
                     //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
@@ -288,8 +299,8 @@ public class Enemy : Character
                 else if (gameObject.tag == "V200")
                 {
                     Vector3 n = Camera.main.transform.position - firing.transform.position;
-                    muzzle = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
-                    bullet = VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
+                    VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.BULLETS_LARGE);
+                    VFXController.current.SpawnVFX(firing.transform.position, Quaternion.LookRotation(n), VFXController.VFX_TYPE.MUZZLEFLASH);
                     //muzzle.transform.SetParent(shootingBarrel.gameObject.transform);
                     //bullet.transform.SetParent(shootingBarrel.gameObject.transform);
                 }
