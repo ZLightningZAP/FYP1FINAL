@@ -28,7 +28,6 @@ public class EnemyBoss : Character
     public GameObject firing;
     private Animator anim;
     private GameObject SmokeEffect;
-    private Rigidbody rb;
     private Weakpoint wp;
 
     private ShootingBarrel shootingBarrel;
@@ -53,7 +52,6 @@ public class EnemyBoss : Character
         anim.enabled = false;
         aiming.SetActive(false);
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
-        rb = GetComponent<Rigidbody>();
         wp = GetComponent<Weakpoint>();
 
         if (WaypointCanvas != null)
@@ -68,7 +66,7 @@ public class EnemyBoss : Character
 
         CurrentTransform = gameObject.transform;
         //Set the gameobject to active on start
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
         wp.enabled = false;
 

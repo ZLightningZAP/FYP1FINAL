@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class MainMenuFade : MonoBehaviour {
-
+public class MainMenuFade : MonoBehaviour
+{
     public GameObject UICanvas; //Main UI canvas
 
     private CanvasGroup UICanvas_Group; //UI Canvas's Component
@@ -14,10 +13,12 @@ public class MainMenuFade : MonoBehaviour {
     private bool FadeOut;
 
     private float timer;    //Timer to track
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    private void Start()
+    {
         //Check if UICanvas is assigned first, then get its component once
-        if(UICanvas != null)
+        if (UICanvas != null)
         {
             UICanvas_Group = UICanvas.GetComponent<CanvasGroup>();
             UICanvas_Group.alpha = 0;
@@ -26,13 +27,14 @@ public class MainMenuFade : MonoBehaviour {
         //Init
         FadeOut = false;
         FadeIn = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
         timer += Time.deltaTime;
 
-        if(timer > FadeInterval)
+        if (timer > FadeInterval)
         {
             if (UICanvas_Group.alpha <= 0)
             {
@@ -48,7 +50,7 @@ public class MainMenuFade : MonoBehaviour {
         }
 
         Fade();
-	}
+    }
 
     //Controls animation
     private void Fade()

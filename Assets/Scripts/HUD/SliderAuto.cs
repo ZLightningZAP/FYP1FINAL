@@ -19,7 +19,6 @@ public class SliderAuto : MonoBehaviour
         goingup = true;
 
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.MainMenu);
-
     }
 
     // Update is called once per frame

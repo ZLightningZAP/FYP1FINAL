@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     //Objects
     public GameObject EnemyMissile_Object; //Missile Object that will be pooled
+
     public GameObject EnemyV200_Object; //Enemy Object that will be pooled
     public GameObject EnemyM113_Object; //Enemy Object that will be pooled
     public GameObject EnemyAMX10_Object; //Enemy Object that will be pooled
@@ -28,6 +29,7 @@ public class EnemyController : MonoBehaviour
 
     //Pools
     private List<GameObject> EnemyMissile_Pool;       //List containing all enemy missiles in the scene
+
     private List<GameObject> EnemyV200_Pool; //List containing all enemies of this type in the scene
     private List<GameObject> EnemyM113_Pool; //List containing all enemies of this type in the scene
     private List<GameObject> EnemyAMX10_Pool; //List containing all enemies of this type in the scene
@@ -41,9 +43,6 @@ public class EnemyController : MonoBehaviour
     private List<GameObject> M113RumbleType2_Pool;    //List containing all M113 rumble type 2 in the scene
     private List<GameObject> M113RumbleType3_Pool;    //List containing all M113 rumble type 3 in the scene
     private List<GameObject> M113RumbleType4_Pool;    //List containing all M113 rumble type 4 in the scene
-
-
-
 
     //Every type of enemy available in game
     public enum ENEMY_TYPE
