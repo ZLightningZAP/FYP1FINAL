@@ -230,23 +230,21 @@ public class InputHandler : MonoBehaviour
                 hit.rigidbody.AddForce(((hit.point + hit.normal) - Camera.main.transform.position).normalized * BulletForce);
             }
 
-            if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
+            if (hit.collider.gameObject.GetComponent<Enemy>() != null)
             {
-                //Hit the weakpoint of the tank
-                print("Hit Weak Point!");
-                hit.transform.SendMessage("Cancel", 1, SendMessageOptions.DontRequireReceiver);
+                //Hit the bottom of the tank for lesser points
+                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
+                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
+                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
+            }
+            else if (hit.collider.gameObject.GetComponent<EnemyBoss>() != null)
+            {
+                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
             {
                 //Hit the top of the tank for more points
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
-                SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
-                hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
-            }
-            else if (hit.collider.gameObject.GetComponent<Enemy>() != null)
-            {
-                //Hit the bottom of the tank for lesser points
-                ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
@@ -258,6 +256,12 @@ public class InputHandler : MonoBehaviour
                 {
                     SoundManager.PlaySoundEffect(SoundManager.SoundEffect.TrafficLight);
                 }
+            }
+            else if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
+            {
+                //Hit the weakpoint of the tank
+                print("Hit Weak Point!");
+                hit.transform.SendMessage("Cancel", 1, SendMessageOptions.DontRequireReceiver);
             }
             else
             {
