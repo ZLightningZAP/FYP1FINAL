@@ -13,6 +13,8 @@ public class Timer : MonoBehaviour
     public bool Countdown = false;
     private bool shown = false;
 
+    public bool Wave = false;
+
     // Use this for initialization
     private void Start()
     {
@@ -41,14 +43,23 @@ public class Timer : MonoBehaviour
                 CountingDownFrom = 0;
                 if (shown == false)
                 {
-                    if (ScoreManager.CurrentScore >= TextManager.Score[TextManager.Score.Count - 1])
+                    if (Wave == true)
                     {
-                        UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
-                        shown = true;
+                        if (ScoreManager.CurrentScore >= TextManager.Score[TextManager.Score.Count - 1])
+                        {
+                            UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.NewHighscore);
+                            shown = true;
+                        }
+                        else
+                        {
+                            UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+                            shown = true;
+                        }
                     }
                     else
                     {
                         UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
+                        shown = true;
                     }
                 }
                 text.text = CountingDownFrom.ToString("F1");
