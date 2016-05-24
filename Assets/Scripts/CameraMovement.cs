@@ -50,7 +50,6 @@ public class CameraMovement : MonoBehaviour
 
         //Play the ambient music
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.Ambient);
-        //SoundManager.SetBGMVolume(0.3f);
     }
 
     // Update is called once per frame
@@ -69,7 +68,6 @@ public class CameraMovement : MonoBehaviour
                 {
                     Quaternion rotation = Quaternion.LookRotation(SortedWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
                     CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
-                    //print("rotating");
                 }
                 else
                 {

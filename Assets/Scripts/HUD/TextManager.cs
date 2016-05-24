@@ -19,7 +19,6 @@ public class TextManager : MonoBehaviour
     private void Start()
     {
         Read();
-        //Write("KEITH", 88888);
     }
 
     //Update is called once per frame

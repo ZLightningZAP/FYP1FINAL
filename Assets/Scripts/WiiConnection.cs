@@ -81,15 +81,11 @@ public class WiiConnection : MonoBehaviour
             //Check if Manager has wii mote connected
             if (WiimoteManager.HasWiimote())
             {
-                print("Wiimote Found");
-
                 //Assign our variable to the first
                 wiimote = WiimoteManager.Wiimotes[0];
 
                 if (wiimote != null)
                 {
-                    print("Wiimote Assigned");
-
                     wiimote.SendPlayerLED(true, false, false, false);
                 }
 

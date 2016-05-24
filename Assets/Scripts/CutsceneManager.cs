@@ -65,7 +65,6 @@ public class CutsceneManager : MonoBehaviour
             {
                 Quaternion rotation = Quaternion.LookRotation(SortedCutWaypoint[Index].Lookpoint.gameObject.transform.position - transform.position);
                 CurrentTransform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
-                //print("rotating");
             }
             else
             {
@@ -90,7 +89,6 @@ public class CutsceneManager : MonoBehaviour
                 {
                     Index++;
                     WaitTime = 0.0f;
-                    print("Going to next point!");
                 }
             }
         }

@@ -19,7 +19,7 @@ public class SliderAuto : MonoBehaviour
         goingup = true;
 
         SoundManager.PlayBackgroundMusic(SoundManager.BackgroundMusic.MainMenu);
-        //SoundManager.SetBGMVolume(0.3f);
+
     }
 
     // Update is called once per frame
