@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     private static int[] scores =
         {
             1000,
-            3000,
+            5000,
             2000,
             2000,
             100,

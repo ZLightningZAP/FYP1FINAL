@@ -100,16 +100,20 @@ public class EnemyBoss : Character
 
     private void Move()
     {
-        if (Vector3.Distance(SortedWaypoint[index].gameObject.transform.position, CurrentTransform.position) > Gap)
+        Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 targetPos = new Vector3(SortedWaypoint[index].gameObject.transform.position.x, 0, SortedWaypoint[index].gameObject.transform.position.z);
+        if (Vector3.Distance(targetPos, currentPos) > Gap)
         {
+            Rotate();
             //Go towards the next position
             CurrentTransform.position = Vector3.MoveTowards(CurrentTransform.position, SortedWaypoint[index].gameObject.transform.position, MovementSpeed * Time.deltaTime);
+            //gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * Time.deltaTime * MovementSpeed);
         }
         else
         {
             waitTimer += Time.deltaTime;
 
-            if (waitTimer > SortedWaypoint[index].WaitTime)
+            if (waitTimer >= SortedWaypoint[index].WaitTime)
             {
                 //Only if its still within bounds of the waypoint
                 if (SortedWaypoint.Count > index + 1)
@@ -229,5 +233,15 @@ public class EnemyBoss : Character
             cancelled = true;
             counter = 0;
         }
+    }
+
+    public void Rotate()
+    {
+        Vector3 currentPos = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 targetPos = new Vector3(SortedWaypoint[index].gameObject.transform.position.x, 0, SortedWaypoint[index].gameObject.transform.position.z);
+        Vector3 targetDir = targetPos - currentPos;
+        float step = 9999f;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+        transform.rotation = Quaternion.LookRotation(newDir);
     }
 }
