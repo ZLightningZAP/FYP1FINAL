@@ -29,6 +29,7 @@ public class EnemyBoss : Character
     private Animator anim;
     private GameObject SmokeEffect;
     private Rigidbody rb;
+    private Weakpoint wp;
 
     private ShootingBarrel shootingBarrel;
     private bool Shootbeforechargetime = false;
@@ -36,6 +37,10 @@ public class EnemyBoss : Character
 
     private Transform CurrentTransform;
     private bool shown = false;
+
+    private int counter;
+    public int Limit;
+    private bool cancelled = false;
 
     // Use this for initialization
     protected override void Start()
@@ -49,17 +54,23 @@ public class EnemyBoss : Character
         aiming.SetActive(false);
         shootingBarrel = GetComponentInChildren<ShootingBarrel>();
         rb = GetComponent<Rigidbody>();
+        wp = GetComponent<Weakpoint>();
 
-        foreach (var waypoint in FindObjectsOfType(typeof(Waypoint)) as Waypoint[])
+        if (WaypointCanvas != null)
         {
-            waypoints.Add(waypoint);
-        }
+            foreach (var waypoint in FindObjectsOfType(typeof(Waypoint)) as Waypoint[])
+            {
+                waypoints.Add(waypoint);
+            }
 
-        SortedWaypoint = WaypointCanvas.GetComponentsInChildren<Waypoint>().ToList();
+            SortedWaypoint = WaypointCanvas.GetComponentsInChildren<Waypoint>().ToList();
+        }
 
         CurrentTransform = gameObject.transform;
         //Set the gameobject to active on start
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+
+        wp.enabled = false;
 
         shown = false;
     }
@@ -91,18 +102,6 @@ public class EnemyBoss : Character
 
     private void Move()
     {
-        //if (Vector3.Distance(waypoints[index].transform.position, transform.position) > Gap)
-        //{
-        //    //Go towards the next position
-        //    transform.position = Vector3.MoveTowards(transform.position, waypoints[index].transform.position, MovementSpeed * Time.deltaTime);
-        //}
-        //else if (transform.position == waypoints[index].transform.position)
-        //{
-        //    if (index < waypoints.Count)
-        //    {
-        //        index += 1;
-        //    }
-        //}
         if (Vector3.Distance(SortedWaypoint[index].gameObject.transform.position, CurrentTransform.position) > Gap)
         {
             //Go towards the next position
@@ -184,7 +183,22 @@ public class EnemyBoss : Character
             anim.enabled = true;
             aiming.SetActive(true);
             timer += Time.deltaTime;
-            if (timer >= ChargeTime)
+
+            //Enable the weakpoint
+            wp.enabled = true;
+            print("Weakpoint Active");
+            if (cancelled == true)
+            {
+                print("Attack Cancelled");
+                anim.enabled = false;
+                aiming.SetActive(false);
+                wp.enabled = false;
+                timer = 0;
+                Shootbeforechargetime = true;
+                return;
+            }
+
+            if (timer >= ChargeTime && cancelled == false)
             {
                 //FindObjectOfType<Player>().Injure(Damage);
                 Vector3 n = Camera.main.transform.position - firing.transform.position;
@@ -197,12 +211,24 @@ public class EnemyBoss : Character
         }
         else
         {
+            print("Recharging");
             timer2 += Time.deltaTime;
             if (timer2 >= RechargeTime)
             {
+                print("Recharged");
                 Shootbeforechargetime = false;
                 timer2 = 0;
             }
+        }
+    }
+
+    private void Cancel(int i)
+    {
+        counter += i;
+        if (counter >= Limit)
+        {
+            cancelled = true;
+            counter = 0;
         }
     }
 }

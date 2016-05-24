@@ -11,6 +11,7 @@ public class MainMenuTransition : MonoBehaviour
 
     // For the Quit options
     public GameObject quitMenu;
+
     public UnityStandardAssets.ImageEffects.BlurOptimized BlurEffect;
 
     private Animator anim1;
@@ -33,15 +34,13 @@ public class MainMenuTransition : MonoBehaviour
 
         //Disable the quit menu on start
         quitMenu.SetActive(false);
-        
+
         //Disable Blur
         BlurEffect.enabled = false;
 
         //Wii Set up
         WiiController = GameObject.Find("WiiController");
         wiimote = WiiController.GetComponent<WiiConnection>().wiimote;
-
-        
     }
 
     // Update is called once per frame

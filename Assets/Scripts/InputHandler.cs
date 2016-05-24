@@ -232,23 +232,27 @@ public class InputHandler : MonoBehaviour
 
             if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
             {
+                //Hit the weakpoint of the tank
                 print("Hit Weak Point!");
-                hit.transform.SendMessage("Injure", DamageOfBullet * 2, SendMessageOptions.DontRequireReceiver);
+                hit.transform.SendMessage("Cancel", 1, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
             {
+                //Hit the top of the tank for more points
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<Enemy>() != null)
             {
+                //Hit the bottom of the tank for lesser points
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.tag == "TrafficLight")
             {
+                //The trafficlight sound will only play by chance
                 random = Random.Range(0, 11);
                 if (random == 0)
                 {
@@ -261,6 +265,7 @@ public class InputHandler : MonoBehaviour
             }
         }
 
+        //Play the shooting sound effect
         SoundManager.PlaySoundEffect(SoundManager.SoundEffect.Fire);
 
         fireTimer = 0.0f;   //Resetting the Timer
