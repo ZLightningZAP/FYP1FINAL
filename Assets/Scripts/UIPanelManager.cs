@@ -10,6 +10,7 @@ public class UIPanelManager : MonoBehaviour
         ReturnToMainMenu,
         GameOver,
         NewHighscore,
+        Credits,
     }
 
     public GameObject[] UILIST = new GameObject[Enum.GetNames(typeof(UIPanel)).Length];
