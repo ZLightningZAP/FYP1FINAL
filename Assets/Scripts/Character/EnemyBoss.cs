@@ -214,6 +214,7 @@ public class EnemyBoss : Character
             if (timer2 >= RechargeTime)
             {
                 print("Recharged");
+                cancelled = false;
                 Shootbeforechargetime = false;
                 timer2 = 0;
             }
