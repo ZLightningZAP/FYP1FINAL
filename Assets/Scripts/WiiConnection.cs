@@ -52,11 +52,6 @@ public class WiiConnection : MonoBehaviour
 
             SetCursorPos((int)IRposition.x + 300, (Screen.height - (int)IRposition.y) + 100);
 
-            print("Mouse");
-            print(Input.mousePosition);
-
-            print("Wii");
-            print(IRposition);
             if (Input.GetMouseButtonDown(1))
             {
                 ConnectWii();
