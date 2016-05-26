@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class DisplayMultiplier : MonoBehaviour
 {
     private Text text;
-    private int multiply;
+    private float multiply;
 
     // Use this for initialization
     private void Start()

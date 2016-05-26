@@ -22,12 +22,11 @@ public class ScoreManager : MonoBehaviour
             300,
         };
 
-    private static int currentScore;
-    private static float Addition;
-    private static int Multiplier;
+    private static float currentScore;
+    private static float Multiplier;
 
-    public static int CurrentScore { get { return currentScore; } }
-    public static int CurrentMultiplier { get { return Multiplier; } }
+    public static float CurrentScore { get { return currentScore; } }
+    public static float CurrentMultiplier { get { return Multiplier; } }
 
     // Use this for initialization
     private void Start()
@@ -52,12 +51,7 @@ public class ScoreManager : MonoBehaviour
 
     public static void Multiply()
     {
-        Addition += 0.05f;
-        if (Addition >= 1)
-        {
-            Multiplier += 1;
-            Addition = 0;
-        }
+        Multiplier += 0.01f;
     }
 
     public static void ResetMultiplier()

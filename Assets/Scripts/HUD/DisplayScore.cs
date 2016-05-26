@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class DisplayScore : MonoBehaviour
 {
     private Text text;
-    private int oldscore;
-    private int newscore;
+    private float oldscore;
+    private float newscore;
 
     // Use this for initialization
     private void Start()
@@ -23,11 +23,11 @@ public class DisplayScore : MonoBehaviour
         if (newscore > oldscore)
         {
             oldscore += 50;
-            text.text = oldscore.ToString();
+            text.text = oldscore.ToString("0");
         }
         else
         {
-            text.text = newscore.ToString();
+            text.text = newscore.ToString("0");
         }
     }
 }

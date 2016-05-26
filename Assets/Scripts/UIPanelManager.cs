@@ -114,7 +114,7 @@ public class UIPanelManager : MonoBehaviour
             nameKey = "Test";
         }
         updating = false;
-        scoreKey = ScoreManager.CurrentScore;
+        scoreKey = (int)(ScoreManager.CurrentScore);
         TextManager.Write(nameKey, scoreKey);
         UIPanelManager.DisableUIPanel(UIPanelManager.UIPanel.NewHighscore);
         UIPanelManager.ShowUIPanel(UIPanelManager.UIPanel.GameOver);
