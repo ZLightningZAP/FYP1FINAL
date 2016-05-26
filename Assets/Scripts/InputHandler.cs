@@ -235,10 +235,12 @@ public class InputHandler : MonoBehaviour
                 //Hit the bottom of the tank for lesser points
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.BodyShot);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
+                ScoreManager.Multiply();
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<EnemyBoss>() != null)
             {
+                ScoreManager.Multiply();
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.GetComponent<ShootingBarrel>() != null)
@@ -246,6 +248,7 @@ public class InputHandler : MonoBehaviour
                 //Hit the top of the tank for more points
                 ScoreManager.AddCurrentScore(ScoreManager.ScoreType.TopShot);
                 SoundManager.PlaySoundEffect(SoundManager.SoundEffect.HitEnemy);
+                ScoreManager.Multiply();
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
             else if (hit.collider.gameObject.tag == "TrafficLight")
@@ -260,13 +263,17 @@ public class InputHandler : MonoBehaviour
             else if (hit.collider.gameObject.GetComponent<Weakpoint>() != null)
             {
                 //Hit the weakpoint of the tank
-                print("Hit Weak Point!");
+                ScoreManager.Multiply();
                 hit.transform.SendMessage("Cancel", 1, SendMessageOptions.DontRequireReceiver);
             }
             else
             {
                 hit.transform.SendMessage("Injure", DamageOfBullet, SendMessageOptions.DontRequireReceiver);
             }
+        }
+        else
+        {
+            ScoreManager.ResetMultiplier();
         }
 
         //Play the shooting sound effect

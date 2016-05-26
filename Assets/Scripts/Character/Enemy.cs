@@ -350,8 +350,6 @@ public class Enemy : Character
     {
         int rand = Random.Range(1, 5);
 
-        print(rand);
-
         if (gameObject.tag == "M113")
         {
             switch (rand)
