@@ -17,6 +17,6 @@ public class DisplayMultiplier : MonoBehaviour
     private void Update()
     {
         multiply = ScoreManager.CurrentMultiplier;
-        text.text = multiply.ToString("0");
+        text.text = "x" + multiply.ToString("0");
     }
 }
