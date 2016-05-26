@@ -14,6 +14,6 @@ public class HighscoreText : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        text.text = ScoreManager.CurrentScore.ToString();
+        text.text = ScoreManager.CurrentScore.ToString("0");
     }
 }

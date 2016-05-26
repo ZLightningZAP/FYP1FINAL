@@ -51,7 +51,7 @@ public class ScoreManager : MonoBehaviour
 
     public static void Multiply()
     {
-        Multiplier += 0.01f;
+        Multiplier += 0.1f;
     }
 
     public static void ResetMultiplier()
