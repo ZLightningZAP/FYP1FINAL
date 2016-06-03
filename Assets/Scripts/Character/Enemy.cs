@@ -267,7 +267,7 @@ public class Enemy : Character
     {
         if (chosen == false)
         {
-            randomnumber = Random.Range(8, 11);
+            randomnumber = Random.Range(8, 14);
             chosen = true;
         }
         randomnumber -= Time.deltaTime;
